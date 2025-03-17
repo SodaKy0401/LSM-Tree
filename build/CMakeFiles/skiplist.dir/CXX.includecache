@@ -6,12 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/ls/LSM/LSM-Tree/src/Iterator/iterator.cpp
-iterator.h
-/home/ls/LSM/LSM-Tree/src/Iterator/iterator.h
-vector
--
-
 /home/ls/LSM/LSM-Tree/src/Iterator/iterator.h
 memory
 -

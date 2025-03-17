@@ -53,8 +53,10 @@ CMAKE_BINARY_DIR = /home/ls/LSM/LSM-Tree/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/test_memtable.dir/all
 all: CMakeFiles/test_skiplist.dir/all
 all: CMakeFiles/test_block.dir/all
+all: CMakeFiles/memtable.dir/all
 all: CMakeFiles/skiplist.dir/all
 all: CMakeFiles/block.dir/all
 
@@ -66,12 +68,41 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/test_memtable.dir/clean
 clean: CMakeFiles/test_skiplist.dir/clean
 clean: CMakeFiles/test_block.dir/clean
+clean: CMakeFiles/memtable.dir/clean
 clean: CMakeFiles/skiplist.dir/clean
 clean: CMakeFiles/block.dir/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test_memtable.dir
+
+# All Build rule for target.
+CMakeFiles/test_memtable.dir/all: CMakeFiles/skiplist.dir/all
+	$(MAKE) -f CMakeFiles/test_memtable.dir/build.make CMakeFiles/test_memtable.dir/depend
+	$(MAKE) -f CMakeFiles/test_memtable.dir/build.make CMakeFiles/test_memtable.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ls/LSM/LSM-Tree/build/CMakeFiles --progress-num=13,14 "Built target test_memtable"
+.PHONY : CMakeFiles/test_memtable.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_memtable.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ls/LSM/LSM-Tree/build/CMakeFiles 5
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test_memtable.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ls/LSM/LSM-Tree/build/CMakeFiles 0
+.PHONY : CMakeFiles/test_memtable.dir/rule
+
+# Convenience name for target.
+test_memtable: CMakeFiles/test_memtable.dir/rule
+
+.PHONY : test_memtable
+
+# clean rule for target.
+CMakeFiles/test_memtable.dir/clean:
+	$(MAKE) -f CMakeFiles/test_memtable.dir/build.make CMakeFiles/test_memtable.dir/clean
+.PHONY : CMakeFiles/test_memtable.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/test_skiplist.dir
@@ -80,7 +111,7 @@ clean: CMakeFiles/block.dir/clean
 CMakeFiles/test_skiplist.dir/all: CMakeFiles/skiplist.dir/all
 	$(MAKE) -f CMakeFiles/test_skiplist.dir/build.make CMakeFiles/test_skiplist.dir/depend
 	$(MAKE) -f CMakeFiles/test_skiplist.dir/build.make CMakeFiles/test_skiplist.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ls/LSM/LSM-Tree/build/CMakeFiles --progress-num=9,10 "Built target test_skiplist"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ls/LSM/LSM-Tree/build/CMakeFiles --progress-num=15,16 "Built target test_skiplist"
 .PHONY : CMakeFiles/test_skiplist.dir/all
 
 # Build rule for subdir invocation for target.
@@ -107,7 +138,7 @@ CMakeFiles/test_skiplist.dir/clean:
 CMakeFiles/test_block.dir/all: CMakeFiles/block.dir/all
 	$(MAKE) -f CMakeFiles/test_block.dir/build.make CMakeFiles/test_block.dir/depend
 	$(MAKE) -f CMakeFiles/test_block.dir/build.make CMakeFiles/test_block.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ls/LSM/LSM-Tree/build/CMakeFiles --progress-num=7,8 "Built target test_block"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ls/LSM/LSM-Tree/build/CMakeFiles --progress-num=11,12 "Built target test_block"
 .PHONY : CMakeFiles/test_block.dir/all
 
 # Build rule for subdir invocation for target.
@@ -128,13 +159,40 @@ CMakeFiles/test_block.dir/clean:
 .PHONY : CMakeFiles/test_block.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/memtable.dir
+
+# All Build rule for target.
+CMakeFiles/memtable.dir/all:
+	$(MAKE) -f CMakeFiles/memtable.dir/build.make CMakeFiles/memtable.dir/depend
+	$(MAKE) -f CMakeFiles/memtable.dir/build.make CMakeFiles/memtable.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ls/LSM/LSM-Tree/build/CMakeFiles --progress-num=4,5,6,7 "Built target memtable"
+.PHONY : CMakeFiles/memtable.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/memtable.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ls/LSM/LSM-Tree/build/CMakeFiles 4
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/memtable.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ls/LSM/LSM-Tree/build/CMakeFiles 0
+.PHONY : CMakeFiles/memtable.dir/rule
+
+# Convenience name for target.
+memtable: CMakeFiles/memtable.dir/rule
+
+.PHONY : memtable
+
+# clean rule for target.
+CMakeFiles/memtable.dir/clean:
+	$(MAKE) -f CMakeFiles/memtable.dir/build.make CMakeFiles/memtable.dir/clean
+.PHONY : CMakeFiles/memtable.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/skiplist.dir
 
 # All Build rule for target.
 CMakeFiles/skiplist.dir/all:
 	$(MAKE) -f CMakeFiles/skiplist.dir/build.make CMakeFiles/skiplist.dir/depend
 	$(MAKE) -f CMakeFiles/skiplist.dir/build.make CMakeFiles/skiplist.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ls/LSM/LSM-Tree/build/CMakeFiles --progress-num=4,5,6 "Built target skiplist"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ls/LSM/LSM-Tree/build/CMakeFiles --progress-num=8,9,10 "Built target skiplist"
 .PHONY : CMakeFiles/skiplist.dir/all
 
 # Build rule for subdir invocation for target.

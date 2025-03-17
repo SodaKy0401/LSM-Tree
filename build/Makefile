@@ -122,6 +122,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named test_memtable
+
+# Build rule for target.
+test_memtable: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_memtable
+.PHONY : test_memtable
+
+# fast build rule for target.
+test_memtable/fast:
+	$(MAKE) -f CMakeFiles/test_memtable.dir/build.make CMakeFiles/test_memtable.dir/build
+.PHONY : test_memtable/fast
+
+#=============================================================================
 # Target rules for targets named test_skiplist
 
 # Build rule for target.
@@ -146,6 +159,19 @@ test_block: cmake_check_build_system
 test_block/fast:
 	$(MAKE) -f CMakeFiles/test_block.dir/build.make CMakeFiles/test_block.dir/build
 .PHONY : test_block/fast
+
+#=============================================================================
+# Target rules for targets named memtable
+
+# Build rule for target.
+memtable: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 memtable
+.PHONY : memtable
+
+# fast build rule for target.
+memtable/fast:
+	$(MAKE) -f CMakeFiles/memtable.dir/build.make CMakeFiles/memtable.dir/build
+.PHONY : memtable/fast
 
 #=============================================================================
 # Target rules for targets named skiplist
@@ -206,6 +232,7 @@ src/Iterator/block_iterator.o: src/Iterator/block_iterator.cpp.o
 
 # target to build an object file
 src/Iterator/block_iterator.cpp.o:
+	$(MAKE) -f CMakeFiles/memtable.dir/build.make CMakeFiles/memtable.dir/src/Iterator/block_iterator.cpp.o
 	$(MAKE) -f CMakeFiles/block.dir/build.make CMakeFiles/block.dir/src/Iterator/block_iterator.cpp.o
 .PHONY : src/Iterator/block_iterator.cpp.o
 
@@ -215,6 +242,7 @@ src/Iterator/block_iterator.i: src/Iterator/block_iterator.cpp.i
 
 # target to preprocess a source file
 src/Iterator/block_iterator.cpp.i:
+	$(MAKE) -f CMakeFiles/memtable.dir/build.make CMakeFiles/memtable.dir/src/Iterator/block_iterator.cpp.i
 	$(MAKE) -f CMakeFiles/block.dir/build.make CMakeFiles/block.dir/src/Iterator/block_iterator.cpp.i
 .PHONY : src/Iterator/block_iterator.cpp.i
 
@@ -224,6 +252,7 @@ src/Iterator/block_iterator.s: src/Iterator/block_iterator.cpp.s
 
 # target to generate assembly for a file
 src/Iterator/block_iterator.cpp.s:
+	$(MAKE) -f CMakeFiles/memtable.dir/build.make CMakeFiles/memtable.dir/src/Iterator/block_iterator.cpp.s
 	$(MAKE) -f CMakeFiles/block.dir/build.make CMakeFiles/block.dir/src/Iterator/block_iterator.cpp.s
 .PHONY : src/Iterator/block_iterator.cpp.s
 
@@ -233,6 +262,7 @@ src/Iterator/iterator.o: src/Iterator/iterator.cpp.o
 
 # target to build an object file
 src/Iterator/iterator.cpp.o:
+	$(MAKE) -f CMakeFiles/memtable.dir/build.make CMakeFiles/memtable.dir/src/Iterator/iterator.cpp.o
 	$(MAKE) -f CMakeFiles/skiplist.dir/build.make CMakeFiles/skiplist.dir/src/Iterator/iterator.cpp.o
 .PHONY : src/Iterator/iterator.cpp.o
 
@@ -242,6 +272,7 @@ src/Iterator/iterator.i: src/Iterator/iterator.cpp.i
 
 # target to preprocess a source file
 src/Iterator/iterator.cpp.i:
+	$(MAKE) -f CMakeFiles/memtable.dir/build.make CMakeFiles/memtable.dir/src/Iterator/iterator.cpp.i
 	$(MAKE) -f CMakeFiles/skiplist.dir/build.make CMakeFiles/skiplist.dir/src/Iterator/iterator.cpp.i
 .PHONY : src/Iterator/iterator.cpp.i
 
@@ -251,8 +282,36 @@ src/Iterator/iterator.s: src/Iterator/iterator.cpp.s
 
 # target to generate assembly for a file
 src/Iterator/iterator.cpp.s:
+	$(MAKE) -f CMakeFiles/memtable.dir/build.make CMakeFiles/memtable.dir/src/Iterator/iterator.cpp.s
 	$(MAKE) -f CMakeFiles/skiplist.dir/build.make CMakeFiles/skiplist.dir/src/Iterator/iterator.cpp.s
 .PHONY : src/Iterator/iterator.cpp.s
+
+src/Memtable/memtable.o: src/Memtable/memtable.cpp.o
+
+.PHONY : src/Memtable/memtable.o
+
+# target to build an object file
+src/Memtable/memtable.cpp.o:
+	$(MAKE) -f CMakeFiles/memtable.dir/build.make CMakeFiles/memtable.dir/src/Memtable/memtable.cpp.o
+.PHONY : src/Memtable/memtable.cpp.o
+
+src/Memtable/memtable.i: src/Memtable/memtable.cpp.i
+
+.PHONY : src/Memtable/memtable.i
+
+# target to preprocess a source file
+src/Memtable/memtable.cpp.i:
+	$(MAKE) -f CMakeFiles/memtable.dir/build.make CMakeFiles/memtable.dir/src/Memtable/memtable.cpp.i
+.PHONY : src/Memtable/memtable.cpp.i
+
+src/Memtable/memtable.s: src/Memtable/memtable.cpp.s
+
+.PHONY : src/Memtable/memtable.s
+
+# target to generate assembly for a file
+src/Memtable/memtable.cpp.s:
+	$(MAKE) -f CMakeFiles/memtable.dir/build.make CMakeFiles/memtable.dir/src/Memtable/memtable.cpp.s
+.PHONY : src/Memtable/memtable.cpp.s
 
 src/SkipList/skiplist.o: src/SkipList/skiplist.cpp.o
 
@@ -308,6 +367,33 @@ test/testblock.cpp.s:
 	$(MAKE) -f CMakeFiles/test_block.dir/build.make CMakeFiles/test_block.dir/test/testblock.cpp.s
 .PHONY : test/testblock.cpp.s
 
+test/testmemtable.o: test/testmemtable.cpp.o
+
+.PHONY : test/testmemtable.o
+
+# target to build an object file
+test/testmemtable.cpp.o:
+	$(MAKE) -f CMakeFiles/test_memtable.dir/build.make CMakeFiles/test_memtable.dir/test/testmemtable.cpp.o
+.PHONY : test/testmemtable.cpp.o
+
+test/testmemtable.i: test/testmemtable.cpp.i
+
+.PHONY : test/testmemtable.i
+
+# target to preprocess a source file
+test/testmemtable.cpp.i:
+	$(MAKE) -f CMakeFiles/test_memtable.dir/build.make CMakeFiles/test_memtable.dir/test/testmemtable.cpp.i
+.PHONY : test/testmemtable.cpp.i
+
+test/testmemtable.s: test/testmemtable.cpp.s
+
+.PHONY : test/testmemtable.s
+
+# target to generate assembly for a file
+test/testmemtable.cpp.s:
+	$(MAKE) -f CMakeFiles/test_memtable.dir/build.make CMakeFiles/test_memtable.dir/test/testmemtable.cpp.s
+.PHONY : test/testmemtable.cpp.s
+
 test/testskiplist.o: test/testskiplist.cpp.o
 
 .PHONY : test/testskiplist.o
@@ -342,8 +428,10 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
+	@echo "... test_memtable"
 	@echo "... test_skiplist"
 	@echo "... test_block"
+	@echo "... memtable"
 	@echo "... edit_cache"
 	@echo "... test"
 	@echo "... skiplist"
@@ -357,12 +445,18 @@ help:
 	@echo "... src/Iterator/iterator.o"
 	@echo "... src/Iterator/iterator.i"
 	@echo "... src/Iterator/iterator.s"
+	@echo "... src/Memtable/memtable.o"
+	@echo "... src/Memtable/memtable.i"
+	@echo "... src/Memtable/memtable.s"
 	@echo "... src/SkipList/skiplist.o"
 	@echo "... src/SkipList/skiplist.i"
 	@echo "... src/SkipList/skiplist.s"
 	@echo "... test/testblock.o"
 	@echo "... test/testblock.i"
 	@echo "... test/testblock.s"
+	@echo "... test/testmemtable.o"
+	@echo "... test/testmemtable.i"
+	@echo "... test/testmemtable.s"
 	@echo "... test/testskiplist.o"
 	@echo "... test/testskiplist.i"
 	@echo "... test/testskiplist.s"
