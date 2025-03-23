@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcomp.a  CMakeFiles/comp.dir/src/LSM/engine.cpp.o CMakeFiles/comp.dir/src/Compact/two_merge_iterator.cpp.o CMakeFiles/comp.dir/src/SST/concat_iterator.cpp.o
+/usr/bin/ranlib libcomp.a

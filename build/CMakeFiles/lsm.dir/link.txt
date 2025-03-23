@@ -1,0 +1,2 @@
+/usr/bin/ar qc liblsm.a  CMakeFiles/lsm.dir/src/LSM/engine.cpp.o CMakeFiles/lsm.dir/src/Compact/two_merge_iterator.cpp.o CMakeFiles/lsm.dir/src/SST/concat_iterator.cpp.o
+/usr/bin/ranlib liblsm.a

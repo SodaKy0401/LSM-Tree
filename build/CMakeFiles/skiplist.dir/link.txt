@@ -1,0 +1,2 @@
+/usr/bin/ar qc libskiplist.a  CMakeFiles/skiplist.dir/src/SkipList/skiplist.cpp.o CMakeFiles/skiplist.dir/src/Iterator/iterator.cpp.o
+/usr/bin/ranlib libskiplist.a

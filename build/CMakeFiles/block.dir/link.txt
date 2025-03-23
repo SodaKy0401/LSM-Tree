@@ -1,0 +1,2 @@
+/usr/bin/ar qc libblock.a  CMakeFiles/block.dir/src/Block/block.cpp.o CMakeFiles/block.dir/src/Iterator/block_iterator.cpp.o
+/usr/bin/ranlib libblock.a
