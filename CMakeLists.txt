@@ -130,8 +130,18 @@ target_link_libraries(testcomp PRIVATE lsm sst comp file blockmeta block blockca
 
 
 enable_testing()
-add_test(NAME test_block COMMAND test_block)
-add_test(NAME test_blockcache COMMAND test_blockcache)
-add_test(NAME test_skiplist COMMAND test_skiplist)
-add_test(NAME test_sst COMMAND test_sst)
-add_test(NAME test_memtable COMMAND test_memtable)
+
+
+
+
+
+
+add_library(LSM-Tree
+  main.cpp
+  src/LSM/engine.cpp
+  src/Compact/two_merge_iterator.cpp
+  src/SST/concat_iterator.cpp
+)
+target_include_directories(LSM-Tree PUBLIC src/LSM src/Compact src/Utils src/Block src/Iterator src/Memtable src/SST  src/SkipList)
+add_executable(LSM-test main.cpp)
+target_link_libraries(LSM-test PRIVATE lsm sst comp file blockmeta block blockcache memtable skiplist GTest::GTest GTest::Main)

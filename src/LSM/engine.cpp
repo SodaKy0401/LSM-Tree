@@ -448,6 +448,7 @@ size_t LSMEngine::get_sst_size(size_t level) {
 }
 
 // *********************** LSM ***********************
+
 LSM::LSM(std::string path) : engine(path) {}
 
 LSM::~LSM() = default;
@@ -477,6 +478,7 @@ void LSM::flush() { engine.flush(); }
 void LSM::flush_all() { engine.flush_all(); }
 
 LSM::LSMIterator LSM::begin() { return engine.begin(); }
+
 LSM::LSMIterator LSM::end() { return engine.end(); }
 
 std::optional<std::pair<TwoMergeIterator, TwoMergeIterator>>
