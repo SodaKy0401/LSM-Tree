@@ -1,1 +1,0 @@
-/usr/bin/c++     CMakeFiles/test_sst.dir/test/testsst.cpp.o  -o test_sst  libsst.a libskiplist.a libblock.a /usr/local/lib/libgtest_main.a /usr/local/lib/libgtest.a -lpthread 

@@ -1,1 +1,0 @@
-/usr/bin/c++     CMakeFiles/test_block.dir/test/testblock.cpp.o  -o test_block  libblock.a libblockcache.a /usr/local/lib/libgtest_main.a /usr/local/lib/libgtest.a -lpthread 

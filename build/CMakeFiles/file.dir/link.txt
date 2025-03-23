@@ -1,2 +1,0 @@
-/usr/bin/ar qc libfile.a  CMakeFiles/file.dir/src/Utils/file.cpp.o CMakeFiles/file.dir/src/Utils/std_file.cpp.o CMakeFiles/file.dir/src/Utils/bloom_filter.cpp.o
-/usr/bin/ranlib libfile.a

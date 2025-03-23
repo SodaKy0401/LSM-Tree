@@ -1,1 +1,0 @@
-/usr/bin/c++     CMakeFiles/test_memtable.dir/test/testmemtable.cpp.o  -o test_memtable  libskiplist.a libblock.a libmemtable.a libsst.a /usr/local/lib/libgtest_main.a /usr/local/lib/libgtest.a -lpthread 

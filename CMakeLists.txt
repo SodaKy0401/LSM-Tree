@@ -11,6 +11,16 @@ include_directories(${GTEST_INCLUDE_DIRS})
 add_compile_options(-std=c++20)
 
 
+
+
+
+
+
+
+
+
+
+
 add_library(skiplist STATIC 
     src/SkipList/skiplist.cpp  # 确保这里包含你的 .cpp 文件
     src/Iterator/iterator.cpp 
@@ -70,6 +80,23 @@ add_library(file STATIC
 )
 target_include_directories(file PUBLIC src/Utils)
 
+add_library(lsm STATIC 
+    src/LSM/engine.cpp  # 确保这里包含你的 .cpp 文件
+    src/Compact/two_merge_iterator.cpp
+    src/SST/concat_iterator.cpp
+)
+target_include_directories(lsm PUBLIC src/LSM src/Compact src/Utils src/Block src/Iterator)
+
+
+add_library(comp STATIC 
+    src/LSM/engine.cpp  # 确保这里包含你的 .cpp 文件
+    src/Compact/two_merge_iterator.cpp
+    src/SST/concat_iterator.cpp
+)
+target_include_directories(comp PUBLIC src/LSM src/Compact src/Utils src/Block src/Iterator)
+
+
+
 
 
 
@@ -81,7 +108,12 @@ add_executable(test_memtable test/testmemtable.cpp)
 add_executable(test_sst test/testsst.cpp)
 add_executable(test_util test/testfile.cpp)
 add_executable(testmeta test/testmeta.cpp)
+add_executable(testlsm test/testlsm.cpp)
+add_executable(testcomp test/testcompact.cpp)
 # 让 test_block 依赖 block 和 GTest
+
+
+
 
 target_link_libraries(test_block PRIVATE block blockcache GTest::GTest GTest::Main)
 target_link_libraries(test_blockcache PRIVATE block blockcache GTest::GTest GTest::Main)
@@ -90,6 +122,12 @@ target_link_libraries(test_sst PRIVATE sst GTest::GTest GTest::Main skiplist blo
 target_link_libraries(test_memtable PRIVATE skiplist block  memtable sst GTest::GTest GTest::Main)
 target_link_libraries(test_util PRIVATE file GTest::GTest GTest::Main)
 target_link_libraries(testmeta PRIVATE file blockmeta GTest::GTest GTest::Main)
+target_link_libraries(testlsm PRIVATE lsm sst file blockmeta block blockcache memtable skiplist GTest::GTest GTest::Main)
+target_link_libraries(testcomp PRIVATE lsm sst comp file blockmeta block blockcache memtable skiplist GTest::GTest GTest::Main)
+
+
+
+
 
 enable_testing()
 add_test(NAME test_block COMMAND test_block)
