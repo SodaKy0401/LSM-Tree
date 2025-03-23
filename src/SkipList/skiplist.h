@@ -1,6 +1,5 @@
 #pragma once
 #include "../Iterator/iterator.h"
-
 #include <cstddef>
 #include <functional>
 #include <memory>

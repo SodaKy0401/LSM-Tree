@@ -1,2 +1,0 @@
-/usr/bin/ar qc libmemtable.a  CMakeFiles/memtable.dir/src/Memtable/memtable.cpp.o CMakeFiles/memtable.dir/src/Iterator/iterator.cpp.o CMakeFiles/memtable.dir/src/Iterator/block_iterator.cpp.o
-/usr/bin/ranlib libmemtable.a

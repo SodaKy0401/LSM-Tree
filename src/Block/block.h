@@ -28,7 +28,7 @@ Refer to https://skyzh.github.io/mini-lsm/week1-03-block.html for memory layout
 */
 
 class BlockIterator;
-
+//Allow 类实例在其成员函数中生成指向它本身的 shared_ptr
 class Block : public std::enable_shared_from_this<Block> {
   friend BlockIterator;
 

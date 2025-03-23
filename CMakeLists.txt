@@ -11,7 +11,11 @@ include_directories(${GTEST_INCLUDE_DIRS})
 add_compile_options(-std=c++20)
 
 
-
+add_library(skiplist STATIC 
+    src/SkipList/skiplist.cpp  # 确保这里包含你的 .cpp 文件
+    src/Iterator/iterator.cpp 
+)
+target_include_directories(skiplist PUBLIC src/SkipList)
 
 
 # 添加 Block 目录，并创建 block 库
@@ -21,22 +25,75 @@ add_library(block STATIC
 )
 target_include_directories(block PUBLIC src/Block)
 
-add_library(skiplist STATIC 
-    src/SkipList/skiplist.cpp  # 确保这里包含你的 .cpp 文件
-    src/Iterator/iterator.cpp 
+add_library(blockcache STATIC 
+    src/Block/block_cache.cpp  # 确保这里包含你的 .cpp 文件
+    src/Iterator/block_iterator.cpp 
 )
-target_include_directories(skiplist PUBLIC src/SkipList)
+target_include_directories(blockcache PUBLIC src/Block src/Iterator)
+
+add_library(blockmeta STATIC 
+    src/Block/blockmeta.cpp  # 确保这里包含你的 .cpp 文件
+    src/Iterator/block_iterator.cpp 
+)
+target_include_directories(blockmeta PUBLIC src/Block src/Iterator)
+
+add_library(sst STATIC 
+src/SST/sst.cpp
+src/SST/sst_iterator.cpp
+src/Utils/file.cpp
+src/Block/block.cpp
+src/Block/blockmeta.cpp  # 添加 BlockMeta 相关实现
+src/Iterator/block_iterator.cpp # 可能的 BlockIterator 定义
+src/Utils/bloom_filter.cpp
+src/Block/block_cache.cpp
+src/Utils/std_file.cpp
+src/SkipList/skiplist.cpp  # 确保这里包含你的 .cpp 文件
+src/Iterator/iterator.cpp 
+   
+)
+target_include_directories(sst PUBLIC src/SST src/Utils src/Block src/Iterator) 
+
+
+
+add_library(memtable STATIC 
+    src/Memtable/memtable.cpp  # 确保这里包含你的 .cpp 文件
+    src/Iterator/iterator.cpp 
+    src/Iterator/block_iterator.cpp 
+    src/Block/blockmeta.cpp
+)
+target_include_directories(memtable PUBLIC src/Memtable src/SST src/Utils src/Block src/Iterator src/SkipList)
+
+add_library(file STATIC 
+    src/Utils/file.cpp  # 确保这里包含你的 .cpp 文件
+    src/Utils/std_file.cpp  # 确保这里包含你的 .cpp 文件
+    src/Utils/bloom_filter.cpp
+)
+target_include_directories(file PUBLIC src/Utils)
+
+
+
 
 # 添加测试可执行文件
 add_executable(test_block test/testblock.cpp)
 add_executable(test_skiplist test/testskiplist.cpp)
-
+add_executable(test_blockcache test/testblock_cache.cpp)
+add_executable(test_memtable test/testmemtable.cpp)
+add_executable(test_sst test/testsst.cpp)
+add_executable(test_util test/testfile.cpp)
+add_executable(testmeta test/testmeta.cpp)
 # 让 test_block 依赖 block 和 GTest
 
-target_link_libraries(test_block PRIVATE block GTest::GTest GTest::Main)
-
+target_link_libraries(test_block PRIVATE block blockcache GTest::GTest GTest::Main)
+target_link_libraries(test_blockcache PRIVATE block blockcache GTest::GTest GTest::Main)
 target_link_libraries(test_skiplist PRIVATE skiplist GTest::GTest GTest::Main)
+target_link_libraries(test_sst PRIVATE sst GTest::GTest GTest::Main skiplist block) 
+target_link_libraries(test_memtable PRIVATE skiplist block  memtable sst GTest::GTest GTest::Main)
+target_link_libraries(test_util PRIVATE file GTest::GTest GTest::Main)
+target_link_libraries(testmeta PRIVATE file blockmeta GTest::GTest GTest::Main)
 
 enable_testing()
 add_test(NAME test_block COMMAND test_block)
+add_test(NAME test_blockcache COMMAND test_blockcache)
 add_test(NAME test_skiplist COMMAND test_skiplist)
+add_test(NAME test_sst COMMAND test_sst)
+add_test(NAME test_memtable COMMAND test_memtable)

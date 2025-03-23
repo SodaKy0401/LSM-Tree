@@ -1,9 +1,0 @@
-/home/ls/LSM/LSM-Tree/build/CMakeFiles/rebuild_cache.dir
-/home/ls/LSM/LSM-Tree/build/CMakeFiles/test_memtable.dir
-/home/ls/LSM/LSM-Tree/build/CMakeFiles/test_skiplist.dir
-/home/ls/LSM/LSM-Tree/build/CMakeFiles/test_block.dir
-/home/ls/LSM/LSM-Tree/build/CMakeFiles/memtable.dir
-/home/ls/LSM/LSM-Tree/build/CMakeFiles/edit_cache.dir
-/home/ls/LSM/LSM-Tree/build/CMakeFiles/test.dir
-/home/ls/LSM/LSM-Tree/build/CMakeFiles/skiplist.dir
-/home/ls/LSM/LSM-Tree/build/CMakeFiles/block.dir

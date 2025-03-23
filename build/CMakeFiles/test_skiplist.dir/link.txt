@@ -1,1 +1,0 @@
-/usr/bin/c++     CMakeFiles/test_skiplist.dir/test/testskiplist.cpp.o  -o test_skiplist  libskiplist.a /usr/local/lib/libgtest_main.a /usr/local/lib/libgtest.a -lpthread 
