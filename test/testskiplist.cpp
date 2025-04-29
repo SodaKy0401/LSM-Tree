@@ -14,30 +14,28 @@
 #include <unordered_set>
 #include <utility>
 #include <vector>
-
-// 测试基本插入、查找和删除
 TEST(SkipListTest, BasicOperations) {
   SkipList skipList;
 
   // 测试插入和查找
-  skipList.put("key1", "value1");
-  EXPECT_EQ(skipList.get("key1").value(), "value1");
+  skipList.put("key1", "value1", 0);
+  EXPECT_EQ(skipList.get("key1", 0).get_value(), "value1");
 
   // 测试更新
-  skipList.put("key1", "new_value");
-  EXPECT_EQ(skipList.get("key1").value(), "new_value");
+  skipList.put("key1", "new_value", 0);
+  EXPECT_EQ(skipList.get("key1", 0).get_value(), "new_value");
 
   // 测试删除
   skipList.remove("key1");
-  EXPECT_FALSE(skipList.get("key1").has_value());
+  EXPECT_FALSE(skipList.get("key1", 0).is_valid());
 }
 
 // 测试迭代器
 TEST(SkipListTest, Iterator) {
   SkipList skipList;
-  skipList.put("key1", "value1");
-  skipList.put("key2", "value2");
-  skipList.put("key3", "value3");
+  skipList.put("key1", "value1", 0);
+  skipList.put("key2", "value2", 0);
+  skipList.put("key3", "value3", 0);
 
   // 测试迭代器
   std::vector<std::pair<std::string, std::string>> result;
@@ -46,9 +44,9 @@ TEST(SkipListTest, Iterator) {
   }
 
   EXPECT_EQ(result.size(), 3);
-  EXPECT_EQ(result[0].first, "key1");
-  EXPECT_EQ(result[1].first, "key2");
-  EXPECT_EQ(result[2].first, "key3");
+  EXPECT_EQ(std::get<0>(result[0]), "key1");
+  EXPECT_EQ(std::get<0>(result[1]), "key2");
+  EXPECT_EQ(std::get<0>(result[2]), "key3");
 }
 
 // 测试大量数据插入和查找
@@ -60,14 +58,14 @@ TEST(SkipListTest, LargeScaleInsertAndGet) {
   for (int i = 0; i < num_elements; ++i) {
     std::string key = "key" + std::to_string(i);
     std::string value = "value" + std::to_string(i);
-    skipList.put(key, value);
+    skipList.put(key, value, 0);
   }
 
   // 验证插入的数据
   for (int i = 0; i < num_elements; ++i) {
     std::string key = "key" + std::to_string(i);
     std::string expected_value = "value" + std::to_string(i);
-    EXPECT_EQ(skipList.get(key).value(), expected_value);
+    EXPECT_EQ((skipList.get(key, 0).get_value()), expected_value);
   }
 }
 
@@ -82,7 +80,7 @@ TEST(SkipListTest, LargeScaleRemove) {
   for (int i = 0; i < num_elements; ++i) {
     std::string key = "key" + std::to_string(i);
     std::string value = "value" + std::to_string(i);
-    skipList.put(key, value);
+    skipList.put(key, value, 0);
 
     // skipList.print_skiplist();
   }
@@ -100,7 +98,7 @@ TEST(SkipListTest, LargeScaleRemove) {
   // 验证所有数据已被删除
   for (int i = 0; i < num_elements; ++i) {
     std::string key = "key" + std::to_string(i);
-    EXPECT_FALSE(skipList.get(key).has_value());
+    EXPECT_FALSE(skipList.get(key, 0).is_valid());
   }
 }
 
@@ -109,12 +107,12 @@ TEST(SkipListTest, DuplicateInsert) {
   SkipList skipList;
 
   // 重复插入相同的key
-  skipList.put("key1", "value1");
-  skipList.put("key1", "value2");
-  skipList.put("key1", "value3");
+  skipList.put("key1", "value1", 0);
+  skipList.put("key1", "value2", 0);
+  skipList.put("key1", "value3", 0);
 
   // 验证最后一次插入的值
-  EXPECT_EQ(skipList.get("key1").value(), "value3");
+  EXPECT_EQ((skipList.get("key1", 0).get_value()), "value3");
 }
 
 // 测试空跳表
@@ -122,7 +120,7 @@ TEST(SkipListTest, EmptySkipList) {
   SkipList skipList;
 
   // 验证空跳表的查找和删除
-  EXPECT_FALSE(skipList.get("nonexistent_key").has_value());
+  EXPECT_FALSE(skipList.get("nonexistent_key", 0).is_valid());
   skipList.remove("nonexistent_key"); // 删除不存在的key
 }
 
@@ -138,7 +136,7 @@ TEST(SkipListTest, RandomInsertAndRemove) {
 
     if (keys.find(key) == keys.end()) {
       // 插入新key
-      skipList.put(key, value);
+      skipList.put(key, value, 0);
       keys.insert(key);
     } else {
       // 删除已存在的key
@@ -148,9 +146,9 @@ TEST(SkipListTest, RandomInsertAndRemove) {
 
     // 验证当前状态
     if (keys.find(key) != keys.end()) {
-      EXPECT_EQ(skipList.get(key).value(), value);
+      EXPECT_EQ((skipList.get(key, 0).get_value()), value);
     } else {
-      EXPECT_FALSE(skipList.get(key).has_value());
+      EXPECT_FALSE(skipList.get(key, 0).is_valid());
     }
   }
 }
@@ -160,17 +158,18 @@ TEST(SkipListTest, MemorySizeTracking) {
   SkipList skipList;
 
   // 插入数据
-  skipList.put("key1", "value1");
-  skipList.put("key2", "value2");
+  skipList.put("key1", "value1", 0);
+  skipList.put("key2", "value2", 0);
 
   // 验证内存大小
   size_t expected_size = sizeof("key1") - 1 + sizeof("value1") - 1 +
-                         sizeof("key2") - 1 + sizeof("value2") - 1;
+                         sizeof(uint64_t) + sizeof("key2") - 1 +
+                         sizeof("value2") - 1 + sizeof(uint64_t);
   EXPECT_EQ(skipList.get_size(), expected_size);
 
   // 删除数据
   skipList.remove("key1");
-  expected_size -= sizeof("key1") - 1 + sizeof("value1") - 1;
+  expected_size -= sizeof("key1") - 1 + sizeof("value1") - 1 + sizeof(uint64_t);
   EXPECT_EQ(skipList.get_size(), expected_size);
 
   skipList.clear();
@@ -181,13 +180,13 @@ TEST(SkipListTest, IteratorPreffix) {
   SkipList skipList;
 
   // 插入一些测试数据
-  skipList.put("apple", "0");
-  skipList.put("apple2", "1");
-  skipList.put("apricot", "2");
-  skipList.put("banana", "3");
-  skipList.put("berry", "4");
-  skipList.put("cherry", "5");
-  skipList.put("cherry2", "6");
+  skipList.put("apple", "0", 0);
+  skipList.put("apple2", "1", 0);
+  skipList.put("apricot", "2", 0);
+  skipList.put("banana", "3", 0);
+  skipList.put("berry", "4", 0);
+  skipList.put("cherry", "5", 0);
+  skipList.put("cherry2", "6", 0);
 
   // 测试前缀 "ap"
   auto it = skipList.begin_preffix("ap");
@@ -227,15 +226,15 @@ TEST(SkipListTest, IteratorPreffix) {
 TEST(SkipListTest, ItersPredicate_Base) {
 
   SkipList skipList;
-  skipList.put("prefix1", "value1");
-  skipList.put("prefix2", "value2");
-  skipList.put("prefix3", "value3");
-  skipList.put("other", "value4");
-  skipList.put("longerkey", "value5");
-  skipList.put("averylongkey", "value6");
-  skipList.put("medium", "value7");
-  skipList.put("midway", "value8");
-  skipList.put("midpoint", "value9");
+  skipList.put("prefix1", "value1", 0);
+  skipList.put("prefix2", "value2", 0);
+  skipList.put("prefix3", "value3", 0);
+  skipList.put("other", "value4", 0);
+  skipList.put("longerkey", "value5", 0);
+  skipList.put("averylongkey", "value6", 0);
+  skipList.put("medium", "value7", 0);
+  skipList.put("midway", "value8", 0);
+  skipList.put("midpoint", "value9", 0);
 
   // 测试前缀匹配
   auto prefix_result =
@@ -299,7 +298,7 @@ TEST(SkipListTest, ItersPredicate_Large) {
     std::string key = oss_key.str();
     std::string value = oss_value.str();
 
-    skipList.put(key, value);
+    skipList.put(key, value, 0);
   }
 
   skipList.remove("key1015");
@@ -322,6 +321,21 @@ TEST(SkipListTest, ItersPredicate_Large) {
     ++range_begin_iter;
   }
   EXPECT_EQ(range_begin_iter.get_key(), "key1016");
+}
+
+// 测试包含事务 id 的插入和查找
+TEST(SkipListTest, TransactionId) {
+  SkipList skipList;
+  skipList.put("key1", "value1", 1);
+  skipList.put("key1", "value2", 2);
+
+  // 验证事务 id
+  // 不指定事务 id，应该返回最新的值
+  EXPECT_EQ((skipList.get("key1", 0).get_value()), "value2");
+  // 指定 1 表示只能查找事务 id 小于等于 1 的值
+  EXPECT_EQ((skipList.get("key1", 1).get_value()), "value1");
+  // 指定 2 表示只能查找事务 id 小于等于 2 的值
+  EXPECT_EQ((skipList.get("key1", 2).get_value()), "value2");
 }
 
 // ! 现在的实现, 并发的锁由 SkipList 的上层 MemTable 实现, 因此不需要测试
@@ -396,7 +410,7 @@ TEST(SkipListTest, ItersPredicate_Large) {
 
 //       if (!key_to_find.empty()) {
 //         auto result = skipList.get(key_to_find);
-//         if (result.has_value()) {
+//         if (result.is_valid()) {
 //           found_count++;
 //         }
 //       }

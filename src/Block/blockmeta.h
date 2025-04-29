@@ -29,6 +29,7 @@
 
 class BlockMeta {
   friend class BlockMetaTest;
+  
 public:
   size_t offset;       // 块在文件中的偏移量
   std::string first_key; // 块的第一个key

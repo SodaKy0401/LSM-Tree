@@ -39,11 +39,11 @@ FileObj FileObj::create_and_write(const std::string &path,
   return std::move(file_obj);
 }
 
-FileObj FileObj::open(const std::string &path) {
+FileObj FileObj::open(const std::string &path, bool create) {
   FileObj file_obj;
 
   // 打开文件
-  if (!file_obj.m_file->open(path, false)) {
+  if (!file_obj.m_file->open(path, create)) {
     throw std::runtime_error("Failed to open file: " + path);
   }
 
@@ -61,3 +61,74 @@ std::vector<uint8_t> FileObj::read_to_slice(size_t offset, size_t length) {
 
   return result;
 }
+
+uint8_t FileObj::read_uint8(size_t offset) {
+  // 检查边界
+  if (offset + sizeof(uint8_t) > m_file->size()) {
+    throw std::out_of_range("Read beyond file size");
+  }
+
+  // 从w文件复制数据
+  auto result = m_file->read(offset, sizeof(uint8_t));
+
+  // 将数据转换为uint8_t
+  return result[0];
+}
+
+uint16_t FileObj::read_uint16(size_t offset) {
+  // 检查边界
+  if (offset + sizeof(uint16_t) > m_file->size()) {
+    throw std::out_of_range("Read beyond file size");
+  }
+  auto result = m_file->read(offset, sizeof(uint16_t));
+  return *(uint16_t *)result.data();
+}
+
+uint32_t FileObj::read_uint32(size_t offset) {
+  // 检查边界
+  if (offset + sizeof(uint32_t) > m_file->size()) {
+    throw std::out_of_range("Read beyond file size");
+  }
+
+  // 从w文件复制数据
+  auto result = m_file->read(offset, sizeof(uint32_t));
+
+  // 将数据转换为uint32_t
+  return *(uint32_t *)result.data();
+}
+
+uint64_t FileObj::read_uint64(size_t offset) {
+  // 检查边界
+  if (offset + sizeof(uint64_t) > m_file->size()) {
+    throw std::out_of_range("Read beyond file size");
+  }
+
+  // 从w文件复制数据
+  auto result = m_file->read(offset, sizeof(uint64_t));
+
+  // 将数据转换为uint64_t
+  return *(uint64_t *)result.data();
+}
+
+// 写入到文件
+bool FileObj::write(size_t offset, std::vector<uint8_t> &buf) {
+  return m_file->write(offset, buf.data(), buf.size());
+}
+
+// 追加到文件
+bool FileObj::append(std::vector<uint8_t> &buf) {
+  // 获取文件大小
+  size_t file_size = m_file->size();
+
+  // 写入数据
+  if (!m_file->write(file_size, buf.data(), buf.size())) {
+    return false;
+  }
+
+  // 更新文件大小
+  m_size += buf.size();
+
+  return true;
+}
+
+bool FileObj::sync() { return m_file->sync(); }

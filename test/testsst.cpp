@@ -25,7 +25,7 @@ protected:
     for (size_t i = 0; i < num_entries; i++) {
       std::string key = "key" + std::to_string(i);
       std::string value = "value" + std::to_string(i);
-      builder.add(key, value);
+      builder.add(key, value, 0);
     }
 
     auto block_cache = std::make_shared<BlockCache>(LSMmm_BLOCK_CACHE_CAPACITY,
@@ -42,9 +42,9 @@ TEST_F(SSTTest, BasicWriteAndRead) {
                                                   LSMmm_BLOCK_CACHE_K);
 
   // 添加一些数据
-  builder.add("key1", "value1");
-  builder.add("key2", "value2");
-  builder.add("key3", "value3");
+  builder.add("key1", "value1", 0);
+  builder.add("key2", "value2", 0);
+  builder.add("key3", "value3", 0);
 
   // 构建SST
   auto sst = builder.build(1, "test_data/basic.sst", block_cache);
@@ -58,7 +58,7 @@ TEST_F(SSTTest, BasicWriteAndRead) {
   // 读取并验证数据
   auto block = sst->read_block(0);
   EXPECT_TRUE(block != nullptr);
-  auto value = block->get_value_binary("key2");
+  auto value = block->get_value_binary("key2", 0);
   EXPECT_TRUE(value.has_value());
   EXPECT_EQ(*value, "value2");
 }
@@ -74,7 +74,7 @@ TEST_F(SSTTest, BlockSplitting) {
   for (int i = 0; i < 10; i++) {
     std::string key = "key" + std::to_string(i);
     std::string value = std::string(20, 'v') + std::to_string(i); // 较大的value
-    builder.add(key, value);
+    builder.add(key, value, 0);
   }
 
   auto sst = builder.build(1, "test_data/split.sst", block_cache);
@@ -96,7 +96,7 @@ TEST_F(SSTTest, KeySearch) {
   // 测试find_block_idx
   size_t idx = sst->find_block_idx("key50");
   auto block = sst->read_block(idx);
-  auto value = block->get_value_binary("key50");
+  auto value = block->get_value_binary("key50", 0);
   EXPECT_TRUE(value.has_value());
   EXPECT_EQ(*value, "value50");
 
@@ -133,7 +133,7 @@ TEST_F(SSTTest, ReopenSST) {
                                                   LSMmm_BLOCK_CACHE_K);
 
   // 重新打开SST
-  FileObj file = FileObj::open("test_data/test.sst");
+  FileObj file = FileObj::open("test_data/test.sst", false);
   auto reopened_sst = SST::open(1, std::move(file), block_cache);
 
   // 验证数据一致性
@@ -159,7 +159,7 @@ TEST_F(SSTTest, LargeSST) {
                         std::string(3 - std::to_string(i).length(), '0') +
                         std::to_string(i);
 
-    builder.add(key, value);
+    builder.add(key, value, 0);
   }
 
   auto sst = builder.build(1, "test_data/large.sst", block_cache);
@@ -176,7 +176,7 @@ TEST_F(SSTTest, LargeSST) {
                       std::to_string(i);
     size_t idx = sst->find_block_idx(key);
     auto block = sst->read_block(idx);
-    auto value = block->get_value_binary(key);
+    auto value = block->get_value_binary(key, 0);
     EXPECT_TRUE(value.has_value());
 
     // 构造期望的value
@@ -203,23 +203,24 @@ TEST_F(SSTTest, LargeSSTPredicate) {
                         std::string(3 - std::to_string(i).length(), '0') +
                         std::to_string(i);
 
-    builder.add(key, value);
+    builder.add(key, value, 0);
   }
 
   auto sst = builder.build(1, "test_data/large.sst", block_cache);
 
-  auto result = sst_iters_monotony_predicate(sst, [](const std::string &key) {
-    if (key < "key100") {
-      return 1;
-      ;
-    }
-    if (key > "key500") {
-      return -1;
-      ;
-    }
-    return 0;
-    // return key >= "key100" && key <= "key500";
-  });
+  auto result =
+      sst_iters_monotony_predicate(sst, 0, [](const std::string &key) {
+        if (key < "key100") {
+          return 1;
+          ;
+        }
+        if (key > "key500") {
+          return -1;
+          ;
+        }
+        return 0;
+        // return key >= "key100" && key <= "key500";
+      });
   EXPECT_TRUE(result.has_value());
   auto [iter_begin, iter_end] = result.value();
   EXPECT_EQ(iter_begin.key(), "key100");

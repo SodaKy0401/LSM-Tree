@@ -4,8 +4,7 @@ bool StdFile::open(const std::string &filename, bool create) {
   filename_ = filename;
 
   if (create) {
-    file_.open(filename, std::ios::in | std::ios::out | std::ios::binary |
-                             std::ios::trunc);
+    file_.open(filename, std::ios::in | std::ios::out | std::ios::binary |std::ios::trunc);
   } else {
     file_.open(filename, std::ios::in | std::ios::out | std::ios::binary);
   }
@@ -17,7 +16,9 @@ bool StdFile::create(const std::string &filename, std::vector<uint8_t> &buf) {
   if (!this->open(filename, true)) {
     throw std::runtime_error("Failed to open file for writing");
   }
-  write(0, buf.data(), buf.size());
+   if (!buf.empty()) {
+     write(0, buf.data(), buf.size());
+   }
   return true;
 }
 
@@ -43,7 +44,7 @@ std::vector<uint8_t> StdFile::read(size_t offset, size_t length) {
 }
 
 bool StdFile::write(size_t offset, const void *data, size_t size) {
-  file_.seekg(offset, std::ios::beg);
+  file_.seekp(offset, std::ios::beg);
   file_.write(static_cast<const char *>(data), size);
   this->sync();
   return true;

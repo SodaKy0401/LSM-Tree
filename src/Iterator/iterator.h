@@ -1,5 +1,6 @@
 #pragma once
 
+#include <bits/stdint-uintn.h>
 #include <memory>
 #include <optional>
 #include <queue>
@@ -13,6 +14,7 @@ enum class IteratorType {
   HeapIterator,
   TwoMergeIterator,
   ConcactIterator,
+  LevelIterator,
 };
 
 class BaseIterator {
@@ -26,6 +28,7 @@ public:
   virtual bool operator!=(const BaseIterator &other) const = 0;
   virtual value_type operator*() const = 0;
   virtual IteratorType get_type() const = 0;
+  virtual uint64_t get_tranc_id() const = 0;
   virtual bool is_end() const = 0;
   virtual bool is_valid() const = 0;
 };
@@ -33,14 +36,16 @@ public:
 class SstIterator;
 // *************************** SearchItem ***************************
 struct SearchItem {
-  std::string key;
-  std::string value;
-  int idx;
-  int level; // 来自sst的level
+  std::string key_;
+  std::string value_;
+  uint64_t tranc_id_;
+  int idx_;
+  int level_; // 来自sst的level
 
   SearchItem() = default;
-  SearchItem(std::string k, std::string v, int i, int l)
-      : key(std::move(k)), value(std::move(v)), idx(i), level(l) {}
+  SearchItem(std::string k, std::string v, int i, int l, uint64_t tranc_id)
+      : key_(std::move(k)), value_(std::move(v)), idx_(i), level_(l),
+        tranc_id_(tranc_id) {}
 };
 
 bool operator<(const SearchItem &a, const SearchItem &b);
@@ -53,7 +58,7 @@ class HeapIterator : public BaseIterator {
 
 public:
   HeapIterator() = default;
-  HeapIterator(std::vector<SearchItem> item_vec);
+  HeapIterator(std::vector<SearchItem> item_vec, uint64_t max_tranc_id);
   pointer operator->() const;
   virtual value_type operator*() const override;
   BaseIterator &operator++() override;
@@ -62,14 +67,22 @@ public:
   virtual bool operator!=(const BaseIterator &other) const override;
 
   virtual IteratorType get_type() const override;
+  virtual uint64_t get_tranc_id() const override;
   virtual bool is_end() const override;
   virtual bool is_valid() const override;
+
+private:
+  bool top_value_legal() const;
+
+  // 跳过当前不可见事务的id (如果开启了事务功能)
+  void skip_by_tranc_id();
+
+  void update_current() const;
 
 private:
   std::priority_queue<SearchItem, std::vector<SearchItem>,
                       std::greater<SearchItem>>
       items;
   mutable std::shared_ptr<value_type> current; // 用于存储当前元素
-
-  void update_current() const;
+  uint64_t max_tranc_id_ = 0;
 };

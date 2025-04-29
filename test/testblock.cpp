@@ -24,26 +24,45 @@ protected:
         'a', 'p', 'p', 'l', 'e', // key
         3, 0,                    // value_len = 3
         'r', 'e', 'd',           // value
+        1, 0, 0, 0, 0, 0, 0, 0,  // tranc_id = 1
 
         // Entry 2: "banana" -> "yellow"
         6, 0,                         // key_len = 6
         'b', 'a', 'n', 'a', 'n', 'a', // key
         6, 0,                         // value_len = 6
         'y', 'e', 'l', 'l', 'o', 'w', // value
+        2, 0, 0, 0, 0, 0, 0, 0,       // tranc_id = 2
 
-        // Entry 3: "orange" -> "orange"
-        6, 0,                         // key_len = 6
-        'o', 'r', 'a', 'n', 'g', 'e', // key
-        6, 0,                         // value_len = 6
-        'o', 'r', 'a', 'n', 'g', 'e', // value
+        // Entry 3: "orange" -> "orange3"
+        6, 0,                              // key_len = 6
+        'o', 'r', 'a', 'n', 'g', 'e',      // key
+        7, 0,                              // value_len = 6
+        'o', 'r', 'a', 'n', 'g', 'e', '3', // value
+        3, 0, 0, 0, 0, 0, 0, 0,            // tranc_id = 3
+
+        // Entry 4: "orange" -> "orange2"
+        6, 0,                              // key_len = 6
+        'o', 'r', 'a', 'n', 'g', 'e',      // key
+        7, 0,                              // value_len = 6
+        'o', 'r', 'a', 'n', 'g', 'e', '2', // value
+        2, 0, 0, 0, 0, 0, 0, 0,            // tranc_id = 2
+
+        // Entry 5: "orange" -> "orange1"
+        6, 0,                              // key_len = 6
+        'o', 'r', 'a', 'n', 'g', 'e',      // key
+        7, 0,                              // value_len = 6
+        'o', 'r', 'a', 'n', 'g', 'e', '1', // value
+        1, 0, 0, 0, 0, 0, 0, 0,            // tranc_id = 1
 
         // Offset Section (每个entry的起始位置)
         0, 0,  // offset[0] = 0
-        12, 0, // offset[1] = 12 (第二个entry的起始位置)
-        28, 0, // offset[2] = 24 (第三个entry的起始位置)
+        20, 0, // offset[1] = 12 (第二个entry的起始位置)
+        44, 0, // offset[2] = 24 (第三个entry的起始位置)
+        69, 0, // offset[3] = 36 (第四个entry的起始位置)
+        94, 0, // offset[4] = 48 (第五个entry的起始位置)
 
         // Num of elements
-        3, 0 // num_elements = 3
+        5, 0 // num_elements = 5
     };
     return encoded;
   }
@@ -58,42 +77,54 @@ TEST_F(BlockTest, DecodeTest) {
   EXPECT_EQ(block->get_first_key(), "apple");
 
   // 验证所有key-value对
-  EXPECT_EQ(block->get_value_binary("apple").value(), "red");
-  EXPECT_EQ(block->get_value_binary("banana").value(), "yellow");
-  EXPECT_EQ(block->get_value_binary("orange").value(), "orange");
+  EXPECT_EQ(block->get_value_binary("apple", 0).value(), "red");
+  EXPECT_EQ(block->get_value_binary("banana", 0).value(), "yellow");
+  EXPECT_EQ(block->get_value_binary("orange", 0).value(), "orange3");
+
+  // 指定事务id查询
+  EXPECT_EQ(block->get_value_binary("orange", 1).value(), "orange1");
+  EXPECT_EQ(block->get_value_binary("orange", 2).value(), "orange2");
+  EXPECT_EQ(block->get_value_binary("orange", 3).value(), "orange3");
 }
 
 // 测试编码
 TEST_F(BlockTest, EncodeTest) {
   Block block(1024);
-  block.add_entry("apple", "red");
-  block.add_entry("banana", "yellow");
-  block.add_entry("orange", "orange");
+  block.add_entry("apple", "red", 1, false);
+  block.add_entry("banana", "yellow", 2, false);
+  block.add_entry("orange", "orange3", 3, false);
+  block.add_entry("orange", "orange2", 2, false);
+  block.add_entry("orange", "orange1", 1, false);
 
   auto encoded = block.encode();
 
   // 解码并验证
   auto decoded = Block::decode(encoded);
-  EXPECT_EQ(decoded->get_value_binary("apple").value(), "red");
-  EXPECT_EQ(decoded->get_value_binary("banana").value(), "yellow");
-  EXPECT_EQ(decoded->get_value_binary("orange").value(), "orange");
+  EXPECT_EQ(decoded->get_value_binary("apple", 1).value(), "red");
+  EXPECT_EQ(decoded->get_value_binary("banana", 2).value(), "yellow");
+  EXPECT_EQ(decoded->get_value_binary("orange", 0).value(), "orange3");
+
+  // 指定事务id查询
+  EXPECT_EQ(decoded->get_value_binary("orange", 1).value(), "orange1");
+  EXPECT_EQ(decoded->get_value_binary("orange", 2).value(), "orange2");
+  EXPECT_EQ(decoded->get_value_binary("orange", 3).value(), "orange3");
 }
 
 // 测试二分查找
 TEST_F(BlockTest, BinarySearchTest) {
   Block block(1024);
-  block.add_entry("apple", "red");
-  block.add_entry("banana", "yellow");
-  block.add_entry("orange", "orange");
+  block.add_entry("apple", "red", 0, false);
+  block.add_entry("banana", "yellow", 0, false);
+  block.add_entry("orange", "orange", 0, false);
 
   // 测试存在的key
-  EXPECT_EQ(block.get_value_binary("apple").value(), "red");
-  EXPECT_EQ(block.get_value_binary("banana").value(), "yellow");
-  EXPECT_EQ(block.get_value_binary("orange").value(), "orange");
+  EXPECT_EQ(block.get_value_binary("apple", 0).value(), "red");
+  EXPECT_EQ(block.get_value_binary("banana", 0).value(), "yellow");
+  EXPECT_EQ(block.get_value_binary("orange", 0).value(), "orange");
 
   // 测试不存在的key
-  EXPECT_FALSE(block.get_value_binary("grape").has_value());
-  EXPECT_FALSE(block.get_value_binary("").has_value());
+  EXPECT_FALSE(block.get_value_binary("grape", 0).has_value());
+  EXPECT_FALSE(block.get_value_binary("", 0).has_value());
 }
 
 // 测试边界情况
@@ -102,18 +133,18 @@ TEST_F(BlockTest, EdgeCasesTest) {
 
   // 空block
   EXPECT_EQ(block.get_first_key(), "");
-  EXPECT_FALSE(block.get_value_binary("any").has_value());
+  EXPECT_FALSE(block.get_value_binary("any", 0).has_value());
 
   // 添加空key和value
-  block.add_entry("", "");
+  block.add_entry("", "", 0, false);
   EXPECT_EQ(block.get_first_key(), "");
-  EXPECT_EQ(block.get_value_binary("").value(), "");
+  EXPECT_EQ(block.get_value_binary("", 0).value(), "");
 
   // 添加包含特殊字符的key和value
-  block.add_entry("key\0with\tnull", "value\rwith\nnull");
+  block.add_entry("key\0with\tnull", "value\rwith\nnull", 0, false);
   std::string special_key("key\0with\tnull");
   std::string special_value("value\rwith\nnull");
-  EXPECT_EQ(block.get_value_binary(special_key).value(), special_value);
+  EXPECT_EQ(block.get_value_binary(special_key, 0).value(), special_value);
 }
 
 // 测试大数据量
@@ -132,7 +163,7 @@ TEST_F(BlockTest, LargeDataTest) {
     snprintf(value_buf, sizeof(value_buf), "value%03d", i);
     std::string value = value_buf;
 
-    block.add_entry(key, value);
+    block.add_entry(key, value, 0, false);
   }
 
   // 验证所有数据
@@ -145,7 +176,7 @@ TEST_F(BlockTest, LargeDataTest) {
     snprintf(value_buf, sizeof(value_buf), "value%03d", i);
     std::string expected_value = value_buf;
 
-    EXPECT_EQ(block.get_value_binary(key).value(), expected_value);
+    EXPECT_EQ(block.get_value_binary(key, 0).value(), expected_value);
   }
 }
 
@@ -177,7 +208,7 @@ TEST_F(BlockTest, IteratorTest) {
     snprintf(key_buf, sizeof(key_buf), "key%03d", i);
     snprintf(value_buf, sizeof(value_buf), "value%03d", i);
 
-    block->add_entry(key_buf, value_buf);
+    block->add_entry(key_buf, value_buf, 0, false);
     test_data.emplace_back(key_buf, value_buf);
   }
 
@@ -209,6 +240,37 @@ TEST_F(BlockTest, IteratorTest) {
   }
 }
 
+// 包含多个事务操作的key的迭代器
+TEST_F(BlockTest, TrancIteratorTest) {
+  auto block = std::make_shared<Block>(4096);
+
+  // 添加多个事务操作的key
+  block->add_entry("key1", "value1", 1, false);
+
+  block->add_entry("key2", "value222", 3, false);
+  block->add_entry("key2", "value22", 2, false);
+  block->add_entry("key2", "value2", 1, false);
+
+  block->add_entry("key3", "value3", 1, false);
+  block->add_entry("key4", "value4", 2, false);
+  block->add_entry("key5", "value5", 3, false);
+
+  std::vector<std::pair<std::string, std::string>> expected_data = {
+      {"key1", "value1"},
+      {"key2", "value222"},
+      {"key3", "value3"},
+      {"key4", "value4"},
+      {"key5", "value5"}};
+
+  std::vector<std::pair<std::string, std::string>> results;
+
+  for (auto it = block->begin(); it != block->end(); ++it) {
+    results.emplace_back(it->first, it->second);
+  }
+
+  EXPECT_EQ(results, expected_data);
+}
+
 TEST_F(BlockTest, PredicateTest) {
   std::vector<uint8_t> encoded_p;
   {
@@ -226,11 +288,11 @@ TEST_F(BlockTest, PredicateTest) {
       std::string key = oss_key.str();
       std::string value = oss_value.str();
 
-      block1->add_entry(key, value);
+      block1->add_entry(key, value, 0, false);
     }
 
     auto result =
-        block1->get_monotony_predicate_iters([](const std::string &key) {
+        block1->get_monotony_predicate_iters(0, [](const std::string &key) {
           if (key < "key0020") {
             return 1;
           }
@@ -253,7 +315,7 @@ TEST_F(BlockTest, PredicateTest) {
   std::shared_ptr<Block> block2 = Block::decode(encoded_p);
 
   auto result =
-      block2->get_monotony_predicate_iters([](const std::string &key) {
+      block2->get_monotony_predicate_iters(0, [](const std::string &key) {
         if (key < "key0020") {
           return 1;
         }
@@ -270,6 +332,81 @@ TEST_F(BlockTest, PredicateTest) {
     ++(*it_begin);
   }
   EXPECT_EQ((*it_begin)->first, "key0025");
+}
+
+// 包含了事务的谓词迭代器
+TEST_F(BlockTest, TrancPredicateTest) {
+  std::vector<uint8_t> encoded_p;
+
+  {
+    std::shared_ptr<Block> block1 = std::make_shared<Block>(LSM_BLOCK_SIZE);
+    int num = 50;
+
+    block1->add_entry("key0", "value0", 0, false);
+    block1->add_entry("key1", "value1", 1, false);
+    block1->add_entry("key2", "value22", 10, false);
+    block1->add_entry("key2", "value2", 2, false);
+    block1->add_entry("key3", "value3", 3, false);
+    block1->add_entry("key4", "value4444", 9, false);
+    block1->add_entry("key4", "value444", 8, false);
+    block1->add_entry("key4", "value44", 7, false);
+    block1->add_entry("key4", "value4", 4, false);
+    block1->add_entry("key5", "value5555", 8, false);
+    block1->add_entry("key5", "value555", 7, false);
+    block1->add_entry("key5", "value55", 6, false);
+    block1->add_entry("key5", "value5", 5, false);
+    block1->add_entry("key6", "value6", 6, false);
+
+    encoded_p = block1->encode();
+  }
+
+  std::shared_ptr<Block> block2 = Block::decode(encoded_p);
+
+  auto result =
+      block2->get_monotony_predicate_iters(7, [](const std::string &key) {
+        if (key < "key2") {
+          return 1;
+        }
+        if (key >= "key6") {
+          return -1;
+        }
+        return 0;
+      });
+  EXPECT_TRUE(result.has_value());
+  auto [it_begin, it_end] = result.value();
+
+  EXPECT_EQ((*it_end)->first, "key6");
+
+  EXPECT_EQ((*it_begin)->first, "key2");
+  EXPECT_EQ((*it_begin)->second, "value2");
+
+  ++(*it_begin);
+  EXPECT_EQ((*it_begin)->first, "key3");
+
+  ++(*it_begin);
+  EXPECT_EQ((*it_begin)->first, "key4");
+  EXPECT_EQ((*it_begin)->second, "value44");
+
+  // 遍历打印
+  result = block2->get_monotony_predicate_iters(6, [](const std::string &key) {
+    if (key < "key2") {
+      return 1;
+    }
+    if (key >= "key7") {
+      return -1;
+    }
+    return 0;
+  });
+  auto [it_begin2, it_end2] = result.value();
+
+  std::vector<std::string> results;
+  for (auto it = it_begin2; (*it) != (*it_end2); ++(*it)) {
+    results.push_back((*it)->second);
+  }
+
+  std::vector<std::string> expected = {"value2", "value3", "value4", "value55",
+                                       "value6"};
+  EXPECT_EQ(results, expected);
 }
 
 int main(int argc, char **argv) {

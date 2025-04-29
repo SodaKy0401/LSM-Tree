@@ -1,4 +1,5 @@
 #include "skiplist.h"
+#include <bits/stdint-uintn.h>
 #include <iostream>
 #include <stdexcept>
 
@@ -6,7 +7,7 @@
 
 BaseIterator &SkipListIterator::operator++() {
   if (current) {
-    current = current->forward[0];
+    current = current->forward_[0];
   }
   return *this;
 }
@@ -25,23 +26,26 @@ bool SkipListIterator::operator!=(const BaseIterator &other) const {
 SkipListIterator::value_type SkipListIterator::operator*() const {
   if (!current)
     throw std::runtime_error("Dereferencing invalid iterator");
-  return {current->key, current->value};
+  return {current->key_, current->value_};
 }
 
 IteratorType SkipListIterator::get_type() const {
   return IteratorType::SkipListIterator;
 }
 
-bool SkipListIterator::is_valid() const { return !current->value.empty(); }
+bool SkipListIterator::is_valid() const {
+  return current && !current->key_.empty();
+}
 bool SkipListIterator::is_end() const { return current == nullptr; }
 
-std::string SkipListIterator::get_key() const { return current->key; }
-std::string SkipListIterator::get_value() const { return current->value; }
+std::string SkipListIterator::get_key() const { return current->key_; }
+std::string SkipListIterator::get_value() const { return current->value_; }
+uint64_t SkipListIterator::get_tranc_id() const { return current->tranc_id_; }
 
 // ************************ SkipList ************************
 // 构造函数
 SkipList::SkipList(int max_lvl) : max_level(max_lvl), current_level(1) {
-  head = std::make_shared<SkipListNode>("", "", max_level);
+  head = std::make_shared<SkipListNode>("", "", max_level, 0);
   dis_01 = std::uniform_int_distribution<>(0, 1);
   dis_level = std::uniform_int_distribution<>(0, (1 << max_lvl) - 1);
   gen = std::mt19937(std::random_device()());
@@ -60,32 +64,38 @@ int SkipList::random_level() {
 }
 
 // 插入或更新键值对
-void SkipList::put(const std::string &key, const std::string &value) {
+void SkipList::put(const std::string &key, const std::string &value,
+                   uint64_t tranc_id) {
   std::vector<std::shared_ptr<SkipListNode>> update(max_level, nullptr);
+
+  // 先创建一个新节点
+  int new_level = std::max(random_level(), current_level);
+  auto new_node = std::make_shared<SkipListNode>(key, value, new_level, tranc_id);
 
   // std::unique_lock<std::shared_mutex> lock(rw_mutex);
   auto current = head;
 
   // 从最高层开始查找插入位置
   for (int i = current_level - 1; i >= 0; --i) {
-    while (current->forward[i] && current->forward[i]->key < key) {
-      current = current->forward[i];
+    while (current->forward_[i] && *current->forward_[i] < *new_node) {
+      current = current->forward_[i];
     }
     update[i] = current;
   }
 
   // 移动到最底层
-  current = current->forward[0];
+  current = current->forward_[0];
 
-  // 如果key已存在，更新value
-  if (current && current->key == key) {
-    size_bytes += value.size() - current->value.size();
-    current->value = value;
+  if (current && current->key_ == key && current->tranc_id_ == tranc_id) {
+    // 若 key 存在且 tranc_id 相同，更新 value
+    size_bytes += value.size() - current->value_.size();
+    current->value_ = value;
+    current->tranc_id_ = tranc_id;
     return;
   }
 
   // 如果key不存在，创建新节点
-  int new_level = std::max(random_level(), current_level);
+  // ! 默认新的 tranc_id 一定比当前的大, 由上层保证
   if (new_level > current_level) {
     for (int i = current_level; i < new_level; ++i) {
       update[i] = head;
@@ -95,8 +105,7 @@ void SkipList::put(const std::string &key, const std::string &value) {
   // 生成一个随机数，用于决定是否在每一层更新节点
   int random_bits = dis_level(gen);
 
-  auto new_node = std::make_shared<SkipListNode>(key, value, new_level);
-  size_bytes += key.size() + value.size();
+  size_bytes += key.size() + value.size() + sizeof(uint64_t);
 
   // 更新各层的指针
   for (int i = 0; i < new_level; ++i) {
@@ -110,11 +119,11 @@ void SkipList::put(const std::string &key, const std::string &value) {
     }
 
     if (need_update) {
-      new_node->forward[i] = update[i]->forward[i]; // 可能为nullptr
-      if (new_node->forward[i]) {
-        new_node->forward[i]->set_backward(i, new_node);
+      new_node->forward_[i] = update[i]->forward_[i]; // 可能为nullptr
+      if (new_node->forward_[i]) {
+        new_node->forward_[i]->set_backward(i, new_node);
       }
-      update[i]->forward[i] = new_node;
+      update[i]->forward_[i] = new_node;
       new_node->set_backward(i, update[i]);
     } else {
       // 如果不更新当前层，之后更高的层级都不更新
@@ -126,24 +135,44 @@ void SkipList::put(const std::string &key, const std::string &value) {
 }
 
 // 查找键值对
-std::optional<std::string> SkipList::get(const std::string &key) {
+SkipListIterator SkipList::get(const std::string &key, uint64_t tranc_id) {
   // std::shared_lock<std::shared_mutex> slock(rw_mutex);
 
   auto current = head;
   // 从最高层开始查找
   for (int i = current_level - 1; i >= 0; --i) {
-    while (current->forward[i] && current->forward[i]->key < key) {
-      current = current->forward[i];
+    while (current->forward_[i] && current->forward_[i]->key_ < key) {
+      current = current->forward_[i];
     }
   }
   // 移动到最底层
-  current = current->forward[0];
-  // 如果找到匹配的key，返回value
-  if (current && current->key == key) {
-    return current->value;
+  current = current->forward_[0];
+  if (tranc_id == 0) {
+    // 如果没有开启事务，直接比较key即可
+    // 如果找到匹配的key，返回value
+    if (current && current->key_ == key) {
+      return SkipListIterator{current};
+    }
+  } else {
+    while (current && current->key_ == key) {
+      // 如果开启了事务，只返回小于等于事务id的值
+      if (tranc_id != 0) {
+        if (current->tranc_id_ <= tranc_id) {
+          // 满足事务可见性
+          return SkipListIterator{current};
+
+        } else {
+          // 否则跳过
+          current = current->forward_[0];
+        }
+      } else {
+        // 没有开启事务
+        return SkipListIterator{current};
+      }
+    }
   }
   // 未找到返回空
-  return std::nullopt;
+  return SkipListIterator{};
 }
 
 // 删除键值对
@@ -156,52 +185,52 @@ void SkipList::remove(const std::string &key) {
   auto current = head;
 
   // 从最高层开始查找目标节点
-  for (int i = current->forward.size() - 1; i >= 0; --i) {
-    while (current->forward[i] && current->forward[i]->key < key) {
-      current = current->forward[i];
+  for (int i = current->forward_.size() - 1; i >= 0; --i) {
+    while (current->forward_[i] && current->forward_[i]->key_ < key) {
+      current = current->forward_[i];
     }
     update[i] = current;
   }
 
   // 移动到最底层
-  current = current->forward[0];
+  current = current->forward_[0];
 
   // 如果找到目标节点，执行删除操作
-  if (current && current->key == key) {
+  if (current && current->key_ == key) {
     // 更新每一层的 forward 指针，跳过目标节点
     for (int i = 0; i < current_level; ++i) {
-      if (update[i]->forward[i] != current) {
+      if (update[i]->forward_[i] != current) {
         break;
       }
-      update[i]->forward[i] = current->forward[i];
+      update[i]->forward_[i] = current->forward_[i];
     }
 
     // 更新 backward 指针
-    for (int i = 0; i < current->backward.size() && i < current_level; ++i) {
-      if (current->forward[i]) {
-        current->forward[i]->set_backward(i, update[i]);
+    for (int i = 0; i < current->backward_.size() && i < current_level; ++i) {
+      if (current->forward_[i]) {
+        current->forward_[i]->set_backward(i, update[i]);
       }
     }
 
     // 更新跳表的内存大小
-    size_bytes -= key.size() + current->value.size();
+    size_bytes -= key.size() + current->value_.size() + sizeof(uint64_t);
 
     // 如果删除的节点是最高层的节点，更新跳表的当前层级
-    while (current_level > 1 && head->forward[current_level - 1] == nullptr) {
+    while (current_level > 1 && head->forward_[current_level - 1] == nullptr) {
       current_level--;
     }
   }
 }
 
 // 刷盘时可以直接遍历最底层链表
-std::vector<std::pair<std::string, std::string>> SkipList::flush() {
+std::vector<std::tuple<std::string, std::string, uint64_t>> SkipList::flush() {
   // std::shared_lock<std::shared_mutex> slock(rw_mutex);
 
-  std::vector<std::pair<std::string, std::string>> data;
-  auto node = head->forward[0];
+  std::vector<std::tuple<std::string, std::string, uint64_t>> data;
+  auto node = head->forward_[0];
   while (node) {
-    data.emplace_back(node->key, node->value);
-    node = node->forward[0];
+    data.emplace_back(node->key_, node->value_, node->tranc_id_);
+    node = node->forward_[0];
   }
   return data;
 }
@@ -214,13 +243,13 @@ size_t SkipList::get_size() {
 // 清空跳表，释放内存
 void SkipList::clear() {
   // std::unique_lock<std::shared_mutex> lock(rw_mutex);
-  head = std::make_shared<SkipListNode>("", "", max_level);
+  head = std::make_shared<SkipListNode>("", "", max_level, 0);
   size_bytes = 0;
 }
 
 SkipListIterator SkipList::begin() {
   // return SkipListIterator(head->forward[0], rw_mutex);
-  return SkipListIterator(head->forward[0]);
+  return SkipListIterator(head->forward_[0]);
 }
 
 SkipListIterator SkipList::end() {
@@ -235,12 +264,12 @@ SkipListIterator SkipList::begin_preffix(const std::string &preffix) {
   auto current = head;
   // 从最高层开始查找
   for (int i = current_level - 1; i >= 0; --i) {
-    while (current->forward[i] && current->forward[i]->key < preffix) {
-      current = current->forward[i];
+    while (current->forward_[i] && current->forward_[i]->key_ < preffix) {
+      current = current->forward_[i];
     }
   }
   // 移动到最底层
-  current = current->forward[0];
+  current = current->forward_[0];
 
   return SkipListIterator(current);
 }
@@ -251,17 +280,17 @@ SkipListIterator SkipList::end_preffix(const std::string &prefix) {
 
   // 从最高层开始查找
   for (int i = current_level - 1; i >= 0; --i) {
-    while (current->forward[i] && current->forward[i]->key < prefix) {
-      current = current->forward[i];
+    while (current->forward_[i] && current->forward_[i]->key_ < prefix) {
+      current = current->forward_[i];
     }
   }
 
   // 移动到最底层
-  current = current->forward[0];
+  current = current->forward_[0];
 
   // 找到第一个键不以给定前缀开头的节点
-  while (current && current->key.substr(0, prefix.size()) == prefix) {
-    current = current->forward[0];
+  while (current && current->key_.substr(0, prefix.size()) == prefix) {
+    current = current->forward_[0];
   }
 
   // 返回当前节点的迭代器
@@ -275,6 +304,7 @@ SkipListIterator SkipList::end_preffix(const std::string &prefix) {
 //   0: 谓词
 //   >0: 不满足谓词, 需要向右移动
 //   <0: 不满足谓词, 需要向左移动
+// ! Skiplist 中的谓词查询不会进行事务id的判断, 需要上层自己进行判断
 std::optional<std::pair<SkipListIterator, SkipListIterator>>
 SkipList::iters_monotony_predicate(
     std::function<int(const std::string &)> predicate) {
@@ -287,11 +317,11 @@ SkipList::iters_monotony_predicate(
   bool find1 = false;
   for (int i = current_level - 1; i >= 0; --i) {
     while (!find1) {
-      auto forward_i = current->forward[i];
+      auto forward_i = current->forward_[i];
       if (forward_i == nullptr) {
         break;
       }
-      auto direction = predicate(forward_i->key);
+      auto direction = predicate(forward_i->key_);
       if (direction == 0) {
         // current 已经满足谓词了
         find1 = true;
@@ -319,17 +349,17 @@ SkipList::iters_monotony_predicate(
   // current 已经满足谓词, 但有可能中途跳过了节点, 需要前向检查
   // 注意此时 不能直接从 current_level - 1 层开始,
   // 因为当前节点的层数不一定等于最大层数
-  for (int i = current->backward.size() - 1; i >= 0; --i) {
+  for (int i = current->backward_.size() - 1; i >= 0; --i) {
     while (true) {
-      if (current->backward[i].lock() == nullptr ||
-          current->backward[i].lock() == head) {
+      if (current->backward_[i].lock() == nullptr ||
+          current->backward_[i].lock() == head) {
         // 当前层没有前向节点, 或前向节点指向头结点
         break;
       }
-      auto direction = predicate(current->backward[i].lock()->key);
+      auto direction = predicate(current->backward_[i].lock()->key_);
       if (direction == 0) {
         // 前一个位置满足谓词, 继续判断
-        current = current->backward[i].lock();
+        current = current->backward_[i].lock();
         continue;
       } else if (direction > 0) {
         // 前一个位置不满足谓词
@@ -347,16 +377,16 @@ SkipList::iters_monotony_predicate(
   begin_iter = SkipListIterator(current);
 
   // 找到最后一个满足谓词的节点
-  for (int i = current2->forward.size() - 1; i >= 0; --i) {
+  for (int i = current2->forward_.size() - 1; i >= 0; --i) {
     while (true) {
-      if (current2->forward[i] == nullptr) {
+      if (current2->forward_[i] == nullptr) {
         // 当前层没有后向节点
         break;
       }
-      auto direction = predicate(current2->forward[i]->key);
+      auto direction = predicate(current2->forward_[i]->key_);
       if (direction == 0) {
         // 后一个位置满足谓词, 继续判断
-        current2 = current2->forward[i];
+        current2 = current2->forward_[i];
         continue;
       } else if (direction < 0) {
         // 后一个位置不满足谓词
@@ -381,10 +411,10 @@ SkipList::iters_monotony_predicate(
 void SkipList::print_skiplist() {
   for (int level = 0; level < current_level; level++) {
     std::cout << "Level " << level << ": ";
-    auto current = head->forward[level];
+    auto current = head->forward_[level];
     while (current) {
-      std::cout << current->key;
-      current = current->forward[level];
+      std::cout << current->key_;
+      current = current->forward_[level];
       if (current) {
         std::cout << " -> ";
       }

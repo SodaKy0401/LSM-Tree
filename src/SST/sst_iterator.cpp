@@ -4,12 +4,8 @@
 #include <optional>
 #include <stdexcept>
 
-// predicate返回值:
-//   0: 谓词
-//   >0: 不满足谓词, 需要向右移动
-//   <0: 不满足谓词, 需要向左移动
 std::optional<std::pair<SstIterator, SstIterator>> sst_iters_monotony_predicate(
-    std::shared_ptr<SST> sst,
+    std::shared_ptr<SST> sst, uint64_t tranc_id,
     std::function<int(const std::string &)> predicate) {
   std::optional<SstIterator> final_begin = std::nullopt;
   std::optional<SstIterator> final_end = std::nullopt;
@@ -21,16 +17,16 @@ std::optional<std::pair<SstIterator, SstIterator>> sst_iters_monotony_predicate(
       break;
     }
 
-    auto result_i = block->get_monotony_predicate_iters(predicate);
+    auto result_i = block->get_monotony_predicate_iters(tranc_id, predicate);
     if (result_i.has_value()) {
       auto [i_begin, i_end] = result_i.value();
       if (!final_begin.has_value()) {
-        auto tmp_it = SstIterator(sst);
+        auto tmp_it = SstIterator(sst, tranc_id);
         tmp_it.set_block_idx(block_idx);
         tmp_it.set_block_it(i_begin);
         final_begin = tmp_it;
       }
-      auto tmp_it = SstIterator(sst);
+      auto tmp_it = SstIterator(sst, tranc_id);
       tmp_it.set_block_idx(block_idx);
       tmp_it.set_block_it(i_end);
       if (tmp_it.is_end() && tmp_it.m_block_idx == sst->num_blocks()) {
@@ -45,15 +41,16 @@ std::optional<std::pair<SstIterator, SstIterator>> sst_iters_monotony_predicate(
   return std::make_pair(final_begin.value(), final_end.value());
 }
 
-SstIterator::SstIterator(std::shared_ptr<SST> sst)
-    : m_sst(sst), m_block_idx(0), m_block_it(nullptr) {
+SstIterator::SstIterator(std::shared_ptr<SST> sst, uint64_t tranc_id)
+    : m_sst(sst), m_block_idx(0), m_block_it(nullptr), max_tranc_id_(tranc_id) {
   if (m_sst) {
     seek_first();
   }
 }
 
-SstIterator::SstIterator(std::shared_ptr<SST> sst, const std::string &key)
-    : m_sst(sst), m_block_idx(0), m_block_it(nullptr) {
+SstIterator::SstIterator(std::shared_ptr<SST> sst, const std::string &key,
+                         uint64_t tranc_id)
+    : m_sst(sst), m_block_idx(0), m_block_it(nullptr), max_tranc_id_(tranc_id) {
   if (m_sst) {
     seek(key);
   }
@@ -72,7 +69,7 @@ void SstIterator::seek_first() {
 
   m_block_idx = 0;
   auto block = m_sst->read_block(m_block_idx);
-  m_block_it = std::make_shared<BlockIterator>(block);
+  m_block_it = std::make_shared<BlockIterator>(block, 0, max_tranc_id_);
 }
 
 void SstIterator::seek(const std::string &key) {
@@ -95,7 +92,7 @@ void SstIterator::seek(const std::string &key) {
       m_block_it = nullptr;
       return;
     }
-    m_block_it = std::make_shared<BlockIterator>(block, key);
+    m_block_it = std::make_shared<BlockIterator>(block, key, max_tranc_id_);
     if (m_block_it->is_end()) {
       // block 中找不到
       m_block_idx = m_sst->num_blocks();
@@ -132,7 +129,7 @@ BaseIterator &SstIterator::operator++() {
     if (m_block_idx < m_sst->num_blocks()) {
       // 读取下一个block
       auto next_block = m_sst->read_block(m_block_idx);
-      BlockIterator new_blk_it(next_block, 0);
+      BlockIterator new_blk_it(next_block, 0, max_tranc_id_);
       (*m_block_it) = new_blk_it;
     } else {
       // 没有下一个block
@@ -175,6 +172,7 @@ SstIterator::value_type SstIterator::operator*() const {
 
 IteratorType SstIterator::get_type() const { return IteratorType::SstIterator; }
 
+uint64_t SstIterator::get_tranc_id() const { return max_tranc_id_; }
 bool SstIterator::is_end() const { return !m_block_it; }
 
 bool SstIterator::is_valid() const {
@@ -193,7 +191,8 @@ void SstIterator::update_current() const {
 }
 
 std::pair<HeapIterator, HeapIterator>
-SstIterator::merge_sst_iterator(std::vector<SstIterator> iter_vec) {
+SstIterator::merge_sst_iterator(std::vector<SstIterator> iter_vec,
+                                uint64_t tranc_id) {
   if (iter_vec.empty()) {
     return std::make_pair(HeapIterator(), HeapIterator());
   }
@@ -201,9 +200,9 @@ SstIterator::merge_sst_iterator(std::vector<SstIterator> iter_vec) {
   HeapIterator it_begin;
   for (auto &iter : iter_vec) {
     while (iter.is_valid() && !iter.is_end()) {
-      it_begin.items.emplace(iter.key(), iter.value(),
-                             -iter.m_sst->get_sst_id(),
-                             0); // ! 此处的level暂时没有作用, 都作用于同一层的比较
+      it_begin.items.emplace(
+          iter.key(), iter.value(), -iter.m_sst->get_sst_id(), 0,
+          tranc_id); // ! 此处的level暂时没有作用, 都作用于同一层的比较
       ++iter;
     }
   }

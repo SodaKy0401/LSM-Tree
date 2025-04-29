@@ -108,15 +108,18 @@ size_t Block::get_offset_at(size_t idx) const {
   return offsets[idx];
 }
 
-bool Block::add_entry(const std::string &key, const std::string &value) {
-  if ((cur_size() + key.size() + value.size() + 3 * sizeof(uint16_t) >
+bool Block::add_entry(const std::string &key, const std::string &value,
+                      uint64_t tranc_id, bool force_write) {
+  if (!force_write &&
+      (cur_size() + key.size() + value.size() + 3 * sizeof(uint16_t) +
+           sizeof(uint64_t) >
        capacity) &&
       !offsets.empty()) {
     return false;
   }
   // 计算entry大小：key长度(2B) + key + value长度(2B) + value
-  size_t entry_size =
-      sizeof(uint16_t) + key.size() + sizeof(uint16_t) + value.size();
+  size_t entry_size = sizeof(uint16_t) + key.size() + sizeof(uint16_t) +
+                      value.size() + sizeof(uint64_t);
   size_t old_size = data.size();
   data.resize(old_size + entry_size);
 
@@ -135,6 +138,11 @@ bool Block::add_entry(const std::string &key, const std::string &value) {
   // 写入value
   memcpy(data.data() + old_size + sizeof(uint16_t) + key_len + sizeof(uint16_t),
          value.data(), value_len);
+
+  // 写入事务id
+  memcpy(data.data() + old_size + sizeof(uint16_t) + key_len +
+             sizeof(uint16_t) + value_len,
+         &tranc_id, sizeof(uint64_t));
 
   // 记录偏移
   offsets.push_back(old_size);
@@ -167,16 +175,86 @@ std::string Block::get_value_at(size_t offset) const {
                      value_len);
 }
 
+uint16_t Block::get_tranc_id_at(size_t offset) const {
+  // 先获取key长度
+  uint16_t key_len;
+  memcpy(&key_len, data.data() + offset, sizeof(uint16_t));
+
+  // 计算value长度的位置
+  size_t value_len_pos = offset + sizeof(uint16_t) + key_len;
+  uint16_t value_len;
+  memcpy(&value_len, data.data() + value_len_pos, sizeof(uint16_t));
+
+  // 计算事务id的位置
+  size_t tranc_id_pos = value_len_pos + sizeof(uint16_t) + value_len;
+  uint64_t tranc_id;
+  memcpy(&tranc_id, data.data() + tranc_id_pos, sizeof(uint64_t));
+  return tranc_id;
+}
+
 // 比较指定偏移量处的key与目标key
 int Block::compare_key_at(size_t offset, const std::string &target) const {
   std::string key = get_key_at(offset);
   return key.compare(target);
 }
 
+// 相同的key连续分布, 且相同的key的事务id从大到小排布
+// 这里的逻辑是找到最接近 tranc_id 的键值对的索引位置
+int Block::adjust_idx_by_tranc_id(size_t idx, uint64_t tranc_id) {
+  if (idx >= offsets.size()) {
+    return -1; // 索引超出范围
+  }
+
+  auto target_key = get_key_at(offsets[idx]);
+
+  if (tranc_id != 0) {
+    auto cur_tranc_id = get_tranc_id_at(offsets[idx]);
+
+    if (cur_tranc_id <= tranc_id) {
+      // 当前记录可见，向前查找更接近的目标
+      size_t prev_idx = idx;
+      while (prev_idx > 0 && is_same_key(prev_idx - 1, target_key)) {
+        prev_idx--;
+        auto new_tranc_id = get_tranc_id_at(offsets[prev_idx]);
+        if (new_tranc_id > tranc_id) {
+          return prev_idx + 1; // 更新的记录不可见
+        }
+      }
+      return prev_idx;
+    } else {
+      // 当前记录不可见，向后查找
+      size_t next_idx = idx + 1;
+      while (next_idx < offsets.size() && is_same_key(next_idx, target_key)) {
+        auto new_tranc_id = get_tranc_id_at(offsets[next_idx]);
+        if (new_tranc_id <= tranc_id) {
+          return next_idx; // 找到可见记录
+        }
+        next_idx++;
+      }
+      return -1; // 没有找到满足条件的记录
+    }
+  } else {
+    // 没有开启事务的话, 直接选择最大的事务id的记录返回
+    size_t prev_idx = idx;
+    while (prev_idx > 0 && is_same_key(prev_idx - 1, target_key)) {
+      prev_idx--;
+    }
+    return prev_idx;
+  }
+}
+
+bool Block::is_same_key(size_t idx, const std::string &target_key) const {
+  if (idx >= offsets.size()) {
+    return false; // 索引超出范围
+  }
+  return get_key_at(offsets[idx]) == target_key;
+}
+
 // 使用二分查找获取value
 // 要求在插入数据时有序插入
-std::optional<std::string> Block::get_value_binary(const std::string &key) {
-  auto idx = get_idx_binary(key);
+std::optional<std::string> Block::get_value_binary(const std::string &key,
+                                                   uint64_t tranc_id) {
+  auto idx = get_idx_binary(key, tranc_id);
   if (!idx.has_value()) {
     return std::nullopt;
   }
@@ -184,7 +262,8 @@ std::optional<std::string> Block::get_value_binary(const std::string &key) {
   return get_value_at(offsets[*idx]);
 }
 
-std::optional<size_t> Block::get_idx_binary(const std::string &key) {
+std::optional<size_t> Block::get_idx_binary(const std::string &key,
+                                            uint64_t tranc_id) {
   if (offsets.empty()) {
     return std::nullopt;
   }
@@ -200,7 +279,12 @@ std::optional<size_t> Block::get_idx_binary(const std::string &key) {
 
     if (cmp == 0) {
       // 找到key，返回对应的value
-      return mid;
+      // 还需要判断事务id可见性
+      auto new_mid = adjust_idx_by_tranc_id(mid, tranc_id);
+      if (new_mid == -1) {
+        return std::nullopt;
+      }
+      return new_mid;
     } else if (cmp < 0) {
       // 中间的key小于目标key，查找右半部分
       left = mid + 1;
@@ -224,7 +308,7 @@ std::optional<size_t> Block::get_idx_binary(const std::string &key) {
 std::optional<
     std::pair<std::shared_ptr<BlockIterator>, std::shared_ptr<BlockIterator>>>
 Block::get_monotony_predicate_iters(
-    std::function<int(const std::string &)> predicate) {
+    uint64_t tranc_id, std::function<int(const std::string &)> predicate) {
   if (offsets.empty()) {
     return std::nullopt;
   }
@@ -233,61 +317,43 @@ Block::get_monotony_predicate_iters(
   int left = 0;
   int right = offsets.size() - 1;
   int first = -1;
-  int first_first = -1; // 第一次找到的位置, 不一定是区间的首尾
 
   while (left <= right) {
     int mid = left + (right - left) / 2;
     size_t mid_offset = offsets[mid];
-
     auto mid_key = get_key_at(mid_offset);
     int direction = predicate(mid_key);
-    if (direction < 0) {
-      // 目标在 mid 左侧
+    if (direction <= 0) { // 目标在 mid 左侧
       right = mid - 1;
-    } else if (direction > 0) {
-      // 目标在 mid 右侧
+    } else // 目标在mid右侧
       left = mid + 1;
-    } else {
-      first = mid;
-      if (first_first == -1) {
-        first_first = mid;
-      }
-      // 继续判断左边是否符合
-      right = mid - 1;
-    }
   }
 
-  if (first == -1) {
+  if (left == -1) {
     return std::nullopt; // 没有找到满足谓词的元素
   }
 
-  // 第二次二分查找，找到最后一个满足谓词的位置
-  left = first_first;
-  right = offsets.size() - 1;
-  int last = -1;
+  first = left; // 保留下找到的第一个的位置
 
+  // 第二次二分查找，找到最后一个满足谓词的位置
+  int last = -1;
+  right = offsets.size() - 1;
   while (left <= right) {
     int mid = left + (right - left) / 2;
     size_t mid_offset = offsets[mid];
-
     auto mid_key = get_key_at(mid_offset);
     int direction = predicate(mid_key);
-
     if (direction < 0) {
-      // 目标在 mid 左侧
       right = mid - 1;
-    } else if (direction > 0) {
-      // 目标在 mid 右侧
-      throw std::runtime_error("block is not sorted");
-    } else {
-      last = mid;
-      // 继续判断右边是否符合
+    } else
       left = mid + 1;
-    }
   }
-
-  auto it_begin = std::make_shared<BlockIterator>(shared_from_this(), first);
-  auto it_end = std::make_shared<BlockIterator>(shared_from_this(), last + 1);
+  last = left - 1;
+  // 最后进行组合
+  auto it_begin =
+      std::make_shared<BlockIterator>(shared_from_this(), first, tranc_id);
+  auto it_end =
+      std::make_shared<BlockIterator>(shared_from_this(), last + 1, tranc_id);
 
   return std::make_optional<std::pair<std::shared_ptr<BlockIterator>,
                                       std::shared_ptr<BlockIterator>>>(it_begin,
@@ -298,6 +364,7 @@ Block::Entry Block::get_entry_at(size_t offset) const {
   Entry entry;
   entry.key = get_key_at(offset);
   entry.value = get_value_at(offset);
+  entry.tranc_id = get_tranc_id_at(offset);
   return entry;
 }
 
@@ -309,17 +376,19 @@ size_t Block::cur_size() const {
 
 bool Block::is_empty() const { return offsets.empty(); }
 
-BlockIterator Block::begin() { return BlockIterator(shared_from_this(), 0); }
+BlockIterator Block::begin(uint64_t tranc_id) {
+  return BlockIterator(shared_from_this(), 0, tranc_id);
+}
 
 std::optional<
     std::pair<std::shared_ptr<BlockIterator>, std::shared_ptr<BlockIterator>>>
-Block::iters_preffix(const std::string &preffix) {
+Block::iters_preffix(uint64_t tranc_id, const std::string &preffix) {
   auto func = [&preffix](const std::string &key) {
     return -key.compare(0, preffix.size(), preffix);
   };
-  return get_monotony_predicate_iters(func);
+  return get_monotony_predicate_iters(tranc_id, func);
 }
 
 BlockIterator Block::end() {
-  return BlockIterator(shared_from_this(), offsets.size());
+  return BlockIterator(shared_from_this(), offsets.size(), 0);
 }

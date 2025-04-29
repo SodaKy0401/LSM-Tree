@@ -40,8 +40,28 @@ public:
                                   std::vector<uint8_t> buf);
 
   // 打开文件对象
-  static FileObj open(const std::string &path);
+  static FileObj open(const std::string &path, bool create);
 
   // 读取并返回切片
   std::vector<uint8_t> read_to_slice(size_t offset, size_t length);
+
+  // 读取 uint8_t
+  uint8_t read_uint8(size_t offset);
+
+  // 读取 uint16_t
+  uint16_t read_uint16(size_t offset);
+
+  // 读取 uint32_t
+  uint32_t read_uint32(size_t offset);
+
+  // 读取 uint64_t
+  uint64_t read_uint64(size_t offset);
+
+  // 写入到文件
+  bool write(size_t offset, std::vector<uint8_t> &buf);
+
+  // 追加写入到文件
+  bool append(std::vector<uint8_t> &buf);
+
+  bool sync();
 };

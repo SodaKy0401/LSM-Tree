@@ -6,12 +6,17 @@
 
 class Block;
 
-BlockIterator::BlockIterator(std::shared_ptr<Block> b, size_t index)
-    : block(b), current_index(index), cached_value(std::nullopt) {}
+BlockIterator::BlockIterator(std::shared_ptr<Block> b, size_t index,
+                             uint64_t tranc_id)
+    : block(b), current_index(index), tranc_id_(tranc_id),
+      cached_value(std::nullopt) {
+  skip_by_tranc_id();
+}
 
-BlockIterator::BlockIterator(std::shared_ptr<Block> b, const std::string &key)
-    : block(b), cached_value(std::nullopt) {
-  auto key_idx_ops = block->get_idx_binary(key);
+BlockIterator::BlockIterator(std::shared_ptr<Block> b, const std::string &key,
+                             uint64_t tranc_id)
+    : block(b), tranc_id_(tranc_id), cached_value(std::nullopt) {
+  auto key_idx_ops = block->get_idx_binary(key, tranc_id);
   if (key_idx_ops.has_value()) {
     current_index = key_idx_ops.value();
   } else {
@@ -19,8 +24,11 @@ BlockIterator::BlockIterator(std::shared_ptr<Block> b, const std::string &key)
   }
 }
 
-BlockIterator::BlockIterator(std::shared_ptr<Block> b)
-    : block(b), current_index(0), cached_value(std::nullopt) {}
+// BlockIterator::BlockIterator(std::shared_ptr<Block> b, uint64_t tranc_id)
+//     : block(b), current_index(0), tranc_id_(tranc_id),
+//       cached_value(std::nullopt) {
+//   skip_by_tranc_id();
+// }
 
 BlockIterator::pointer BlockIterator::operator->() const {
   update_current();
@@ -29,8 +37,25 @@ BlockIterator::pointer BlockIterator::operator->() const {
 
 BlockIterator &BlockIterator::operator++() {
   if (block && current_index < block->size()) {
+    auto prev_idx = current_index;
+    auto prev_offset = block->get_offset_at(prev_idx);
+    auto prev_entry = block->get_entry_at(prev_offset);
+
     ++current_index;
-    cached_value = std::nullopt; // 清除缓存
+
+    // 跳过相同的key
+    while (block && current_index < block->size()) {
+      auto cur_offset = block->get_offset_at(current_index);
+      auto cur_entry = block->get_entry_at(cur_offset);
+      if (cur_entry.key != prev_entry.key) {
+        break;
+      }
+      // 可能会连续出现多个key, 但由不同事务创建, 同样的key直接跳过
+      ++current_index;
+    }
+
+    // 出现不同的key时, 还需要跳过不可见事务的键值对
+    skip_by_tranc_id();
   }
   return *this;
 }
@@ -72,4 +97,24 @@ void BlockIterator::update_current() const {
     cached_value =
         std::make_pair(block->get_key_at(offset), block->get_value_at(offset));
   }
+}
+
+void BlockIterator::skip_by_tranc_id() {
+  if (tranc_id_ == 0) {
+    // 没有开启事务功能
+    cached_value = std::nullopt;
+    return;
+  }
+
+  while (current_index < block->offsets.size()) {
+    size_t offset = block->get_offset_at(current_index);
+    auto tranc_id = block->get_tranc_id_at(offset);
+    if (tranc_id <= tranc_id_) {
+      // 位置合法
+      break;
+    }
+    // 否则跳过不可见事务的键值对
+    ++current_index;
+  }
+  cached_value = std::nullopt;
 }

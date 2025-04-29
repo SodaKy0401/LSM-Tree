@@ -10,7 +10,6 @@
 #include <utility>
 #include <vector>
 
-// 定义缓存项
 struct CacheItem {
   int sst_id;
   int block_id;

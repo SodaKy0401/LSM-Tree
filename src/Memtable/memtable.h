@@ -3,6 +3,7 @@
 #include "../Iterator/iterator.h"
 #include "../SkipList/skiplist.h"
 
+#include <bits/stdint-uintn.h>
 #include <cstddef>
 #include <functional>
 #include <iostream>
@@ -18,27 +19,34 @@
 class BlockCache;
 class SST;
 class SSTBuilder;
+class TranContext;
 
 class MemTable {
   friend class HeapIterator;
+  friend class TranContext;
 
 private:
-  void put_(const std::string &key, const std::string &value);
-  std::optional<std::string> cur_get_(const std::string &key);
-  std::optional<std::string> frozen_get_(const std::string &key);
-  void remove_(const std::string &key);
+  void put_(const std::string &key, const std::string &value,uint64_t tranc_id);
+  SkipListIterator get_(const std::string &key, uint64_t tranc_id);
+  SkipListIterator cur_get_(const std::string &key,uint64_t tranc_id);
+  SkipListIterator frozen_get_(const std::string &key,uint64_t tranc_id);
+  void remove_(const std::string &key,uint64_t tranc_id);
   void frozen_cur_table_(); // _ 表示不需要锁的版本
 
 public:
   MemTable();
   ~MemTable();
 
-  void put(const std::string &key, const std::string &value);
-  void put_batch(const std::vector<std::pair<std::string, std::string>> &kvs);
+  void put(const std::string &key, const std::string &value,uint64_t tranc_id);
+  void put_batch(const std::vector<std::pair<std::string, std::string>> &kvs,uint64_t tranc_id);
 
-  std::optional<std::string> get(const std::string &key);
-  void remove(const std::string &key);
-  void remove_batch(const std::vector<std::string> &keys);
+  SkipListIterator get(const std::string &key, uint64_t tranc_id);
+  
+  std::vector<std::pair<std::string, std::optional<std::pair<std::string, uint64_t>>>> 
+                        get_batch(const std::vector<std::string> &keys, uint64_t tranc_id);
+
+  void remove(const std::string &key, uint64_t tranc_id);
+  void remove_batch(const std::vector<std::string> &keys, uint64_t tranc_id);
 
   void clear();
   std::shared_ptr<SST> flush_last(SSTBuilder &builder, std::string &sst_path,
@@ -48,11 +56,12 @@ public:
   size_t get_cur_size();
   size_t get_frozen_size();
   size_t get_total_size();
-  HeapIterator begin();
-  HeapIterator iters_preffix(const std::string &preffix);
+  HeapIterator begin(uint64_t tranc_id);
+  HeapIterator iters_preffix(const std::string &preffix,uint64_t tranc_id);
 
   std::optional<std::pair<HeapIterator, HeapIterator>>
-  iters_monotony_predicate(std::function<int(const std::string &)> predicate);
+  iters_monotony_predicate(uint64_t tranc_id,
+                           std::function<int(const std::string &)> predicate);
 
   HeapIterator end();
 
