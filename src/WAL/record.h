@@ -6,6 +6,14 @@
 #include <string>
 #include <vector>
 
+enum class OperationType {
+  CREATE,
+  COMMIT,
+  ROLLBACK,
+  PUT,
+  DELETE,
+};
+
 class Record {
 private:
   // 构造函数
@@ -13,13 +21,6 @@ private:
 
 public:
   // 操作类型枚举
-  enum OperationType {
-    CREATE,
-    COMMIT,
-    ROLLBACK,
-    PUT,
-    DELETE,
-  };
 
   static Record createRecord(uint64_t tranc_id);
   static Record commitRecord(uint64_t tranc_id);

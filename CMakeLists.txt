@@ -76,49 +76,48 @@ add_library(file STATIC
 )
 target_include_directories(file PUBLIC src/Utils)
 
-# # add_library(lsm STATIC 
-# #     src/LSM/engine.cpp  # 确保这里包含你的 .cpp 文件
-# #     src/Compact/two_merge_iterator.cpp
-# #     src/SST/concat_iterator.cpp
-# # )
-# # target_include_directories(lsm PUBLIC src/LSM src/Compact src/Utils src/Block src/Iterator)
-
-
-# add_library(comp STATIC 
-#     src/LSM/engine.cpp  # 确保这里包含你的 .cpp 文件
-#     src/Compact/two_merge_iterator.cpp
-#     src/SST/concat_iterator.cpp
-#     src/Utils/file.cpp
-
-# )
-# target_include_directories(comp PUBLIC src/LSM src/Compact src/Utils src/Block src/Iterator)
+add_library(lsm STATIC 
+    src/WAL/wal.cpp
+    src/WAL/record.cpp
+    src/LSM/engine.cpp  # 确保这里包含你的 .cpp 文件
+    src/Compact/two_merge_iterator.cpp
+    src/SST/concat_iterator.cpp
+    src/LSM/level_iterator.cpp
+    src/LSM/transaction.cpp
+    
+)
+target_include_directories(lsm PUBLIC src/LSM src/Compact src/Utils src/Block src/Iterator src/WAL)
 
 
 
-# add_library(wal STATIC 
-#     src/LSM/engine.cpp
-#     src/WAL/wal.cpp
-#     src/WAL/record.cpp
-#     src/SST/concat_iterator.cpp
-#     src/Utils/file.cpp
-#     src/Utils/std_file.cpp
-# )
-# target_include_directories(wal PUBLIC src/LSM src/Compact src/Utils src/Block src/Iterator src/WAL)
+
+add_library(wal STATIC 
+    # src/LSM/engine.cpp
+    src/WAL/wal.cpp
+    src/WAL/record.cpp
+    src/SST/concat_iterator.cpp
+    src/Utils/file.cpp
+    src/Utils/std_file.cpp
+    src/SST/concat_iterator.cpp
+    src/LSM/level_iterator.cpp
+    src/LSM/transaction.cpp
+)
+target_include_directories(wal PUBLIC src/LSM src/Compact src/Utils src/Block src/Iterator src/WAL)
 
 
 
 # # 添加测试可执行文件
 add_executable(test_block test/testblock.cpp)
- add_executable(test_skiplist test/testskiplist.cpp)
- add_executable(test_blockcache test/testblock_cache.cpp)
- add_executable(test_memtable test/testmemtable.cpp)
+add_executable(test_skiplist test/testskiplist.cpp)
+add_executable(test_blockcache test/testblock_cache.cpp)
+add_executable(test_memtable test/testmemtable.cpp)
 add_executable(test_sst test/testsst.cpp)
- add_executable(test_util test/testfile.cpp)
- add_executable(testmeta test/testmeta.cpp)
-# #add_executable(testlsm test/testlsm.cpp)
-# add_executable(testcomp test/testcompact.cpp)
+add_executable(test_util test/testfile.cpp)
+add_executable(testmeta test/testmeta.cpp)
+add_executable(testlsm test/testlsm.cpp)
+add_executable(testcomp test/testcompact.cpp)
 
-# add_executable(testwal test/testwal.cpp)
+ add_executable(testwal test/testwal.cpp)
 # # 让 test_block 依赖 block 和 GTest
 
 
@@ -127,14 +126,13 @@ add_executable(test_sst test/testsst.cpp)
 target_link_libraries(test_block PRIVATE block blockcache GTest::GTest GTest::Main)
 target_link_libraries(test_blockcache PRIVATE block blockcache GTest::GTest GTest::Main)
 target_link_libraries(test_skiplist PRIVATE skiplist GTest::GTest GTest::Main)
-target_link_libraries(test_sst PRIVATE sst GTest::GTest GTest::Main skiplist block) 
-target_link_libraries(test_memtable PRIVATE skiplist block  memtable  GTest::GTest GTest::Main)
+target_link_libraries(test_sst PRIVATE sst  GTest::GTest GTest::Main skiplist block) 
+target_link_libraries(test_memtable PRIVATE skiplist block  memtable sst GTest::GTest GTest::Main)
 target_link_libraries(test_util PRIVATE file GTest::GTest GTest::Main)
-target_link_libraries(testmeta PRIVATE file blockmeta GTest::GTest GTest::Main)
-# #target_link_libraries(testlsm PRIVATE lsm sst file blockmeta block blockcache memtable skiplist GTest::GTest GTest::Main)
-# target_link_libraries(testcomp PRIVATE lsm sst comp file blockmeta block blockcache memtable skiplist GTest::GTest GTest::Main)
-
-# target_link_libraries(testwal PRIVATE lsm sst comp file blockmeta block blockcache memtable skiplist  wal GTest::GTest GTest::Main GTest::gmock)
+target_link_libraries(testmeta PRIVATE file blockmeta block blockcache  lsm sst GTest::GTest GTest::Main)
+target_link_libraries(testlsm PRIVATE lsm sst file blockmeta block blockcache memtable skiplist GTest::GTest GTest::Main)
+target_link_libraries(testcomp PRIVATE lsm sst file blockmeta block blockcache memtable skiplist GTest::GTest GTest::Main)
+target_link_libraries(testwal PRIVATE lsm sst file blockmeta block blockcache memtable skiplist  wal GTest::GTest GTest::Main GTest::gmock)
 
 
 
@@ -147,13 +145,3 @@ enable_testing()
 
 
 
-
-# add_library(LSM-Tree
-#   main.cpp
-#   src/LSM/engine.cpp
-#   src/Compact/two_merge_iterator.cpp
-#   src/SST/concat_iterator.cpp
-# )
-# target_include_directories(LSM-Tree PUBLIC src/LSM src/Compact src/Utils src/Block src/Iterator src/Memtable src/SST  src/SkipList)
-# add_executable(LSM-test main.cpp)
-# target_link_libraries(LSM-test PRIVATE lsm sst comp file blockmeta block blockcache memtable skiplist GTest::GTest GTest::Main)

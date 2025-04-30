@@ -61,11 +61,10 @@ TEST_F(CompactTest, Persistence) {
     std::string key = oss_key.str();
     if (kvs.find(key) != kvs.end()) {
       auto res = lsm.get(key);
-      if (res.has_value()) {
-        // EXPECT_EQ(res.value(), kvs[key]);
-      } else {
-        std::cout << "key: " << key << ", res.has_value: " << res.has_value()
-                  << std::endl;
+      EXPECT_EQ(res.has_value(), true);
+      if (!res.has_value()) {
+        std::cout << "key: " << key << " not found" << std::endl;
+        exit(-1);
       }
     } else {
       EXPECT_FALSE(lsm.get(key).has_value());

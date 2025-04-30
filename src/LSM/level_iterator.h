@@ -1,3 +1,9 @@
+#pragma once
+
+#include "../Iterator//iterator.h"
+#include <memory>
+#include <optional>
+#include <shared_mutex>
 class LSMEngine;
 
 class Level_Iterator : public BaseIterator {

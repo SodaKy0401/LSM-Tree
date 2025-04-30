@@ -3,15 +3,29 @@
 #include "../Memtable/memtable.h"
 #include "../SST/sst.h"
 #include "../Compact/two_merge_iterator.h"
+#include "level_iterator.h"
+#include "transaction.h"
+#include "../WAL/record.h"
+#include "../WAL/wal.h"
 #include <cstddef>
 #include <deque>
 #include <memory>
 #include <string>
 #include <unordered_map>
 #include <vector>
+#include <map>
+#include <mutex>
+#include <shared_mutex>
+
+
+enum class CompactType {
+  FullCompact,
+};
+
 
 
 class Level_Iterator;
+
 class LSMEngine : public std::enable_shared_from_this<LSMEngine> {
 public:
   std::string data_dir;
@@ -74,7 +88,7 @@ private:
 };
 
 
-
+class TranManager;
 
 class LSM {
 private:
@@ -107,5 +121,5 @@ public:
 
   // 开启一个事务
   std::shared_ptr<TranContext>
-  begin_tran(const IsolationLevel &isolation_level);
+  begin_tran(const IsolationLevel& isolation_level);
 };

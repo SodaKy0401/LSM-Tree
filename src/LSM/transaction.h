@@ -1,3 +1,9 @@
+#pragma once
+
+
+#include "../Utils/files.h"
+#include "../WAL/wal.h"
+
 #include <cstddef>
 #include <deque>
 #include <map>

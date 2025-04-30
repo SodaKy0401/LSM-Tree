@@ -1,4 +1,3 @@
-// include/wal/wal.h
 
 #pragma once
 

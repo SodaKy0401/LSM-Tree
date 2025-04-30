@@ -174,7 +174,6 @@ std::vector<std::pair<std::string, std::optional<std::pair<std::string, uint64_t
   return results;
 }
 
-
 void MemTable::remove_(const std::string &key, uint64_t tranc_id) {
   // 删除的方式是写入空值
   current_table->put(key, "", tranc_id);
@@ -211,44 +210,43 @@ void MemTable::clear() {
   current_table->clear();
 }
 
-// 将最老的 memtable 写入 SST, 并返回控制类
-// std::shared_ptr<SST>
-// MemTable::flush_last(SSTBuilder &builder, std::string &sst_path, size_t sst_id,
-//                      std::shared_ptr<BlockCache> block_cache) {
-//   // 由于 flush 后需要移除最老的 memtable, 因此需要加写锁
-//   std::unique_lock<std::shared_mutex> lock(frozen_mtx);
+std::shared_ptr<SST>
+MemTable::flush_last(SSTBuilder &builder, std::string &sst_path, size_t sst_id,
+                     std::shared_ptr<BlockCache> block_cache) {
+  // 由于 flush 后需要移除最老的 memtable, 因此需要加写锁
+  std::unique_lock<std::shared_mutex> lock(frozen_mtx);
 
-//   uint64_t max_tranc_id = 0;
-//   uint64_t min_tranc_id = UINT64_MAX;
+  uint64_t max_tranc_id = 0;
+  uint64_t min_tranc_id = UINT64_MAX;
 
-//   if (frozen_tables.empty()) {
-//     // 如果当前表为空，直接返回nullptr
-//     if (current_table->get_size() == 0) {
-//       return nullptr;
-//     }
-//     // 将当前表加入到frozen_tables头部
-//     frozen_tables.push_front(current_table);
-//     frozen_bytes += current_table->get_size();
-//     // 创建新的空表作为当前表
-//     current_table = std::make_shared<SkipList>();
-//   }
+  if (frozen_tables.empty()) {
+    // 如果当前表为空，直接返回nullptr
+    if (current_table->get_size() == 0) {
+      return nullptr;
+    }
+    // 将当前表加入到frozen_tables头部
+    frozen_tables.push_front(current_table);
+    frozen_bytes += current_table->get_size();
+    // 创建新的空表作为当前表
+    current_table = std::make_shared<SkipList>();
+  }
 
-//   // 将最老的 memtable 写入 SST
-//   std::shared_ptr<SkipList> table = frozen_tables.back();
-//   frozen_tables.pop_back();
-//   frozen_bytes -= table->get_size();
+  // 将最老的 memtable 写入 SST
+  std::shared_ptr<SkipList> table = frozen_tables.back();
+  frozen_tables.pop_back();
+  frozen_bytes -= table->get_size();
 
-//   std::vector<std::tuple<std::string, std::string, uint64_t>> flush_data =
-//       table->flush();
-//   for (auto &[k, v, t] : flush_data) {
-//     max_tranc_id = std::max(t, max_tranc_id);
-//     min_tranc_id = std::min(t, min_tranc_id);
-//     builder.add(k, v, t);
-//   }
-//   auto sst = builder.build(sst_id, sst_path, block_cache);
+  std::vector<std::tuple<std::string, std::string, uint64_t>> flush_data =
+      table->flush();
+  for (auto &[k, v, t] : flush_data) {
+    max_tranc_id = std::max(t, max_tranc_id);
+    min_tranc_id = std::min(t, min_tranc_id);
+    builder.add(k, v, t);
+  }
+  auto sst = builder.build(sst_id, sst_path, block_cache);
 
-//   return sst;
-// }
+  return sst;
+}
 
 void MemTable::frozen_cur_table_() {
   frozen_bytes += current_table->get_size();
@@ -358,57 +356,57 @@ HeapIterator MemTable::iters_preffix(const std::string &preffix,
   return HeapIterator(item_vec, tranc_id);
 }
 
-// std::optional<std::pair<HeapIterator, HeapIterator>>
-// MemTable::iters_monotony_predicate(
-//     uint64_t tranc_id, std::function<int(const std::string &)> predicate) {
-//   std::shared_lock<std::shared_mutex> slock1(cur_mtx);
-//   std::shared_lock<std::shared_mutex> slock2(frozen_mtx);
+std::optional<std::pair<HeapIterator, HeapIterator>>
+MemTable::iters_monotony_predicate(
+    uint64_t tranc_id, std::function<int(const std::string &)> predicate) {
+  std::shared_lock<std::shared_mutex> slock1(cur_mtx);
+  std::shared_lock<std::shared_mutex> slock2(frozen_mtx);
 
-//   std::vector<SearchItem> item_vec;
+  std::vector<SearchItem> item_vec;
 
-//   auto cur_result = current_table->iters_monotony_predicate(predicate);
-//   if (cur_result.has_value()) {
-//     auto [begin, end] = cur_result.value();
-//     for (auto iter = begin; iter != end; ++iter) {
-//       if (tranc_id != 0 && iter.get_tranc_id() > tranc_id) {
-//         // 如果开启了事务, 比当前事务 id 更大的记录是不可见的
-//         continue;
-//       }
-//       if (!item_vec.empty() && item_vec.back().key_ == iter.get_key()) {
-//         // 如果key相同，则只保留最新的事务修改的记录即可
-//         // 且这个记录既然已经存在于item_vec中，则其肯定满足了事务的可见性判断
-//         continue;
-//       }
-//       item_vec.emplace_back(iter.get_key(), iter.get_value(), 0, 0,
-//                             iter.get_tranc_id());
-//     }
-//   }
+  auto cur_result = current_table->iters_monotony_predicate(predicate);
+  if (cur_result.has_value()) {
+    auto [begin, end] = cur_result.value();
+    for (auto iter = begin; iter != end; ++iter) {
+      if (tranc_id != 0 && iter.get_tranc_id() > tranc_id) {
+        // 如果开启了事务, 比当前事务 id 更大的记录是不可见的
+        continue;
+      }
+      if (!item_vec.empty() && item_vec.back().key_ == iter.get_key()) {
+        // 如果key相同，则只保留最新的事务修改的记录即可
+        // 且这个记录既然已经存在于item_vec中，则其肯定满足了事务的可见性判断
+        continue;
+      }
+      item_vec.emplace_back(iter.get_key(), iter.get_value(), 0, 0,
+                            iter.get_tranc_id());
+    }
+  }
 
-//   int table_idx = 1;
-//   for (auto ft = frozen_tables.begin(); ft != frozen_tables.end(); ft++) {
-//     auto table = *ft;
-//     auto result = table->iters_monotony_predicate(predicate);
-//     if (result.has_value()) {
-//       auto [begin, end] = result.value();
-//       for (auto iter = begin; iter != end; ++iter) {
-//         if (tranc_id != 0 && iter.get_tranc_id() > tranc_id) {
-//           // 如果开启了事务, 比当前事务 id 更大的记录是不可见的
-//           continue;
-//         }
-//         if (!item_vec.empty() && item_vec.back().key_ == iter.get_key()) {
-//           // 如果key相同，则只保留最新的事务修改的记录即可
-//           // 且这个记录既然已经存在于item_vec中，则其肯定满足了事务的可见性判断
-//           continue;
-//         }
-//         item_vec.emplace_back(iter.get_key(), iter.get_value(), table_idx, 0,
-//                               iter.get_tranc_id());
-//       }
-//     }
-//     table_idx++;
-//   }
+  int table_idx = 1;
+  for (auto ft = frozen_tables.begin(); ft != frozen_tables.end(); ft++) {
+    auto table = *ft;
+    auto result = table->iters_monotony_predicate(predicate);
+    if (result.has_value()) {
+      auto [begin, end] = result.value();
+      for (auto iter = begin; iter != end; ++iter) {
+        if (tranc_id != 0 && iter.get_tranc_id() > tranc_id) {
+          // 如果开启了事务, 比当前事务 id 更大的记录是不可见的
+          continue;
+        }
+        if (!item_vec.empty() && item_vec.back().key_ == iter.get_key()) {
+          // 如果key相同，则只保留最新的事务修改的记录即可
+          // 且这个记录既然已经存在于item_vec中，则其肯定满足了事务的可见性判断
+          continue;
+        }
+        item_vec.emplace_back(iter.get_key(), iter.get_value(), table_idx, 0,
+                              iter.get_tranc_id());
+      }
+    }
+    table_idx++;
+  }
 
-//   if (item_vec.empty()) {
-//     return std::nullopt;
-//   }
-//   return std::make_pair(HeapIterator(item_vec, tranc_id), HeapIterator{});
-// }
+  if (item_vec.empty()) {
+    return std::nullopt;
+  }
+  return std::make_pair(HeapIterator(item_vec, tranc_id), HeapIterator{});
+}
