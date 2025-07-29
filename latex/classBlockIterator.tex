@@ -1,0 +1,155 @@
+\hypertarget{classBlockIterator}{}\doxysection{Block\+Iterator Class Reference}
+\label{classBlockIterator}\index{BlockIterator@{BlockIterator}}
+
+
+{\ttfamily \#include $<$block\+\_\+iterator.\+h$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classBlockIterator_a83ddbfcf0c468eb6a78d6ace39ea6d1f}{iterator\+\_\+category}} = std\+::forward\+\_\+iterator\+\_\+tag
+\item 
+using \mbox{\hyperlink{classBlockIterator_a97297952c33b5f1022bbc2f2961e3ded}{value\+\_\+type}} = std\+::pair$<$ std\+::string, std\+::string $>$
+\item 
+using \mbox{\hyperlink{classBlockIterator_ab21a4d1a5b1bb5eb19e8c8a986271076}{difference\+\_\+type}} = std\+::ptrdiff\+\_\+t
+\item 
+using \mbox{\hyperlink{classBlockIterator_a2ad91df2a61ef25b6e97e8d014325b3a}{pointer}} = const \mbox{\hyperlink{classBlockIterator_a97297952c33b5f1022bbc2f2961e3ded}{value\+\_\+type}} $\ast$
+\item 
+using \mbox{\hyperlink{classBlockIterator_a0d6720e26fdf84da4220bb4ec317df45}{reference}} = const \mbox{\hyperlink{classBlockIterator_a97297952c33b5f1022bbc2f2961e3ded}{value\+\_\+type}} \&
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBlockIterator_a092cd626de75c0ab9e0af0b02bcbe3e6}{Block\+Iterator}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBlock}{Block}} $>$ b, size\+\_\+t index, uint64\+\_\+t tranc\+\_\+id)
+\item 
+\mbox{\hyperlink{classBlockIterator_a3fa09af4d8455aa1bf638a8743daf189}{Block\+Iterator}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBlock}{Block}} $>$ b, const std\+::string \&key, uint64\+\_\+t tranc\+\_\+id)
+\item 
+\mbox{\hyperlink{classBlockIterator_abe4018605737d98f9fa966eaa39e7bcf}{Block\+Iterator}} ()
+\item 
+\mbox{\hyperlink{classBlockIterator_a2ad91df2a61ef25b6e97e8d014325b3a}{pointer}} \mbox{\hyperlink{classBlockIterator_af8d5d4c30a01ea09c1ef12871f24ea6d}{operator-\/$>$}} () const
+\item 
+\mbox{\hyperlink{classBlockIterator}{Block\+Iterator}} \& \mbox{\hyperlink{classBlockIterator_ab5dcfeb25d7e49953d2ee9e9820cf674}{operator++}} ()
+\item 
+\mbox{\hyperlink{classBlockIterator}{Block\+Iterator}} \mbox{\hyperlink{classBlockIterator_a76d7b545ede21f8ed0c336ea725284b3}{operator++}} (int)=delete
+\item 
+bool \mbox{\hyperlink{classBlockIterator_a2855ea35a440130efcca9309d7df214d}{operator==}} (const \mbox{\hyperlink{classBlockIterator}{Block\+Iterator}} \&other) const
+\item 
+bool \mbox{\hyperlink{classBlockIterator_ae7a889ffde7361aab51f87cb2f4db9ba}{operator!=}} (const \mbox{\hyperlink{classBlockIterator}{Block\+Iterator}} \&other) const
+\item 
+\mbox{\hyperlink{classBlockIterator_a97297952c33b5f1022bbc2f2961e3ded}{value\+\_\+type}} \mbox{\hyperlink{classBlockIterator_ac6e475942152bf81d095e563ca05885e}{operator$\ast$}} () const
+\item 
+bool \mbox{\hyperlink{classBlockIterator_a97fa41730f9684ec90e38480a2503a72}{is\+\_\+end}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classBlockIterator_ab21a4d1a5b1bb5eb19e8c8a986271076}\label{classBlockIterator_ab21a4d1a5b1bb5eb19e8c8a986271076}} 
+\index{BlockIterator@{BlockIterator}!difference\_type@{difference\_type}}
+\index{difference\_type@{difference\_type}!BlockIterator@{BlockIterator}}
+\doxysubsubsection{\texorpdfstring{difference\_type}{difference\_type}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classBlockIterator_ab21a4d1a5b1bb5eb19e8c8a986271076}{Block\+Iterator\+::difference\+\_\+type}} =  std\+::ptrdiff\+\_\+t}
+
+\mbox{\Hypertarget{classBlockIterator_a83ddbfcf0c468eb6a78d6ace39ea6d1f}\label{classBlockIterator_a83ddbfcf0c468eb6a78d6ace39ea6d1f}} 
+\index{BlockIterator@{BlockIterator}!iterator\_category@{iterator\_category}}
+\index{iterator\_category@{iterator\_category}!BlockIterator@{BlockIterator}}
+\doxysubsubsection{\texorpdfstring{iterator\_category}{iterator\_category}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classBlockIterator_a83ddbfcf0c468eb6a78d6ace39ea6d1f}{Block\+Iterator\+::iterator\+\_\+category}} =  std\+::forward\+\_\+iterator\+\_\+tag}
+
+\mbox{\Hypertarget{classBlockIterator_a2ad91df2a61ef25b6e97e8d014325b3a}\label{classBlockIterator_a2ad91df2a61ef25b6e97e8d014325b3a}} 
+\index{BlockIterator@{BlockIterator}!pointer@{pointer}}
+\index{pointer@{pointer}!BlockIterator@{BlockIterator}}
+\doxysubsubsection{\texorpdfstring{pointer}{pointer}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classBlockIterator_a2ad91df2a61ef25b6e97e8d014325b3a}{Block\+Iterator\+::pointer}} =  const \mbox{\hyperlink{classBlockIterator_a97297952c33b5f1022bbc2f2961e3ded}{value\+\_\+type}} $\ast$}
+
+\mbox{\Hypertarget{classBlockIterator_a0d6720e26fdf84da4220bb4ec317df45}\label{classBlockIterator_a0d6720e26fdf84da4220bb4ec317df45}} 
+\index{BlockIterator@{BlockIterator}!reference@{reference}}
+\index{reference@{reference}!BlockIterator@{BlockIterator}}
+\doxysubsubsection{\texorpdfstring{reference}{reference}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classBlockIterator_a0d6720e26fdf84da4220bb4ec317df45}{Block\+Iterator\+::reference}} =  const \mbox{\hyperlink{classBlockIterator_a97297952c33b5f1022bbc2f2961e3ded}{value\+\_\+type}} \&}
+
+\mbox{\Hypertarget{classBlockIterator_a97297952c33b5f1022bbc2f2961e3ded}\label{classBlockIterator_a97297952c33b5f1022bbc2f2961e3ded}} 
+\index{BlockIterator@{BlockIterator}!value\_type@{value\_type}}
+\index{value\_type@{value\_type}!BlockIterator@{BlockIterator}}
+\doxysubsubsection{\texorpdfstring{value\_type}{value\_type}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classBlockIterator_a97297952c33b5f1022bbc2f2961e3ded}{Block\+Iterator\+::value\+\_\+type}} =  std\+::pair$<$std\+::string, std\+::string$>$}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBlockIterator_a092cd626de75c0ab9e0af0b02bcbe3e6}\label{classBlockIterator_a092cd626de75c0ab9e0af0b02bcbe3e6}} 
+\index{BlockIterator@{BlockIterator}!BlockIterator@{BlockIterator}}
+\index{BlockIterator@{BlockIterator}!BlockIterator@{BlockIterator}}
+\doxysubsubsection{\texorpdfstring{BlockIterator()}{BlockIterator()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Block\+Iterator\+::\+Block\+Iterator (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBlock}{Block}} $>$}]{b,  }\item[{size\+\_\+t}]{index,  }\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classBlockIterator_a3fa09af4d8455aa1bf638a8743daf189}\label{classBlockIterator_a3fa09af4d8455aa1bf638a8743daf189}} 
+\index{BlockIterator@{BlockIterator}!BlockIterator@{BlockIterator}}
+\index{BlockIterator@{BlockIterator}!BlockIterator@{BlockIterator}}
+\doxysubsubsection{\texorpdfstring{BlockIterator()}{BlockIterator()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Block\+Iterator\+::\+Block\+Iterator (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBlock}{Block}} $>$}]{b,  }\item[{const std\+::string \&}]{key,  }\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classBlockIterator_abe4018605737d98f9fa966eaa39e7bcf}\label{classBlockIterator_abe4018605737d98f9fa966eaa39e7bcf}} 
+\index{BlockIterator@{BlockIterator}!BlockIterator@{BlockIterator}}
+\index{BlockIterator@{BlockIterator}!BlockIterator@{BlockIterator}}
+\doxysubsubsection{\texorpdfstring{BlockIterator()}{BlockIterator()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Block\+Iterator\+::\+Block\+Iterator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBlockIterator_a97fa41730f9684ec90e38480a2503a72}\label{classBlockIterator_a97fa41730f9684ec90e38480a2503a72}} 
+\index{BlockIterator@{BlockIterator}!is\_end@{is\_end}}
+\index{is\_end@{is\_end}!BlockIterator@{BlockIterator}}
+\doxysubsubsection{\texorpdfstring{is\_end()}{is\_end()}}
+{\footnotesize\ttfamily bool Block\+Iterator\+::is\+\_\+end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classBlockIterator_ae7a889ffde7361aab51f87cb2f4db9ba}\label{classBlockIterator_ae7a889ffde7361aab51f87cb2f4db9ba}} 
+\index{BlockIterator@{BlockIterator}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!BlockIterator@{BlockIterator}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool Block\+Iterator\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBlockIterator}{Block\+Iterator}} \&}]{other }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classBlockIterator_ac6e475942152bf81d095e563ca05885e}\label{classBlockIterator_ac6e475942152bf81d095e563ca05885e}} 
+\index{BlockIterator@{BlockIterator}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!BlockIterator@{BlockIterator}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBlockIterator_a97297952c33b5f1022bbc2f2961e3ded}{Block\+Iterator\+::value\+\_\+type}} Block\+Iterator\+::operator$\ast$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classBlockIterator_ab5dcfeb25d7e49953d2ee9e9820cf674}\label{classBlockIterator_ab5dcfeb25d7e49953d2ee9e9820cf674}} 
+\index{BlockIterator@{BlockIterator}!operator++@{operator++}}
+\index{operator++@{operator++}!BlockIterator@{BlockIterator}}
+\doxysubsubsection{\texorpdfstring{operator++()}{operator++()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBlockIterator}{Block\+Iterator}} \& Block\+Iterator\+::operator++ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{classBlockIterator_ab5dcfeb25d7e49953d2ee9e9820cf674_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classBlockIterator_a76d7b545ede21f8ed0c336ea725284b3}\label{classBlockIterator_a76d7b545ede21f8ed0c336ea725284b3}} 
+\index{BlockIterator@{BlockIterator}!operator++@{operator++}}
+\index{operator++@{operator++}!BlockIterator@{BlockIterator}}
+\doxysubsubsection{\texorpdfstring{operator++()}{operator++()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBlockIterator}{Block\+Iterator}} Block\+Iterator\+::operator++ (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{classBlockIterator_af8d5d4c30a01ea09c1ef12871f24ea6d}\label{classBlockIterator_af8d5d4c30a01ea09c1ef12871f24ea6d}} 
+\index{BlockIterator@{BlockIterator}!operator-\/$>$@{operator-\/$>$}}
+\index{operator-\/$>$@{operator-\/$>$}!BlockIterator@{BlockIterator}}
+\doxysubsubsection{\texorpdfstring{operator-\/$>$()}{operator->()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBlockIterator_a2ad91df2a61ef25b6e97e8d014325b3a}{Block\+Iterator\+::pointer}} Block\+Iterator\+::operator-\/$>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classBlockIterator_a2855ea35a440130efcca9309d7df214d}\label{classBlockIterator_a2855ea35a440130efcca9309d7df214d}} 
+\index{BlockIterator@{BlockIterator}!operator==@{operator==}}
+\index{operator==@{operator==}!BlockIterator@{BlockIterator}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Block\+Iterator\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBlockIterator}{Block\+Iterator}} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Iterator/\mbox{\hyperlink{block__iterator_8h}{block\+\_\+iterator.\+h}}\item 
+src/\+Iterator/\mbox{\hyperlink{block__iterator_8cpp}{block\+\_\+iterator.\+cpp}}\end{DoxyCompactItemize}

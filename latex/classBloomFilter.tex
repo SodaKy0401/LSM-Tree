@@ -1,0 +1,112 @@
+\hypertarget{classBloomFilter}{}\doxysection{Bloom\+Filter Class Reference}
+\label{classBloomFilter}\index{BloomFilter@{BloomFilter}}
+
+
+{\ttfamily \#include $<$bloom\+\_\+filter.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBloomFilter_a64e9f133cd9bb65d55a5e31f701bbca0}{Bloom\+Filter}} ()
+\item 
+\mbox{\hyperlink{classBloomFilter_a0e02ccd7479a1286a3b24702cf5ad09c}{Bloom\+Filter}} (size\+\_\+t expected\+\_\+elements, double false\+\_\+positive\+\_\+rate)
+\item 
+\mbox{\hyperlink{classBloomFilter_a7bc0e27ea3eec42112c73ef1c53d690a}{Bloom\+Filter}} (size\+\_\+t expected\+\_\+elements, double false\+\_\+positive\+\_\+rate, size\+\_\+t num\+\_\+bits)
+\item 
+void \mbox{\hyperlink{classBloomFilter_a6a4586b3259b52bf51502c5daff184d4}{add}} (const std\+::string \&key)
+\item 
+bool \mbox{\hyperlink{classBloomFilter_a0401e4d680d4ada1b8f32820736d74b0}{possibly\+\_\+contains}} (const std\+::string \&key) const
+\item 
+void \mbox{\hyperlink{classBloomFilter_a03a60de35a49eb2bf82b5db6ec20deff}{clear}} ()
+\item 
+std\+::vector$<$ uint8\+\_\+t $>$ \mbox{\hyperlink{classBloomFilter_a2f4b888e0a7b1defda30381f03f51d04}{encode}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classBloomFilter}{Bloom\+Filter}} \mbox{\hyperlink{classBloomFilter_a8d23a38d6927ac69969afcaa908c010d}{decode}} (const std\+::vector$<$ uint8\+\_\+t $>$ \&data)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBloomFilter_a64e9f133cd9bb65d55a5e31f701bbca0}\label{classBloomFilter_a64e9f133cd9bb65d55a5e31f701bbca0}} 
+\index{BloomFilter@{BloomFilter}!BloomFilter@{BloomFilter}}
+\index{BloomFilter@{BloomFilter}!BloomFilter@{BloomFilter}}
+\doxysubsubsection{\texorpdfstring{BloomFilter()}{BloomFilter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Bloom\+Filter\+::\+Bloom\+Filter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classBloomFilter_a0e02ccd7479a1286a3b24702cf5ad09c}\label{classBloomFilter_a0e02ccd7479a1286a3b24702cf5ad09c}} 
+\index{BloomFilter@{BloomFilter}!BloomFilter@{BloomFilter}}
+\index{BloomFilter@{BloomFilter}!BloomFilter@{BloomFilter}}
+\doxysubsubsection{\texorpdfstring{BloomFilter()}{BloomFilter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Bloom\+Filter\+::\+Bloom\+Filter (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{expected\+\_\+elements,  }\item[{double}]{false\+\_\+positive\+\_\+rate }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classBloomFilter_a7bc0e27ea3eec42112c73ef1c53d690a}\label{classBloomFilter_a7bc0e27ea3eec42112c73ef1c53d690a}} 
+\index{BloomFilter@{BloomFilter}!BloomFilter@{BloomFilter}}
+\index{BloomFilter@{BloomFilter}!BloomFilter@{BloomFilter}}
+\doxysubsubsection{\texorpdfstring{BloomFilter()}{BloomFilter()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Bloom\+Filter\+::\+Bloom\+Filter (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{expected\+\_\+elements,  }\item[{double}]{false\+\_\+positive\+\_\+rate,  }\item[{size\+\_\+t}]{num\+\_\+bits }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBloomFilter_a6a4586b3259b52bf51502c5daff184d4}\label{classBloomFilter_a6a4586b3259b52bf51502c5daff184d4}} 
+\index{BloomFilter@{BloomFilter}!add@{add}}
+\index{add@{add}!BloomFilter@{BloomFilter}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily void Bloom\+Filter\+::add (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=253pt]{classBloomFilter_a6a4586b3259b52bf51502c5daff184d4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classBloomFilter_a03a60de35a49eb2bf82b5db6ec20deff}\label{classBloomFilter_a03a60de35a49eb2bf82b5db6ec20deff}} 
+\index{BloomFilter@{BloomFilter}!clear@{clear}}
+\index{clear@{clear}!BloomFilter@{BloomFilter}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Bloom\+Filter\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classBloomFilter_a8d23a38d6927ac69969afcaa908c010d}\label{classBloomFilter_a8d23a38d6927ac69969afcaa908c010d}} 
+\index{BloomFilter@{BloomFilter}!decode@{decode}}
+\index{decode@{decode}!BloomFilter@{BloomFilter}}
+\doxysubsubsection{\texorpdfstring{decode()}{decode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBloomFilter}{Bloom\+Filter}} Bloom\+Filter\+::decode (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ uint8\+\_\+t $>$ \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classBloomFilter_a8d23a38d6927ac69969afcaa908c010d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classBloomFilter_a2f4b888e0a7b1defda30381f03f51d04}\label{classBloomFilter_a2f4b888e0a7b1defda30381f03f51d04}} 
+\index{BloomFilter@{BloomFilter}!encode@{encode}}
+\index{encode@{encode}!BloomFilter@{BloomFilter}}
+\doxysubsubsection{\texorpdfstring{encode()}{encode()}}
+{\footnotesize\ttfamily std\+::vector$<$ uint8\+\_\+t $>$ Bloom\+Filter\+::encode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classBloomFilter_a0401e4d680d4ada1b8f32820736d74b0}\label{classBloomFilter_a0401e4d680d4ada1b8f32820736d74b0}} 
+\index{BloomFilter@{BloomFilter}!possibly\_contains@{possibly\_contains}}
+\index{possibly\_contains@{possibly\_contains}!BloomFilter@{BloomFilter}}
+\doxysubsubsection{\texorpdfstring{possibly\_contains()}{possibly\_contains()}}
+{\footnotesize\ttfamily bool Bloom\+Filter\+::possibly\+\_\+contains (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{classBloomFilter_a0401e4d680d4ada1b8f32820736d74b0_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Utils/\mbox{\hyperlink{bloom__filter_8h}{bloom\+\_\+filter.\+h}}\item 
+src/\+Utils/\mbox{\hyperlink{bloom__filter_8cpp}{bloom\+\_\+filter.\+cpp}}\end{DoxyCompactItemize}

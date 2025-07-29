@@ -1,0 +1,239 @@
+\hypertarget{classLevel__Iterator}{}\doxysection{Level\+\_\+\+Iterator Class Reference}
+\label{classLevel__Iterator}\index{Level\_Iterator@{Level\_Iterator}}
+
+
+{\ttfamily \#include $<$level\+\_\+iterator.\+h$>$}
+
+
+
+Inheritance diagram for Level\+\_\+\+Iterator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=164pt]{classLevel__Iterator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Level\+\_\+\+Iterator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=164pt]{classLevel__Iterator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} = std\+::pair$<$ std\+::string, std\+::string $>$
+\item 
+using \mbox{\hyperlink{classBaseIterator_a873de620a7886f465bbb69933c5416fb}{pointer}} = \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} $\ast$
+\item 
+using \mbox{\hyperlink{classBaseIterator_ae3e2769edb02a9b819b19cd2dd957f6f}{reference}} = \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} \&
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLevel__Iterator_adcb552b32f590881b9c88cc2dde4ea9f}{Level\+\_\+\+Iterator}} ()=default
+\item 
+\mbox{\hyperlink{classLevel__Iterator_ad4fa23c687f710b6f54a9b25ed877dc7}{Level\+\_\+\+Iterator}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLSMEngine}{L\+S\+M\+Engine}} $>$ engine\+\_\+, uint64\+\_\+t max\+\_\+tranc\+\_\+id)
+\item 
+virtual \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \& \mbox{\hyperlink{classLevel__Iterator_a61fbcecae8827ccac124d5476ee1bb5d}{operator++}} () override
+\item 
+virtual bool \mbox{\hyperlink{classLevel__Iterator_a165bdc03a1b36d80939db3c8a20f0a73}{operator==}} (const \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \&other) const override
+\item 
+virtual bool \mbox{\hyperlink{classLevel__Iterator_a9996b6b6d2f84a38ed19113c06c3e948}{operator!=}} (const \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \&other) const override
+\item 
+virtual \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} \mbox{\hyperlink{classLevel__Iterator_a3b62ed617f952e271f4f8de2efbce9a8}{operator$\ast$}} () const override
+\item 
+virtual \mbox{\hyperlink{iterator_8h_a4f6da121dba1526ce091ea9753d0647a}{Iterator\+Type}} \mbox{\hyperlink{classLevel__Iterator_a221727e797ad6127e3a474c7aad82993}{get\+\_\+type}} () const override
+\item 
+virtual uint64\+\_\+t \mbox{\hyperlink{classLevel__Iterator_ab87188f4f67673b6e8148b80809456ed}{get\+\_\+tranc\+\_\+id}} () const override
+\item 
+virtual bool \mbox{\hyperlink{classLevel__Iterator_ad2b841a23885bd94229328189ef39ab9}{is\+\_\+end}} () const override
+\item 
+virtual bool \mbox{\hyperlink{classLevel__Iterator_acb5bc861f2a9f951d96a5d37523f7645}{is\+\_\+valid}} () const override
+\item 
+\mbox{\hyperlink{classBaseIterator_a873de620a7886f465bbb69933c5416fb}{Base\+Iterator\+::pointer}} \mbox{\hyperlink{classLevel__Iterator_aefc546a4d779e137be15c772900ae969}{operator-\/$>$}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classBaseIterator_a873de620a7886f465bbb69933c5416fb}\label{classBaseIterator_a873de620a7886f465bbb69933c5416fb}} 
+\index{Level\_Iterator@{Level\_Iterator}!pointer@{pointer}}
+\index{pointer@{pointer}!Level\_Iterator@{Level\_Iterator}}
+\doxysubsubsection{\texorpdfstring{pointer}{pointer}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classBaseIterator_a873de620a7886f465bbb69933c5416fb}{Base\+Iterator\+::pointer}} =  \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} $\ast$\hspace{0.3cm}{\ttfamily [inherited]}}
+
+\mbox{\Hypertarget{classBaseIterator_ae3e2769edb02a9b819b19cd2dd957f6f}\label{classBaseIterator_ae3e2769edb02a9b819b19cd2dd957f6f}} 
+\index{Level\_Iterator@{Level\_Iterator}!reference@{reference}}
+\index{reference@{reference}!Level\_Iterator@{Level\_Iterator}}
+\doxysubsubsection{\texorpdfstring{reference}{reference}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classBaseIterator_ae3e2769edb02a9b819b19cd2dd957f6f}{Base\+Iterator\+::reference}} =  \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} \&\hspace{0.3cm}{\ttfamily [inherited]}}
+
+\mbox{\Hypertarget{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}\label{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}} 
+\index{Level\_Iterator@{Level\_Iterator}!value\_type@{value\_type}}
+\index{value\_type@{value\_type}!Level\_Iterator@{Level\_Iterator}}
+\doxysubsubsection{\texorpdfstring{value\_type}{value\_type}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{Base\+Iterator\+::value\+\_\+type}} =  std\+::pair$<$std\+::string, std\+::string$>$\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classLevel__Iterator_adcb552b32f590881b9c88cc2dde4ea9f}\label{classLevel__Iterator_adcb552b32f590881b9c88cc2dde4ea9f}} 
+\index{Level\_Iterator@{Level\_Iterator}!Level\_Iterator@{Level\_Iterator}}
+\index{Level\_Iterator@{Level\_Iterator}!Level\_Iterator@{Level\_Iterator}}
+\doxysubsubsection{\texorpdfstring{Level\_Iterator()}{Level\_Iterator()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Level\+\_\+\+Iterator\+::\+Level\+\_\+\+Iterator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classLevel__Iterator_ad4fa23c687f710b6f54a9b25ed877dc7}\label{classLevel__Iterator_ad4fa23c687f710b6f54a9b25ed877dc7}} 
+\index{Level\_Iterator@{Level\_Iterator}!Level\_Iterator@{Level\_Iterator}}
+\index{Level\_Iterator@{Level\_Iterator}!Level\_Iterator@{Level\_Iterator}}
+\doxysubsubsection{\texorpdfstring{Level\_Iterator()}{Level\_Iterator()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Level\+\_\+\+Iterator\+::\+Level\+\_\+\+Iterator (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLSMEngine}{L\+S\+M\+Engine}} $>$}]{engine\+\_\+,  }\item[{uint64\+\_\+t}]{max\+\_\+tranc\+\_\+id }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLevel__Iterator_ad4fa23c687f710b6f54a9b25ed877dc7_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLevel__Iterator_ab87188f4f67673b6e8148b80809456ed}\label{classLevel__Iterator_ab87188f4f67673b6e8148b80809456ed}} 
+\index{Level\_Iterator@{Level\_Iterator}!get\_tranc\_id@{get\_tranc\_id}}
+\index{get\_tranc\_id@{get\_tranc\_id}!Level\_Iterator@{Level\_Iterator}}
+\doxysubsubsection{\texorpdfstring{get\_tranc\_id()}{get\_tranc\_id()}}
+{\footnotesize\ttfamily uint64\+\_\+t Level\+\_\+\+Iterator\+::get\+\_\+tranc\+\_\+id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_afbac00d0570707027bb34d7f02ad5a5e}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classLevel__Iterator_a221727e797ad6127e3a474c7aad82993}\label{classLevel__Iterator_a221727e797ad6127e3a474c7aad82993}} 
+\index{Level\_Iterator@{Level\_Iterator}!get\_type@{get\_type}}
+\index{get\_type@{get\_type}!Level\_Iterator@{Level\_Iterator}}
+\doxysubsubsection{\texorpdfstring{get\_type()}{get\_type()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{iterator_8h_a4f6da121dba1526ce091ea9753d0647a}{Iterator\+Type}} Level\+\_\+\+Iterator\+::get\+\_\+type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a087b836b0654e9929640e6807deb219c}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classLevel__Iterator_ad2b841a23885bd94229328189ef39ab9}\label{classLevel__Iterator_ad2b841a23885bd94229328189ef39ab9}} 
+\index{Level\_Iterator@{Level\_Iterator}!is\_end@{is\_end}}
+\index{is\_end@{is\_end}!Level\_Iterator@{Level\_Iterator}}
+\doxysubsubsection{\texorpdfstring{is\_end()}{is\_end()}}
+{\footnotesize\ttfamily bool Level\+\_\+\+Iterator\+::is\+\_\+end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_aaa8a10f554780422293e00ee1b68a123}{Base\+Iterator}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLevel__Iterator_ad2b841a23885bd94229328189ef39ab9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLevel__Iterator_acb5bc861f2a9f951d96a5d37523f7645}\label{classLevel__Iterator_acb5bc861f2a9f951d96a5d37523f7645}} 
+\index{Level\_Iterator@{Level\_Iterator}!is\_valid@{is\_valid}}
+\index{is\_valid@{is\_valid}!Level\_Iterator@{Level\_Iterator}}
+\doxysubsubsection{\texorpdfstring{is\_valid()}{is\_valid()}}
+{\footnotesize\ttfamily bool Level\+\_\+\+Iterator\+::is\+\_\+valid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a283f72f0b0fc52a33edaab270f3558da}{Base\+Iterator}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{classLevel__Iterator_acb5bc861f2a9f951d96a5d37523f7645_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLevel__Iterator_acb5bc861f2a9f951d96a5d37523f7645_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLevel__Iterator_a9996b6b6d2f84a38ed19113c06c3e948}\label{classLevel__Iterator_a9996b6b6d2f84a38ed19113c06c3e948}} 
+\index{Level\_Iterator@{Level\_Iterator}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!Level\_Iterator@{Level\_Iterator}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool Level\+\_\+\+Iterator\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a60263f58b02942344090e29e72215d26}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classLevel__Iterator_a3b62ed617f952e271f4f8de2efbce9a8}\label{classLevel__Iterator_a3b62ed617f952e271f4f8de2efbce9a8}} 
+\index{Level\_Iterator@{Level\_Iterator}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Level\_Iterator@{Level\_Iterator}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{Base\+Iterator\+::value\+\_\+type}} Level\+\_\+\+Iterator\+::operator$\ast$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a79f8f0831999342671817a9969107aba}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classLevel__Iterator_a61fbcecae8827ccac124d5476ee1bb5d}\label{classLevel__Iterator_a61fbcecae8827ccac124d5476ee1bb5d}} 
+\index{Level\_Iterator@{Level\_Iterator}!operator++@{operator++}}
+\index{operator++@{operator++}!Level\_Iterator@{Level\_Iterator}}
+\doxysubsubsection{\texorpdfstring{operator++()}{operator++()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \& Level\+\_\+\+Iterator\+::operator++ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_aa699a2de97bf243e89826987dbf1b404}{Base\+Iterator}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLevel__Iterator_a61fbcecae8827ccac124d5476ee1bb5d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLevel__Iterator_aefc546a4d779e137be15c772900ae969}\label{classLevel__Iterator_aefc546a4d779e137be15c772900ae969}} 
+\index{Level\_Iterator@{Level\_Iterator}!operator-\/$>$@{operator-\/$>$}}
+\index{operator-\/$>$@{operator-\/$>$}!Level\_Iterator@{Level\_Iterator}}
+\doxysubsubsection{\texorpdfstring{operator-\/$>$()}{operator->()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBaseIterator_a873de620a7886f465bbb69933c5416fb}{Base\+Iterator\+::pointer}} Level\+\_\+\+Iterator\+::operator-\/$>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classLevel__Iterator_a165bdc03a1b36d80939db3c8a20f0a73}\label{classLevel__Iterator_a165bdc03a1b36d80939db3c8a20f0a73}} 
+\index{Level\_Iterator@{Level\_Iterator}!operator==@{operator==}}
+\index{operator==@{operator==}!Level\_Iterator@{Level\_Iterator}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Level\+\_\+\+Iterator\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a760ab242074729f5c953a968b967ffe2}{Base\+Iterator}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLevel__Iterator_a165bdc03a1b36d80939db3c8a20f0a73_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+L\+S\+M/\mbox{\hyperlink{level__iterator_8h}{level\+\_\+iterator.\+h}}\item 
+src/\+L\+S\+M/\mbox{\hyperlink{level__iterator_8cpp}{level\+\_\+iterator.\+cpp}}\end{DoxyCompactItemize}

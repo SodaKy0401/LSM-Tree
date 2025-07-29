@@ -1,0 +1,70 @@
+\hypertarget{transaction_8h}{}\doxysection{src/\+L\+S\+M/transaction.h File Reference}
+\label{transaction_8h}\index{src/LSM/transaction.h@{src/LSM/transaction.h}}
+{\ttfamily \#include \char`\"{}../\+Utils/files.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../\+W\+A\+L/wal.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$deque$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+Include dependency graph for transaction.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{transaction_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{transaction_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classTranContext}{Tran\+Context}}
+\item 
+class \mbox{\hyperlink{classTranManager}{Tran\+Manager}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{transaction_8h_af3fd7ab4111446c2fe0882d0d45eb119}{Isolation\+Level}} \{ \mbox{\hyperlink{transaction_8h_af3fd7ab4111446c2fe0882d0d45eb119a7b5722b7d02a9d8ff3a8bdfcb7d278c3}{Isolation\+Level\+::\+R\+E\+A\+D\+\_\+\+U\+N\+C\+O\+M\+M\+I\+T\+T\+ED}}, 
+\mbox{\hyperlink{transaction_8h_af3fd7ab4111446c2fe0882d0d45eb119a1671fb17b5ce9bd0af0cf47f3f4ea337}{Isolation\+Level\+::\+R\+E\+A\+D\+\_\+\+C\+O\+M\+M\+I\+T\+T\+ED}}, 
+\mbox{\hyperlink{transaction_8h_af3fd7ab4111446c2fe0882d0d45eb119aa4b37efaa1a6b533614ed81660dbf912}{Isolation\+Level\+::\+R\+E\+P\+E\+A\+T\+A\+B\+L\+E\+\_\+\+R\+E\+AD}}, 
+\mbox{\hyperlink{transaction_8h_af3fd7ab4111446c2fe0882d0d45eb119aadfafde622c8622bb72e4ff73e295cdb}{Isolation\+Level\+::\+S\+E\+R\+I\+A\+L\+I\+Z\+A\+B\+LE}}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{transaction_8h_af3fd7ab4111446c2fe0882d0d45eb119}\label{transaction_8h_af3fd7ab4111446c2fe0882d0d45eb119}} 
+\index{transaction.h@{transaction.h}!IsolationLevel@{IsolationLevel}}
+\index{IsolationLevel@{IsolationLevel}!transaction.h@{transaction.h}}
+\doxysubsubsection{\texorpdfstring{IsolationLevel}{IsolationLevel}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{transaction_8h_af3fd7ab4111446c2fe0882d0d45eb119}{Isolation\+Level}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{READ\_UNCOMMITTED@{READ\_UNCOMMITTED}!transaction.h@{transaction.h}}\index{transaction.h@{transaction.h}!READ\_UNCOMMITTED@{READ\_UNCOMMITTED}}}\mbox{\Hypertarget{transaction_8h_af3fd7ab4111446c2fe0882d0d45eb119a7b5722b7d02a9d8ff3a8bdfcb7d278c3}\label{transaction_8h_af3fd7ab4111446c2fe0882d0d45eb119a7b5722b7d02a9d8ff3a8bdfcb7d278c3}} 
+R\+E\+A\+D\+\_\+\+U\+N\+C\+O\+M\+M\+I\+T\+T\+ED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{READ\_COMMITTED@{READ\_COMMITTED}!transaction.h@{transaction.h}}\index{transaction.h@{transaction.h}!READ\_COMMITTED@{READ\_COMMITTED}}}\mbox{\Hypertarget{transaction_8h_af3fd7ab4111446c2fe0882d0d45eb119a1671fb17b5ce9bd0af0cf47f3f4ea337}\label{transaction_8h_af3fd7ab4111446c2fe0882d0d45eb119a1671fb17b5ce9bd0af0cf47f3f4ea337}} 
+R\+E\+A\+D\+\_\+\+C\+O\+M\+M\+I\+T\+T\+ED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{REPEATABLE\_READ@{REPEATABLE\_READ}!transaction.h@{transaction.h}}\index{transaction.h@{transaction.h}!REPEATABLE\_READ@{REPEATABLE\_READ}}}\mbox{\Hypertarget{transaction_8h_af3fd7ab4111446c2fe0882d0d45eb119aa4b37efaa1a6b533614ed81660dbf912}\label{transaction_8h_af3fd7ab4111446c2fe0882d0d45eb119aa4b37efaa1a6b533614ed81660dbf912}} 
+R\+E\+P\+E\+A\+T\+A\+B\+L\+E\+\_\+\+R\+E\+AD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SERIALIZABLE@{SERIALIZABLE}!transaction.h@{transaction.h}}\index{transaction.h@{transaction.h}!SERIALIZABLE@{SERIALIZABLE}}}\mbox{\Hypertarget{transaction_8h_af3fd7ab4111446c2fe0882d0d45eb119aadfafde622c8622bb72e4ff73e295cdb}\label{transaction_8h_af3fd7ab4111446c2fe0882d0d45eb119aadfafde622c8622bb72e4ff73e295cdb}} 
+S\+E\+R\+I\+A\+L\+I\+Z\+A\+B\+LE&\\
+\hline
+
+\end{DoxyEnumFields}

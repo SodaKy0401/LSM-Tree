@@ -1,0 +1,277 @@
+\hypertarget{classMockWAL}{}\doxysection{Mock\+W\+AL Class Reference}
+\label{classMockWAL}\index{MockWAL@{MockWAL}}
+
+
+Inheritance diagram for Mock\+W\+AL\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=145pt]{classMockWAL__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Mock\+W\+AL\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=158pt]{classMockWAL__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMockWAL_ad50b2a7c769198f67cb42e40379c92c2}{Mock\+W\+AL}} (const std\+::string \&log\+\_\+path, size\+\_\+t buffer\+\_\+size, uint64\+\_\+t max\+\_\+finished\+\_\+tranc\+\_\+id)
+\item 
+\mbox{\hyperlink{classMockWAL_a878e0c1302ba0eb7fd0389bcbade05f1}{M\+O\+C\+K\+\_\+\+M\+E\+T\+H\+OD}} (void, cleaner,())
+\item 
+\mbox{\hyperlink{classMockWAL_a8070ce75f0100751176cb2f97fc83a66}{M\+O\+C\+K\+\_\+\+M\+E\+T\+H\+OD}} (void, clean\+W\+A\+L\+File,())
+\item 
+\mbox{\hyperlink{classMockWAL_a6784d2ce01fb16dc17268bb2d98cb5fb}{M\+O\+C\+K\+\_\+\+M\+E\+T\+H\+OD}} (void, reset\+\_\+file,())
+\item 
+\mbox{\hyperlink{classFileObj}{File\+Obj}} $\ast$ \mbox{\hyperlink{classMockWAL_a2ad3e90160cee70e43036f8c10ab9b03}{get\+\_\+log\+\_\+file}} ()
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classRecord}{Record}} $>$ \& \mbox{\hyperlink{classMockWAL_a75b13006dea043a55ec442f067824be3}{get\+\_\+log\+\_\+buffer}} ()
+\item 
+size\+\_\+t \mbox{\hyperlink{classMockWAL_a035febc76adbf7ca45b3335ff64e9701}{get\+\_\+file\+\_\+size\+\_\+limit}} ()
+\item 
+void \mbox{\hyperlink{classMockWAL_a79d9a55d86fb6f1d3731997b3e6996c0}{set\+\_\+max\+\_\+finished\+\_\+tranc\+\_\+id}} (uint64\+\_\+t max\+\_\+finished\+\_\+tranc\+\_\+id)
+\item 
+uint64\+\_\+t \mbox{\hyperlink{classMockWAL_ab1375d410d6c4915d7409dcdcc3e1140}{get\+\_\+max\+\_\+finished\+\_\+tranc\+\_\+id}} ()
+\item 
+void \mbox{\hyperlink{classWAL_a5ca05fcd1353badcbead4af786acdd51}{log}} (const std\+::vector$<$ \mbox{\hyperlink{classRecord}{Record}} $>$ \&records, bool force\+\_\+flush=false)
+\item 
+void \mbox{\hyperlink{classWAL_ab8e343ef8dbcae766d4c7fefe8efeac5}{flush}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::map$<$ uint64\+\_\+t, std\+::vector$<$ \mbox{\hyperlink{classRecord}{Record}} $>$ $>$ \mbox{\hyperlink{classWAL_a25b00c97d5e13314180c6b7d2f69ea6e}{recover}} (const std\+::string \&log\+\_\+dir, uint64\+\_\+t max\+\_\+finished\+\_\+tranc\+\_\+id)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classWAL_a8600e9ca358d5ecf4101a86c993ccd99}{active\+\_\+log\+\_\+path\+\_\+}}
+\item 
+\mbox{\hyperlink{classFileObj}{File\+Obj}} \mbox{\hyperlink{classWAL_ab859c2687e1735b60a5b08cf1dfb2cae}{log\+\_\+file\+\_\+}}
+\item 
+size\+\_\+t \mbox{\hyperlink{classWAL_a4b4861b13445284b517239a16d6c4b9e}{file\+\_\+size\+\_\+limit\+\_\+}}
+\item 
+std\+::mutex \mbox{\hyperlink{classWAL_a7fd8b5256e50b0fd83c062e16feb090f}{mutex\+\_\+}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classRecord}{Record}} $>$ \mbox{\hyperlink{classWAL_a2b03dc1da020b3ef57447b290ce835a5}{log\+\_\+buffer\+\_\+}}
+\item 
+size\+\_\+t \mbox{\hyperlink{classWAL_abfc6efe6e6b2f9a4251daaaa608e4de4}{buffer\+\_\+size\+\_\+}}
+\item 
+std\+::thread \mbox{\hyperlink{classWAL_a9be6a857cffd2e3222ac191c5b40d27d}{cleaner\+\_\+thread\+\_\+}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{classWAL_afcc85aaacebd1b2def2facb6f1c543e6}{max\+\_\+finished\+\_\+tranc\+\_\+id\+\_\+}}
+\item 
+std\+::atomic$<$ bool $>$ \mbox{\hyperlink{classWAL_a9c560569ea10fecb433092f96dabb38c}{stop\+\_\+cleaner\+\_\+}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{classWAL_abdbef65830093b03d9b88ef5e84d10d9}{clean\+\_\+interval\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMockWAL_ad50b2a7c769198f67cb42e40379c92c2}\label{classMockWAL_ad50b2a7c769198f67cb42e40379c92c2}} 
+\index{MockWAL@{MockWAL}!MockWAL@{MockWAL}}
+\index{MockWAL@{MockWAL}!MockWAL@{MockWAL}}
+\doxysubsubsection{\texorpdfstring{MockWAL()}{MockWAL()}}
+{\footnotesize\ttfamily Mock\+W\+A\+L\+::\+Mock\+W\+AL (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{log\+\_\+path,  }\item[{size\+\_\+t}]{buffer\+\_\+size,  }\item[{uint64\+\_\+t}]{max\+\_\+finished\+\_\+tranc\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classWAL_ab8e343ef8dbcae766d4c7fefe8efeac5}\label{classWAL_ab8e343ef8dbcae766d4c7fefe8efeac5}} 
+\index{MockWAL@{MockWAL}!flush@{flush}}
+\index{flush@{flush}!MockWAL@{MockWAL}}
+\doxysubsubsection{\texorpdfstring{flush()}{flush()}}
+{\footnotesize\ttfamily void W\+A\+L\+::flush (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{classWAL_ab8e343ef8dbcae766d4c7fefe8efeac5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMockWAL_a035febc76adbf7ca45b3335ff64e9701}\label{classMockWAL_a035febc76adbf7ca45b3335ff64e9701}} 
+\index{MockWAL@{MockWAL}!get\_file\_size\_limit@{get\_file\_size\_limit}}
+\index{get\_file\_size\_limit@{get\_file\_size\_limit}!MockWAL@{MockWAL}}
+\doxysubsubsection{\texorpdfstring{get\_file\_size\_limit()}{get\_file\_size\_limit()}}
+{\footnotesize\ttfamily size\+\_\+t Mock\+W\+A\+L\+::get\+\_\+file\+\_\+size\+\_\+limit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classMockWAL_a75b13006dea043a55ec442f067824be3}\label{classMockWAL_a75b13006dea043a55ec442f067824be3}} 
+\index{MockWAL@{MockWAL}!get\_log\_buffer@{get\_log\_buffer}}
+\index{get\_log\_buffer@{get\_log\_buffer}!MockWAL@{MockWAL}}
+\doxysubsubsection{\texorpdfstring{get\_log\_buffer()}{get\_log\_buffer()}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classRecord}{Record}}$>$\& Mock\+W\+A\+L\+::get\+\_\+log\+\_\+buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=309pt]{classMockWAL_a75b13006dea043a55ec442f067824be3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMockWAL_a2ad3e90160cee70e43036f8c10ab9b03}\label{classMockWAL_a2ad3e90160cee70e43036f8c10ab9b03}} 
+\index{MockWAL@{MockWAL}!get\_log\_file@{get\_log\_file}}
+\index{get\_log\_file@{get\_log\_file}!MockWAL@{MockWAL}}
+\doxysubsubsection{\texorpdfstring{get\_log\_file()}{get\_log\_file()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classFileObj}{File\+Obj}}$\ast$ Mock\+W\+A\+L\+::get\+\_\+log\+\_\+file (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{classMockWAL_a2ad3e90160cee70e43036f8c10ab9b03_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMockWAL_ab1375d410d6c4915d7409dcdcc3e1140}\label{classMockWAL_ab1375d410d6c4915d7409dcdcc3e1140}} 
+\index{MockWAL@{MockWAL}!get\_max\_finished\_tranc\_id@{get\_max\_finished\_tranc\_id}}
+\index{get\_max\_finished\_tranc\_id@{get\_max\_finished\_tranc\_id}!MockWAL@{MockWAL}}
+\doxysubsubsection{\texorpdfstring{get\_max\_finished\_tranc\_id()}{get\_max\_finished\_tranc\_id()}}
+{\footnotesize\ttfamily uint64\+\_\+t Mock\+W\+A\+L\+::get\+\_\+max\+\_\+finished\+\_\+tranc\+\_\+id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classWAL_a5ca05fcd1353badcbead4af786acdd51}\label{classWAL_a5ca05fcd1353badcbead4af786acdd51}} 
+\index{MockWAL@{MockWAL}!log@{log}}
+\index{log@{log}!MockWAL@{MockWAL}}
+\doxysubsubsection{\texorpdfstring{log()}{log()}}
+{\footnotesize\ttfamily void W\+A\+L\+::log (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{classRecord}{Record}} $>$ \&}]{records,  }\item[{bool}]{force\+\_\+flush = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inherited]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=267pt]{classWAL_a5ca05fcd1353badcbead4af786acdd51_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=249pt]{classWAL_a5ca05fcd1353badcbead4af786acdd51_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMockWAL_a878e0c1302ba0eb7fd0389bcbade05f1}\label{classMockWAL_a878e0c1302ba0eb7fd0389bcbade05f1}} 
+\index{MockWAL@{MockWAL}!MOCK\_METHOD@{MOCK\_METHOD}}
+\index{MOCK\_METHOD@{MOCK\_METHOD}!MockWAL@{MockWAL}}
+\doxysubsubsection{\texorpdfstring{MOCK\_METHOD()}{MOCK\_METHOD()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Mock\+W\+A\+L\+::\+M\+O\+C\+K\+\_\+\+M\+E\+T\+H\+OD (\begin{DoxyParamCaption}\item[{void}]{,  }\item[{cleaner}]{,  }\item[{()}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMockWAL_a8070ce75f0100751176cb2f97fc83a66}\label{classMockWAL_a8070ce75f0100751176cb2f97fc83a66}} 
+\index{MockWAL@{MockWAL}!MOCK\_METHOD@{MOCK\_METHOD}}
+\index{MOCK\_METHOD@{MOCK\_METHOD}!MockWAL@{MockWAL}}
+\doxysubsubsection{\texorpdfstring{MOCK\_METHOD()}{MOCK\_METHOD()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Mock\+W\+A\+L\+::\+M\+O\+C\+K\+\_\+\+M\+E\+T\+H\+OD (\begin{DoxyParamCaption}\item[{void}]{,  }\item[{clean\+W\+A\+L\+File}]{,  }\item[{()}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMockWAL_a6784d2ce01fb16dc17268bb2d98cb5fb}\label{classMockWAL_a6784d2ce01fb16dc17268bb2d98cb5fb}} 
+\index{MockWAL@{MockWAL}!MOCK\_METHOD@{MOCK\_METHOD}}
+\index{MOCK\_METHOD@{MOCK\_METHOD}!MockWAL@{MockWAL}}
+\doxysubsubsection{\texorpdfstring{MOCK\_METHOD()}{MOCK\_METHOD()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Mock\+W\+A\+L\+::\+M\+O\+C\+K\+\_\+\+M\+E\+T\+H\+OD (\begin{DoxyParamCaption}\item[{void}]{,  }\item[{reset\+\_\+file}]{,  }\item[{()}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classWAL_a25b00c97d5e13314180c6b7d2f69ea6e}\label{classWAL_a25b00c97d5e13314180c6b7d2f69ea6e}} 
+\index{MockWAL@{MockWAL}!recover@{recover}}
+\index{recover@{recover}!MockWAL@{MockWAL}}
+\doxysubsubsection{\texorpdfstring{recover()}{recover()}}
+{\footnotesize\ttfamily std\+::map$<$ uint64\+\_\+t, std\+::vector$<$ \mbox{\hyperlink{classRecord}{Record}} $>$ $>$ W\+A\+L\+::recover (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{log\+\_\+dir,  }\item[{uint64\+\_\+t}]{max\+\_\+finished\+\_\+tranc\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [inherited]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=289pt]{classWAL_a25b00c97d5e13314180c6b7d2f69ea6e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{classWAL_a25b00c97d5e13314180c6b7d2f69ea6e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMockWAL_a79d9a55d86fb6f1d3731997b3e6996c0}\label{classMockWAL_a79d9a55d86fb6f1d3731997b3e6996c0}} 
+\index{MockWAL@{MockWAL}!set\_max\_finished\_tranc\_id@{set\_max\_finished\_tranc\_id}}
+\index{set\_max\_finished\_tranc\_id@{set\_max\_finished\_tranc\_id}!MockWAL@{MockWAL}}
+\doxysubsubsection{\texorpdfstring{set\_max\_finished\_tranc\_id()}{set\_max\_finished\_tranc\_id()}}
+{\footnotesize\ttfamily void Mock\+W\+A\+L\+::set\+\_\+max\+\_\+finished\+\_\+tranc\+\_\+id (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{max\+\_\+finished\+\_\+tranc\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classWAL_a8600e9ca358d5ecf4101a86c993ccd99}\label{classWAL_a8600e9ca358d5ecf4101a86c993ccd99}} 
+\index{MockWAL@{MockWAL}!active\_log\_path\_@{active\_log\_path\_}}
+\index{active\_log\_path\_@{active\_log\_path\_}!MockWAL@{MockWAL}}
+\doxysubsubsection{\texorpdfstring{active\_log\_path\_}{active\_log\_path\_}}
+{\footnotesize\ttfamily std\+::string W\+A\+L\+::active\+\_\+log\+\_\+path\+\_\+\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+\mbox{\Hypertarget{classWAL_abfc6efe6e6b2f9a4251daaaa608e4de4}\label{classWAL_abfc6efe6e6b2f9a4251daaaa608e4de4}} 
+\index{MockWAL@{MockWAL}!buffer\_size\_@{buffer\_size\_}}
+\index{buffer\_size\_@{buffer\_size\_}!MockWAL@{MockWAL}}
+\doxysubsubsection{\texorpdfstring{buffer\_size\_}{buffer\_size\_}}
+{\footnotesize\ttfamily size\+\_\+t W\+A\+L\+::buffer\+\_\+size\+\_\+\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+\mbox{\Hypertarget{classWAL_abdbef65830093b03d9b88ef5e84d10d9}\label{classWAL_abdbef65830093b03d9b88ef5e84d10d9}} 
+\index{MockWAL@{MockWAL}!clean\_interval\_@{clean\_interval\_}}
+\index{clean\_interval\_@{clean\_interval\_}!MockWAL@{MockWAL}}
+\doxysubsubsection{\texorpdfstring{clean\_interval\_}{clean\_interval\_}}
+{\footnotesize\ttfamily uint64\+\_\+t W\+A\+L\+::clean\+\_\+interval\+\_\+\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+\mbox{\Hypertarget{classWAL_a9be6a857cffd2e3222ac191c5b40d27d}\label{classWAL_a9be6a857cffd2e3222ac191c5b40d27d}} 
+\index{MockWAL@{MockWAL}!cleaner\_thread\_@{cleaner\_thread\_}}
+\index{cleaner\_thread\_@{cleaner\_thread\_}!MockWAL@{MockWAL}}
+\doxysubsubsection{\texorpdfstring{cleaner\_thread\_}{cleaner\_thread\_}}
+{\footnotesize\ttfamily std\+::thread W\+A\+L\+::cleaner\+\_\+thread\+\_\+\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+\mbox{\Hypertarget{classWAL_a4b4861b13445284b517239a16d6c4b9e}\label{classWAL_a4b4861b13445284b517239a16d6c4b9e}} 
+\index{MockWAL@{MockWAL}!file\_size\_limit\_@{file\_size\_limit\_}}
+\index{file\_size\_limit\_@{file\_size\_limit\_}!MockWAL@{MockWAL}}
+\doxysubsubsection{\texorpdfstring{file\_size\_limit\_}{file\_size\_limit\_}}
+{\footnotesize\ttfamily size\+\_\+t W\+A\+L\+::file\+\_\+size\+\_\+limit\+\_\+\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+\mbox{\Hypertarget{classWAL_a2b03dc1da020b3ef57447b290ce835a5}\label{classWAL_a2b03dc1da020b3ef57447b290ce835a5}} 
+\index{MockWAL@{MockWAL}!log\_buffer\_@{log\_buffer\_}}
+\index{log\_buffer\_@{log\_buffer\_}!MockWAL@{MockWAL}}
+\doxysubsubsection{\texorpdfstring{log\_buffer\_}{log\_buffer\_}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classRecord}{Record}}$>$ W\+A\+L\+::log\+\_\+buffer\+\_\+\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+\mbox{\Hypertarget{classWAL_ab859c2687e1735b60a5b08cf1dfb2cae}\label{classWAL_ab859c2687e1735b60a5b08cf1dfb2cae}} 
+\index{MockWAL@{MockWAL}!log\_file\_@{log\_file\_}}
+\index{log\_file\_@{log\_file\_}!MockWAL@{MockWAL}}
+\doxysubsubsection{\texorpdfstring{log\_file\_}{log\_file\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classFileObj}{File\+Obj}} W\+A\+L\+::log\+\_\+file\+\_\+\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+\mbox{\Hypertarget{classWAL_afcc85aaacebd1b2def2facb6f1c543e6}\label{classWAL_afcc85aaacebd1b2def2facb6f1c543e6}} 
+\index{MockWAL@{MockWAL}!max\_finished\_tranc\_id\_@{max\_finished\_tranc\_id\_}}
+\index{max\_finished\_tranc\_id\_@{max\_finished\_tranc\_id\_}!MockWAL@{MockWAL}}
+\doxysubsubsection{\texorpdfstring{max\_finished\_tranc\_id\_}{max\_finished\_tranc\_id\_}}
+{\footnotesize\ttfamily uint64\+\_\+t W\+A\+L\+::max\+\_\+finished\+\_\+tranc\+\_\+id\+\_\+\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+\mbox{\Hypertarget{classWAL_a7fd8b5256e50b0fd83c062e16feb090f}\label{classWAL_a7fd8b5256e50b0fd83c062e16feb090f}} 
+\index{MockWAL@{MockWAL}!mutex\_@{mutex\_}}
+\index{mutex\_@{mutex\_}!MockWAL@{MockWAL}}
+\doxysubsubsection{\texorpdfstring{mutex\_}{mutex\_}}
+{\footnotesize\ttfamily std\+::mutex W\+A\+L\+::mutex\+\_\+\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+\mbox{\Hypertarget{classWAL_a9c560569ea10fecb433092f96dabb38c}\label{classWAL_a9c560569ea10fecb433092f96dabb38c}} 
+\index{MockWAL@{MockWAL}!stop\_cleaner\_@{stop\_cleaner\_}}
+\index{stop\_cleaner\_@{stop\_cleaner\_}!MockWAL@{MockWAL}}
+\doxysubsubsection{\texorpdfstring{stop\_cleaner\_}{stop\_cleaner\_}}
+{\footnotesize\ttfamily std\+::atomic$<$bool$>$ W\+A\+L\+::stop\+\_\+cleaner\+\_\+\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+test/\mbox{\hyperlink{testwal_8cpp}{testwal.\+cpp}}\end{DoxyCompactItemize}

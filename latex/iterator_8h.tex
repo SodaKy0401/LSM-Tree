@@ -1,0 +1,116 @@
+\hypertarget{iterator_8h}{}\doxysection{src/\+Iterator/iterator.h File Reference}
+\label{iterator_8h}\index{src/Iterator/iterator.h@{src/Iterator/iterator.h}}
+{\ttfamily \#include $<$bits/stdint-\/uintn.\+h$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$optional$>$}\newline
+{\ttfamily \#include $<$queue$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$utility$>$}\newline
+Include dependency graph for iterator.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{iterator_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{iterator_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}}
+\item 
+struct \mbox{\hyperlink{structSearchItem}{Search\+Item}}
+\item 
+class \mbox{\hyperlink{classHeapIterator}{Heap\+Iterator}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{iterator_8h_a4f6da121dba1526ce091ea9753d0647a}{Iterator\+Type}} \{ \newline
+\mbox{\hyperlink{iterator_8h_a4f6da121dba1526ce091ea9753d0647aaed71623d954506d8137840a9d53b47a8}{Iterator\+Type\+::\+Skip\+List\+Iterator}}, 
+\mbox{\hyperlink{iterator_8h_a4f6da121dba1526ce091ea9753d0647aa1c4a5736db68942c5879d696f45ac414}{Iterator\+Type\+::\+Mem\+Table\+Iterator}}, 
+\mbox{\hyperlink{iterator_8h_a4f6da121dba1526ce091ea9753d0647aa699486357cfbeebc213f706a3074a6ee}{Iterator\+Type\+::\+Sst\+Iterator}}, 
+\mbox{\hyperlink{iterator_8h_a4f6da121dba1526ce091ea9753d0647aa7da23a44a89ae837729e71fd53a40450}{Iterator\+Type\+::\+Heap\+Iterator}}, 
+\newline
+\mbox{\hyperlink{iterator_8h_a4f6da121dba1526ce091ea9753d0647aaa1f51d7cee11642076e0bb11a09bf936}{Iterator\+Type\+::\+Two\+Merge\+Iterator}}, 
+\mbox{\hyperlink{iterator_8h_a4f6da121dba1526ce091ea9753d0647aa0443ae67a4b082676022ac50f2a579ef}{Iterator\+Type\+::\+Concact\+Iterator}}, 
+\mbox{\hyperlink{iterator_8h_a4f6da121dba1526ce091ea9753d0647aaa958df6a89da9756887e5fbc8f3c22b5}{Iterator\+Type\+::\+Level\+Iterator}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{iterator_8h_a77abbab5d55eaf825f9a592bf5332d49}{operator$<$}} (const \mbox{\hyperlink{structSearchItem}{Search\+Item}} \&a, const \mbox{\hyperlink{structSearchItem}{Search\+Item}} \&b)
+\item 
+bool \mbox{\hyperlink{iterator_8h_af90f7a687326ce8ea5f04d187ba7e5d9}{operator$>$}} (const \mbox{\hyperlink{structSearchItem}{Search\+Item}} \&a, const \mbox{\hyperlink{structSearchItem}{Search\+Item}} \&b)
+\item 
+bool \mbox{\hyperlink{iterator_8h_a8544fae24357a63a8a1af1c08bc3a1ec}{operator==}} (const \mbox{\hyperlink{structSearchItem}{Search\+Item}} \&a, const \mbox{\hyperlink{structSearchItem}{Search\+Item}} \&b)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{iterator_8h_a4f6da121dba1526ce091ea9753d0647a}\label{iterator_8h_a4f6da121dba1526ce091ea9753d0647a}} 
+\index{iterator.h@{iterator.h}!IteratorType@{IteratorType}}
+\index{IteratorType@{IteratorType}!iterator.h@{iterator.h}}
+\doxysubsubsection{\texorpdfstring{IteratorType}{IteratorType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{iterator_8h_a4f6da121dba1526ce091ea9753d0647a}{Iterator\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SkipListIterator@{SkipListIterator}!iterator.h@{iterator.h}}\index{iterator.h@{iterator.h}!SkipListIterator@{SkipListIterator}}}\mbox{\Hypertarget{iterator_8h_a4f6da121dba1526ce091ea9753d0647aaed71623d954506d8137840a9d53b47a8}\label{iterator_8h_a4f6da121dba1526ce091ea9753d0647aaed71623d954506d8137840a9d53b47a8}} 
+Skip\+List\+Iterator&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MemTableIterator@{MemTableIterator}!iterator.h@{iterator.h}}\index{iterator.h@{iterator.h}!MemTableIterator@{MemTableIterator}}}\mbox{\Hypertarget{iterator_8h_a4f6da121dba1526ce091ea9753d0647aa1c4a5736db68942c5879d696f45ac414}\label{iterator_8h_a4f6da121dba1526ce091ea9753d0647aa1c4a5736db68942c5879d696f45ac414}} 
+Mem\+Table\+Iterator&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SstIterator@{SstIterator}!iterator.h@{iterator.h}}\index{iterator.h@{iterator.h}!SstIterator@{SstIterator}}}\mbox{\Hypertarget{iterator_8h_a4f6da121dba1526ce091ea9753d0647aa699486357cfbeebc213f706a3074a6ee}\label{iterator_8h_a4f6da121dba1526ce091ea9753d0647aa699486357cfbeebc213f706a3074a6ee}} 
+Sst\+Iterator&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HeapIterator@{HeapIterator}!iterator.h@{iterator.h}}\index{iterator.h@{iterator.h}!HeapIterator@{HeapIterator}}}\mbox{\Hypertarget{iterator_8h_a4f6da121dba1526ce091ea9753d0647aa7da23a44a89ae837729e71fd53a40450}\label{iterator_8h_a4f6da121dba1526ce091ea9753d0647aa7da23a44a89ae837729e71fd53a40450}} 
+Heap\+Iterator&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TwoMergeIterator@{TwoMergeIterator}!iterator.h@{iterator.h}}\index{iterator.h@{iterator.h}!TwoMergeIterator@{TwoMergeIterator}}}\mbox{\Hypertarget{iterator_8h_a4f6da121dba1526ce091ea9753d0647aaa1f51d7cee11642076e0bb11a09bf936}\label{iterator_8h_a4f6da121dba1526ce091ea9753d0647aaa1f51d7cee11642076e0bb11a09bf936}} 
+Two\+Merge\+Iterator&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ConcactIterator@{ConcactIterator}!iterator.h@{iterator.h}}\index{iterator.h@{iterator.h}!ConcactIterator@{ConcactIterator}}}\mbox{\Hypertarget{iterator_8h_a4f6da121dba1526ce091ea9753d0647aa0443ae67a4b082676022ac50f2a579ef}\label{iterator_8h_a4f6da121dba1526ce091ea9753d0647aa0443ae67a4b082676022ac50f2a579ef}} 
+Concact\+Iterator&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LevelIterator@{LevelIterator}!iterator.h@{iterator.h}}\index{iterator.h@{iterator.h}!LevelIterator@{LevelIterator}}}\mbox{\Hypertarget{iterator_8h_a4f6da121dba1526ce091ea9753d0647aaa958df6a89da9756887e5fbc8f3c22b5}\label{iterator_8h_a4f6da121dba1526ce091ea9753d0647aaa958df6a89da9756887e5fbc8f3c22b5}} 
+Level\+Iterator&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{iterator_8h_a77abbab5d55eaf825f9a592bf5332d49}\label{iterator_8h_a77abbab5d55eaf825f9a592bf5332d49}} 
+\index{iterator.h@{iterator.h}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!iterator.h@{iterator.h}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structSearchItem}{Search\+Item}} \&}]{a,  }\item[{const \mbox{\hyperlink{structSearchItem}{Search\+Item}} \&}]{b }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{iterator_8h_a8544fae24357a63a8a1af1c08bc3a1ec}\label{iterator_8h_a8544fae24357a63a8a1af1c08bc3a1ec}} 
+\index{iterator.h@{iterator.h}!operator==@{operator==}}
+\index{operator==@{operator==}!iterator.h@{iterator.h}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structSearchItem}{Search\+Item}} \&}]{a,  }\item[{const \mbox{\hyperlink{structSearchItem}{Search\+Item}} \&}]{b }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{iterator_8h_af90f7a687326ce8ea5f04d187ba7e5d9}\label{iterator_8h_af90f7a687326ce8ea5f04d187ba7e5d9}} 
+\index{iterator.h@{iterator.h}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!iterator.h@{iterator.h}}
+\doxysubsubsection{\texorpdfstring{operator$>$()}{operator>()}}
+{\footnotesize\ttfamily bool operator$>$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structSearchItem}{Search\+Item}} \&}]{a,  }\item[{const \mbox{\hyperlink{structSearchItem}{Search\+Item}} \&}]{b }\end{DoxyParamCaption})}
+

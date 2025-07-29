@@ -1,0 +1,234 @@
+\hypertarget{classWAL}{}\doxysection{W\+AL Class Reference}
+\label{classWAL}\index{WAL@{WAL}}
+
+
+{\ttfamily \#include $<$wal.\+h$>$}
+
+
+
+Inheritance diagram for W\+AL\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=145pt]{classWAL__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for W\+AL\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=150pt]{classWAL__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_a336ce9465e0cc0460f140e246381e6f1}{W\+AL}} (const std\+::string \&log\+\_\+dir, size\+\_\+t buffer\+\_\+size, uint64\+\_\+t max\+\_\+finished\+\_\+tranc\+\_\+id, uint64\+\_\+t clean\+\_\+interval, uint64\+\_\+t file\+\_\+size\+\_\+limit)
+\item 
+\mbox{\hyperlink{classWAL_abfc65de46187895c0c64b14d8397e5e3}{$\sim$\+W\+AL}} ()
+\item 
+void \mbox{\hyperlink{classWAL_a5ca05fcd1353badcbead4af786acdd51}{log}} (const std\+::vector$<$ \mbox{\hyperlink{classRecord}{Record}} $>$ \&records, bool force\+\_\+flush=false)
+\item 
+void \mbox{\hyperlink{classWAL_ab8e343ef8dbcae766d4c7fefe8efeac5}{flush}} ()
+\item 
+void \mbox{\hyperlink{classWAL_a0504e611139242b045c83e332431c5d7}{set\+\_\+max\+\_\+finished\+\_\+tranc\+\_\+id}} (uint64\+\_\+t max\+\_\+finished\+\_\+tranc\+\_\+id)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::map$<$ uint64\+\_\+t, std\+::vector$<$ \mbox{\hyperlink{classRecord}{Record}} $>$ $>$ \mbox{\hyperlink{classWAL_a25b00c97d5e13314180c6b7d2f69ea6e}{recover}} (const std\+::string \&log\+\_\+dir, uint64\+\_\+t max\+\_\+finished\+\_\+tranc\+\_\+id)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classWAL_a8600e9ca358d5ecf4101a86c993ccd99}{active\+\_\+log\+\_\+path\+\_\+}}
+\item 
+\mbox{\hyperlink{classFileObj}{File\+Obj}} \mbox{\hyperlink{classWAL_ab859c2687e1735b60a5b08cf1dfb2cae}{log\+\_\+file\+\_\+}}
+\item 
+size\+\_\+t \mbox{\hyperlink{classWAL_a4b4861b13445284b517239a16d6c4b9e}{file\+\_\+size\+\_\+limit\+\_\+}}
+\item 
+std\+::mutex \mbox{\hyperlink{classWAL_a7fd8b5256e50b0fd83c062e16feb090f}{mutex\+\_\+}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classRecord}{Record}} $>$ \mbox{\hyperlink{classWAL_a2b03dc1da020b3ef57447b290ce835a5}{log\+\_\+buffer\+\_\+}}
+\item 
+size\+\_\+t \mbox{\hyperlink{classWAL_abfc6efe6e6b2f9a4251daaaa608e4de4}{buffer\+\_\+size\+\_\+}}
+\item 
+std\+::thread \mbox{\hyperlink{classWAL_a9be6a857cffd2e3222ac191c5b40d27d}{cleaner\+\_\+thread\+\_\+}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{classWAL_afcc85aaacebd1b2def2facb6f1c543e6}{max\+\_\+finished\+\_\+tranc\+\_\+id\+\_\+}}
+\item 
+std\+::atomic$<$ bool $>$ \mbox{\hyperlink{classWAL_a9c560569ea10fecb433092f96dabb38c}{stop\+\_\+cleaner\+\_\+}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{classWAL_abdbef65830093b03d9b88ef5e84d10d9}{clean\+\_\+interval\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classWAL_a336ce9465e0cc0460f140e246381e6f1}\label{classWAL_a336ce9465e0cc0460f140e246381e6f1}} 
+\index{WAL@{WAL}!WAL@{WAL}}
+\index{WAL@{WAL}!WAL@{WAL}}
+\doxysubsubsection{\texorpdfstring{WAL()}{WAL()}}
+{\footnotesize\ttfamily W\+A\+L\+::\+W\+AL (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{log\+\_\+dir,  }\item[{size\+\_\+t}]{buffer\+\_\+size,  }\item[{uint64\+\_\+t}]{max\+\_\+finished\+\_\+tranc\+\_\+id,  }\item[{uint64\+\_\+t}]{clean\+\_\+interval,  }\item[{uint64\+\_\+t}]{file\+\_\+size\+\_\+limit }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{classWAL_a336ce9465e0cc0460f140e246381e6f1_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classWAL_abfc65de46187895c0c64b14d8397e5e3}\label{classWAL_abfc65de46187895c0c64b14d8397e5e3}} 
+\index{WAL@{WAL}!````~WAL@{$\sim$WAL}}
+\index{````~WAL@{$\sim$WAL}!WAL@{WAL}}
+\doxysubsubsection{\texorpdfstring{$\sim$WAL()}{~WAL()}}
+{\footnotesize\ttfamily W\+A\+L\+::$\sim$\+W\+AL (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classWAL_abfc65de46187895c0c64b14d8397e5e3_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classWAL_ab8e343ef8dbcae766d4c7fefe8efeac5}\label{classWAL_ab8e343ef8dbcae766d4c7fefe8efeac5}} 
+\index{WAL@{WAL}!flush@{flush}}
+\index{flush@{flush}!WAL@{WAL}}
+\doxysubsubsection{\texorpdfstring{flush()}{flush()}}
+{\footnotesize\ttfamily void W\+A\+L\+::flush (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{classWAL_ab8e343ef8dbcae766d4c7fefe8efeac5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classWAL_a5ca05fcd1353badcbead4af786acdd51}\label{classWAL_a5ca05fcd1353badcbead4af786acdd51}} 
+\index{WAL@{WAL}!log@{log}}
+\index{log@{log}!WAL@{WAL}}
+\doxysubsubsection{\texorpdfstring{log()}{log()}}
+{\footnotesize\ttfamily void W\+A\+L\+::log (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{classRecord}{Record}} $>$ \&}]{records,  }\item[{bool}]{force\+\_\+flush = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=267pt]{classWAL_a5ca05fcd1353badcbead4af786acdd51_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=249pt]{classWAL_a5ca05fcd1353badcbead4af786acdd51_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classWAL_a25b00c97d5e13314180c6b7d2f69ea6e}\label{classWAL_a25b00c97d5e13314180c6b7d2f69ea6e}} 
+\index{WAL@{WAL}!recover@{recover}}
+\index{recover@{recover}!WAL@{WAL}}
+\doxysubsubsection{\texorpdfstring{recover()}{recover()}}
+{\footnotesize\ttfamily std\+::map$<$ uint64\+\_\+t, std\+::vector$<$ \mbox{\hyperlink{classRecord}{Record}} $>$ $>$ W\+A\+L\+::recover (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{log\+\_\+dir,  }\item[{uint64\+\_\+t}]{max\+\_\+finished\+\_\+tranc\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=289pt]{classWAL_a25b00c97d5e13314180c6b7d2f69ea6e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{classWAL_a25b00c97d5e13314180c6b7d2f69ea6e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classWAL_a0504e611139242b045c83e332431c5d7}\label{classWAL_a0504e611139242b045c83e332431c5d7}} 
+\index{WAL@{WAL}!set\_max\_finished\_tranc\_id@{set\_max\_finished\_tranc\_id}}
+\index{set\_max\_finished\_tranc\_id@{set\_max\_finished\_tranc\_id}!WAL@{WAL}}
+\doxysubsubsection{\texorpdfstring{set\_max\_finished\_tranc\_id()}{set\_max\_finished\_tranc\_id()}}
+{\footnotesize\ttfamily void W\+A\+L\+::set\+\_\+max\+\_\+finished\+\_\+tranc\+\_\+id (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{max\+\_\+finished\+\_\+tranc\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classWAL_a8600e9ca358d5ecf4101a86c993ccd99}\label{classWAL_a8600e9ca358d5ecf4101a86c993ccd99}} 
+\index{WAL@{WAL}!active\_log\_path\_@{active\_log\_path\_}}
+\index{active\_log\_path\_@{active\_log\_path\_}!WAL@{WAL}}
+\doxysubsubsection{\texorpdfstring{active\_log\_path\_}{active\_log\_path\_}}
+{\footnotesize\ttfamily std\+::string W\+A\+L\+::active\+\_\+log\+\_\+path\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classWAL_abfc6efe6e6b2f9a4251daaaa608e4de4}\label{classWAL_abfc6efe6e6b2f9a4251daaaa608e4de4}} 
+\index{WAL@{WAL}!buffer\_size\_@{buffer\_size\_}}
+\index{buffer\_size\_@{buffer\_size\_}!WAL@{WAL}}
+\doxysubsubsection{\texorpdfstring{buffer\_size\_}{buffer\_size\_}}
+{\footnotesize\ttfamily size\+\_\+t W\+A\+L\+::buffer\+\_\+size\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classWAL_abdbef65830093b03d9b88ef5e84d10d9}\label{classWAL_abdbef65830093b03d9b88ef5e84d10d9}} 
+\index{WAL@{WAL}!clean\_interval\_@{clean\_interval\_}}
+\index{clean\_interval\_@{clean\_interval\_}!WAL@{WAL}}
+\doxysubsubsection{\texorpdfstring{clean\_interval\_}{clean\_interval\_}}
+{\footnotesize\ttfamily uint64\+\_\+t W\+A\+L\+::clean\+\_\+interval\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classWAL_a9be6a857cffd2e3222ac191c5b40d27d}\label{classWAL_a9be6a857cffd2e3222ac191c5b40d27d}} 
+\index{WAL@{WAL}!cleaner\_thread\_@{cleaner\_thread\_}}
+\index{cleaner\_thread\_@{cleaner\_thread\_}!WAL@{WAL}}
+\doxysubsubsection{\texorpdfstring{cleaner\_thread\_}{cleaner\_thread\_}}
+{\footnotesize\ttfamily std\+::thread W\+A\+L\+::cleaner\+\_\+thread\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classWAL_a4b4861b13445284b517239a16d6c4b9e}\label{classWAL_a4b4861b13445284b517239a16d6c4b9e}} 
+\index{WAL@{WAL}!file\_size\_limit\_@{file\_size\_limit\_}}
+\index{file\_size\_limit\_@{file\_size\_limit\_}!WAL@{WAL}}
+\doxysubsubsection{\texorpdfstring{file\_size\_limit\_}{file\_size\_limit\_}}
+{\footnotesize\ttfamily size\+\_\+t W\+A\+L\+::file\+\_\+size\+\_\+limit\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classWAL_a2b03dc1da020b3ef57447b290ce835a5}\label{classWAL_a2b03dc1da020b3ef57447b290ce835a5}} 
+\index{WAL@{WAL}!log\_buffer\_@{log\_buffer\_}}
+\index{log\_buffer\_@{log\_buffer\_}!WAL@{WAL}}
+\doxysubsubsection{\texorpdfstring{log\_buffer\_}{log\_buffer\_}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classRecord}{Record}}$>$ W\+A\+L\+::log\+\_\+buffer\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classWAL_ab859c2687e1735b60a5b08cf1dfb2cae}\label{classWAL_ab859c2687e1735b60a5b08cf1dfb2cae}} 
+\index{WAL@{WAL}!log\_file\_@{log\_file\_}}
+\index{log\_file\_@{log\_file\_}!WAL@{WAL}}
+\doxysubsubsection{\texorpdfstring{log\_file\_}{log\_file\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classFileObj}{File\+Obj}} W\+A\+L\+::log\+\_\+file\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classWAL_afcc85aaacebd1b2def2facb6f1c543e6}\label{classWAL_afcc85aaacebd1b2def2facb6f1c543e6}} 
+\index{WAL@{WAL}!max\_finished\_tranc\_id\_@{max\_finished\_tranc\_id\_}}
+\index{max\_finished\_tranc\_id\_@{max\_finished\_tranc\_id\_}!WAL@{WAL}}
+\doxysubsubsection{\texorpdfstring{max\_finished\_tranc\_id\_}{max\_finished\_tranc\_id\_}}
+{\footnotesize\ttfamily uint64\+\_\+t W\+A\+L\+::max\+\_\+finished\+\_\+tranc\+\_\+id\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classWAL_a7fd8b5256e50b0fd83c062e16feb090f}\label{classWAL_a7fd8b5256e50b0fd83c062e16feb090f}} 
+\index{WAL@{WAL}!mutex\_@{mutex\_}}
+\index{mutex\_@{mutex\_}!WAL@{WAL}}
+\doxysubsubsection{\texorpdfstring{mutex\_}{mutex\_}}
+{\footnotesize\ttfamily std\+::mutex W\+A\+L\+::mutex\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classWAL_a9c560569ea10fecb433092f96dabb38c}\label{classWAL_a9c560569ea10fecb433092f96dabb38c}} 
+\index{WAL@{WAL}!stop\_cleaner\_@{stop\_cleaner\_}}
+\index{stop\_cleaner\_@{stop\_cleaner\_}!WAL@{WAL}}
+\doxysubsubsection{\texorpdfstring{stop\_cleaner\_}{stop\_cleaner\_}}
+{\footnotesize\ttfamily std\+::atomic$<$bool$>$ W\+A\+L\+::stop\+\_\+cleaner\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+W\+A\+L/\mbox{\hyperlink{wal_8h}{wal.\+h}}\item 
+src/\+W\+A\+L/\mbox{\hyperlink{wal_8cpp}{wal.\+cpp}}\end{DoxyCompactItemize}

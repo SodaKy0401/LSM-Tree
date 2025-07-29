@@ -80,9 +80,10 @@ private:
   void update_current() const;
 
 private:
-  std::priority_queue<SearchItem, std::vector<SearchItem>,
+  std::priority_queue<SearchItem, 
+                      std::vector<SearchItem>,
                       std::greater<SearchItem>>
-      items;
+                      items;
   mutable std::shared_ptr<value_type> current; // 用于存储当前元素
   uint64_t max_tranc_id_ = 0;
 };

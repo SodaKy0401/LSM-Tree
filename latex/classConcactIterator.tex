@@ -1,0 +1,247 @@
+\hypertarget{classConcactIterator}{}\doxysection{Concact\+Iterator Class Reference}
+\label{classConcactIterator}\index{ConcactIterator@{ConcactIterator}}
+
+
+{\ttfamily \#include $<$concat\+\_\+iterator.\+h$>$}
+
+
+
+Inheritance diagram for Concact\+Iterator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{classConcactIterator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Concact\+Iterator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{classConcactIterator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} = std\+::pair$<$ std\+::string, std\+::string $>$
+\item 
+using \mbox{\hyperlink{classBaseIterator_a873de620a7886f465bbb69933c5416fb}{pointer}} = \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} $\ast$
+\item 
+using \mbox{\hyperlink{classBaseIterator_ae3e2769edb02a9b819b19cd2dd957f6f}{reference}} = \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} \&
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classConcactIterator_a48a2adcf4f981e3fcfefd0074c3d7654}{Concact\+Iterator}} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSST}{S\+ST}} $>$$>$ ssts, uint64\+\_\+t tranc\+\_\+id)
+\item 
+std\+::string \mbox{\hyperlink{classConcactIterator_a5324d1bce7870395c39b66723057f08a}{key}} ()
+\item 
+std\+::string \mbox{\hyperlink{classConcactIterator_ad20101cdbf1cd0df216cad1ddfbea7ea}{value}} ()
+\item 
+virtual \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \& \mbox{\hyperlink{classConcactIterator_a80d0c84bdebeb1e903686a80a53fd540}{operator++}} () override
+\item 
+virtual bool \mbox{\hyperlink{classConcactIterator_add8873049ec2a1c1a50aa7d9e53f9752}{operator==}} (const \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \&other) const override
+\item 
+virtual bool \mbox{\hyperlink{classConcactIterator_a7c05ca4df3effbf836349a52f69cb398}{operator!=}} (const \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \&other) const override
+\item 
+virtual \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} \mbox{\hyperlink{classConcactIterator_a12248f8f0b9fab92c902c1a1b160cd94}{operator$\ast$}} () const override
+\item 
+virtual \mbox{\hyperlink{iterator_8h_a4f6da121dba1526ce091ea9753d0647a}{Iterator\+Type}} \mbox{\hyperlink{classConcactIterator_a466b5ad04cd284dd6d5fa8277dcf4843}{get\+\_\+type}} () const override
+\item 
+virtual uint64\+\_\+t \mbox{\hyperlink{classConcactIterator_a38a0e78b86c6c8506d379b152261fd69}{get\+\_\+tranc\+\_\+id}} () const override
+\item 
+virtual bool \mbox{\hyperlink{classConcactIterator_a52e55b0cba0f3ed94b340df7b2e55a17}{is\+\_\+end}} () const override
+\item 
+virtual bool \mbox{\hyperlink{classConcactIterator_a30a4c030668af51e47932127b1b3e3eb}{is\+\_\+valid}} () const override
+\item 
+\mbox{\hyperlink{classBaseIterator_a873de620a7886f465bbb69933c5416fb}{pointer}} \mbox{\hyperlink{classConcactIterator_a22e7953e9574e11e3bc06ad6e84ae30b}{operator-\/$>$}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classBaseIterator_a873de620a7886f465bbb69933c5416fb}\label{classBaseIterator_a873de620a7886f465bbb69933c5416fb}} 
+\index{ConcactIterator@{ConcactIterator}!pointer@{pointer}}
+\index{pointer@{pointer}!ConcactIterator@{ConcactIterator}}
+\doxysubsubsection{\texorpdfstring{pointer}{pointer}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classBaseIterator_a873de620a7886f465bbb69933c5416fb}{Base\+Iterator\+::pointer}} =  \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} $\ast$\hspace{0.3cm}{\ttfamily [inherited]}}
+
+\mbox{\Hypertarget{classBaseIterator_ae3e2769edb02a9b819b19cd2dd957f6f}\label{classBaseIterator_ae3e2769edb02a9b819b19cd2dd957f6f}} 
+\index{ConcactIterator@{ConcactIterator}!reference@{reference}}
+\index{reference@{reference}!ConcactIterator@{ConcactIterator}}
+\doxysubsubsection{\texorpdfstring{reference}{reference}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classBaseIterator_ae3e2769edb02a9b819b19cd2dd957f6f}{Base\+Iterator\+::reference}} =  \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} \&\hspace{0.3cm}{\ttfamily [inherited]}}
+
+\mbox{\Hypertarget{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}\label{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}} 
+\index{ConcactIterator@{ConcactIterator}!value\_type@{value\_type}}
+\index{value\_type@{value\_type}!ConcactIterator@{ConcactIterator}}
+\doxysubsubsection{\texorpdfstring{value\_type}{value\_type}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{Base\+Iterator\+::value\+\_\+type}} =  std\+::pair$<$std\+::string, std\+::string$>$\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classConcactIterator_a48a2adcf4f981e3fcfefd0074c3d7654}\label{classConcactIterator_a48a2adcf4f981e3fcfefd0074c3d7654}} 
+\index{ConcactIterator@{ConcactIterator}!ConcactIterator@{ConcactIterator}}
+\index{ConcactIterator@{ConcactIterator}!ConcactIterator@{ConcactIterator}}
+\doxysubsubsection{\texorpdfstring{ConcactIterator()}{ConcactIterator()}}
+{\footnotesize\ttfamily Concact\+Iterator\+::\+Concact\+Iterator (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSST}{S\+ST}} $>$$>$}]{ssts,  }\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classConcactIterator_a38a0e78b86c6c8506d379b152261fd69}\label{classConcactIterator_a38a0e78b86c6c8506d379b152261fd69}} 
+\index{ConcactIterator@{ConcactIterator}!get\_tranc\_id@{get\_tranc\_id}}
+\index{get\_tranc\_id@{get\_tranc\_id}!ConcactIterator@{ConcactIterator}}
+\doxysubsubsection{\texorpdfstring{get\_tranc\_id()}{get\_tranc\_id()}}
+{\footnotesize\ttfamily uint64\+\_\+t Concact\+Iterator\+::get\+\_\+tranc\+\_\+id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_afbac00d0570707027bb34d7f02ad5a5e}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classConcactIterator_a466b5ad04cd284dd6d5fa8277dcf4843}\label{classConcactIterator_a466b5ad04cd284dd6d5fa8277dcf4843}} 
+\index{ConcactIterator@{ConcactIterator}!get\_type@{get\_type}}
+\index{get\_type@{get\_type}!ConcactIterator@{ConcactIterator}}
+\doxysubsubsection{\texorpdfstring{get\_type()}{get\_type()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{iterator_8h_a4f6da121dba1526ce091ea9753d0647a}{Iterator\+Type}} Concact\+Iterator\+::get\+\_\+type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a087b836b0654e9929640e6807deb219c}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classConcactIterator_a52e55b0cba0f3ed94b340df7b2e55a17}\label{classConcactIterator_a52e55b0cba0f3ed94b340df7b2e55a17}} 
+\index{ConcactIterator@{ConcactIterator}!is\_end@{is\_end}}
+\index{is\_end@{is\_end}!ConcactIterator@{ConcactIterator}}
+\doxysubsubsection{\texorpdfstring{is\_end()}{is\_end()}}
+{\footnotesize\ttfamily bool Concact\+Iterator\+::is\+\_\+end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_aaa8a10f554780422293e00ee1b68a123}{Base\+Iterator}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classConcactIterator_a52e55b0cba0f3ed94b340df7b2e55a17_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classConcactIterator_a30a4c030668af51e47932127b1b3e3eb}\label{classConcactIterator_a30a4c030668af51e47932127b1b3e3eb}} 
+\index{ConcactIterator@{ConcactIterator}!is\_valid@{is\_valid}}
+\index{is\_valid@{is\_valid}!ConcactIterator@{ConcactIterator}}
+\doxysubsubsection{\texorpdfstring{is\_valid()}{is\_valid()}}
+{\footnotesize\ttfamily bool Concact\+Iterator\+::is\+\_\+valid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a283f72f0b0fc52a33edaab270f3558da}{Base\+Iterator}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{classConcactIterator_a30a4c030668af51e47932127b1b3e3eb_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classConcactIterator_a5324d1bce7870395c39b66723057f08a}\label{classConcactIterator_a5324d1bce7870395c39b66723057f08a}} 
+\index{ConcactIterator@{ConcactIterator}!key@{key}}
+\index{key@{key}!ConcactIterator@{ConcactIterator}}
+\doxysubsubsection{\texorpdfstring{key()}{key()}}
+{\footnotesize\ttfamily std\+::string Concact\+Iterator\+::key (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{classConcactIterator_a5324d1bce7870395c39b66723057f08a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classConcactIterator_a7c05ca4df3effbf836349a52f69cb398}\label{classConcactIterator_a7c05ca4df3effbf836349a52f69cb398}} 
+\index{ConcactIterator@{ConcactIterator}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!ConcactIterator@{ConcactIterator}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool Concact\+Iterator\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a60263f58b02942344090e29e72215d26}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classConcactIterator_a12248f8f0b9fab92c902c1a1b160cd94}\label{classConcactIterator_a12248f8f0b9fab92c902c1a1b160cd94}} 
+\index{ConcactIterator@{ConcactIterator}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!ConcactIterator@{ConcactIterator}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{Concact\+Iterator\+::value\+\_\+type}} Concact\+Iterator\+::operator$\ast$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a79f8f0831999342671817a9969107aba}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classConcactIterator_a80d0c84bdebeb1e903686a80a53fd540}\label{classConcactIterator_a80d0c84bdebeb1e903686a80a53fd540}} 
+\index{ConcactIterator@{ConcactIterator}!operator++@{operator++}}
+\index{operator++@{operator++}!ConcactIterator@{ConcactIterator}}
+\doxysubsubsection{\texorpdfstring{operator++()}{operator++()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \& Concact\+Iterator\+::operator++ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_aa699a2de97bf243e89826987dbf1b404}{Base\+Iterator}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classConcactIterator_a80d0c84bdebeb1e903686a80a53fd540_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classConcactIterator_a22e7953e9574e11e3bc06ad6e84ae30b}\label{classConcactIterator_a22e7953e9574e11e3bc06ad6e84ae30b}} 
+\index{ConcactIterator@{ConcactIterator}!operator-\/$>$@{operator-\/$>$}}
+\index{operator-\/$>$@{operator-\/$>$}!ConcactIterator@{ConcactIterator}}
+\doxysubsubsection{\texorpdfstring{operator-\/$>$()}{operator->()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBaseIterator_a873de620a7886f465bbb69933c5416fb}{Concact\+Iterator\+::pointer}} Concact\+Iterator\+::operator-\/$>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classConcactIterator_add8873049ec2a1c1a50aa7d9e53f9752}\label{classConcactIterator_add8873049ec2a1c1a50aa7d9e53f9752}} 
+\index{ConcactIterator@{ConcactIterator}!operator==@{operator==}}
+\index{operator==@{operator==}!ConcactIterator@{ConcactIterator}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Concact\+Iterator\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a760ab242074729f5c953a968b967ffe2}{Base\+Iterator}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classConcactIterator_add8873049ec2a1c1a50aa7d9e53f9752_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classConcactIterator_ad20101cdbf1cd0df216cad1ddfbea7ea}\label{classConcactIterator_ad20101cdbf1cd0df216cad1ddfbea7ea}} 
+\index{ConcactIterator@{ConcactIterator}!value@{value}}
+\index{value@{value}!ConcactIterator@{ConcactIterator}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}}
+{\footnotesize\ttfamily std\+::string Concact\+Iterator\+::value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{classConcactIterator_ad20101cdbf1cd0df216cad1ddfbea7ea_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+S\+S\+T/\mbox{\hyperlink{concat__iterator_8h}{concat\+\_\+iterator.\+h}}\item 
+src/\+S\+S\+T/\mbox{\hyperlink{concat__iterator_8cpp}{concat\+\_\+iterator.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,271 @@
+\hypertarget{classTwoMergeIterator}{}\doxysection{Two\+Merge\+Iterator Class Reference}
+\label{classTwoMergeIterator}\index{TwoMergeIterator@{TwoMergeIterator}}
+
+
+{\ttfamily \#include $<$two\+\_\+merge\+\_\+iterator.\+h$>$}
+
+
+
+Inheritance diagram for Two\+Merge\+Iterator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{classTwoMergeIterator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Two\+Merge\+Iterator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{classTwoMergeIterator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} = std\+::pair$<$ std\+::string, std\+::string $>$
+\item 
+using \mbox{\hyperlink{classBaseIterator_a873de620a7886f465bbb69933c5416fb}{pointer}} = \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} $\ast$
+\item 
+using \mbox{\hyperlink{classBaseIterator_ae3e2769edb02a9b819b19cd2dd957f6f}{reference}} = \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} \&
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTwoMergeIterator_a878f353c187a37cb85ec93ccff5d7638}{Two\+Merge\+Iterator}} ()
+\item 
+\mbox{\hyperlink{classTwoMergeIterator_ae2de1c8d1100e8efbc1f9795a851eee9}{Two\+Merge\+Iterator}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} $>$ it\+\_\+a, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} $>$ it\+\_\+b, uint64\+\_\+t max\+\_\+tranc\+\_\+id)
+\item 
+bool \mbox{\hyperlink{classTwoMergeIterator_a5280590a0fe419dd86c530615bfa2440}{choose\+\_\+it\+\_\+a}} ()
+\item 
+void \mbox{\hyperlink{classTwoMergeIterator_aeae96977f4d8d9444ea48bbea0516b2d}{skip\+\_\+by\+\_\+tranc\+\_\+id}} ()
+\item 
+void \mbox{\hyperlink{classTwoMergeIterator_ad3395b155d43b85246031cbda2411a8f}{skip\+\_\+it\+\_\+b}} ()
+\item 
+virtual \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \& \mbox{\hyperlink{classTwoMergeIterator_a0aaf88cfd746af0db3946d542a3262ad}{operator++}} () override
+\item 
+virtual bool \mbox{\hyperlink{classTwoMergeIterator_a3e8d0e58a68209c30cdbd647fc5a11c3}{operator==}} (const \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \&other) const override
+\item 
+virtual bool \mbox{\hyperlink{classTwoMergeIterator_acfd9ca4e801e0312a093c233b79f1542}{operator!=}} (const \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \&other) const override
+\item 
+virtual \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} \mbox{\hyperlink{classTwoMergeIterator_af49c1e64aada0b9f0cdd06638f5baea4}{operator$\ast$}} () const override
+\item 
+virtual \mbox{\hyperlink{iterator_8h_a4f6da121dba1526ce091ea9753d0647a}{Iterator\+Type}} \mbox{\hyperlink{classTwoMergeIterator_ad51591272711a41387e85497ac9fa9bf}{get\+\_\+type}} () const override
+\item 
+virtual uint64\+\_\+t \mbox{\hyperlink{classTwoMergeIterator_adedef447799357896af1effdf571e189}{get\+\_\+tranc\+\_\+id}} () const override
+\item 
+virtual bool \mbox{\hyperlink{classTwoMergeIterator_a531dac930cf56dbed74db04613aa0a5b}{is\+\_\+end}} () const override
+\item 
+virtual bool \mbox{\hyperlink{classTwoMergeIterator_a3ff6b0c19c4bded7e5d3313048383a11}{is\+\_\+valid}} () const override
+\item 
+\mbox{\hyperlink{classBaseIterator_a873de620a7886f465bbb69933c5416fb}{pointer}} \mbox{\hyperlink{classTwoMergeIterator_acba6757165efdcabaf03927cb7648b5d}{operator-\/$>$}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classBaseIterator_a873de620a7886f465bbb69933c5416fb}\label{classBaseIterator_a873de620a7886f465bbb69933c5416fb}} 
+\index{TwoMergeIterator@{TwoMergeIterator}!pointer@{pointer}}
+\index{pointer@{pointer}!TwoMergeIterator@{TwoMergeIterator}}
+\doxysubsubsection{\texorpdfstring{pointer}{pointer}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classBaseIterator_a873de620a7886f465bbb69933c5416fb}{Base\+Iterator\+::pointer}} =  \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} $\ast$\hspace{0.3cm}{\ttfamily [inherited]}}
+
+\mbox{\Hypertarget{classBaseIterator_ae3e2769edb02a9b819b19cd2dd957f6f}\label{classBaseIterator_ae3e2769edb02a9b819b19cd2dd957f6f}} 
+\index{TwoMergeIterator@{TwoMergeIterator}!reference@{reference}}
+\index{reference@{reference}!TwoMergeIterator@{TwoMergeIterator}}
+\doxysubsubsection{\texorpdfstring{reference}{reference}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classBaseIterator_ae3e2769edb02a9b819b19cd2dd957f6f}{Base\+Iterator\+::reference}} =  \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} \&\hspace{0.3cm}{\ttfamily [inherited]}}
+
+\mbox{\Hypertarget{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}\label{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}} 
+\index{TwoMergeIterator@{TwoMergeIterator}!value\_type@{value\_type}}
+\index{value\_type@{value\_type}!TwoMergeIterator@{TwoMergeIterator}}
+\doxysubsubsection{\texorpdfstring{value\_type}{value\_type}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{Base\+Iterator\+::value\+\_\+type}} =  std\+::pair$<$std\+::string, std\+::string$>$\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTwoMergeIterator_a878f353c187a37cb85ec93ccff5d7638}\label{classTwoMergeIterator_a878f353c187a37cb85ec93ccff5d7638}} 
+\index{TwoMergeIterator@{TwoMergeIterator}!TwoMergeIterator@{TwoMergeIterator}}
+\index{TwoMergeIterator@{TwoMergeIterator}!TwoMergeIterator@{TwoMergeIterator}}
+\doxysubsubsection{\texorpdfstring{TwoMergeIterator()}{TwoMergeIterator()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Two\+Merge\+Iterator\+::\+Two\+Merge\+Iterator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classTwoMergeIterator_ae2de1c8d1100e8efbc1f9795a851eee9}\label{classTwoMergeIterator_ae2de1c8d1100e8efbc1f9795a851eee9}} 
+\index{TwoMergeIterator@{TwoMergeIterator}!TwoMergeIterator@{TwoMergeIterator}}
+\index{TwoMergeIterator@{TwoMergeIterator}!TwoMergeIterator@{TwoMergeIterator}}
+\doxysubsubsection{\texorpdfstring{TwoMergeIterator()}{TwoMergeIterator()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Two\+Merge\+Iterator\+::\+Two\+Merge\+Iterator (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} $>$}]{it\+\_\+a,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} $>$}]{it\+\_\+b,  }\item[{uint64\+\_\+t}]{max\+\_\+tranc\+\_\+id }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTwoMergeIterator_ae2de1c8d1100e8efbc1f9795a851eee9_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTwoMergeIterator_a5280590a0fe419dd86c530615bfa2440}\label{classTwoMergeIterator_a5280590a0fe419dd86c530615bfa2440}} 
+\index{TwoMergeIterator@{TwoMergeIterator}!choose\_it\_a@{choose\_it\_a}}
+\index{choose\_it\_a@{choose\_it\_a}!TwoMergeIterator@{TwoMergeIterator}}
+\doxysubsubsection{\texorpdfstring{choose\_it\_a()}{choose\_it\_a()}}
+{\footnotesize\ttfamily bool Two\+Merge\+Iterator\+::choose\+\_\+it\+\_\+a (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTwoMergeIterator_a5280590a0fe419dd86c530615bfa2440_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTwoMergeIterator_adedef447799357896af1effdf571e189}\label{classTwoMergeIterator_adedef447799357896af1effdf571e189}} 
+\index{TwoMergeIterator@{TwoMergeIterator}!get\_tranc\_id@{get\_tranc\_id}}
+\index{get\_tranc\_id@{get\_tranc\_id}!TwoMergeIterator@{TwoMergeIterator}}
+\doxysubsubsection{\texorpdfstring{get\_tranc\_id()}{get\_tranc\_id()}}
+{\footnotesize\ttfamily uint64\+\_\+t Two\+Merge\+Iterator\+::get\+\_\+tranc\+\_\+id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_afbac00d0570707027bb34d7f02ad5a5e}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classTwoMergeIterator_ad51591272711a41387e85497ac9fa9bf}\label{classTwoMergeIterator_ad51591272711a41387e85497ac9fa9bf}} 
+\index{TwoMergeIterator@{TwoMergeIterator}!get\_type@{get\_type}}
+\index{get\_type@{get\_type}!TwoMergeIterator@{TwoMergeIterator}}
+\doxysubsubsection{\texorpdfstring{get\_type()}{get\_type()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{iterator_8h_a4f6da121dba1526ce091ea9753d0647a}{Iterator\+Type}} Two\+Merge\+Iterator\+::get\+\_\+type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a087b836b0654e9929640e6807deb219c}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classTwoMergeIterator_a531dac930cf56dbed74db04613aa0a5b}\label{classTwoMergeIterator_a531dac930cf56dbed74db04613aa0a5b}} 
+\index{TwoMergeIterator@{TwoMergeIterator}!is\_end@{is\_end}}
+\index{is\_end@{is\_end}!TwoMergeIterator@{TwoMergeIterator}}
+\doxysubsubsection{\texorpdfstring{is\_end()}{is\_end()}}
+{\footnotesize\ttfamily bool Two\+Merge\+Iterator\+::is\+\_\+end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_aaa8a10f554780422293e00ee1b68a123}{Base\+Iterator}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTwoMergeIterator_a531dac930cf56dbed74db04613aa0a5b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTwoMergeIterator_a3ff6b0c19c4bded7e5d3313048383a11}\label{classTwoMergeIterator_a3ff6b0c19c4bded7e5d3313048383a11}} 
+\index{TwoMergeIterator@{TwoMergeIterator}!is\_valid@{is\_valid}}
+\index{is\_valid@{is\_valid}!TwoMergeIterator@{TwoMergeIterator}}
+\doxysubsubsection{\texorpdfstring{is\_valid()}{is\_valid()}}
+{\footnotesize\ttfamily bool Two\+Merge\+Iterator\+::is\+\_\+valid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a283f72f0b0fc52a33edaab270f3558da}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classTwoMergeIterator_acfd9ca4e801e0312a093c233b79f1542}\label{classTwoMergeIterator_acfd9ca4e801e0312a093c233b79f1542}} 
+\index{TwoMergeIterator@{TwoMergeIterator}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!TwoMergeIterator@{TwoMergeIterator}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool Two\+Merge\+Iterator\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a60263f58b02942344090e29e72215d26}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classTwoMergeIterator_af49c1e64aada0b9f0cdd06638f5baea4}\label{classTwoMergeIterator_af49c1e64aada0b9f0cdd06638f5baea4}} 
+\index{TwoMergeIterator@{TwoMergeIterator}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!TwoMergeIterator@{TwoMergeIterator}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{Base\+Iterator\+::value\+\_\+type}} Two\+Merge\+Iterator\+::operator$\ast$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a79f8f0831999342671817a9969107aba}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classTwoMergeIterator_a0aaf88cfd746af0db3946d542a3262ad}\label{classTwoMergeIterator_a0aaf88cfd746af0db3946d542a3262ad}} 
+\index{TwoMergeIterator@{TwoMergeIterator}!operator++@{operator++}}
+\index{operator++@{operator++}!TwoMergeIterator@{TwoMergeIterator}}
+\doxysubsubsection{\texorpdfstring{operator++()}{operator++()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \& Two\+Merge\+Iterator\+::operator++ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_aa699a2de97bf243e89826987dbf1b404}{Base\+Iterator}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTwoMergeIterator_a0aaf88cfd746af0db3946d542a3262ad_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTwoMergeIterator_acba6757165efdcabaf03927cb7648b5d}\label{classTwoMergeIterator_acba6757165efdcabaf03927cb7648b5d}} 
+\index{TwoMergeIterator@{TwoMergeIterator}!operator-\/$>$@{operator-\/$>$}}
+\index{operator-\/$>$@{operator-\/$>$}!TwoMergeIterator@{TwoMergeIterator}}
+\doxysubsubsection{\texorpdfstring{operator-\/$>$()}{operator->()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBaseIterator_a873de620a7886f465bbb69933c5416fb}{Two\+Merge\+Iterator\+::pointer}} Two\+Merge\+Iterator\+::operator-\/$>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classTwoMergeIterator_a3e8d0e58a68209c30cdbd647fc5a11c3}\label{classTwoMergeIterator_a3e8d0e58a68209c30cdbd647fc5a11c3}} 
+\index{TwoMergeIterator@{TwoMergeIterator}!operator==@{operator==}}
+\index{operator==@{operator==}!TwoMergeIterator@{TwoMergeIterator}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Two\+Merge\+Iterator\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a760ab242074729f5c953a968b967ffe2}{Base\+Iterator}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTwoMergeIterator_a3e8d0e58a68209c30cdbd647fc5a11c3_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTwoMergeIterator_aeae96977f4d8d9444ea48bbea0516b2d}\label{classTwoMergeIterator_aeae96977f4d8d9444ea48bbea0516b2d}} 
+\index{TwoMergeIterator@{TwoMergeIterator}!skip\_by\_tranc\_id@{skip\_by\_tranc\_id}}
+\index{skip\_by\_tranc\_id@{skip\_by\_tranc\_id}!TwoMergeIterator@{TwoMergeIterator}}
+\doxysubsubsection{\texorpdfstring{skip\_by\_tranc\_id()}{skip\_by\_tranc\_id()}}
+{\footnotesize\ttfamily void Two\+Merge\+Iterator\+::skip\+\_\+by\+\_\+tranc\+\_\+id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTwoMergeIterator_aeae96977f4d8d9444ea48bbea0516b2d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTwoMergeIterator_ad3395b155d43b85246031cbda2411a8f}\label{classTwoMergeIterator_ad3395b155d43b85246031cbda2411a8f}} 
+\index{TwoMergeIterator@{TwoMergeIterator}!skip\_it\_b@{skip\_it\_b}}
+\index{skip\_it\_b@{skip\_it\_b}!TwoMergeIterator@{TwoMergeIterator}}
+\doxysubsubsection{\texorpdfstring{skip\_it\_b()}{skip\_it\_b()}}
+{\footnotesize\ttfamily void Two\+Merge\+Iterator\+::skip\+\_\+it\+\_\+b (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTwoMergeIterator_ad3395b155d43b85246031cbda2411a8f_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Compact/\mbox{\hyperlink{two__merge__iterator_8h}{two\+\_\+merge\+\_\+iterator.\+h}}\item 
+src/\+Compact/\mbox{\hyperlink{two__merge__iterator_8cpp}{two\+\_\+merge\+\_\+iterator.\+cpp}}\end{DoxyCompactItemize}

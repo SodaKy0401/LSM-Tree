@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/testcomp.dir/test/testcompact.cpp.o  -o testcomp  liblsm.a libsst.a libfile.a libblockmeta.a libblock.a libblockcache.a libmemtable.a libskiplist.a /usr/local/lib/libgtest_main.a /usr/local/lib/libgtest.a -lpthread 

@@ -1,0 +1,331 @@
+\hypertarget{classMemTable}{}\doxysection{Mem\+Table Class Reference}
+\label{classMemTable}\index{MemTable@{MemTable}}
+
+
+{\ttfamily \#include $<$memtable.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMemTable_aabdd490e19bde96397ec56e0b34e00f9}{Mem\+Table}} ()
+\item 
+\mbox{\hyperlink{classMemTable_ac585aec70dabe6fc42a4c748c29c1328}{$\sim$\+Mem\+Table}} ()
+\item 
+void \mbox{\hyperlink{classMemTable_af5fcc5f2b64bec706219079749f5d27a}{put}} (const std\+::string \&key, const std\+::string \&value, uint64\+\_\+t tranc\+\_\+id)
+\item 
+void \mbox{\hyperlink{classMemTable_aea7b9bdc21ac02b678922ccf7eb015db}{put\+\_\+batch}} (const std\+::vector$<$ std\+::pair$<$ std\+::string, std\+::string $>$$>$ \&kvs, uint64\+\_\+t tranc\+\_\+id)
+\item 
+\mbox{\hyperlink{classSkipListIterator}{Skip\+List\+Iterator}} \mbox{\hyperlink{classMemTable_ab7562f08f4b230561d861eac60312c0c}{get}} (const std\+::string \&key, uint64\+\_\+t tranc\+\_\+id)
+\item 
+std\+::vector$<$ std\+::pair$<$ std\+::string, std\+::optional$<$ std\+::pair$<$ std\+::string, uint64\+\_\+t $>$ $>$ $>$ $>$ \mbox{\hyperlink{classMemTable_aa8073b3995d67521c4dbe9b80b295aea}{get\+\_\+batch}} (const std\+::vector$<$ std\+::string $>$ \&keys, uint64\+\_\+t tranc\+\_\+id)
+\item 
+void \mbox{\hyperlink{classMemTable_aa060eca216e92609d758a43b0d23df49}{remove}} (const std\+::string \&key, uint64\+\_\+t tranc\+\_\+id)
+\item 
+void \mbox{\hyperlink{classMemTable_afdf3101c29ec58970b5686be549bf519}{remove\+\_\+batch}} (const std\+::vector$<$ std\+::string $>$ \&keys, uint64\+\_\+t tranc\+\_\+id)
+\item 
+void \mbox{\hyperlink{classMemTable_ab5bd28270c07862355b906203d6fce91}{clear}} ()
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSST}{S\+ST}} $>$ \mbox{\hyperlink{classMemTable_a46bfc028f97fcffe3fb3a1a625e5b50b}{flush\+\_\+last}} (\mbox{\hyperlink{classSSTBuilder}{S\+S\+T\+Builder}} \&builder, std\+::string \&sst\+\_\+path, size\+\_\+t sst\+\_\+id, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBlockCache}{Block\+Cache}} $>$ block\+\_\+cache)
+\item 
+void \mbox{\hyperlink{classMemTable_a1654bf20466e1b7fab3fa84774582d70}{frozen\+\_\+cur\+\_\+table}} ()
+\item 
+size\+\_\+t \mbox{\hyperlink{classMemTable_afb0ed1340b65ac3d78afb945eedf43b4}{get\+\_\+cur\+\_\+size}} ()
+\item 
+size\+\_\+t \mbox{\hyperlink{classMemTable_a70cf07cb5ccf49099f17d9c8180b4e7e}{get\+\_\+frozen\+\_\+size}} ()
+\item 
+size\+\_\+t \mbox{\hyperlink{classMemTable_adfe4048462d4b9e544764953d4b01b1d}{get\+\_\+total\+\_\+size}} ()
+\item 
+\mbox{\hyperlink{classHeapIterator}{Heap\+Iterator}} \mbox{\hyperlink{classMemTable_ae4b316891c342376475cacc2ffb3d423}{begin}} (uint64\+\_\+t tranc\+\_\+id)
+\item 
+\mbox{\hyperlink{classHeapIterator}{Heap\+Iterator}} \mbox{\hyperlink{classMemTable_a46a31a77eb65a64f4f3987a4d58fac52}{iters\+\_\+preffix}} (const std\+::string \&preffix, uint64\+\_\+t tranc\+\_\+id)
+\item 
+std\+::optional$<$ std\+::pair$<$ \mbox{\hyperlink{classHeapIterator}{Heap\+Iterator}}, \mbox{\hyperlink{classHeapIterator}{Heap\+Iterator}} $>$ $>$ \mbox{\hyperlink{classMemTable_a42f76ae5f2e28ce88431da237b8dff52}{iters\+\_\+monotony\+\_\+predicate}} (uint64\+\_\+t tranc\+\_\+id, std\+::function$<$ int(const std\+::string \&)$>$ predicate)
+\item 
+\mbox{\hyperlink{classHeapIterator}{Heap\+Iterator}} \mbox{\hyperlink{classMemTable_a3aaa2a9f2440e81f85ecf2f9359b21ed}{end}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classMemTable_a17740079af4633df7d13bb9d3732f54d}{Heap\+Iterator}}
+\item 
+class \mbox{\hyperlink{classMemTable_ae37e77bc1a3643975659a13ce7b2e80a}{Tran\+Context}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMemTable_aabdd490e19bde96397ec56e0b34e00f9}\label{classMemTable_aabdd490e19bde96397ec56e0b34e00f9}} 
+\index{MemTable@{MemTable}!MemTable@{MemTable}}
+\index{MemTable@{MemTable}!MemTable@{MemTable}}
+\doxysubsubsection{\texorpdfstring{MemTable()}{MemTable()}}
+{\footnotesize\ttfamily Mem\+Table\+::\+Mem\+Table (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMemTable_ac585aec70dabe6fc42a4c748c29c1328}\label{classMemTable_ac585aec70dabe6fc42a4c748c29c1328}} 
+\index{MemTable@{MemTable}!````~MemTable@{$\sim$MemTable}}
+\index{````~MemTable@{$\sim$MemTable}!MemTable@{MemTable}}
+\doxysubsubsection{\texorpdfstring{$\sim$MemTable()}{~MemTable()}}
+{\footnotesize\ttfamily Mem\+Table\+::$\sim$\+Mem\+Table (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMemTable_ae4b316891c342376475cacc2ffb3d423}\label{classMemTable_ae4b316891c342376475cacc2ffb3d423}} 
+\index{MemTable@{MemTable}!begin@{begin}}
+\index{begin@{begin}!MemTable@{MemTable}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classHeapIterator}{Heap\+Iterator}} Mem\+Table\+::begin (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMemTable_ae4b316891c342376475cacc2ffb3d423_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMemTable_ab5bd28270c07862355b906203d6fce91}\label{classMemTable_ab5bd28270c07862355b906203d6fce91}} 
+\index{MemTable@{MemTable}!clear@{clear}}
+\index{clear@{clear}!MemTable@{MemTable}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Mem\+Table\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=313pt]{classMemTable_ab5bd28270c07862355b906203d6fce91_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMemTable_a3aaa2a9f2440e81f85ecf2f9359b21ed}\label{classMemTable_a3aaa2a9f2440e81f85ecf2f9359b21ed}} 
+\index{MemTable@{MemTable}!end@{end}}
+\index{end@{end}!MemTable@{MemTable}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classHeapIterator}{Heap\+Iterator}} Mem\+Table\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMemTable_a3aaa2a9f2440e81f85ecf2f9359b21ed_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMemTable_a46bfc028f97fcffe3fb3a1a625e5b50b}\label{classMemTable_a46bfc028f97fcffe3fb3a1a625e5b50b}} 
+\index{MemTable@{MemTable}!flush\_last@{flush\_last}}
+\index{flush\_last@{flush\_last}!MemTable@{MemTable}}
+\doxysubsubsection{\texorpdfstring{flush\_last()}{flush\_last()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSST}{S\+ST}} $>$ Mem\+Table\+::flush\+\_\+last (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSSTBuilder}{S\+S\+T\+Builder}} \&}]{builder,  }\item[{std\+::string \&}]{sst\+\_\+path,  }\item[{size\+\_\+t}]{sst\+\_\+id,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBlockCache}{Block\+Cache}} $>$}]{block\+\_\+cache }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMemTable_a46bfc028f97fcffe3fb3a1a625e5b50b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMemTable_a46bfc028f97fcffe3fb3a1a625e5b50b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMemTable_a1654bf20466e1b7fab3fa84774582d70}\label{classMemTable_a1654bf20466e1b7fab3fa84774582d70}} 
+\index{MemTable@{MemTable}!frozen\_cur\_table@{frozen\_cur\_table}}
+\index{frozen\_cur\_table@{frozen\_cur\_table}!MemTable@{MemTable}}
+\doxysubsubsection{\texorpdfstring{frozen\_cur\_table()}{frozen\_cur\_table()}}
+{\footnotesize\ttfamily void Mem\+Table\+::frozen\+\_\+cur\+\_\+table (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=281pt]{classMemTable_a1654bf20466e1b7fab3fa84774582d70_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMemTable_ab7562f08f4b230561d861eac60312c0c}\label{classMemTable_ab7562f08f4b230561d861eac60312c0c}} 
+\index{MemTable@{MemTable}!get@{get}}
+\index{get@{get}!MemTable@{MemTable}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSkipListIterator}{Skip\+List\+Iterator}} Mem\+Table\+::get (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key,  }\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMemTable_ab7562f08f4b230561d861eac60312c0c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMemTable_aa8073b3995d67521c4dbe9b80b295aea}\label{classMemTable_aa8073b3995d67521c4dbe9b80b295aea}} 
+\index{MemTable@{MemTable}!get\_batch@{get\_batch}}
+\index{get\_batch@{get\_batch}!MemTable@{MemTable}}
+\doxysubsubsection{\texorpdfstring{get\_batch()}{get\_batch()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::pair$<$ std\+::string, std\+::optional$<$ std\+::pair$<$ std\+::string, uint64\+\_\+t $>$ $>$ $>$ $>$ Mem\+Table\+::get\+\_\+batch (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{keys,  }\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMemTable_aa8073b3995d67521c4dbe9b80b295aea_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMemTable_afb0ed1340b65ac3d78afb945eedf43b4}\label{classMemTable_afb0ed1340b65ac3d78afb945eedf43b4}} 
+\index{MemTable@{MemTable}!get\_cur\_size@{get\_cur\_size}}
+\index{get\_cur\_size@{get\_cur\_size}!MemTable@{MemTable}}
+\doxysubsubsection{\texorpdfstring{get\_cur\_size()}{get\_cur\_size()}}
+{\footnotesize\ttfamily size\+\_\+t Mem\+Table\+::get\+\_\+cur\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMemTable_afb0ed1340b65ac3d78afb945eedf43b4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMemTable_a70cf07cb5ccf49099f17d9c8180b4e7e}\label{classMemTable_a70cf07cb5ccf49099f17d9c8180b4e7e}} 
+\index{MemTable@{MemTable}!get\_frozen\_size@{get\_frozen\_size}}
+\index{get\_frozen\_size@{get\_frozen\_size}!MemTable@{MemTable}}
+\doxysubsubsection{\texorpdfstring{get\_frozen\_size()}{get\_frozen\_size()}}
+{\footnotesize\ttfamily size\+\_\+t Mem\+Table\+::get\+\_\+frozen\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMemTable_a70cf07cb5ccf49099f17d9c8180b4e7e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMemTable_adfe4048462d4b9e544764953d4b01b1d}\label{classMemTable_adfe4048462d4b9e544764953d4b01b1d}} 
+\index{MemTable@{MemTable}!get\_total\_size@{get\_total\_size}}
+\index{get\_total\_size@{get\_total\_size}!MemTable@{MemTable}}
+\doxysubsubsection{\texorpdfstring{get\_total\_size()}{get\_total\_size()}}
+{\footnotesize\ttfamily size\+\_\+t Mem\+Table\+::get\+\_\+total\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMemTable_adfe4048462d4b9e544764953d4b01b1d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMemTable_adfe4048462d4b9e544764953d4b01b1d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMemTable_a42f76ae5f2e28ce88431da237b8dff52}\label{classMemTable_a42f76ae5f2e28ce88431da237b8dff52}} 
+\index{MemTable@{MemTable}!iters\_monotony\_predicate@{iters\_monotony\_predicate}}
+\index{iters\_monotony\_predicate@{iters\_monotony\_predicate}!MemTable@{MemTable}}
+\doxysubsubsection{\texorpdfstring{iters\_monotony\_predicate()}{iters\_monotony\_predicate()}}
+{\footnotesize\ttfamily std\+::optional$<$ std\+::pair$<$ \mbox{\hyperlink{classHeapIterator}{Heap\+Iterator}}, \mbox{\hyperlink{classHeapIterator}{Heap\+Iterator}} $>$ $>$ Mem\+Table\+::iters\+\_\+monotony\+\_\+predicate (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{tranc\+\_\+id,  }\item[{std\+::function$<$ int(const std\+::string \&)$>$}]{predicate }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMemTable_a42f76ae5f2e28ce88431da237b8dff52_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMemTable_a42f76ae5f2e28ce88431da237b8dff52_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMemTable_a46a31a77eb65a64f4f3987a4d58fac52}\label{classMemTable_a46a31a77eb65a64f4f3987a4d58fac52}} 
+\index{MemTable@{MemTable}!iters\_preffix@{iters\_preffix}}
+\index{iters\_preffix@{iters\_preffix}!MemTable@{MemTable}}
+\doxysubsubsection{\texorpdfstring{iters\_preffix()}{iters\_preffix()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classHeapIterator}{Heap\+Iterator}} Mem\+Table\+::iters\+\_\+preffix (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{preffix,  }\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMemTable_af5fcc5f2b64bec706219079749f5d27a}\label{classMemTable_af5fcc5f2b64bec706219079749f5d27a}} 
+\index{MemTable@{MemTable}!put@{put}}
+\index{put@{put}!MemTable@{MemTable}}
+\doxysubsubsection{\texorpdfstring{put()}{put()}}
+{\footnotesize\ttfamily void Mem\+Table\+::put (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key,  }\item[{const std\+::string \&}]{value,  }\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMemTable_af5fcc5f2b64bec706219079749f5d27a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMemTable_aea7b9bdc21ac02b678922ccf7eb015db}\label{classMemTable_aea7b9bdc21ac02b678922ccf7eb015db}} 
+\index{MemTable@{MemTable}!put\_batch@{put\_batch}}
+\index{put\_batch@{put\_batch}!MemTable@{MemTable}}
+\doxysubsubsection{\texorpdfstring{put\_batch()}{put\_batch()}}
+{\footnotesize\ttfamily void Mem\+Table\+::put\+\_\+batch (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::pair$<$ std\+::string, std\+::string $>$$>$ \&}]{kvs,  }\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMemTable_aea7b9bdc21ac02b678922ccf7eb015db_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMemTable_aa060eca216e92609d758a43b0d23df49}\label{classMemTable_aa060eca216e92609d758a43b0d23df49}} 
+\index{MemTable@{MemTable}!remove@{remove}}
+\index{remove@{remove}!MemTable@{MemTable}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily void Mem\+Table\+::remove (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key,  }\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{classMemTable_aa060eca216e92609d758a43b0d23df49_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMemTable_afdf3101c29ec58970b5686be549bf519}\label{classMemTable_afdf3101c29ec58970b5686be549bf519}} 
+\index{MemTable@{MemTable}!remove\_batch@{remove\_batch}}
+\index{remove\_batch@{remove\_batch}!MemTable@{MemTable}}
+\doxysubsubsection{\texorpdfstring{remove\_batch()}{remove\_batch()}}
+{\footnotesize\ttfamily void Mem\+Table\+::remove\+\_\+batch (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{keys,  }\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMemTable_afdf3101c29ec58970b5686be549bf519_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classMemTable_a17740079af4633df7d13bb9d3732f54d}\label{classMemTable_a17740079af4633df7d13bb9d3732f54d}} 
+\index{MemTable@{MemTable}!HeapIterator@{HeapIterator}}
+\index{HeapIterator@{HeapIterator}!MemTable@{MemTable}}
+\doxysubsubsection{\texorpdfstring{HeapIterator}{HeapIterator}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{classHeapIterator}{Heap\+Iterator}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+\mbox{\Hypertarget{classMemTable_ae37e77bc1a3643975659a13ce7b2e80a}\label{classMemTable_ae37e77bc1a3643975659a13ce7b2e80a}} 
+\index{MemTable@{MemTable}!TranContext@{TranContext}}
+\index{TranContext@{TranContext}!MemTable@{MemTable}}
+\doxysubsubsection{\texorpdfstring{TranContext}{TranContext}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{classTranContext}{Tran\+Context}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Memtable/\mbox{\hyperlink{memtable_8h}{memtable.\+h}}\item 
+src/\+Memtable/\mbox{\hyperlink{memtable_8cpp}{memtable.\+cpp}}\end{DoxyCompactItemize}

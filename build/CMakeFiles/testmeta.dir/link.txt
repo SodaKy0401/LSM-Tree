@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/testmeta.dir/test/testmeta.cpp.o  -o testmeta  libfile.a libblockmeta.a libblock.a libblockcache.a liblsm.a libsst.a /usr/local/lib/libgtest_main.a /usr/local/lib/libgtest.a -lpthread 

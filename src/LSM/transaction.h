@@ -11,6 +11,7 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
+#include <set>
 
 enum class IsolationLevel {
   READ_UNCOMMITTED,
@@ -18,6 +19,13 @@ enum class IsolationLevel {
   REPEATABLE_READ,
   SERIALIZABLE
 };
+
+enum class TransactionState {
+  COMMITTED,
+  ABORTED
+};
+
+
 
 class LSMEngine;
 class TranManager;
@@ -43,7 +51,7 @@ public:
   std::shared_ptr<TranManager> tranManager_;
   uint64_t tranc_id_;
   std::vector<Record> operations;
-  std::unordered_map<std::string, std::string> temp_map_;
+  std::unordered_map<std::string, std::string> temp_map_;// 
   bool isCommited = false;
   bool isAborted = false;
   enum IsolationLevel isolation_level_;
@@ -51,10 +59,10 @@ public:
 private:
   std::unordered_map<std::string,
                      std::optional<std::pair<std::string, uint64_t>>>
-      read_map_;
+      read_map_;// 用于存储已读取的键值对
   std::unordered_map<std::string,
                      std::optional<std::pair<std::string, uint64_t>>>
-      rollback_map_;
+      rollback_map_;// 用于存储回滚时的键值对
 };
 
 class TranManager : public std::enable_shared_from_this<TranManager> {
@@ -67,10 +75,16 @@ public:
 
   uint64_t getNextTransactionId();
   uint64_t get_max_flushed_tranc_id();
-  uint64_t get_max_finished_tranc_id_();
 
-  void update_max_finished_tranc_id(uint64_t tranc_id);
-  void update_max_flushed_tranc_id(uint64_t tranc_id);
+  // uint64_t get_max_finished_tranc_id_();
+  uint64_t get_checkpoint_tranc_id();
+  std::set<uint64_t>& get_flushed_tranc_ids();
+
+  // void update_max_finished_tranc_id(uint64_t tranc_id);
+  // void update_max_flushed_tranc_id(uint64_t tranc_id);
+
+  void add_ready_to_flush_tranc_id(uint64_t tranc_id, TransactionState state);
+  void add_flushed_tranc_id(uint64_t tranc_id);
 
   bool write_to_wal(const std::vector<Record> &records);
 
@@ -88,8 +102,13 @@ private:
   std::string data_dir_;
   // std::atomic<bool> flush_thread_running_ = true;
   std::atomic<uint64_t> nextTransactionId_ = 1;
-  std::atomic<uint64_t> max_flushed_tranc_id_ = 0;
-  std::atomic<uint64_t> max_finished_tranc_id_ = 0;
+  // std::atomic<uint64_t> max_flushed_tranc_id_ = 0;
+  // std::atomic<uint64_t> max_finished_tranc_id_ = 0;
+
+
+  std::map<uint64_t, TransactionState> readyToFlushTrancIds_;
+  std::set<uint64_t> flushedTrancIds_;
+
   std::map<uint64_t, std::shared_ptr<TranContext>> activeTrans_;
   FileObj tranc_id_file_;
 };

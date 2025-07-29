@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/testwal.dir/test/testwal.cpp.o  -o testwal  liblsm.a libsst.a libfile.a libblockmeta.a libblock.a libblockcache.a libmemtable.a libskiplist.a libwal.a /usr/local/lib/libgmock.a /usr/local/lib/libgtest_main.a /usr/local/lib/libgtest.a -lpthread 

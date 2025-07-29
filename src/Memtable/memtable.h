@@ -39,7 +39,7 @@ public:
   MemTable();
   ~MemTable();
 
-  void put(const std::string &key, const std::string &value,uint64_t tranc_id);
+  void put(const std::string &key, const std::string &value,uint64_t tranc_id);//需要锁的版本
   void put_batch(const std::vector<std::pair<std::string, std::string>> &kvs,uint64_t tranc_id);
 
   SkipListIterator get(const std::string &key, uint64_t tranc_id);
@@ -52,7 +52,7 @@ public:
 
   void clear();
   std::shared_ptr<SST> flush_last(SSTBuilder &builder, std::string &sst_path,
-                                  size_t sst_id,
+                                  size_t sst_id, std::vector<uint64_t> &flushed_tranc_ids,
                                   std::shared_ptr<BlockCache> block_cache);
   void frozen_cur_table();
   size_t get_cur_size();

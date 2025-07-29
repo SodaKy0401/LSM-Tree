@@ -1,0 +1,101 @@
+\hypertarget{classSSTBuilder}{}\doxysection{S\+S\+T\+Builder Class Reference}
+\label{classSSTBuilder}\index{SSTBuilder@{SSTBuilder}}
+
+
+{\ttfamily \#include $<$sst.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSSTBuilder_aab964eadfdb5731aa4691196805b6050}{S\+S\+T\+Builder}} (size\+\_\+t block\+\_\+size, bool has\+\_\+bloom)
+\item 
+void \mbox{\hyperlink{classSSTBuilder_a97efee828cd368a39ccde8383c661a61}{add}} (const std\+::string \&key, const std\+::string \&value, uint64\+\_\+t tranc\+\_\+id)
+\item 
+size\+\_\+t \mbox{\hyperlink{classSSTBuilder_ac54544d8bba37238c2cdf562d8792d25}{estimated\+\_\+size}} () const
+\item 
+void \mbox{\hyperlink{classSSTBuilder_a225e58e505340af254721659ee8dc9a2}{finish\+\_\+block}} ()
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSST}{S\+ST}} $>$ \mbox{\hyperlink{classSSTBuilder_af3112cd5e0308979d2d9950cbfcf072a}{build}} (size\+\_\+t sst\+\_\+id, const std\+::string \&path, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBlockCache}{Block\+Cache}} $>$ block\+\_\+cache)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSSTBuilder_aab964eadfdb5731aa4691196805b6050}\label{classSSTBuilder_aab964eadfdb5731aa4691196805b6050}} 
+\index{SSTBuilder@{SSTBuilder}!SSTBuilder@{SSTBuilder}}
+\index{SSTBuilder@{SSTBuilder}!SSTBuilder@{SSTBuilder}}
+\doxysubsubsection{\texorpdfstring{SSTBuilder()}{SSTBuilder()}}
+{\footnotesize\ttfamily S\+S\+T\+Builder\+::\+S\+S\+T\+Builder (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{block\+\_\+size,  }\item[{bool}]{has\+\_\+bloom }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSSTBuilder_a97efee828cd368a39ccde8383c661a61}\label{classSSTBuilder_a97efee828cd368a39ccde8383c661a61}} 
+\index{SSTBuilder@{SSTBuilder}!add@{add}}
+\index{add@{add}!SSTBuilder@{SSTBuilder}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily void S\+S\+T\+Builder\+::add (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key,  }\item[{const std\+::string \&}]{value,  }\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSSTBuilder_a97efee828cd368a39ccde8383c661a61_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSSTBuilder_a97efee828cd368a39ccde8383c661a61_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSSTBuilder_af3112cd5e0308979d2d9950cbfcf072a}\label{classSSTBuilder_af3112cd5e0308979d2d9950cbfcf072a}} 
+\index{SSTBuilder@{SSTBuilder}!build@{build}}
+\index{build@{build}!SSTBuilder@{SSTBuilder}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSST}{S\+ST}} $>$ S\+S\+T\+Builder\+::build (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{sst\+\_\+id,  }\item[{const std\+::string \&}]{path,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBlockCache}{Block\+Cache}} $>$}]{block\+\_\+cache }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSSTBuilder_af3112cd5e0308979d2d9950cbfcf072a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSSTBuilder_af3112cd5e0308979d2d9950cbfcf072a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSSTBuilder_ac54544d8bba37238c2cdf562d8792d25}\label{classSSTBuilder_ac54544d8bba37238c2cdf562d8792d25}} 
+\index{SSTBuilder@{SSTBuilder}!estimated\_size@{estimated\_size}}
+\index{estimated\_size@{estimated\_size}!SSTBuilder@{SSTBuilder}}
+\doxysubsubsection{\texorpdfstring{estimated\_size()}{estimated\_size()}}
+{\footnotesize\ttfamily size\+\_\+t S\+S\+T\+Builder\+::estimated\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classSSTBuilder_a225e58e505340af254721659ee8dc9a2}\label{classSSTBuilder_a225e58e505340af254721659ee8dc9a2}} 
+\index{SSTBuilder@{SSTBuilder}!finish\_block@{finish\_block}}
+\index{finish\_block@{finish\_block}!SSTBuilder@{SSTBuilder}}
+\doxysubsubsection{\texorpdfstring{finish\_block()}{finish\_block()}}
+{\footnotesize\ttfamily void S\+S\+T\+Builder\+::finish\+\_\+block (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSSTBuilder_a225e58e505340af254721659ee8dc9a2_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+S\+S\+T/\mbox{\hyperlink{sst_8h}{sst.\+h}}\item 
+src/\+S\+S\+T/\mbox{\hyperlink{sst_8cpp}{sst.\+cpp}}\end{DoxyCompactItemize}

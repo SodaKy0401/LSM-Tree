@@ -1,0 +1,2 @@
+/usr/bin/ar qc libwal.a  CMakeFiles/wal.dir/src/WAL/wal.cpp.o CMakeFiles/wal.dir/src/WAL/record.cpp.o CMakeFiles/wal.dir/src/SST/concat_iterator.cpp.o CMakeFiles/wal.dir/src/Utils/file.cpp.o CMakeFiles/wal.dir/src/Utils/std_file.cpp.o CMakeFiles/wal.dir/src/LSM/level_iterator.cpp.o CMakeFiles/wal.dir/src/LSM/transaction.cpp.o
+/usr/bin/ranlib libwal.a

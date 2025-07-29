@@ -1,0 +1,146 @@
+\hypertarget{testsst_8cpp}{}\doxysection{test/testsst.cpp File Reference}
+\label{testsst_8cpp}\index{test/testsst.cpp@{test/testsst.cpp}}
+{\ttfamily \#include \char`\"{}../consts.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../src/\+S\+S\+T/sst.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../src/\+S\+S\+T/sst\+\_\+iterator.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$filesystem$>$}\newline
+{\ttfamily \#include $<$gtest/gtest.\+h$>$}\newline
+Include dependency graph for testsst.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{testsst_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classSSTTest}{S\+S\+T\+Test}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{testsst_8cpp_a5b2555ba35da63446e3d16ea42d8b8a1}{T\+E\+S\+T\+\_\+F}} (\mbox{\hyperlink{classSSTTest}{S\+S\+T\+Test}}, Basic\+Write\+And\+Read)
+\item 
+\mbox{\hyperlink{testsst_8cpp_a2f05798cca8c74b1eff4b5ef7642240a}{T\+E\+S\+T\+\_\+F}} (\mbox{\hyperlink{classSSTTest}{S\+S\+T\+Test}}, Block\+Splitting)
+\item 
+\mbox{\hyperlink{testsst_8cpp_a2343954183a46206acd2c58622b1138d}{T\+E\+S\+T\+\_\+F}} (\mbox{\hyperlink{classSSTTest}{S\+S\+T\+Test}}, Key\+Search)
+\item 
+\mbox{\hyperlink{testsst_8cpp_a328af2c100e7e2c01e63fcf5e0b87d71}{T\+E\+S\+T\+\_\+F}} (\mbox{\hyperlink{classSSTTest}{S\+S\+T\+Test}}, Metadata)
+\item 
+\mbox{\hyperlink{testsst_8cpp_a0dd7283e763727ef9b9bd75db8af26a9}{T\+E\+S\+T\+\_\+F}} (\mbox{\hyperlink{classSSTTest}{S\+S\+T\+Test}}, Empty\+S\+ST)
+\item 
+\mbox{\hyperlink{testsst_8cpp_a51326f3a1d25894a01eca7b3e20f1bdf}{T\+E\+S\+T\+\_\+F}} (\mbox{\hyperlink{classSSTTest}{S\+S\+T\+Test}}, Reopen\+S\+ST)
+\item 
+\mbox{\hyperlink{testsst_8cpp_a017645a71db2c81460ce073316eeae8d}{T\+E\+S\+T\+\_\+F}} (\mbox{\hyperlink{classSSTTest}{S\+S\+T\+Test}}, Large\+S\+ST)
+\item 
+\mbox{\hyperlink{testsst_8cpp_a47b30dbc170fcec96acce3889d1265e8}{T\+E\+S\+T\+\_\+F}} (\mbox{\hyperlink{classSSTTest}{S\+S\+T\+Test}}, Large\+S\+S\+T\+Predicate)
+\item 
+int \mbox{\hyperlink{testsst_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{testsst_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{testsst_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{testsst.cpp@{testsst.cpp}!main@{main}}
+\index{main@{main}!testsst.cpp@{testsst.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{testsst_8cpp_a5b2555ba35da63446e3d16ea42d8b8a1}\label{testsst_8cpp_a5b2555ba35da63446e3d16ea42d8b8a1}} 
+\index{testsst.cpp@{testsst.cpp}!TEST\_F@{TEST\_F}}
+\index{TEST\_F@{TEST\_F}!testsst.cpp@{testsst.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_F()}{TEST\_F()}\hspace{0.1cm}{\footnotesize\ttfamily [1/8]}}
+{\footnotesize\ttfamily T\+E\+S\+T\+\_\+F (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSSTTest}{S\+S\+T\+Test}}}]{,  }\item[{Basic\+Write\+And\+Read}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{testsst_8cpp_a5b2555ba35da63446e3d16ea42d8b8a1_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{testsst_8cpp_a2f05798cca8c74b1eff4b5ef7642240a}\label{testsst_8cpp_a2f05798cca8c74b1eff4b5ef7642240a}} 
+\index{testsst.cpp@{testsst.cpp}!TEST\_F@{TEST\_F}}
+\index{TEST\_F@{TEST\_F}!testsst.cpp@{testsst.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_F()}{TEST\_F()}\hspace{0.1cm}{\footnotesize\ttfamily [2/8]}}
+{\footnotesize\ttfamily T\+E\+S\+T\+\_\+F (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSSTTest}{S\+S\+T\+Test}}}]{,  }\item[{Block\+Splitting}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{testsst_8cpp_a2f05798cca8c74b1eff4b5ef7642240a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{testsst_8cpp_a0dd7283e763727ef9b9bd75db8af26a9}\label{testsst_8cpp_a0dd7283e763727ef9b9bd75db8af26a9}} 
+\index{testsst.cpp@{testsst.cpp}!TEST\_F@{TEST\_F}}
+\index{TEST\_F@{TEST\_F}!testsst.cpp@{testsst.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_F()}{TEST\_F()}\hspace{0.1cm}{\footnotesize\ttfamily [3/8]}}
+{\footnotesize\ttfamily T\+E\+S\+T\+\_\+F (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSSTTest}{S\+S\+T\+Test}}}]{,  }\item[{Empty\+S\+ST}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{testsst_8cpp_a0dd7283e763727ef9b9bd75db8af26a9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{testsst_8cpp_a2343954183a46206acd2c58622b1138d}\label{testsst_8cpp_a2343954183a46206acd2c58622b1138d}} 
+\index{testsst.cpp@{testsst.cpp}!TEST\_F@{TEST\_F}}
+\index{TEST\_F@{TEST\_F}!testsst.cpp@{testsst.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_F()}{TEST\_F()}\hspace{0.1cm}{\footnotesize\ttfamily [4/8]}}
+{\footnotesize\ttfamily T\+E\+S\+T\+\_\+F (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSSTTest}{S\+S\+T\+Test}}}]{,  }\item[{Key\+Search}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{testsst_8cpp_a017645a71db2c81460ce073316eeae8d}\label{testsst_8cpp_a017645a71db2c81460ce073316eeae8d}} 
+\index{testsst.cpp@{testsst.cpp}!TEST\_F@{TEST\_F}}
+\index{TEST\_F@{TEST\_F}!testsst.cpp@{testsst.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_F()}{TEST\_F()}\hspace{0.1cm}{\footnotesize\ttfamily [5/8]}}
+{\footnotesize\ttfamily T\+E\+S\+T\+\_\+F (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSSTTest}{S\+S\+T\+Test}}}]{,  }\item[{Large\+S\+ST}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{testsst_8cpp_a017645a71db2c81460ce073316eeae8d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{testsst_8cpp_a47b30dbc170fcec96acce3889d1265e8}\label{testsst_8cpp_a47b30dbc170fcec96acce3889d1265e8}} 
+\index{testsst.cpp@{testsst.cpp}!TEST\_F@{TEST\_F}}
+\index{TEST\_F@{TEST\_F}!testsst.cpp@{testsst.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_F()}{TEST\_F()}\hspace{0.1cm}{\footnotesize\ttfamily [6/8]}}
+{\footnotesize\ttfamily T\+E\+S\+T\+\_\+F (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSSTTest}{S\+S\+T\+Test}}}]{,  }\item[{Large\+S\+S\+T\+Predicate}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{testsst_8cpp_a47b30dbc170fcec96acce3889d1265e8_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{testsst_8cpp_a328af2c100e7e2c01e63fcf5e0b87d71}\label{testsst_8cpp_a328af2c100e7e2c01e63fcf5e0b87d71}} 
+\index{testsst.cpp@{testsst.cpp}!TEST\_F@{TEST\_F}}
+\index{TEST\_F@{TEST\_F}!testsst.cpp@{testsst.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_F()}{TEST\_F()}\hspace{0.1cm}{\footnotesize\ttfamily [7/8]}}
+{\footnotesize\ttfamily T\+E\+S\+T\+\_\+F (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSSTTest}{S\+S\+T\+Test}}}]{,  }\item[{Metadata}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{testsst_8cpp_a51326f3a1d25894a01eca7b3e20f1bdf}\label{testsst_8cpp_a51326f3a1d25894a01eca7b3e20f1bdf}} 
+\index{testsst.cpp@{testsst.cpp}!TEST\_F@{TEST\_F}}
+\index{TEST\_F@{TEST\_F}!testsst.cpp@{testsst.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_F()}{TEST\_F()}\hspace{0.1cm}{\footnotesize\ttfamily [8/8]}}
+{\footnotesize\ttfamily T\+E\+S\+T\+\_\+F (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSSTTest}{S\+S\+T\+Test}}}]{,  }\item[{Reopen\+S\+ST}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{testsst_8cpp_a51326f3a1d25894a01eca7b3e20f1bdf_cgraph}
+\end{center}
+\end{figure}

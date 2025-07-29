@@ -1,0 +1,62 @@
+\hypertarget{engine_8h}{}\doxysection{src/\+L\+S\+M/engine.h File Reference}
+\label{engine_8h}\index{src/LSM/engine.h@{src/LSM/engine.h}}
+{\ttfamily \#include \char`\"{}../\+Memtable/memtable.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../\+S\+S\+T/sst.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../\+Compact/two\+\_\+merge\+\_\+iterator.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}level\+\_\+iterator.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}transaction.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../\+W\+A\+L/record.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../\+W\+A\+L/wal.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$deque$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$mutex$>$}\newline
+{\ttfamily \#include $<$shared\+\_\+mutex$>$}\newline
+Include dependency graph for engine.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{engine_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{engine_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classLSMEngine}{L\+S\+M\+Engine}}
+\item 
+class \mbox{\hyperlink{classLSM}{L\+SM}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{engine_8h_a21a34a0cb9dc4d1532650fb8c0106be4}{Compact\+Type}} \{ \mbox{\hyperlink{engine_8h_a21a34a0cb9dc4d1532650fb8c0106be4a78dc8fd7faa2ee5b4321c9dbb59015ed}{Compact\+Type\+::\+Full\+Compact}}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{engine_8h_a21a34a0cb9dc4d1532650fb8c0106be4}\label{engine_8h_a21a34a0cb9dc4d1532650fb8c0106be4}} 
+\index{engine.h@{engine.h}!CompactType@{CompactType}}
+\index{CompactType@{CompactType}!engine.h@{engine.h}}
+\doxysubsubsection{\texorpdfstring{CompactType}{CompactType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{engine_8h_a21a34a0cb9dc4d1532650fb8c0106be4}{Compact\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FullCompact@{FullCompact}!engine.h@{engine.h}}\index{engine.h@{engine.h}!FullCompact@{FullCompact}}}\mbox{\Hypertarget{engine_8h_a21a34a0cb9dc4d1532650fb8c0106be4a78dc8fd7faa2ee5b4321c9dbb59015ed}\label{engine_8h_a21a34a0cb9dc4d1532650fb8c0106be4a78dc8fd7faa2ee5b4321c9dbb59015ed}} 
+Full\+Compact&\\
+\hline
+
+\end{DoxyEnumFields}

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libblockcache.a  CMakeFiles/blockcache.dir/src/Block/block_cache.cpp.o CMakeFiles/blockcache.dir/src/Iterator/block_iterator.cpp.o
+/usr/bin/ranlib libblockcache.a

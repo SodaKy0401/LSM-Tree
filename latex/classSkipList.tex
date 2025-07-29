@@ -1,0 +1,213 @@
+\hypertarget{classSkipList}{}\doxysection{Skip\+List Class Reference}
+\label{classSkipList}\index{SkipList@{SkipList}}
+
+
+{\ttfamily \#include $<$skiplist.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSkipList_a965f371efe709d8114f4f954b4ef2758}{Skip\+List}} (int max\+\_\+lvl=16)
+\item 
+\mbox{\hyperlink{classSkipList_ab1b03433ddd82f36cd49573f27aa2325}{$\sim$\+Skip\+List}} ()
+\item 
+void \mbox{\hyperlink{classSkipList_addb25da7d00ebc21d53b0383a35993ef}{put}} (const std\+::string \&key, const std\+::string \&value, uint64\+\_\+t tranc\+\_\+id)
+\item 
+\mbox{\hyperlink{classSkipListIterator}{Skip\+List\+Iterator}} \mbox{\hyperlink{classSkipList_a30bd94c5a0d42e400fdd5fd7b42a0163}{get}} (const std\+::string \&key, uint64\+\_\+t tranc\+\_\+id)
+\item 
+void \mbox{\hyperlink{classSkipList_adc708cfd6e9c7621d2aad9c9fbb2e9fb}{remove}} (const std\+::string \&key)
+\item 
+std\+::vector$<$ std\+::tuple$<$ std\+::string, std\+::string, uint64\+\_\+t $>$ $>$ \mbox{\hyperlink{classSkipList_a626f7a3c51aa78183ca624803f1590ec}{flush}} ()
+\item 
+size\+\_\+t \mbox{\hyperlink{classSkipList_aebfc27b307cb426699f1ff13490a3530}{get\+\_\+size}} ()
+\item 
+void \mbox{\hyperlink{classSkipList_a9796b65008a0ca54199a77640a78f766}{clear}} ()
+\item 
+\mbox{\hyperlink{classSkipListIterator}{Skip\+List\+Iterator}} \mbox{\hyperlink{classSkipList_ac57982107694c3d8586ee636a544f984}{begin}} ()
+\item 
+\mbox{\hyperlink{classSkipListIterator}{Skip\+List\+Iterator}} \mbox{\hyperlink{classSkipList_ac64ea25ad9d247669a2994f2609e8876}{begin\+\_\+preffix}} (const std\+::string \&preffix)
+\item 
+\mbox{\hyperlink{classSkipListIterator}{Skip\+List\+Iterator}} \mbox{\hyperlink{classSkipList_adcfdcc9e1bbbbf6ef37d79b5f587a180}{end}} ()
+\item 
+\mbox{\hyperlink{classSkipListIterator}{Skip\+List\+Iterator}} \mbox{\hyperlink{classSkipList_a2fdfc3fdb2cb4aabff20c4825f9c9a16}{end\+\_\+preffix}} (const std\+::string \&preffix)
+\item 
+std\+::optional$<$ std\+::pair$<$ \mbox{\hyperlink{classSkipListIterator}{Skip\+List\+Iterator}}, \mbox{\hyperlink{classSkipListIterator}{Skip\+List\+Iterator}} $>$ $>$ \mbox{\hyperlink{classSkipList_a40b0f29023f37ac9f0cbc777ac051081}{iters\+\_\+monotony\+\_\+predicate}} (std\+::function$<$ int(const std\+::string \&)$>$ predicate)
+\item 
+void \mbox{\hyperlink{classSkipList_a7b6a563bb082a1b4d2952045bb96eda0}{print\+\_\+skiplist}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSkipList_a965f371efe709d8114f4f954b4ef2758}\label{classSkipList_a965f371efe709d8114f4f954b4ef2758}} 
+\index{SkipList@{SkipList}!SkipList@{SkipList}}
+\index{SkipList@{SkipList}!SkipList@{SkipList}}
+\doxysubsubsection{\texorpdfstring{SkipList()}{SkipList()}}
+{\footnotesize\ttfamily Skip\+List\+::\+Skip\+List (\begin{DoxyParamCaption}\item[{int}]{max\+\_\+lvl = {\ttfamily 16} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classSkipList_ab1b03433ddd82f36cd49573f27aa2325}\label{classSkipList_ab1b03433ddd82f36cd49573f27aa2325}} 
+\index{SkipList@{SkipList}!````~SkipList@{$\sim$SkipList}}
+\index{````~SkipList@{$\sim$SkipList}!SkipList@{SkipList}}
+\doxysubsubsection{\texorpdfstring{$\sim$SkipList()}{~SkipList()}}
+{\footnotesize\ttfamily Skip\+List\+::$\sim$\+Skip\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSkipList_ac57982107694c3d8586ee636a544f984}\label{classSkipList_ac57982107694c3d8586ee636a544f984}} 
+\index{SkipList@{SkipList}!begin@{begin}}
+\index{begin@{begin}!SkipList@{SkipList}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSkipListIterator}{Skip\+List\+Iterator}} Skip\+List\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=245pt]{classSkipList_ac57982107694c3d8586ee636a544f984_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSkipList_ac64ea25ad9d247669a2994f2609e8876}\label{classSkipList_ac64ea25ad9d247669a2994f2609e8876}} 
+\index{SkipList@{SkipList}!begin\_preffix@{begin\_preffix}}
+\index{begin\_preffix@{begin\_preffix}!SkipList@{SkipList}}
+\doxysubsubsection{\texorpdfstring{begin\_preffix()}{begin\_preffix()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSkipListIterator}{Skip\+List\+Iterator}} Skip\+List\+::begin\+\_\+preffix (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{preffix }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{classSkipList_ac64ea25ad9d247669a2994f2609e8876_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSkipList_a9796b65008a0ca54199a77640a78f766}\label{classSkipList_a9796b65008a0ca54199a77640a78f766}} 
+\index{SkipList@{SkipList}!clear@{clear}}
+\index{clear@{clear}!SkipList@{SkipList}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Skip\+List\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=242pt]{classSkipList_a9796b65008a0ca54199a77640a78f766_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSkipList_adcfdcc9e1bbbbf6ef37d79b5f587a180}\label{classSkipList_adcfdcc9e1bbbbf6ef37d79b5f587a180}} 
+\index{SkipList@{SkipList}!end@{end}}
+\index{end@{end}!SkipList@{SkipList}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSkipListIterator}{Skip\+List\+Iterator}} Skip\+List\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{classSkipList_adcfdcc9e1bbbbf6ef37d79b5f587a180_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSkipList_a2fdfc3fdb2cb4aabff20c4825f9c9a16}\label{classSkipList_a2fdfc3fdb2cb4aabff20c4825f9c9a16}} 
+\index{SkipList@{SkipList}!end\_preffix@{end\_preffix}}
+\index{end\_preffix@{end\_preffix}!SkipList@{SkipList}}
+\doxysubsubsection{\texorpdfstring{end\_preffix()}{end\_preffix()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSkipListIterator}{Skip\+List\+Iterator}} Skip\+List\+::end\+\_\+preffix (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{preffix }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=273pt]{classSkipList_a2fdfc3fdb2cb4aabff20c4825f9c9a16_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSkipList_a626f7a3c51aa78183ca624803f1590ec}\label{classSkipList_a626f7a3c51aa78183ca624803f1590ec}} 
+\index{SkipList@{SkipList}!flush@{flush}}
+\index{flush@{flush}!SkipList@{SkipList}}
+\doxysubsubsection{\texorpdfstring{flush()}{flush()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::tuple$<$ std\+::string, std\+::string, uint64\+\_\+t $>$ $>$ Skip\+List\+::flush (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classSkipList_a30bd94c5a0d42e400fdd5fd7b42a0163}\label{classSkipList_a30bd94c5a0d42e400fdd5fd7b42a0163}} 
+\index{SkipList@{SkipList}!get@{get}}
+\index{get@{get}!SkipList@{SkipList}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSkipListIterator}{Skip\+List\+Iterator}} Skip\+List\+::get (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key,  }\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{classSkipList_a30bd94c5a0d42e400fdd5fd7b42a0163_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSkipList_aebfc27b307cb426699f1ff13490a3530}\label{classSkipList_aebfc27b307cb426699f1ff13490a3530}} 
+\index{SkipList@{SkipList}!get\_size@{get\_size}}
+\index{get\_size@{get\_size}!SkipList@{SkipList}}
+\doxysubsubsection{\texorpdfstring{get\_size()}{get\_size()}}
+{\footnotesize\ttfamily size\+\_\+t Skip\+List\+::get\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{classSkipList_aebfc27b307cb426699f1ff13490a3530_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSkipList_a40b0f29023f37ac9f0cbc777ac051081}\label{classSkipList_a40b0f29023f37ac9f0cbc777ac051081}} 
+\index{SkipList@{SkipList}!iters\_monotony\_predicate@{iters\_monotony\_predicate}}
+\index{iters\_monotony\_predicate@{iters\_monotony\_predicate}!SkipList@{SkipList}}
+\doxysubsubsection{\texorpdfstring{iters\_monotony\_predicate()}{iters\_monotony\_predicate()}}
+{\footnotesize\ttfamily std\+::optional$<$ std\+::pair$<$ \mbox{\hyperlink{classSkipListIterator}{Skip\+List\+Iterator}}, \mbox{\hyperlink{classSkipListIterator}{Skip\+List\+Iterator}} $>$ $>$ Skip\+List\+::iters\+\_\+monotony\+\_\+predicate (\begin{DoxyParamCaption}\item[{std\+::function$<$ int(const std\+::string \&)$>$}]{predicate }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{classSkipList_a40b0f29023f37ac9f0cbc777ac051081_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSkipList_a7b6a563bb082a1b4d2952045bb96eda0}\label{classSkipList_a7b6a563bb082a1b4d2952045bb96eda0}} 
+\index{SkipList@{SkipList}!print\_skiplist@{print\_skiplist}}
+\index{print\_skiplist@{print\_skiplist}!SkipList@{SkipList}}
+\doxysubsubsection{\texorpdfstring{print\_skiplist()}{print\_skiplist()}}
+{\footnotesize\ttfamily void Skip\+List\+::print\+\_\+skiplist (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classSkipList_addb25da7d00ebc21d53b0383a35993ef}\label{classSkipList_addb25da7d00ebc21d53b0383a35993ef}} 
+\index{SkipList@{SkipList}!put@{put}}
+\index{put@{put}!SkipList@{SkipList}}
+\doxysubsubsection{\texorpdfstring{put()}{put()}}
+{\footnotesize\ttfamily void Skip\+List\+::put (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key,  }\item[{const std\+::string \&}]{value,  }\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{classSkipList_addb25da7d00ebc21d53b0383a35993ef_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSkipList_adc708cfd6e9c7621d2aad9c9fbb2e9fb}\label{classSkipList_adc708cfd6e9c7621d2aad9c9fbb2e9fb}} 
+\index{SkipList@{SkipList}!remove@{remove}}
+\index{remove@{remove}!SkipList@{SkipList}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily void Skip\+List\+::remove (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=255pt]{classSkipList_adc708cfd6e9c7621d2aad9c9fbb2e9fb_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Skip\+List/\mbox{\hyperlink{skiplist_8h}{skiplist.\+h}}\item 
+src/\+Skip\+List/\mbox{\hyperlink{skiplist_8cpp}{skiplist.\+cpp}}\end{DoxyCompactItemize}

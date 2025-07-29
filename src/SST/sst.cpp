@@ -267,9 +267,8 @@ void SSTBuilder::finish_block() {
          sizeof(uint32_t));
 }
 
-std::shared_ptr<SST>
-SSTBuilder::build(size_t sst_id, const std::string &path,
-                  std::shared_ptr<BlockCache> block_cache) {
+std::shared_ptr<SST> SSTBuilder::build(size_t sst_id, const std::string &path,
+                                      std::shared_ptr<BlockCache> block_cache) {
   // 完成最后一个block
   if (!block.is_empty()) {
     finish_block();

@@ -1,7 +1,7 @@
 #include "iterator.h"
 #include <vector>
 
-// *************************** SearchItem ***************************
+
 // *************************** SearchItem ***************************
 bool operator<(const SearchItem &a, const SearchItem &b) {
   if (a.key_ != b.key_) {

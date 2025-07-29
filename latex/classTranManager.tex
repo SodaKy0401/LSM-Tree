@@ -1,0 +1,249 @@
+\hypertarget{classTranManager}{}\doxysection{Tran\+Manager Class Reference}
+\label{classTranManager}\index{TranManager@{TranManager}}
+
+
+{\ttfamily \#include $<$transaction.\+h$>$}
+
+
+
+Inheritance diagram for Tran\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=235pt]{classTranManager__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Tran\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=235pt]{classTranManager__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTranManager_a1e193a2b5b69a0b4998dd0d57072b15e}{Tran\+Manager}} (std\+::string data\+\_\+dir)
+\item 
+\mbox{\hyperlink{classTranManager_ac9d7c16ed282c5f668b0a245ca1a7f9c}{$\sim$\+Tran\+Manager}} ()
+\item 
+void \mbox{\hyperlink{classTranManager_aded0acb7a18beebaba561d7f535b780f}{init\+\_\+new\+\_\+wal}} ()
+\item 
+void \mbox{\hyperlink{classTranManager_afba1af729bcbf668167b936d7d5d0103}{set\+\_\+engine}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLSMEngine}{L\+S\+M\+Engine}} $>$ engine)
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTranContext}{Tran\+Context}} $>$ \mbox{\hyperlink{classTranManager_ac584b6ccd47e0ccc06e815c0ce6589be}{new\+\_\+tranc}} (const \mbox{\hyperlink{transaction_8h_af3fd7ab4111446c2fe0882d0d45eb119}{Isolation\+Level}} \&isolation\+\_\+level)
+\item 
+uint64\+\_\+t \mbox{\hyperlink{classTranManager_a7f7d8fb69fc406748a60024fbc77febf}{get\+Next\+Transaction\+Id}} ()
+\item 
+uint64\+\_\+t \mbox{\hyperlink{classTranManager_afc9da778dbbecebb29b009de97a1687c}{get\+\_\+max\+\_\+flushed\+\_\+tranc\+\_\+id}} ()
+\item 
+uint64\+\_\+t \mbox{\hyperlink{classTranManager_a85c163d7eacf23a7e149bcb735a4b718}{get\+\_\+max\+\_\+finished\+\_\+tranc\+\_\+id\+\_\+}} ()
+\item 
+void \mbox{\hyperlink{classTranManager_ad5dff3a2557df7fbca511bf0e1138014}{update\+\_\+max\+\_\+finished\+\_\+tranc\+\_\+id}} (uint64\+\_\+t tranc\+\_\+id)
+\item 
+void \mbox{\hyperlink{classTranManager_a233fa9bb9fdd7fff5073f4a424fedc78}{update\+\_\+max\+\_\+flushed\+\_\+tranc\+\_\+id}} (uint64\+\_\+t tranc\+\_\+id)
+\item 
+bool \mbox{\hyperlink{classTranManager_a899f239fad61e04d87a2a63a1cc92d12}{write\+\_\+to\+\_\+wal}} (const std\+::vector$<$ \mbox{\hyperlink{classRecord}{Record}} $>$ \&records)
+\item 
+std\+::map$<$ uint64\+\_\+t, std\+::vector$<$ \mbox{\hyperlink{classRecord}{Record}} $>$ $>$ \mbox{\hyperlink{classTranManager_ace785fb46052f8c2c0fd652e135db8dd}{check\+\_\+recover}} ()
+\item 
+std\+::string \mbox{\hyperlink{classTranManager_a09529ecb04b285e7870038e71542968d}{get\+\_\+tranc\+\_\+id\+\_\+file\+\_\+path}} ()
+\item 
+void \mbox{\hyperlink{classTranManager_a9bb6705c6c2562a62b9c6c20930d86df}{write\+\_\+tranc\+\_\+id\+\_\+file}} ()
+\item 
+void \mbox{\hyperlink{classTranManager_aebb3f42efddbae3934aca039a4b01eb8}{read\+\_\+tranc\+\_\+id\+\_\+file}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTranManager_a1e193a2b5b69a0b4998dd0d57072b15e}\label{classTranManager_a1e193a2b5b69a0b4998dd0d57072b15e}} 
+\index{TranManager@{TranManager}!TranManager@{TranManager}}
+\index{TranManager@{TranManager}!TranManager@{TranManager}}
+\doxysubsubsection{\texorpdfstring{TranManager()}{TranManager()}}
+{\footnotesize\ttfamily Tran\+Manager\+::\+Tran\+Manager (\begin{DoxyParamCaption}\item[{std\+::string}]{data\+\_\+dir }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTranManager_a1e193a2b5b69a0b4998dd0d57072b15e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTranManager_ac9d7c16ed282c5f668b0a245ca1a7f9c}\label{classTranManager_ac9d7c16ed282c5f668b0a245ca1a7f9c}} 
+\index{TranManager@{TranManager}!````~TranManager@{$\sim$TranManager}}
+\index{````~TranManager@{$\sim$TranManager}!TranManager@{TranManager}}
+\doxysubsubsection{\texorpdfstring{$\sim$TranManager()}{~TranManager()}}
+{\footnotesize\ttfamily Tran\+Manager\+::$\sim$\+Tran\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTranManager_ac9d7c16ed282c5f668b0a245ca1a7f9c_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTranManager_ace785fb46052f8c2c0fd652e135db8dd}\label{classTranManager_ace785fb46052f8c2c0fd652e135db8dd}} 
+\index{TranManager@{TranManager}!check\_recover@{check\_recover}}
+\index{check\_recover@{check\_recover}!TranManager@{TranManager}}
+\doxysubsubsection{\texorpdfstring{check\_recover()}{check\_recover()}}
+{\footnotesize\ttfamily std\+::map$<$ uint64\+\_\+t, std\+::vector$<$ \mbox{\hyperlink{classRecord}{Record}} $>$ $>$ Tran\+Manager\+::check\+\_\+recover (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTranManager_ace785fb46052f8c2c0fd652e135db8dd_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTranManager_a85c163d7eacf23a7e149bcb735a4b718}\label{classTranManager_a85c163d7eacf23a7e149bcb735a4b718}} 
+\index{TranManager@{TranManager}!get\_max\_finished\_tranc\_id\_@{get\_max\_finished\_tranc\_id\_}}
+\index{get\_max\_finished\_tranc\_id\_@{get\_max\_finished\_tranc\_id\_}!TranManager@{TranManager}}
+\doxysubsubsection{\texorpdfstring{get\_max\_finished\_tranc\_id\_()}{get\_max\_finished\_tranc\_id\_()}}
+{\footnotesize\ttfamily uint64\+\_\+t Tran\+Manager\+::get\+\_\+max\+\_\+finished\+\_\+tranc\+\_\+id\+\_\+ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classTranManager_afc9da778dbbecebb29b009de97a1687c}\label{classTranManager_afc9da778dbbecebb29b009de97a1687c}} 
+\index{TranManager@{TranManager}!get\_max\_flushed\_tranc\_id@{get\_max\_flushed\_tranc\_id}}
+\index{get\_max\_flushed\_tranc\_id@{get\_max\_flushed\_tranc\_id}!TranManager@{TranManager}}
+\doxysubsubsection{\texorpdfstring{get\_max\_flushed\_tranc\_id()}{get\_max\_flushed\_tranc\_id()}}
+{\footnotesize\ttfamily uint64\+\_\+t Tran\+Manager\+::get\+\_\+max\+\_\+flushed\+\_\+tranc\+\_\+id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classTranManager_a09529ecb04b285e7870038e71542968d}\label{classTranManager_a09529ecb04b285e7870038e71542968d}} 
+\index{TranManager@{TranManager}!get\_tranc\_id\_file\_path@{get\_tranc\_id\_file\_path}}
+\index{get\_tranc\_id\_file\_path@{get\_tranc\_id\_file\_path}!TranManager@{TranManager}}
+\doxysubsubsection{\texorpdfstring{get\_tranc\_id\_file\_path()}{get\_tranc\_id\_file\_path()}}
+{\footnotesize\ttfamily std\+::string Tran\+Manager\+::get\+\_\+tranc\+\_\+id\+\_\+file\+\_\+path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTranManager_a09529ecb04b285e7870038e71542968d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTranManager_a7f7d8fb69fc406748a60024fbc77febf}\label{classTranManager_a7f7d8fb69fc406748a60024fbc77febf}} 
+\index{TranManager@{TranManager}!getNextTransactionId@{getNextTransactionId}}
+\index{getNextTransactionId@{getNextTransactionId}!TranManager@{TranManager}}
+\doxysubsubsection{\texorpdfstring{getNextTransactionId()}{getNextTransactionId()}}
+{\footnotesize\ttfamily uint64\+\_\+t Tran\+Manager\+::get\+Next\+Transaction\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTranManager_a7f7d8fb69fc406748a60024fbc77febf_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTranManager_aded0acb7a18beebaba561d7f535b780f}\label{classTranManager_aded0acb7a18beebaba561d7f535b780f}} 
+\index{TranManager@{TranManager}!init\_new\_wal@{init\_new\_wal}}
+\index{init\_new\_wal@{init\_new\_wal}!TranManager@{TranManager}}
+\doxysubsubsection{\texorpdfstring{init\_new\_wal()}{init\_new\_wal()}}
+{\footnotesize\ttfamily void Tran\+Manager\+::init\+\_\+new\+\_\+wal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classTranManager_ac584b6ccd47e0ccc06e815c0ce6589be}\label{classTranManager_ac584b6ccd47e0ccc06e815c0ce6589be}} 
+\index{TranManager@{TranManager}!new\_tranc@{new\_tranc}}
+\index{new\_tranc@{new\_tranc}!TranManager@{TranManager}}
+\doxysubsubsection{\texorpdfstring{new\_tranc()}{new\_tranc()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTranContext}{Tran\+Context}} $>$ Tran\+Manager\+::new\+\_\+tranc (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{transaction_8h_af3fd7ab4111446c2fe0882d0d45eb119}{Isolation\+Level}} \&}]{isolation\+\_\+level }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTranManager_ac584b6ccd47e0ccc06e815c0ce6589be_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTranManager_aebb3f42efddbae3934aca039a4b01eb8}\label{classTranManager_aebb3f42efddbae3934aca039a4b01eb8}} 
+\index{TranManager@{TranManager}!read\_tranc\_id\_file@{read\_tranc\_id\_file}}
+\index{read\_tranc\_id\_file@{read\_tranc\_id\_file}!TranManager@{TranManager}}
+\doxysubsubsection{\texorpdfstring{read\_tranc\_id\_file()}{read\_tranc\_id\_file()}}
+{\footnotesize\ttfamily void Tran\+Manager\+::read\+\_\+tranc\+\_\+id\+\_\+file (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTranManager_aebb3f42efddbae3934aca039a4b01eb8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTranManager_aebb3f42efddbae3934aca039a4b01eb8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTranManager_afba1af729bcbf668167b936d7d5d0103}\label{classTranManager_afba1af729bcbf668167b936d7d5d0103}} 
+\index{TranManager@{TranManager}!set\_engine@{set\_engine}}
+\index{set\_engine@{set\_engine}!TranManager@{TranManager}}
+\doxysubsubsection{\texorpdfstring{set\_engine()}{set\_engine()}}
+{\footnotesize\ttfamily void Tran\+Manager\+::set\+\_\+engine (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLSMEngine}{L\+S\+M\+Engine}} $>$}]{engine }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classTranManager_ad5dff3a2557df7fbca511bf0e1138014}\label{classTranManager_ad5dff3a2557df7fbca511bf0e1138014}} 
+\index{TranManager@{TranManager}!update\_max\_finished\_tranc\_id@{update\_max\_finished\_tranc\_id}}
+\index{update\_max\_finished\_tranc\_id@{update\_max\_finished\_tranc\_id}!TranManager@{TranManager}}
+\doxysubsubsection{\texorpdfstring{update\_max\_finished\_tranc\_id()}{update\_max\_finished\_tranc\_id()}}
+{\footnotesize\ttfamily void Tran\+Manager\+::update\+\_\+max\+\_\+finished\+\_\+tranc\+\_\+id (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classTranManager_a233fa9bb9fdd7fff5073f4a424fedc78}\label{classTranManager_a233fa9bb9fdd7fff5073f4a424fedc78}} 
+\index{TranManager@{TranManager}!update\_max\_flushed\_tranc\_id@{update\_max\_flushed\_tranc\_id}}
+\index{update\_max\_flushed\_tranc\_id@{update\_max\_flushed\_tranc\_id}!TranManager@{TranManager}}
+\doxysubsubsection{\texorpdfstring{update\_max\_flushed\_tranc\_id()}{update\_max\_flushed\_tranc\_id()}}
+{\footnotesize\ttfamily void Tran\+Manager\+::update\+\_\+max\+\_\+flushed\+\_\+tranc\+\_\+id (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTranManager_a233fa9bb9fdd7fff5073f4a424fedc78_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTranManager_a899f239fad61e04d87a2a63a1cc92d12}\label{classTranManager_a899f239fad61e04d87a2a63a1cc92d12}} 
+\index{TranManager@{TranManager}!write\_to\_wal@{write\_to\_wal}}
+\index{write\_to\_wal@{write\_to\_wal}!TranManager@{TranManager}}
+\doxysubsubsection{\texorpdfstring{write\_to\_wal()}{write\_to\_wal()}}
+{\footnotesize\ttfamily bool Tran\+Manager\+::write\+\_\+to\+\_\+wal (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{classRecord}{Record}} $>$ \&}]{records }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classTranManager_a9bb6705c6c2562a62b9c6c20930d86df}\label{classTranManager_a9bb6705c6c2562a62b9c6c20930d86df}} 
+\index{TranManager@{TranManager}!write\_tranc\_id\_file@{write\_tranc\_id\_file}}
+\index{write\_tranc\_id\_file@{write\_tranc\_id\_file}!TranManager@{TranManager}}
+\doxysubsubsection{\texorpdfstring{write\_tranc\_id\_file()}{write\_tranc\_id\_file()}}
+{\footnotesize\ttfamily void Tran\+Manager\+::write\+\_\+tranc\+\_\+id\+\_\+file (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=307pt]{classTranManager_a9bb6705c6c2562a62b9c6c20930d86df_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTranManager_a9bb6705c6c2562a62b9c6c20930d86df_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+L\+S\+M/\mbox{\hyperlink{transaction_8h}{transaction.\+h}}\item 
+src/\+L\+S\+M/\mbox{\hyperlink{transaction_8cpp}{transaction.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,370 @@
+\hypertarget{classLSMEngine}{}\doxysection{L\+S\+M\+Engine Class Reference}
+\label{classLSMEngine}\index{LSMEngine@{LSMEngine}}
+
+
+{\ttfamily \#include $<$engine.\+h$>$}
+
+
+
+Inheritance diagram for L\+S\+M\+Engine\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{classLSMEngine__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for L\+S\+M\+Engine\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=310pt]{classLSMEngine__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLSMEngine_a65b40d5d12c72fc998342d8e60db9b29}{L\+S\+M\+Engine}} (std\+::string path)
+\item 
+\mbox{\hyperlink{classLSMEngine_ac51006a86e30bcbd4553d2482a991dc0}{$\sim$\+L\+S\+M\+Engine}} ()
+\item 
+std\+::optional$<$ std\+::pair$<$ std\+::string, uint64\+\_\+t $>$ $>$ \mbox{\hyperlink{classLSMEngine_a1a034d35c5569345c722b716182ef5cc}{get}} (const std\+::string \&key, uint64\+\_\+t tranc\+\_\+id)
+\item 
+std\+::vector$<$ std\+::pair$<$ std\+::string, std\+::optional$<$ std\+::pair$<$ std\+::string, uint64\+\_\+t $>$ $>$ $>$ $>$ \mbox{\hyperlink{classLSMEngine_ab1e3e1805fb74e6f139fc5bac62b00eb}{get\+\_\+batch}} (const std\+::vector$<$ std\+::string $>$ \&keys, uint64\+\_\+t tranc\+\_\+id)
+\item 
+std\+::optional$<$ std\+::pair$<$ std\+::string, uint64\+\_\+t $>$ $>$ \mbox{\hyperlink{classLSMEngine_ad25caa8cebc154cac657f118113c8ab9}{sst\+\_\+get\+\_\+}} (const std\+::string \&key, uint64\+\_\+t tranc\+\_\+id)
+\item 
+uint64\+\_\+t \mbox{\hyperlink{classLSMEngine_a1dc16100c3c1baa1699619b890b68d55}{put}} (const std\+::string \&key, const std\+::string \&value, uint64\+\_\+t tranc\+\_\+id)
+\item 
+uint64\+\_\+t \mbox{\hyperlink{classLSMEngine_a66612d89c2d7c77b0ac662ec7a057d4e}{put\+\_\+batch}} (const std\+::vector$<$ std\+::pair$<$ std\+::string, std\+::string $>$$>$ \&kvs, uint64\+\_\+t tranc\+\_\+id)
+\item 
+uint64\+\_\+t \mbox{\hyperlink{classLSMEngine_ad4f8ed90479d2dc15087d5d3b291a612}{remove}} (const std\+::string \&key, uint64\+\_\+t tranc\+\_\+id)
+\item 
+uint64\+\_\+t \mbox{\hyperlink{classLSMEngine_ae0cdc3d42ebd5ea29dfae573c9c0d3b5}{remove\+\_\+batch}} (const std\+::vector$<$ std\+::string $>$ \&keys, uint64\+\_\+t tranc\+\_\+id)
+\item 
+void \mbox{\hyperlink{classLSMEngine_ac26b1b6ef3b1d1b3b9827ea3153bd5be}{clear}} ()
+\item 
+uint64\+\_\+t \mbox{\hyperlink{classLSMEngine_a44081ad7e505c8bb4f5bb615671698dc}{flush}} ()
+\item 
+std\+::string \mbox{\hyperlink{classLSMEngine_a6db3beeb9da13b7bde65ce60490d68f9}{get\+\_\+sst\+\_\+path}} (size\+\_\+t sst\+\_\+id, size\+\_\+t target\+\_\+level)
+\item 
+std\+::optional$<$ std\+::pair$<$ \mbox{\hyperlink{classTwoMergeIterator}{Two\+Merge\+Iterator}}, \mbox{\hyperlink{classTwoMergeIterator}{Two\+Merge\+Iterator}} $>$ $>$ \mbox{\hyperlink{classLSMEngine_a66cd1501fa1587fc00cc7bcbf2526574}{lsm\+\_\+iters\+\_\+monotony\+\_\+predicate}} (uint64\+\_\+t tranc\+\_\+id, std\+::function$<$ int(const std\+::string \&)$>$ predicate)
+\item 
+\mbox{\hyperlink{classLevel__Iterator}{Level\+\_\+\+Iterator}} \mbox{\hyperlink{classLSMEngine_a526f2decdbda8ef0f0c7261804905a63}{begin}} (uint64\+\_\+t tranc\+\_\+id)
+\item 
+\mbox{\hyperlink{classLevel__Iterator}{Level\+\_\+\+Iterator}} \mbox{\hyperlink{classLSMEngine_a04d3c4dbdf085a97512de761d3059c8f}{end}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static size\+\_\+t \mbox{\hyperlink{classLSMEngine_aaec10891d1ac4635f7837b97b84ea7fe}{get\+\_\+sst\+\_\+size}} (size\+\_\+t level)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classLSMEngine_aaa6382282ecd0b6bbb775bd79134a787}{data\+\_\+dir}}
+\item 
+\mbox{\hyperlink{classMemTable}{Mem\+Table}} \mbox{\hyperlink{classLSMEngine_a29c9ba315446a36fff59d30cb370eb41}{memtable}}
+\item 
+std\+::map$<$ size\+\_\+t, std\+::deque$<$ size\+\_\+t $>$ $>$ \mbox{\hyperlink{classLSMEngine_aa876efc221113c25ee9cf5d8f971680b}{level\+\_\+sst\+\_\+ids}}
+\item 
+std\+::unordered\+\_\+map$<$ size\+\_\+t, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSST}{S\+ST}} $>$ $>$ \mbox{\hyperlink{classLSMEngine_a4791b0d6df60a32834abba80f4d58afd}{ssts}}
+\item 
+std\+::shared\+\_\+mutex \mbox{\hyperlink{classLSMEngine_aec7ec5a9b35f247da1836130285a9aad}{ssts\+\_\+mtx}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBlockCache}{Block\+Cache}} $>$ \mbox{\hyperlink{classLSMEngine_a5865b59fdffad549b742620041d71834}{block\+\_\+cache}}
+\item 
+size\+\_\+t \mbox{\hyperlink{classLSMEngine_a2c03cf48dd37a84386080661d6b25a45}{next\+\_\+sst\+\_\+id}} = 0
+\item 
+size\+\_\+t \mbox{\hyperlink{classLSMEngine_af64939d16048d327cf4bab87bff505d5}{cur\+\_\+max\+\_\+level}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classLSMEngine_a65b40d5d12c72fc998342d8e60db9b29}\label{classLSMEngine_a65b40d5d12c72fc998342d8e60db9b29}} 
+\index{LSMEngine@{LSMEngine}!LSMEngine@{LSMEngine}}
+\index{LSMEngine@{LSMEngine}!LSMEngine@{LSMEngine}}
+\doxysubsubsection{\texorpdfstring{LSMEngine()}{LSMEngine()}}
+{\footnotesize\ttfamily L\+S\+M\+Engine\+::\+L\+S\+M\+Engine (\begin{DoxyParamCaption}\item[{std\+::string}]{path }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLSMEngine_a65b40d5d12c72fc998342d8e60db9b29_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLSMEngine_ac51006a86e30bcbd4553d2482a991dc0}\label{classLSMEngine_ac51006a86e30bcbd4553d2482a991dc0}} 
+\index{LSMEngine@{LSMEngine}!````~LSMEngine@{$\sim$LSMEngine}}
+\index{````~LSMEngine@{$\sim$LSMEngine}!LSMEngine@{LSMEngine}}
+\doxysubsubsection{\texorpdfstring{$\sim$LSMEngine()}{~LSMEngine()}}
+{\footnotesize\ttfamily L\+S\+M\+Engine\+::$\sim$\+L\+S\+M\+Engine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLSMEngine_a526f2decdbda8ef0f0c7261804905a63}\label{classLSMEngine_a526f2decdbda8ef0f0c7261804905a63}} 
+\index{LSMEngine@{LSMEngine}!begin@{begin}}
+\index{begin@{begin}!LSMEngine@{LSMEngine}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLevel__Iterator}{Level\+\_\+\+Iterator}} L\+S\+M\+Engine\+::begin (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLSMEngine_ac26b1b6ef3b1d1b3b9827ea3153bd5be}\label{classLSMEngine_ac26b1b6ef3b1d1b3b9827ea3153bd5be}} 
+\index{LSMEngine@{LSMEngine}!clear@{clear}}
+\index{clear@{clear}!LSMEngine@{LSMEngine}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void L\+S\+M\+Engine\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=313pt]{classLSMEngine_ac26b1b6ef3b1d1b3b9827ea3153bd5be_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLSMEngine_a04d3c4dbdf085a97512de761d3059c8f}\label{classLSMEngine_a04d3c4dbdf085a97512de761d3059c8f}} 
+\index{LSMEngine@{LSMEngine}!end@{end}}
+\index{end@{end}!LSMEngine@{LSMEngine}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLevel__Iterator}{Level\+\_\+\+Iterator}} L\+S\+M\+Engine\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{classLSMEngine_a04d3c4dbdf085a97512de761d3059c8f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLSMEngine_a44081ad7e505c8bb4f5bb615671698dc}\label{classLSMEngine_a44081ad7e505c8bb4f5bb615671698dc}} 
+\index{LSMEngine@{LSMEngine}!flush@{flush}}
+\index{flush@{flush}!LSMEngine@{LSMEngine}}
+\doxysubsubsection{\texorpdfstring{flush()}{flush()}}
+{\footnotesize\ttfamily uint64\+\_\+t L\+S\+M\+Engine\+::flush (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLSMEngine_a44081ad7e505c8bb4f5bb615671698dc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLSMEngine_a44081ad7e505c8bb4f5bb615671698dc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLSMEngine_a1a034d35c5569345c722b716182ef5cc}\label{classLSMEngine_a1a034d35c5569345c722b716182ef5cc}} 
+\index{LSMEngine@{LSMEngine}!get@{get}}
+\index{get@{get}!LSMEngine@{LSMEngine}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily std\+::optional$<$ std\+::pair$<$ std\+::string, uint64\+\_\+t $>$ $>$ L\+S\+M\+Engine\+::get (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key,  }\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{classLSMEngine_a1a034d35c5569345c722b716182ef5cc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{classLSMEngine_a1a034d35c5569345c722b716182ef5cc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLSMEngine_ab1e3e1805fb74e6f139fc5bac62b00eb}\label{classLSMEngine_ab1e3e1805fb74e6f139fc5bac62b00eb}} 
+\index{LSMEngine@{LSMEngine}!get\_batch@{get\_batch}}
+\index{get\_batch@{get\_batch}!LSMEngine@{LSMEngine}}
+\doxysubsubsection{\texorpdfstring{get\_batch()}{get\_batch()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::pair$<$ std\+::string, std\+::optional$<$ std\+::pair$<$ std\+::string, uint64\+\_\+t $>$ $>$ $>$ $>$ L\+S\+M\+Engine\+::get\+\_\+batch (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{keys,  }\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLSMEngine_ab1e3e1805fb74e6f139fc5bac62b00eb_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLSMEngine_a6db3beeb9da13b7bde65ce60490d68f9}\label{classLSMEngine_a6db3beeb9da13b7bde65ce60490d68f9}} 
+\index{LSMEngine@{LSMEngine}!get\_sst\_path@{get\_sst\_path}}
+\index{get\_sst\_path@{get\_sst\_path}!LSMEngine@{LSMEngine}}
+\doxysubsubsection{\texorpdfstring{get\_sst\_path()}{get\_sst\_path()}}
+{\footnotesize\ttfamily std\+::string L\+S\+M\+Engine\+::get\+\_\+sst\+\_\+path (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{sst\+\_\+id,  }\item[{size\+\_\+t}]{target\+\_\+level }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLSMEngine_a6db3beeb9da13b7bde65ce60490d68f9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLSMEngine_aaec10891d1ac4635f7837b97b84ea7fe}\label{classLSMEngine_aaec10891d1ac4635f7837b97b84ea7fe}} 
+\index{LSMEngine@{LSMEngine}!get\_sst\_size@{get\_sst\_size}}
+\index{get\_sst\_size@{get\_sst\_size}!LSMEngine@{LSMEngine}}
+\doxysubsubsection{\texorpdfstring{get\_sst\_size()}{get\_sst\_size()}}
+{\footnotesize\ttfamily size\+\_\+t L\+S\+M\+Engine\+::get\+\_\+sst\+\_\+size (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classLSMEngine_a66cd1501fa1587fc00cc7bcbf2526574}\label{classLSMEngine_a66cd1501fa1587fc00cc7bcbf2526574}} 
+\index{LSMEngine@{LSMEngine}!lsm\_iters\_monotony\_predicate@{lsm\_iters\_monotony\_predicate}}
+\index{lsm\_iters\_monotony\_predicate@{lsm\_iters\_monotony\_predicate}!LSMEngine@{LSMEngine}}
+\doxysubsubsection{\texorpdfstring{lsm\_iters\_monotony\_predicate()}{lsm\_iters\_monotony\_predicate()}}
+{\footnotesize\ttfamily std\+::optional$<$ std\+::pair$<$ \mbox{\hyperlink{classTwoMergeIterator}{Two\+Merge\+Iterator}}, \mbox{\hyperlink{classTwoMergeIterator}{Two\+Merge\+Iterator}} $>$ $>$ L\+S\+M\+Engine\+::lsm\+\_\+iters\+\_\+monotony\+\_\+predicate (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{tranc\+\_\+id,  }\item[{std\+::function$<$ int(const std\+::string \&)$>$}]{predicate }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLSMEngine_a66cd1501fa1587fc00cc7bcbf2526574_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLSMEngine_a1dc16100c3c1baa1699619b890b68d55}\label{classLSMEngine_a1dc16100c3c1baa1699619b890b68d55}} 
+\index{LSMEngine@{LSMEngine}!put@{put}}
+\index{put@{put}!LSMEngine@{LSMEngine}}
+\doxysubsubsection{\texorpdfstring{put()}{put()}}
+{\footnotesize\ttfamily uint64\+\_\+t L\+S\+M\+Engine\+::put (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key,  }\item[{const std\+::string \&}]{value,  }\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLSMEngine_a1dc16100c3c1baa1699619b890b68d55_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{classLSMEngine_a1dc16100c3c1baa1699619b890b68d55_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLSMEngine_a66612d89c2d7c77b0ac662ec7a057d4e}\label{classLSMEngine_a66612d89c2d7c77b0ac662ec7a057d4e}} 
+\index{LSMEngine@{LSMEngine}!put\_batch@{put\_batch}}
+\index{put\_batch@{put\_batch}!LSMEngine@{LSMEngine}}
+\doxysubsubsection{\texorpdfstring{put\_batch()}{put\_batch()}}
+{\footnotesize\ttfamily uint64\+\_\+t L\+S\+M\+Engine\+::put\+\_\+batch (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::pair$<$ std\+::string, std\+::string $>$$>$ \&}]{kvs,  }\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLSMEngine_a66612d89c2d7c77b0ac662ec7a057d4e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLSMEngine_ad4f8ed90479d2dc15087d5d3b291a612}\label{classLSMEngine_ad4f8ed90479d2dc15087d5d3b291a612}} 
+\index{LSMEngine@{LSMEngine}!remove@{remove}}
+\index{remove@{remove}!LSMEngine@{LSMEngine}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily uint64\+\_\+t L\+S\+M\+Engine\+::remove (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key,  }\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLSMEngine_ad4f8ed90479d2dc15087d5d3b291a612_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLSMEngine_ae0cdc3d42ebd5ea29dfae573c9c0d3b5}\label{classLSMEngine_ae0cdc3d42ebd5ea29dfae573c9c0d3b5}} 
+\index{LSMEngine@{LSMEngine}!remove\_batch@{remove\_batch}}
+\index{remove\_batch@{remove\_batch}!LSMEngine@{LSMEngine}}
+\doxysubsubsection{\texorpdfstring{remove\_batch()}{remove\_batch()}}
+{\footnotesize\ttfamily uint64\+\_\+t L\+S\+M\+Engine\+::remove\+\_\+batch (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{keys,  }\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLSMEngine_ae0cdc3d42ebd5ea29dfae573c9c0d3b5_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLSMEngine_ad25caa8cebc154cac657f118113c8ab9}\label{classLSMEngine_ad25caa8cebc154cac657f118113c8ab9}} 
+\index{LSMEngine@{LSMEngine}!sst\_get\_@{sst\_get\_}}
+\index{sst\_get\_@{sst\_get\_}!LSMEngine@{LSMEngine}}
+\doxysubsubsection{\texorpdfstring{sst\_get\_()}{sst\_get\_()}}
+{\footnotesize\ttfamily std\+::optional$<$ std\+::pair$<$ std\+::string, uint64\+\_\+t $>$ $>$ L\+S\+M\+Engine\+::sst\+\_\+get\+\_\+ (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key,  }\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=323pt]{classLSMEngine_ad25caa8cebc154cac657f118113c8ab9_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classLSMEngine_a5865b59fdffad549b742620041d71834}\label{classLSMEngine_a5865b59fdffad549b742620041d71834}} 
+\index{LSMEngine@{LSMEngine}!block\_cache@{block\_cache}}
+\index{block\_cache@{block\_cache}!LSMEngine@{LSMEngine}}
+\doxysubsubsection{\texorpdfstring{block\_cache}{block\_cache}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classBlockCache}{Block\+Cache}}$>$ L\+S\+M\+Engine\+::block\+\_\+cache}
+
+\mbox{\Hypertarget{classLSMEngine_af64939d16048d327cf4bab87bff505d5}\label{classLSMEngine_af64939d16048d327cf4bab87bff505d5}} 
+\index{LSMEngine@{LSMEngine}!cur\_max\_level@{cur\_max\_level}}
+\index{cur\_max\_level@{cur\_max\_level}!LSMEngine@{LSMEngine}}
+\doxysubsubsection{\texorpdfstring{cur\_max\_level}{cur\_max\_level}}
+{\footnotesize\ttfamily size\+\_\+t L\+S\+M\+Engine\+::cur\+\_\+max\+\_\+level = 0}
+
+\mbox{\Hypertarget{classLSMEngine_aaa6382282ecd0b6bbb775bd79134a787}\label{classLSMEngine_aaa6382282ecd0b6bbb775bd79134a787}} 
+\index{LSMEngine@{LSMEngine}!data\_dir@{data\_dir}}
+\index{data\_dir@{data\_dir}!LSMEngine@{LSMEngine}}
+\doxysubsubsection{\texorpdfstring{data\_dir}{data\_dir}}
+{\footnotesize\ttfamily std\+::string L\+S\+M\+Engine\+::data\+\_\+dir}
+
+\mbox{\Hypertarget{classLSMEngine_aa876efc221113c25ee9cf5d8f971680b}\label{classLSMEngine_aa876efc221113c25ee9cf5d8f971680b}} 
+\index{LSMEngine@{LSMEngine}!level\_sst\_ids@{level\_sst\_ids}}
+\index{level\_sst\_ids@{level\_sst\_ids}!LSMEngine@{LSMEngine}}
+\doxysubsubsection{\texorpdfstring{level\_sst\_ids}{level\_sst\_ids}}
+{\footnotesize\ttfamily std\+::map$<$size\+\_\+t, std\+::deque$<$size\+\_\+t$>$ $>$ L\+S\+M\+Engine\+::level\+\_\+sst\+\_\+ids}
+
+\mbox{\Hypertarget{classLSMEngine_a29c9ba315446a36fff59d30cb370eb41}\label{classLSMEngine_a29c9ba315446a36fff59d30cb370eb41}} 
+\index{LSMEngine@{LSMEngine}!memtable@{memtable}}
+\index{memtable@{memtable}!LSMEngine@{LSMEngine}}
+\doxysubsubsection{\texorpdfstring{memtable}{memtable}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMemTable}{Mem\+Table}} L\+S\+M\+Engine\+::memtable}
+
+\mbox{\Hypertarget{classLSMEngine_a2c03cf48dd37a84386080661d6b25a45}\label{classLSMEngine_a2c03cf48dd37a84386080661d6b25a45}} 
+\index{LSMEngine@{LSMEngine}!next\_sst\_id@{next\_sst\_id}}
+\index{next\_sst\_id@{next\_sst\_id}!LSMEngine@{LSMEngine}}
+\doxysubsubsection{\texorpdfstring{next\_sst\_id}{next\_sst\_id}}
+{\footnotesize\ttfamily size\+\_\+t L\+S\+M\+Engine\+::next\+\_\+sst\+\_\+id = 0}
+
+\mbox{\Hypertarget{classLSMEngine_a4791b0d6df60a32834abba80f4d58afd}\label{classLSMEngine_a4791b0d6df60a32834abba80f4d58afd}} 
+\index{LSMEngine@{LSMEngine}!ssts@{ssts}}
+\index{ssts@{ssts}!LSMEngine@{LSMEngine}}
+\doxysubsubsection{\texorpdfstring{ssts}{ssts}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$size\+\_\+t, std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classSST}{S\+ST}}$>$ $>$ L\+S\+M\+Engine\+::ssts}
+
+\mbox{\Hypertarget{classLSMEngine_aec7ec5a9b35f247da1836130285a9aad}\label{classLSMEngine_aec7ec5a9b35f247da1836130285a9aad}} 
+\index{LSMEngine@{LSMEngine}!ssts\_mtx@{ssts\_mtx}}
+\index{ssts\_mtx@{ssts\_mtx}!LSMEngine@{LSMEngine}}
+\doxysubsubsection{\texorpdfstring{ssts\_mtx}{ssts\_mtx}}
+{\footnotesize\ttfamily std\+::shared\+\_\+mutex L\+S\+M\+Engine\+::ssts\+\_\+mtx}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+L\+S\+M/\mbox{\hyperlink{engine_8h}{engine.\+h}}\item 
+src/\+L\+S\+M/\mbox{\hyperlink{engine_8cpp}{engine.\+cpp}}\end{DoxyCompactItemize}

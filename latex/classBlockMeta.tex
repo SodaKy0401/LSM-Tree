@@ -1,0 +1,126 @@
+\hypertarget{classBlockMeta}{}\doxysection{Block\+Meta Class Reference}
+\label{classBlockMeta}\index{BlockMeta@{BlockMeta}}
+
+
+{\ttfamily \#include $<$blockmeta.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBlockMeta_a0c4e00fa0c866c5e1ce47a9570aa626d}{Block\+Meta}} ()
+\item 
+\mbox{\hyperlink{classBlockMeta_a2c1121aec314db3afdcb6933036b0a2e}{Block\+Meta}} (size\+\_\+t \mbox{\hyperlink{classBlockMeta_a22d9bd72f55a25ed8265d6c93692ce52}{offset}}, const std\+::string \&\mbox{\hyperlink{classBlockMeta_a63db8a8fcebc6826013b6a64454393e9}{first\+\_\+key}}, const std\+::string \&\mbox{\hyperlink{classBlockMeta_ac8bf599b3d6953346dc2ddddeae7838a}{last\+\_\+key}})
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classBlockMeta_a3037f4a4eaaa48ffb3a10e85342b4ca7}{encode\+\_\+meta\+\_\+to\+\_\+slice}} (std\+::vector$<$ \mbox{\hyperlink{classBlockMeta}{Block\+Meta}} $>$ \&meta\+\_\+entries, std\+::vector$<$ uint8\+\_\+t $>$ \&metadata)
+\item 
+static std\+::vector$<$ \mbox{\hyperlink{classBlockMeta}{Block\+Meta}} $>$ \mbox{\hyperlink{classBlockMeta_af65e56274eab5b40cc082b7f96cc33f9}{decode\+\_\+meta\+\_\+from\+\_\+slice}} (const std\+::vector$<$ uint8\+\_\+t $>$ \&metadata)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{classBlockMeta_a22d9bd72f55a25ed8265d6c93692ce52}{offset}}
+\item 
+std\+::string \mbox{\hyperlink{classBlockMeta_a63db8a8fcebc6826013b6a64454393e9}{first\+\_\+key}}
+\item 
+std\+::string \mbox{\hyperlink{classBlockMeta_ac8bf599b3d6953346dc2ddddeae7838a}{last\+\_\+key}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classBlockMeta_a255b7c489cc213da1a4dcc849b334a8f}{Block\+Meta\+Test}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\hypertarget{classBlockMeta_autotoc_md0}{}\doxysubsubsection{S\+S\+T文件的结构, 参考自 https\+://skyzh.\+github.\+io/mini-\/lsm/week1-\/04-\/sst.\+html}\label{classBlockMeta_autotoc_md0}
+\hypertarget{classBlockMeta_autotoc_md1}{}\doxysubsubsection{$\vert$         Block Section         $\vert$          Meta Section         $\vert$ Extra                  $\vert$}\label{classBlockMeta_autotoc_md1}
+\hypertarget{classBlockMeta_autotoc_md2}{}\doxysubsubsection{$\vert$ data block $\vert$ ... $\vert$ data block $\vert$            metadata           $\vert$ meta block offset (32) $\vert$}\label{classBlockMeta_autotoc_md2}
+其中, metadata 是一个数组加上一些描述信息, 数组每个元素由一个 \mbox{\hyperlink{classBlockMeta}{Block\+Meta}} 编码形成 Meta\+Entry, \hypertarget{classBlockMeta_autotoc_md3}{}\doxysubsubsection{Meta\+Entry 结构如下\+:}\label{classBlockMeta_autotoc_md3}
+\hypertarget{classBlockMeta_autotoc_md4}{}\doxysubsubsection{$\vert$ offset (32) $\vert$ first\+\_\+key\+\_\+len (16) $\vert$ first\+\_\+key (first\+\_\+key\+\_\+len) $\vert$ last\+\_\+key\+\_\+len(16) $\vert$ last\+\_\+key (last\+\_\+key\+\_\+len) $\vert$}\label{classBlockMeta_autotoc_md4}
+\hypertarget{classBlockMeta_autotoc_md5}{}\doxysubsubsection{Meta Section 的结构如下\+:}\label{classBlockMeta_autotoc_md5}
+\hypertarget{classBlockMeta_autotoc_md6}{}\doxysubsubsection{$\vert$ num\+\_\+entries (32) $\vert$ Meta\+Entry $\vert$ ... $\vert$ Meta\+Entry $\vert$ Hash (32) $\vert$}\label{classBlockMeta_autotoc_md6}
+其中, num\+\_\+entries 表示 metadata 数组的长度, Hash 是 metadata 数组的哈希值(只包括数组部分, 不包括 num\+\_\+entries ), 用于校验 metadata 的完整性 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBlockMeta_a0c4e00fa0c866c5e1ce47a9570aa626d}\label{classBlockMeta_a0c4e00fa0c866c5e1ce47a9570aa626d}} 
+\index{BlockMeta@{BlockMeta}!BlockMeta@{BlockMeta}}
+\index{BlockMeta@{BlockMeta}!BlockMeta@{BlockMeta}}
+\doxysubsubsection{\texorpdfstring{BlockMeta()}{BlockMeta()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Block\+Meta\+::\+Block\+Meta (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classBlockMeta_a2c1121aec314db3afdcb6933036b0a2e}\label{classBlockMeta_a2c1121aec314db3afdcb6933036b0a2e}} 
+\index{BlockMeta@{BlockMeta}!BlockMeta@{BlockMeta}}
+\index{BlockMeta@{BlockMeta}!BlockMeta@{BlockMeta}}
+\doxysubsubsection{\texorpdfstring{BlockMeta()}{BlockMeta()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Block\+Meta\+::\+Block\+Meta (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{offset,  }\item[{const std\+::string \&}]{first\+\_\+key,  }\item[{const std\+::string \&}]{last\+\_\+key }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBlockMeta_af65e56274eab5b40cc082b7f96cc33f9}\label{classBlockMeta_af65e56274eab5b40cc082b7f96cc33f9}} 
+\index{BlockMeta@{BlockMeta}!decode\_meta\_from\_slice@{decode\_meta\_from\_slice}}
+\index{decode\_meta\_from\_slice@{decode\_meta\_from\_slice}!BlockMeta@{BlockMeta}}
+\doxysubsubsection{\texorpdfstring{decode\_meta\_from\_slice()}{decode\_meta\_from\_slice()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classBlockMeta}{Block\+Meta}} $>$ Block\+Meta\+::decode\+\_\+meta\+\_\+from\+\_\+slice (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ uint8\+\_\+t $>$ \&}]{metadata }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classBlockMeta_af65e56274eab5b40cc082b7f96cc33f9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classBlockMeta_a3037f4a4eaaa48ffb3a10e85342b4ca7}\label{classBlockMeta_a3037f4a4eaaa48ffb3a10e85342b4ca7}} 
+\index{BlockMeta@{BlockMeta}!encode\_meta\_to\_slice@{encode\_meta\_to\_slice}}
+\index{encode\_meta\_to\_slice@{encode\_meta\_to\_slice}!BlockMeta@{BlockMeta}}
+\doxysubsubsection{\texorpdfstring{encode\_meta\_to\_slice()}{encode\_meta\_to\_slice()}}
+{\footnotesize\ttfamily void Block\+Meta\+::encode\+\_\+meta\+\_\+to\+\_\+slice (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classBlockMeta}{Block\+Meta}} $>$ \&}]{meta\+\_\+entries,  }\item[{std\+::vector$<$ uint8\+\_\+t $>$ \&}]{metadata }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classBlockMeta_a3037f4a4eaaa48ffb3a10e85342b4ca7_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classBlockMeta_a255b7c489cc213da1a4dcc849b334a8f}\label{classBlockMeta_a255b7c489cc213da1a4dcc849b334a8f}} 
+\index{BlockMeta@{BlockMeta}!BlockMetaTest@{BlockMetaTest}}
+\index{BlockMetaTest@{BlockMetaTest}!BlockMeta@{BlockMeta}}
+\doxysubsubsection{\texorpdfstring{BlockMetaTest}{BlockMetaTest}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{classBlockMetaTest}{Block\+Meta\+Test}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBlockMeta_a63db8a8fcebc6826013b6a64454393e9}\label{classBlockMeta_a63db8a8fcebc6826013b6a64454393e9}} 
+\index{BlockMeta@{BlockMeta}!first\_key@{first\_key}}
+\index{first\_key@{first\_key}!BlockMeta@{BlockMeta}}
+\doxysubsubsection{\texorpdfstring{first\_key}{first\_key}}
+{\footnotesize\ttfamily std\+::string Block\+Meta\+::first\+\_\+key}
+
+\mbox{\Hypertarget{classBlockMeta_ac8bf599b3d6953346dc2ddddeae7838a}\label{classBlockMeta_ac8bf599b3d6953346dc2ddddeae7838a}} 
+\index{BlockMeta@{BlockMeta}!last\_key@{last\_key}}
+\index{last\_key@{last\_key}!BlockMeta@{BlockMeta}}
+\doxysubsubsection{\texorpdfstring{last\_key}{last\_key}}
+{\footnotesize\ttfamily std\+::string Block\+Meta\+::last\+\_\+key}
+
+\mbox{\Hypertarget{classBlockMeta_a22d9bd72f55a25ed8265d6c93692ce52}\label{classBlockMeta_a22d9bd72f55a25ed8265d6c93692ce52}} 
+\index{BlockMeta@{BlockMeta}!offset@{offset}}
+\index{offset@{offset}!BlockMeta@{BlockMeta}}
+\doxysubsubsection{\texorpdfstring{offset}{offset}}
+{\footnotesize\ttfamily size\+\_\+t Block\+Meta\+::offset}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Block/\mbox{\hyperlink{blockmeta_8h}{blockmeta.\+h}}\item 
+src/\+Block/\mbox{\hyperlink{blockmeta_8cpp}{blockmeta.\+cpp}}\end{DoxyCompactItemize}

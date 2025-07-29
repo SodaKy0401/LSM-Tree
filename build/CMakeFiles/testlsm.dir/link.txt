@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/testlsm.dir/test/testlsm.cpp.o  -o testlsm  liblsm.a libsst.a libfile.a libblockmeta.a libblock.a libblockcache.a libmemtable.a libskiplist.a /usr/local/lib/libgtest_main.a /usr/local/lib/libgtest.a -lpthread 

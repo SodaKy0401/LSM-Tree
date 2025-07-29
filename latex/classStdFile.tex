@@ -1,0 +1,189 @@
+\hypertarget{classStdFile}{}\doxysection{Std\+File Class Reference}
+\label{classStdFile}\index{StdFile@{StdFile}}
+
+
+{\ttfamily \#include $<$std\+\_\+file.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classStdFile_adb41a044e9f73c00af0c93be55d8db46}{Std\+File}} ()
+\item 
+\mbox{\hyperlink{classStdFile_a58ba067d3436b3167b18b03712c46ccf}{$\sim$\+Std\+File}} ()
+\item 
+bool \mbox{\hyperlink{classStdFile_ad9a8ec47999edab441fa5c2f27c289c2}{open}} (const std\+::string \&filename, bool \mbox{\hyperlink{classStdFile_a4ffe60dcb3a1c031aedec0ef2a3e4558}{create}})
+\item 
+bool \mbox{\hyperlink{classStdFile_a4ffe60dcb3a1c031aedec0ef2a3e4558}{create}} (const std\+::string \&filename, std\+::vector$<$ uint8\+\_\+t $>$ \&buf)
+\item 
+void \mbox{\hyperlink{classStdFile_af7c5f296c5d5c5c3b781492f081f94d7}{close}} ()
+\item 
+size\+\_\+t \mbox{\hyperlink{classStdFile_a02de65f65a61e4cd89167af5b66fdf0f}{size}} ()
+\item 
+bool \mbox{\hyperlink{classStdFile_a454fb747e63639429e5d94482fc62005}{write}} (size\+\_\+t offset, const void $\ast$data, size\+\_\+t \mbox{\hyperlink{classStdFile_a02de65f65a61e4cd89167af5b66fdf0f}{size}})
+\item 
+std\+::vector$<$ uint8\+\_\+t $>$ \mbox{\hyperlink{classStdFile_abf20bfe98bdc1ea4a037ce67009b1530}{read}} (size\+\_\+t offset, size\+\_\+t length)
+\item 
+bool \mbox{\hyperlink{classStdFile_acf718ef1c7965757acf92fedaa08210e}{sync}} ()
+\item 
+bool \mbox{\hyperlink{classStdFile_ab8087ec3065b926ca856bf8e304854dc}{remove}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classStdFile_adb41a044e9f73c00af0c93be55d8db46}\label{classStdFile_adb41a044e9f73c00af0c93be55d8db46}} 
+\index{StdFile@{StdFile}!StdFile@{StdFile}}
+\index{StdFile@{StdFile}!StdFile@{StdFile}}
+\doxysubsubsection{\texorpdfstring{StdFile()}{StdFile()}}
+{\footnotesize\ttfamily Std\+File\+::\+Std\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classStdFile_a58ba067d3436b3167b18b03712c46ccf}\label{classStdFile_a58ba067d3436b3167b18b03712c46ccf}} 
+\index{StdFile@{StdFile}!````~StdFile@{$\sim$StdFile}}
+\index{````~StdFile@{$\sim$StdFile}!StdFile@{StdFile}}
+\doxysubsubsection{\texorpdfstring{$\sim$StdFile()}{~StdFile()}}
+{\footnotesize\ttfamily Std\+File\+::$\sim$\+Std\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classStdFile_a58ba067d3436b3167b18b03712c46ccf_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classStdFile_af7c5f296c5d5c5c3b781492f081f94d7}\label{classStdFile_af7c5f296c5d5c5c3b781492f081f94d7}} 
+\index{StdFile@{StdFile}!close@{close}}
+\index{close@{close}!StdFile@{StdFile}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily void Std\+File\+::close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=273pt]{classStdFile_af7c5f296c5d5c5c3b781492f081f94d7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{classStdFile_af7c5f296c5d5c5c3b781492f081f94d7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classStdFile_a4ffe60dcb3a1c031aedec0ef2a3e4558}\label{classStdFile_a4ffe60dcb3a1c031aedec0ef2a3e4558}} 
+\index{StdFile@{StdFile}!create@{create}}
+\index{create@{create}!StdFile@{StdFile}}
+\doxysubsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily bool Std\+File\+::create (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{std\+::vector$<$ uint8\+\_\+t $>$ \&}]{buf }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classStdFile_a4ffe60dcb3a1c031aedec0ef2a3e4558_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=281pt]{classStdFile_a4ffe60dcb3a1c031aedec0ef2a3e4558_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classStdFile_ad9a8ec47999edab441fa5c2f27c289c2}\label{classStdFile_ad9a8ec47999edab441fa5c2f27c289c2}} 
+\index{StdFile@{StdFile}!open@{open}}
+\index{open@{open}!StdFile@{StdFile}}
+\doxysubsubsection{\texorpdfstring{open()}{open()}}
+{\footnotesize\ttfamily bool Std\+File\+::open (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{bool}]{create }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classStdFile_ad9a8ec47999edab441fa5c2f27c289c2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=281pt]{classStdFile_ad9a8ec47999edab441fa5c2f27c289c2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classStdFile_abf20bfe98bdc1ea4a037ce67009b1530}\label{classStdFile_abf20bfe98bdc1ea4a037ce67009b1530}} 
+\index{StdFile@{StdFile}!read@{read}}
+\index{read@{read}!StdFile@{StdFile}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily std\+::vector$<$ uint8\+\_\+t $>$ Std\+File\+::read (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{offset,  }\item[{size\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classStdFile_ab8087ec3065b926ca856bf8e304854dc}\label{classStdFile_ab8087ec3065b926ca856bf8e304854dc}} 
+\index{StdFile@{StdFile}!remove@{remove}}
+\index{remove@{remove}!StdFile@{StdFile}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily bool Std\+File\+::remove (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classStdFile_a02de65f65a61e4cd89167af5b66fdf0f}\label{classStdFile_a02de65f65a61e4cd89167af5b66fdf0f}} 
+\index{StdFile@{StdFile}!size@{size}}
+\index{size@{size}!StdFile@{StdFile}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily size\+\_\+t Std\+File\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classStdFile_a02de65f65a61e4cd89167af5b66fdf0f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classStdFile_acf718ef1c7965757acf92fedaa08210e}\label{classStdFile_acf718ef1c7965757acf92fedaa08210e}} 
+\index{StdFile@{StdFile}!sync@{sync}}
+\index{sync@{sync}!StdFile@{StdFile}}
+\doxysubsubsection{\texorpdfstring{sync()}{sync()}}
+{\footnotesize\ttfamily bool Std\+File\+::sync (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classStdFile_acf718ef1c7965757acf92fedaa08210e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classStdFile_a454fb747e63639429e5d94482fc62005}\label{classStdFile_a454fb747e63639429e5d94482fc62005}} 
+\index{StdFile@{StdFile}!write@{write}}
+\index{write@{write}!StdFile@{StdFile}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily bool Std\+File\+::write (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{offset,  }\item[{const void $\ast$}]{data,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=273pt]{classStdFile_a454fb747e63639429e5d94482fc62005_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classStdFile_a454fb747e63639429e5d94482fc62005_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Utils/\mbox{\hyperlink{std__file_8h}{std\+\_\+file.\+h}}\item 
+src/\+Utils/\mbox{\hyperlink{std__file_8cpp}{std\+\_\+file.\+cpp}}\end{DoxyCompactItemize}

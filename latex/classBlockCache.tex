@@ -1,0 +1,61 @@
+\hypertarget{classBlockCache}{}\doxysection{Block\+Cache Class Reference}
+\label{classBlockCache}\index{BlockCache@{BlockCache}}
+
+
+{\ttfamily \#include $<$block\+\_\+cache.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBlockCache_ae77cdc8cd673ddecd94157a98d6fc1bd}{Block\+Cache}} (size\+\_\+t capacity, size\+\_\+t k)
+\item 
+\mbox{\hyperlink{classBlockCache_a03790b75b5c7b2918070d4ff7298f8ad}{$\sim$\+Block\+Cache}} ()
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBlock}{Block}} $>$ \mbox{\hyperlink{classBlockCache_ab2c8de928f0e48a48cd7cf5c6a8b81f4}{get}} (int sst\+\_\+id, int block\+\_\+id)
+\item 
+void \mbox{\hyperlink{classBlockCache_a717e120176eb6408f1c77cdbfbd38bad}{put}} (int sst\+\_\+id, int block\+\_\+id, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBlock}{Block}} $>$ data)
+\item 
+double \mbox{\hyperlink{classBlockCache_a9bde8a0a7d27caccbf85eb310921c93e}{hit\+\_\+rate}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBlockCache_ae77cdc8cd673ddecd94157a98d6fc1bd}\label{classBlockCache_ae77cdc8cd673ddecd94157a98d6fc1bd}} 
+\index{BlockCache@{BlockCache}!BlockCache@{BlockCache}}
+\index{BlockCache@{BlockCache}!BlockCache@{BlockCache}}
+\doxysubsubsection{\texorpdfstring{BlockCache()}{BlockCache()}}
+{\footnotesize\ttfamily Block\+Cache\+::\+Block\+Cache (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{capacity,  }\item[{size\+\_\+t}]{k }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classBlockCache_a03790b75b5c7b2918070d4ff7298f8ad}\label{classBlockCache_a03790b75b5c7b2918070d4ff7298f8ad}} 
+\index{BlockCache@{BlockCache}!````~BlockCache@{$\sim$BlockCache}}
+\index{````~BlockCache@{$\sim$BlockCache}!BlockCache@{BlockCache}}
+\doxysubsubsection{\texorpdfstring{$\sim$BlockCache()}{~BlockCache()}}
+{\footnotesize\ttfamily Block\+Cache\+::$\sim$\+Block\+Cache (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBlockCache_ab2c8de928f0e48a48cd7cf5c6a8b81f4}\label{classBlockCache_ab2c8de928f0e48a48cd7cf5c6a8b81f4}} 
+\index{BlockCache@{BlockCache}!get@{get}}
+\index{get@{get}!BlockCache@{BlockCache}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBlock}{Block}} $>$ Block\+Cache\+::get (\begin{DoxyParamCaption}\item[{int}]{sst\+\_\+id,  }\item[{int}]{block\+\_\+id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classBlockCache_a9bde8a0a7d27caccbf85eb310921c93e}\label{classBlockCache_a9bde8a0a7d27caccbf85eb310921c93e}} 
+\index{BlockCache@{BlockCache}!hit\_rate@{hit\_rate}}
+\index{hit\_rate@{hit\_rate}!BlockCache@{BlockCache}}
+\doxysubsubsection{\texorpdfstring{hit\_rate()}{hit\_rate()}}
+{\footnotesize\ttfamily double Block\+Cache\+::hit\+\_\+rate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classBlockCache_a717e120176eb6408f1c77cdbfbd38bad}\label{classBlockCache_a717e120176eb6408f1c77cdbfbd38bad}} 
+\index{BlockCache@{BlockCache}!put@{put}}
+\index{put@{put}!BlockCache@{BlockCache}}
+\doxysubsubsection{\texorpdfstring{put()}{put()}}
+{\footnotesize\ttfamily void Block\+Cache\+::put (\begin{DoxyParamCaption}\item[{int}]{sst\+\_\+id,  }\item[{int}]{block\+\_\+id,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBlock}{Block}} $>$}]{data }\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Block/\mbox{\hyperlink{block__cache_8h}{block\+\_\+cache.\+h}}\item 
+src/\+Block/\mbox{\hyperlink{block__cache_8cpp}{block\+\_\+cache.\+cpp}}\end{DoxyCompactItemize}

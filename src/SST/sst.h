@@ -79,7 +79,7 @@ public:
 
 class SSTBuilder {
 private:
-  Block block;
+  Block block;//前正在构建的Block
   std::string first_key;
   std::string last_key;
   std::vector<BlockMeta> meta_entries;
@@ -90,9 +90,8 @@ private:
   uint64_t max_tranc_id_ = 0;
 
 public:
-  // 创建一个sst构建器, 指定目标block的大小
-  SSTBuilder(size_t block_size, bool has_bloom); // 添加一个key-value对
-  void add(const std::string &key, const std::string &value, uint64_t tranc_id);
+  SSTBuilder(size_t block_size, bool has_bloom); // 创建一个sst构建器, 指定目标block的大小
+  void add(const std::string &key, const std::string &value, uint64_t tranc_id);// 添加一个key-value对
   // 估计sst的大小
   size_t estimated_size() const;
   // 完成当前block的构建, 即将block写入data, 并创建新的block

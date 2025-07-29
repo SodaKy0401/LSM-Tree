@@ -1,0 +1,2 @@
+/usr/bin/ar qc libredis.a  CMakeFiles/redis.dir/src/LSM/engine.cpp.o CMakeFiles/redis.dir/src/WAL/wal.cpp.o CMakeFiles/redis.dir/src/WAL/record.cpp.o CMakeFiles/redis.dir/src/SST/concat_iterator.cpp.o CMakeFiles/redis.dir/src/Utils/file.cpp.o CMakeFiles/redis.dir/src/Utils/std_file.cpp.o CMakeFiles/redis.dir/src/LSM/level_iterator.cpp.o CMakeFiles/redis.dir/src/LSM/transaction.cpp.o CMakeFiles/redis.dir/src/Redis/redis.cpp.o
+/usr/bin/ranlib libredis.a

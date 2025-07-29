@@ -1,0 +1,71 @@
+\hypertarget{record_8h}{}\doxysection{src/\+W\+A\+L/record.h File Reference}
+\label{record_8h}\index{src/WAL/record.h@{src/WAL/record.h}}
+{\ttfamily \#include $<$cstdint$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+Include dependency graph for record.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{record_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{record_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classRecord}{Record}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{record_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} \{ \newline
+\mbox{\hyperlink{record_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a294ce20cdefa29be3be0735cb62e715d}{Operation\+Type\+::\+C\+R\+E\+A\+TE}}, 
+\mbox{\hyperlink{record_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a1d0ba376e273b9d622641124d8c59264}{Operation\+Type\+::\+C\+O\+M\+M\+IT}}, 
+\mbox{\hyperlink{record_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a2805522dd41e1b57da11967ac5fa258c}{Operation\+Type\+::\+R\+O\+L\+L\+B\+A\+CK}}, 
+\mbox{\hyperlink{record_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a3e75383a5992a6d15fb81e872e46e256}{Operation\+Type\+::\+P\+UT}}, 
+\newline
+\mbox{\hyperlink{record_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a32f68a60cef40faedbc6af20298c1a1e}{Operation\+Type\+::\+D\+E\+L\+E\+TE}}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{record_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}\label{record_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}} 
+\index{record.h@{record.h}!OperationType@{OperationType}}
+\index{OperationType@{OperationType}!record.h@{record.h}}
+\doxysubsubsection{\texorpdfstring{OperationType}{OperationType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{record_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CREATE@{CREATE}!record.h@{record.h}}\index{record.h@{record.h}!CREATE@{CREATE}}}\mbox{\Hypertarget{record_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a294ce20cdefa29be3be0735cb62e715d}\label{record_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a294ce20cdefa29be3be0735cb62e715d}} 
+C\+R\+E\+A\+TE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{COMMIT@{COMMIT}!record.h@{record.h}}\index{record.h@{record.h}!COMMIT@{COMMIT}}}\mbox{\Hypertarget{record_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a1d0ba376e273b9d622641124d8c59264}\label{record_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a1d0ba376e273b9d622641124d8c59264}} 
+C\+O\+M\+M\+IT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ROLLBACK@{ROLLBACK}!record.h@{record.h}}\index{record.h@{record.h}!ROLLBACK@{ROLLBACK}}}\mbox{\Hypertarget{record_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a2805522dd41e1b57da11967ac5fa258c}\label{record_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a2805522dd41e1b57da11967ac5fa258c}} 
+R\+O\+L\+L\+B\+A\+CK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PUT@{PUT}!record.h@{record.h}}\index{record.h@{record.h}!PUT@{PUT}}}\mbox{\Hypertarget{record_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a3e75383a5992a6d15fb81e872e46e256}\label{record_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a3e75383a5992a6d15fb81e872e46e256}} 
+P\+UT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DELETE@{DELETE}!record.h@{record.h}}\index{record.h@{record.h}!DELETE@{DELETE}}}\mbox{\Hypertarget{record_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a32f68a60cef40faedbc6af20298c1a1e}\label{record_8h_a9a2c9c31d675b34f6ec35cc1ca89e047a32f68a60cef40faedbc6af20298c1a1e}} 
+D\+E\+L\+E\+TE&\\
+\hline
+
+\end{DoxyEnumFields}

@@ -111,9 +111,74 @@ SkipListIterator MemTable::get_(const std::string &key, uint64_t tranc_id) {
   return SkipListIterator{};
 }
 
-std::vector<std::pair<std::string, std::optional<std::pair<std::string, uint64_t>>>>//Bugs here!!!
-    MemTable::get_batch(const std::vector<std::string> &keys, uint64_t tranc_id) {
-     std::vector<std::pair<std::string, std::optional<std::pair<std::string, uint64_t>>>> results;
+// std::vector<std::pair<std::string, std::optional<std::pair<std::string, uint64_t>>>>//Bugs here!!!
+//     MemTable::get_batch(const std::vector<std::string> &keys, uint64_t tranc_id) {
+//      std::vector<std::pair<std::string, std::optional<std::pair<std::string, uint64_t>>>> results;
+//   results.reserve(keys.size());
+
+//   // 1. 先获取活跃表的锁
+//   std::shared_lock<std::shared_mutex> slock1(cur_mtx);
+//   for (size_t idx = 0; idx < keys.size(); idx++) {
+//     auto key = keys[idx];
+//     auto cur_res = cur_get_(key, tranc_id);
+//     if (cur_res.is_valid()) {
+//       // 值存在且不为空
+//       // ! 此时value可能为空, 需要返回时置为 nullopt
+//       // ! 这里允许value为空主要是为了与"没有找到"区分开来
+//       results.emplace_back(
+//           key, std::make_pair(cur_res.get_value(), cur_res.get_tranc_id()));
+//     } else {
+//       // 如果活跃表中未找到，先占位
+//       results.emplace_back(key, std::nullopt);
+//     }
+//   }
+
+//   // 2. 如果某些键在活跃表中未找到，还需要查找冻结表
+//   if (!std::any_of(results.begin(), results.end(), [](const auto &result) {
+//         return !result.second.has_value();
+//       })) {
+//     // ! 最后, 需要把 value 为空的键值对标记为 nullopt
+//     for (auto &[key, value] : results) {
+//       if (!value.has_value()) {
+//         value = std::nullopt;
+//       }
+//     }
+//     return results;
+//   }
+
+//   slock1.unlock();                                        // 释放活跃表的锁
+//   std::shared_lock<std::shared_mutex> slock2(frozen_mtx); // 获取冻结表的锁
+//   for (size_t idx = 0; idx < keys.size(); idx++) {
+//     if (results[idx].second.has_value()) {
+//       continue; // 如果在活跃表中已经找到，则跳过
+//     }
+//     auto key = keys[idx];
+//     auto frozen_result = frozen_get_(key, tranc_id);
+//     if (frozen_result.is_valid()) {
+//       // 值存在且不为空
+//       results[idx] =
+//           std::make_pair(key, std::make_pair(frozen_result.get_value(),
+//                                              frozen_result.get_tranc_id()));
+//     } else {
+//       results[idx] = std::make_pair(key, std::nullopt);
+//     }
+//   }
+
+//   // 最后, 需要把 value 为空的键值对标记为 nullopt
+//   for (auto &[key, value] : results) {
+//     if (!value.has_value()) {
+//       value = std::nullopt;
+//     }
+//   }
+
+//   return results;
+// }
+std::vector<
+    std::pair<std::string, std::optional<std::pair<std::string, uint64_t>>>>
+MemTable::get_batch(const std::vector<std::string> &keys, uint64_t tranc_id) {
+  std::vector<
+      std::pair<std::string, std::optional<std::pair<std::string, uint64_t>>>>
+      results;
   results.reserve(keys.size());
 
   // 1. 先获取活跃表的锁
@@ -161,6 +226,7 @@ std::vector<std::pair<std::string, std::optional<std::pair<std::string, uint64_t
                                              frozen_result.get_tranc_id()));
     } else {
       results[idx] = std::make_pair(key, std::nullopt);
+
     }
   }
 
@@ -211,7 +277,8 @@ void MemTable::clear() {
 }
 
 std::shared_ptr<SST>
-MemTable::flush_last(SSTBuilder &builder, std::string &sst_path, size_t sst_id,
+MemTable::flush_last(SSTBuilder &builder, std::string &sst_path, size_t sst_id, 
+                      std::vector<uint64_t> &flushed_tranc_ids,
                      std::shared_ptr<BlockCache> block_cache) {
   // 由于 flush 后需要移除最老的 memtable, 因此需要加写锁
   std::unique_lock<std::shared_mutex> lock(frozen_mtx);
@@ -239,6 +306,10 @@ MemTable::flush_last(SSTBuilder &builder, std::string &sst_path, size_t sst_id,
   std::vector<std::tuple<std::string, std::string, uint64_t>> flush_data =
       table->flush();
   for (auto &[k, v, t] : flush_data) {
+
+    if (k == "" && v == "") {
+      flushed_tranc_ids.push_back(t);
+    }
     max_tranc_id = std::max(t, max_tranc_id);
     min_tranc_id = std::min(t, min_tranc_id);
     builder.add(k, v, t);
@@ -316,7 +387,7 @@ HeapIterator MemTable::iters_preffix(const std::string &preffix,
                                      uint64_t tranc_id) {
   std::shared_lock<std::shared_mutex> slock1(cur_mtx);
   std::shared_lock<std::shared_mutex> slock2(frozen_mtx);
-  std::vector<SearchItem> item_vec;
+  std::vector<SearchItem> item_vec;//
 
   for (auto iter = current_table->begin_preffix(preffix);
        iter != current_table->end_preffix(preffix); ++iter) {

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libblockmeta.a  CMakeFiles/blockmeta.dir/src/Block/blockmeta.cpp.o CMakeFiles/blockmeta.dir/src/Iterator/block_iterator.cpp.o
+/usr/bin/ranlib libblockmeta.a

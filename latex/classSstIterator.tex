@@ -1,0 +1,336 @@
+\hypertarget{classSstIterator}{}\doxysection{Sst\+Iterator Class Reference}
+\label{classSstIterator}\index{SstIterator@{SstIterator}}
+
+
+{\ttfamily \#include $<$sst\+\_\+iterator.\+h$>$}
+
+
+
+Inheritance diagram for Sst\+Iterator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=157pt]{classSstIterator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Sst\+Iterator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=157pt]{classSstIterator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} = std\+::pair$<$ std\+::string, std\+::string $>$
+\item 
+using \mbox{\hyperlink{classBaseIterator_a873de620a7886f465bbb69933c5416fb}{pointer}} = \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} $\ast$
+\item 
+using \mbox{\hyperlink{classBaseIterator_ae3e2769edb02a9b819b19cd2dd957f6f}{reference}} = \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} \&
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSstIterator_abea8c4e93d9347735e4f0a8203b65947}{Sst\+Iterator}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSST}{S\+ST}} $>$ sst, uint64\+\_\+t tranc\+\_\+id)
+\item 
+\mbox{\hyperlink{classSstIterator_ab53632abf6e5e76650cdc4c9591fdd78}{Sst\+Iterator}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSST}{S\+ST}} $>$ sst, const std\+::string \&\mbox{\hyperlink{classSstIterator_a523b855660fea814a172cf3cb5ec7c8e}{key}}, uint64\+\_\+t tranc\+\_\+id)
+\item 
+void \mbox{\hyperlink{classSstIterator_a8bb840a7b9f847672b15b4422a4907c9}{seek\+\_\+first}} ()
+\item 
+void \mbox{\hyperlink{classSstIterator_a6af1888091da79b7c9a32c3ace7e97f3}{seek}} (const std\+::string \&\mbox{\hyperlink{classSstIterator_a523b855660fea814a172cf3cb5ec7c8e}{key}})
+\item 
+std\+::string \mbox{\hyperlink{classSstIterator_a523b855660fea814a172cf3cb5ec7c8e}{key}} ()
+\item 
+std\+::string \mbox{\hyperlink{classSstIterator_ac1f79a90d7978364e4b62e4aec7256ab}{value}} ()
+\item 
+virtual \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \& \mbox{\hyperlink{classSstIterator_a65600ba8719ebbcee3afcf5832d1e9d1}{operator++}} () override
+\item 
+virtual bool \mbox{\hyperlink{classSstIterator_abf327c58c64af74187a3b5e8abe82eea}{operator==}} (const \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \&other) const override
+\item 
+virtual bool \mbox{\hyperlink{classSstIterator_ac60789f6643c0665edb1cb2256f880b8}{operator!=}} (const \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \&other) const override
+\item 
+virtual \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} \mbox{\hyperlink{classSstIterator_a43db1588e3e4934bf70e24428a08507b}{operator$\ast$}} () const override
+\item 
+virtual \mbox{\hyperlink{iterator_8h_a4f6da121dba1526ce091ea9753d0647a}{Iterator\+Type}} \mbox{\hyperlink{classSstIterator_a4a91bf6a0389cecc2f459679d7b14e14}{get\+\_\+type}} () const override
+\item 
+virtual uint64\+\_\+t \mbox{\hyperlink{classSstIterator_a2bf1bd22b72942bfde633a05e4a9a431}{get\+\_\+tranc\+\_\+id}} () const override
+\item 
+virtual bool \mbox{\hyperlink{classSstIterator_a28de04685adfe89dbd08b689e1ce011b}{is\+\_\+end}} () const override
+\item 
+virtual bool \mbox{\hyperlink{classSstIterator_aca6e445fc0709f59dc0a1e47b0b8955d}{is\+\_\+valid}} () const override
+\item 
+\mbox{\hyperlink{classBaseIterator_a873de620a7886f465bbb69933c5416fb}{pointer}} \mbox{\hyperlink{classSstIterator_a50d7b1d57b0d037542899e0e29001628}{operator-\/$>$}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::optional$<$ std\+::pair$<$ \mbox{\hyperlink{classSstIterator}{Sst\+Iterator}}, \mbox{\hyperlink{classSstIterator}{Sst\+Iterator}} $>$ $>$ \mbox{\hyperlink{classSstIterator_aecfd9194ce1e842f5305fbe91afaab86}{iters\+\_\+monotony\+\_\+predicate}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSST}{S\+ST}} $>$ sst, uint64\+\_\+t tranc\+\_\+id, std\+::function$<$ bool(const std\+::string \&)$>$ predicate)
+\item 
+static std\+::pair$<$ \mbox{\hyperlink{classHeapIterator}{Heap\+Iterator}}, \mbox{\hyperlink{classHeapIterator}{Heap\+Iterator}} $>$ \mbox{\hyperlink{classSstIterator_a92280b4df8602e71b616e3991c3f24db}{merge\+\_\+sst\+\_\+iterator}} (std\+::vector$<$ \mbox{\hyperlink{classSstIterator}{Sst\+Iterator}} $>$ iter\+\_\+vec, uint64\+\_\+t tranc\+\_\+id)
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::optional$<$ std\+::pair$<$ \mbox{\hyperlink{classSstIterator}{Sst\+Iterator}}, \mbox{\hyperlink{classSstIterator}{Sst\+Iterator}} $>$ $>$ \mbox{\hyperlink{classSstIterator_abe7873aa190a05a1e3395c1777294eaa}{sst\+\_\+iters\+\_\+monotony\+\_\+predicate}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSST}{S\+ST}} $>$ sst, uint64\+\_\+t tranc\+\_\+id, std\+::function$<$ int(const std\+::string \&)$>$ predicate)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classBaseIterator_a873de620a7886f465bbb69933c5416fb}\label{classBaseIterator_a873de620a7886f465bbb69933c5416fb}} 
+\index{SstIterator@{SstIterator}!pointer@{pointer}}
+\index{pointer@{pointer}!SstIterator@{SstIterator}}
+\doxysubsubsection{\texorpdfstring{pointer}{pointer}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classBaseIterator_a873de620a7886f465bbb69933c5416fb}{Base\+Iterator\+::pointer}} =  \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} $\ast$\hspace{0.3cm}{\ttfamily [inherited]}}
+
+\mbox{\Hypertarget{classBaseIterator_ae3e2769edb02a9b819b19cd2dd957f6f}\label{classBaseIterator_ae3e2769edb02a9b819b19cd2dd957f6f}} 
+\index{SstIterator@{SstIterator}!reference@{reference}}
+\index{reference@{reference}!SstIterator@{SstIterator}}
+\doxysubsubsection{\texorpdfstring{reference}{reference}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classBaseIterator_ae3e2769edb02a9b819b19cd2dd957f6f}{Base\+Iterator\+::reference}} =  \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} \&\hspace{0.3cm}{\ttfamily [inherited]}}
+
+\mbox{\Hypertarget{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}\label{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}} 
+\index{SstIterator@{SstIterator}!value\_type@{value\_type}}
+\index{value\_type@{value\_type}!SstIterator@{SstIterator}}
+\doxysubsubsection{\texorpdfstring{value\_type}{value\_type}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{Base\+Iterator\+::value\+\_\+type}} =  std\+::pair$<$std\+::string, std\+::string$>$\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSstIterator_abea8c4e93d9347735e4f0a8203b65947}\label{classSstIterator_abea8c4e93d9347735e4f0a8203b65947}} 
+\index{SstIterator@{SstIterator}!SstIterator@{SstIterator}}
+\index{SstIterator@{SstIterator}!SstIterator@{SstIterator}}
+\doxysubsubsection{\texorpdfstring{SstIterator()}{SstIterator()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Sst\+Iterator\+::\+Sst\+Iterator (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSST}{S\+ST}} $>$}]{sst,  }\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSstIterator_abea8c4e93d9347735e4f0a8203b65947_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSstIterator_ab53632abf6e5e76650cdc4c9591fdd78}\label{classSstIterator_ab53632abf6e5e76650cdc4c9591fdd78}} 
+\index{SstIterator@{SstIterator}!SstIterator@{SstIterator}}
+\index{SstIterator@{SstIterator}!SstIterator@{SstIterator}}
+\doxysubsubsection{\texorpdfstring{SstIterator()}{SstIterator()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Sst\+Iterator\+::\+Sst\+Iterator (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSST}{S\+ST}} $>$}]{sst,  }\item[{const std\+::string \&}]{key,  }\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSstIterator_ab53632abf6e5e76650cdc4c9591fdd78_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSstIterator_a2bf1bd22b72942bfde633a05e4a9a431}\label{classSstIterator_a2bf1bd22b72942bfde633a05e4a9a431}} 
+\index{SstIterator@{SstIterator}!get\_tranc\_id@{get\_tranc\_id}}
+\index{get\_tranc\_id@{get\_tranc\_id}!SstIterator@{SstIterator}}
+\doxysubsubsection{\texorpdfstring{get\_tranc\_id()}{get\_tranc\_id()}}
+{\footnotesize\ttfamily uint64\+\_\+t Sst\+Iterator\+::get\+\_\+tranc\+\_\+id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_afbac00d0570707027bb34d7f02ad5a5e}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classSstIterator_a4a91bf6a0389cecc2f459679d7b14e14}\label{classSstIterator_a4a91bf6a0389cecc2f459679d7b14e14}} 
+\index{SstIterator@{SstIterator}!get\_type@{get\_type}}
+\index{get\_type@{get\_type}!SstIterator@{SstIterator}}
+\doxysubsubsection{\texorpdfstring{get\_type()}{get\_type()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{iterator_8h_a4f6da121dba1526ce091ea9753d0647a}{Iterator\+Type}} Sst\+Iterator\+::get\+\_\+type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a087b836b0654e9929640e6807deb219c}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classSstIterator_a28de04685adfe89dbd08b689e1ce011b}\label{classSstIterator_a28de04685adfe89dbd08b689e1ce011b}} 
+\index{SstIterator@{SstIterator}!is\_end@{is\_end}}
+\index{is\_end@{is\_end}!SstIterator@{SstIterator}}
+\doxysubsubsection{\texorpdfstring{is\_end()}{is\_end()}}
+{\footnotesize\ttfamily bool Sst\+Iterator\+::is\+\_\+end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_aaa8a10f554780422293e00ee1b68a123}{Base\+Iterator}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSstIterator_a28de04685adfe89dbd08b689e1ce011b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSstIterator_aca6e445fc0709f59dc0a1e47b0b8955d}\label{classSstIterator_aca6e445fc0709f59dc0a1e47b0b8955d}} 
+\index{SstIterator@{SstIterator}!is\_valid@{is\_valid}}
+\index{is\_valid@{is\_valid}!SstIterator@{SstIterator}}
+\doxysubsubsection{\texorpdfstring{is\_valid()}{is\_valid()}}
+{\footnotesize\ttfamily bool Sst\+Iterator\+::is\+\_\+valid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a283f72f0b0fc52a33edaab270f3558da}{Base\+Iterator}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSstIterator_aca6e445fc0709f59dc0a1e47b0b8955d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSstIterator_aecfd9194ce1e842f5305fbe91afaab86}\label{classSstIterator_aecfd9194ce1e842f5305fbe91afaab86}} 
+\index{SstIterator@{SstIterator}!iters\_monotony\_predicate@{iters\_monotony\_predicate}}
+\index{iters\_monotony\_predicate@{iters\_monotony\_predicate}!SstIterator@{SstIterator}}
+\doxysubsubsection{\texorpdfstring{iters\_monotony\_predicate()}{iters\_monotony\_predicate()}}
+{\footnotesize\ttfamily static std\+::optional$<$std\+::pair$<$\mbox{\hyperlink{classSstIterator}{Sst\+Iterator}}, \mbox{\hyperlink{classSstIterator}{Sst\+Iterator}}$>$ $>$ Sst\+Iterator\+::iters\+\_\+monotony\+\_\+predicate (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSST}{S\+ST}} $>$}]{sst,  }\item[{uint64\+\_\+t}]{tranc\+\_\+id,  }\item[{std\+::function$<$ bool(const std\+::string \&)$>$}]{predicate }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classSstIterator_a523b855660fea814a172cf3cb5ec7c8e}\label{classSstIterator_a523b855660fea814a172cf3cb5ec7c8e}} 
+\index{SstIterator@{SstIterator}!key@{key}}
+\index{key@{key}!SstIterator@{SstIterator}}
+\doxysubsubsection{\texorpdfstring{key()}{key()}}
+{\footnotesize\ttfamily std\+::string Sst\+Iterator\+::key (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSstIterator_a523b855660fea814a172cf3cb5ec7c8e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSstIterator_a92280b4df8602e71b616e3991c3f24db}\label{classSstIterator_a92280b4df8602e71b616e3991c3f24db}} 
+\index{SstIterator@{SstIterator}!merge\_sst\_iterator@{merge\_sst\_iterator}}
+\index{merge\_sst\_iterator@{merge\_sst\_iterator}!SstIterator@{SstIterator}}
+\doxysubsubsection{\texorpdfstring{merge\_sst\_iterator()}{merge\_sst\_iterator()}}
+{\footnotesize\ttfamily std\+::pair$<$ \mbox{\hyperlink{classHeapIterator}{Heap\+Iterator}}, \mbox{\hyperlink{classHeapIterator}{Heap\+Iterator}} $>$ Sst\+Iterator\+::merge\+\_\+sst\+\_\+iterator (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classSstIterator}{Sst\+Iterator}} $>$}]{iter\+\_\+vec,  }\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classSstIterator_ac60789f6643c0665edb1cb2256f880b8}\label{classSstIterator_ac60789f6643c0665edb1cb2256f880b8}} 
+\index{SstIterator@{SstIterator}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!SstIterator@{SstIterator}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool Sst\+Iterator\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a60263f58b02942344090e29e72215d26}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classSstIterator_a43db1588e3e4934bf70e24428a08507b}\label{classSstIterator_a43db1588e3e4934bf70e24428a08507b}} 
+\index{SstIterator@{SstIterator}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!SstIterator@{SstIterator}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{Sst\+Iterator\+::value\+\_\+type}} Sst\+Iterator\+::operator$\ast$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a79f8f0831999342671817a9969107aba}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classSstIterator_a65600ba8719ebbcee3afcf5832d1e9d1}\label{classSstIterator_a65600ba8719ebbcee3afcf5832d1e9d1}} 
+\index{SstIterator@{SstIterator}!operator++@{operator++}}
+\index{operator++@{operator++}!SstIterator@{SstIterator}}
+\doxysubsubsection{\texorpdfstring{operator++()}{operator++()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \& Sst\+Iterator\+::operator++ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_aa699a2de97bf243e89826987dbf1b404}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classSstIterator_a50d7b1d57b0d037542899e0e29001628}\label{classSstIterator_a50d7b1d57b0d037542899e0e29001628}} 
+\index{SstIterator@{SstIterator}!operator-\/$>$@{operator-\/$>$}}
+\index{operator-\/$>$@{operator-\/$>$}!SstIterator@{SstIterator}}
+\doxysubsubsection{\texorpdfstring{operator-\/$>$()}{operator->()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBaseIterator_a873de620a7886f465bbb69933c5416fb}{Sst\+Iterator\+::pointer}} Sst\+Iterator\+::operator-\/$>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classSstIterator_abf327c58c64af74187a3b5e8abe82eea}\label{classSstIterator_abf327c58c64af74187a3b5e8abe82eea}} 
+\index{SstIterator@{SstIterator}!operator==@{operator==}}
+\index{operator==@{operator==}!SstIterator@{SstIterator}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Sst\+Iterator\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a760ab242074729f5c953a968b967ffe2}{Base\+Iterator}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSstIterator_abf327c58c64af74187a3b5e8abe82eea_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSstIterator_a6af1888091da79b7c9a32c3ace7e97f3}\label{classSstIterator_a6af1888091da79b7c9a32c3ace7e97f3}} 
+\index{SstIterator@{SstIterator}!seek@{seek}}
+\index{seek@{seek}!SstIterator@{SstIterator}}
+\doxysubsubsection{\texorpdfstring{seek()}{seek()}}
+{\footnotesize\ttfamily void Sst\+Iterator\+::seek (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=304pt]{classSstIterator_a6af1888091da79b7c9a32c3ace7e97f3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{classSstIterator_a6af1888091da79b7c9a32c3ace7e97f3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSstIterator_a8bb840a7b9f847672b15b4422a4907c9}\label{classSstIterator_a8bb840a7b9f847672b15b4422a4907c9}} 
+\index{SstIterator@{SstIterator}!seek\_first@{seek\_first}}
+\index{seek\_first@{seek\_first}!SstIterator@{SstIterator}}
+\doxysubsubsection{\texorpdfstring{seek\_first()}{seek\_first()}}
+{\footnotesize\ttfamily void Sst\+Iterator\+::seek\+\_\+first (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSstIterator_a8bb840a7b9f847672b15b4422a4907c9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSstIterator_ac1f79a90d7978364e4b62e4aec7256ab}\label{classSstIterator_ac1f79a90d7978364e4b62e4aec7256ab}} 
+\index{SstIterator@{SstIterator}!value@{value}}
+\index{value@{value}!SstIterator@{SstIterator}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}}
+{\footnotesize\ttfamily std\+::string Sst\+Iterator\+::value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSstIterator_ac1f79a90d7978364e4b62e4aec7256ab_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classSstIterator_abe7873aa190a05a1e3395c1777294eaa}\label{classSstIterator_abe7873aa190a05a1e3395c1777294eaa}} 
+\index{SstIterator@{SstIterator}!sst\_iters\_monotony\_predicate@{sst\_iters\_monotony\_predicate}}
+\index{sst\_iters\_monotony\_predicate@{sst\_iters\_monotony\_predicate}!SstIterator@{SstIterator}}
+\doxysubsubsection{\texorpdfstring{sst\_iters\_monotony\_predicate}{sst\_iters\_monotony\_predicate}}
+{\footnotesize\ttfamily std\+::optional$<$std\+::pair$<$\mbox{\hyperlink{classSstIterator}{Sst\+Iterator}}, \mbox{\hyperlink{classSstIterator}{Sst\+Iterator}}$>$ $>$ sst\+\_\+iters\+\_\+monotony\+\_\+predicate (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classSST}{S\+ST}} $>$}]{sst,  }\item[{uint64\+\_\+t}]{tranc\+\_\+id,  }\item[{std\+::function$<$ int(const std\+::string \&)$>$}]{predicate }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+S\+S\+T/\mbox{\hyperlink{sst__iterator_8h}{sst\+\_\+iterator.\+h}}\item 
+src/\+S\+S\+T/\mbox{\hyperlink{sst__iterator_8cpp}{sst\+\_\+iterator.\+cpp}}\end{DoxyCompactItemize}

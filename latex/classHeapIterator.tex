@@ -1,0 +1,221 @@
+\hypertarget{classHeapIterator}{}\doxysection{Heap\+Iterator Class Reference}
+\label{classHeapIterator}\index{HeapIterator@{HeapIterator}}
+
+
+{\ttfamily \#include $<$iterator.\+h$>$}
+
+
+
+Inheritance diagram for Heap\+Iterator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=158pt]{classHeapIterator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Heap\+Iterator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=158pt]{classHeapIterator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} = std\+::pair$<$ std\+::string, std\+::string $>$
+\item 
+using \mbox{\hyperlink{classBaseIterator_a873de620a7886f465bbb69933c5416fb}{pointer}} = \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} $\ast$
+\item 
+using \mbox{\hyperlink{classBaseIterator_ae3e2769edb02a9b819b19cd2dd957f6f}{reference}} = \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} \&
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classHeapIterator_a5ac0681df5d7dc478b640af343a3ad65}{Heap\+Iterator}} ()=default
+\item 
+\mbox{\hyperlink{classHeapIterator_a04baea1c22be0e16053b243d3c81a89b}{Heap\+Iterator}} (std\+::vector$<$ \mbox{\hyperlink{structSearchItem}{Search\+Item}} $>$ item\+\_\+vec, uint64\+\_\+t max\+\_\+tranc\+\_\+id)
+\item 
+\mbox{\hyperlink{classBaseIterator_a873de620a7886f465bbb69933c5416fb}{pointer}} \mbox{\hyperlink{classHeapIterator_a9a3553ac4a6e22f55905cf300d35bcc0}{operator-\/$>$}} () const
+\item 
+virtual \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} \mbox{\hyperlink{classHeapIterator_a9396ed5ff223b311c5851a2dbbb81070}{operator$\ast$}} () const override
+\item 
+\mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \& \mbox{\hyperlink{classHeapIterator_a4d2d40736ebb888d8b8684d2625d844c}{operator++}} () override
+\item 
+\mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \& \mbox{\hyperlink{classHeapIterator_a279b42a0bda37fb936e1dbcaab5e6052}{operator++}} (int)=delete
+\item 
+virtual bool \mbox{\hyperlink{classHeapIterator_a0358cfc7cbd7016f11ab4afb237b9bba}{operator==}} (const \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \&other) const override
+\item 
+virtual bool \mbox{\hyperlink{classHeapIterator_a2287c33502128a893c821e7c5eb52545}{operator!=}} (const \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \&other) const override
+\item 
+virtual \mbox{\hyperlink{iterator_8h_a4f6da121dba1526ce091ea9753d0647a}{Iterator\+Type}} \mbox{\hyperlink{classHeapIterator_ab2852d2b7c85cfff0b6a17412be2141e}{get\+\_\+type}} () const override
+\item 
+virtual uint64\+\_\+t \mbox{\hyperlink{classHeapIterator_aa8dd6c6225db33dcd4d509b49749c40c}{get\+\_\+tranc\+\_\+id}} () const override
+\item 
+virtual bool \mbox{\hyperlink{classHeapIterator_a41f7c647324bbfd989bbbbbd50221fb8}{is\+\_\+end}} () const override
+\item 
+virtual bool \mbox{\hyperlink{classHeapIterator_a375932025b9b2d74ef279fbabb8bce23}{is\+\_\+valid}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classHeapIterator_af5f5a3e3df6a225df6801725c072e5f1}{Sst\+Iterator}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classBaseIterator_a873de620a7886f465bbb69933c5416fb}\label{classBaseIterator_a873de620a7886f465bbb69933c5416fb}} 
+\index{HeapIterator@{HeapIterator}!pointer@{pointer}}
+\index{pointer@{pointer}!HeapIterator@{HeapIterator}}
+\doxysubsubsection{\texorpdfstring{pointer}{pointer}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classBaseIterator_a873de620a7886f465bbb69933c5416fb}{Base\+Iterator\+::pointer}} =  \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} $\ast$\hspace{0.3cm}{\ttfamily [inherited]}}
+
+\mbox{\Hypertarget{classBaseIterator_ae3e2769edb02a9b819b19cd2dd957f6f}\label{classBaseIterator_ae3e2769edb02a9b819b19cd2dd957f6f}} 
+\index{HeapIterator@{HeapIterator}!reference@{reference}}
+\index{reference@{reference}!HeapIterator@{HeapIterator}}
+\doxysubsubsection{\texorpdfstring{reference}{reference}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classBaseIterator_ae3e2769edb02a9b819b19cd2dd957f6f}{Base\+Iterator\+::reference}} =  \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} \&\hspace{0.3cm}{\ttfamily [inherited]}}
+
+\mbox{\Hypertarget{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}\label{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}} 
+\index{HeapIterator@{HeapIterator}!value\_type@{value\_type}}
+\index{value\_type@{value\_type}!HeapIterator@{HeapIterator}}
+\doxysubsubsection{\texorpdfstring{value\_type}{value\_type}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{Base\+Iterator\+::value\+\_\+type}} =  std\+::pair$<$std\+::string, std\+::string$>$\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classHeapIterator_a5ac0681df5d7dc478b640af343a3ad65}\label{classHeapIterator_a5ac0681df5d7dc478b640af343a3ad65}} 
+\index{HeapIterator@{HeapIterator}!HeapIterator@{HeapIterator}}
+\index{HeapIterator@{HeapIterator}!HeapIterator@{HeapIterator}}
+\doxysubsubsection{\texorpdfstring{HeapIterator()}{HeapIterator()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Heap\+Iterator\+::\+Heap\+Iterator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classHeapIterator_a04baea1c22be0e16053b243d3c81a89b}\label{classHeapIterator_a04baea1c22be0e16053b243d3c81a89b}} 
+\index{HeapIterator@{HeapIterator}!HeapIterator@{HeapIterator}}
+\index{HeapIterator@{HeapIterator}!HeapIterator@{HeapIterator}}
+\doxysubsubsection{\texorpdfstring{HeapIterator()}{HeapIterator()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Heap\+Iterator\+::\+Heap\+Iterator (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{structSearchItem}{Search\+Item}} $>$}]{item\+\_\+vec,  }\item[{uint64\+\_\+t}]{max\+\_\+tranc\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classHeapIterator_aa8dd6c6225db33dcd4d509b49749c40c}\label{classHeapIterator_aa8dd6c6225db33dcd4d509b49749c40c}} 
+\index{HeapIterator@{HeapIterator}!get\_tranc\_id@{get\_tranc\_id}}
+\index{get\_tranc\_id@{get\_tranc\_id}!HeapIterator@{HeapIterator}}
+\doxysubsubsection{\texorpdfstring{get\_tranc\_id()}{get\_tranc\_id()}}
+{\footnotesize\ttfamily uint64\+\_\+t Heap\+Iterator\+::get\+\_\+tranc\+\_\+id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_afbac00d0570707027bb34d7f02ad5a5e}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classHeapIterator_ab2852d2b7c85cfff0b6a17412be2141e}\label{classHeapIterator_ab2852d2b7c85cfff0b6a17412be2141e}} 
+\index{HeapIterator@{HeapIterator}!get\_type@{get\_type}}
+\index{get\_type@{get\_type}!HeapIterator@{HeapIterator}}
+\doxysubsubsection{\texorpdfstring{get\_type()}{get\_type()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{iterator_8h_a4f6da121dba1526ce091ea9753d0647a}{Iterator\+Type}} Heap\+Iterator\+::get\+\_\+type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a087b836b0654e9929640e6807deb219c}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classHeapIterator_a41f7c647324bbfd989bbbbbd50221fb8}\label{classHeapIterator_a41f7c647324bbfd989bbbbbd50221fb8}} 
+\index{HeapIterator@{HeapIterator}!is\_end@{is\_end}}
+\index{is\_end@{is\_end}!HeapIterator@{HeapIterator}}
+\doxysubsubsection{\texorpdfstring{is\_end()}{is\_end()}}
+{\footnotesize\ttfamily bool Heap\+Iterator\+::is\+\_\+end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_aaa8a10f554780422293e00ee1b68a123}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classHeapIterator_a375932025b9b2d74ef279fbabb8bce23}\label{classHeapIterator_a375932025b9b2d74ef279fbabb8bce23}} 
+\index{HeapIterator@{HeapIterator}!is\_valid@{is\_valid}}
+\index{is\_valid@{is\_valid}!HeapIterator@{HeapIterator}}
+\doxysubsubsection{\texorpdfstring{is\_valid()}{is\_valid()}}
+{\footnotesize\ttfamily bool Heap\+Iterator\+::is\+\_\+valid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a283f72f0b0fc52a33edaab270f3558da}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classHeapIterator_a2287c33502128a893c821e7c5eb52545}\label{classHeapIterator_a2287c33502128a893c821e7c5eb52545}} 
+\index{HeapIterator@{HeapIterator}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!HeapIterator@{HeapIterator}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool Heap\+Iterator\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a60263f58b02942344090e29e72215d26}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classHeapIterator_a9396ed5ff223b311c5851a2dbbb81070}\label{classHeapIterator_a9396ed5ff223b311c5851a2dbbb81070}} 
+\index{HeapIterator@{HeapIterator}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!HeapIterator@{HeapIterator}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{Heap\+Iterator\+::value\+\_\+type}} Heap\+Iterator\+::operator$\ast$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a79f8f0831999342671817a9969107aba}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classHeapIterator_a4d2d40736ebb888d8b8684d2625d844c}\label{classHeapIterator_a4d2d40736ebb888d8b8684d2625d844c}} 
+\index{HeapIterator@{HeapIterator}!operator++@{operator++}}
+\index{operator++@{operator++}!HeapIterator@{HeapIterator}}
+\doxysubsubsection{\texorpdfstring{operator++()}{operator++()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \& Heap\+Iterator\+::operator++ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_aa699a2de97bf243e89826987dbf1b404}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classHeapIterator_a279b42a0bda37fb936e1dbcaab5e6052}\label{classHeapIterator_a279b42a0bda37fb936e1dbcaab5e6052}} 
+\index{HeapIterator@{HeapIterator}!operator++@{operator++}}
+\index{operator++@{operator++}!HeapIterator@{HeapIterator}}
+\doxysubsubsection{\texorpdfstring{operator++()}{operator++()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}}\& Heap\+Iterator\+::operator++ (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{classHeapIterator_a9a3553ac4a6e22f55905cf300d35bcc0}\label{classHeapIterator_a9a3553ac4a6e22f55905cf300d35bcc0}} 
+\index{HeapIterator@{HeapIterator}!operator-\/$>$@{operator-\/$>$}}
+\index{operator-\/$>$@{operator-\/$>$}!HeapIterator@{HeapIterator}}
+\doxysubsubsection{\texorpdfstring{operator-\/$>$()}{operator->()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBaseIterator_a873de620a7886f465bbb69933c5416fb}{Heap\+Iterator\+::pointer}} Heap\+Iterator\+::operator-\/$>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classHeapIterator_a0358cfc7cbd7016f11ab4afb237b9bba}\label{classHeapIterator_a0358cfc7cbd7016f11ab4afb237b9bba}} 
+\index{HeapIterator@{HeapIterator}!operator==@{operator==}}
+\index{operator==@{operator==}!HeapIterator@{HeapIterator}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Heap\+Iterator\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a760ab242074729f5c953a968b967ffe2}{Base\+Iterator}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classHeapIterator_a0358cfc7cbd7016f11ab4afb237b9bba_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classHeapIterator_af5f5a3e3df6a225df6801725c072e5f1}\label{classHeapIterator_af5f5a3e3df6a225df6801725c072e5f1}} 
+\index{HeapIterator@{HeapIterator}!SstIterator@{SstIterator}}
+\index{SstIterator@{SstIterator}!HeapIterator@{HeapIterator}}
+\doxysubsubsection{\texorpdfstring{SstIterator}{SstIterator}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{classSstIterator}{Sst\+Iterator}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Iterator/\mbox{\hyperlink{iterator_8h}{iterator.\+h}}\item 
+src/\+Iterator/\mbox{\hyperlink{iterator_8cpp}{iterator.\+cpp}}\end{DoxyCompactItemize}

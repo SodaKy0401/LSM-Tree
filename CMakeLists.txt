@@ -106,6 +106,29 @@ target_include_directories(wal PUBLIC src/LSM src/Compact src/Utils src/Block sr
 
 
 
+
+add_library(redis STATIC 
+    src/LSM/engine.cpp
+    src/WAL/wal.cpp
+    src/WAL/record.cpp
+    src/SST/concat_iterator.cpp
+    src/Utils/file.cpp
+    src/Utils/std_file.cpp
+    src/SST/concat_iterator.cpp
+    src/LSM/level_iterator.cpp
+    src/LSM/transaction.cpp
+    src/Redis/redis.cpp
+)
+target_include_directories(redis PUBLIC src/LSM src/Compact src/Utils src/Block src/Iterator src/WAL src/Redis src/Config)
+
+
+
+
+
+
+
+
+
 # # 添加测试可执行文件
 add_executable(test_block test/testblock.cpp)
 add_executable(test_skiplist test/testskiplist.cpp)
@@ -117,7 +140,9 @@ add_executable(testmeta test/testmeta.cpp)
 add_executable(testlsm test/testlsm.cpp)
 add_executable(testcomp test/testcompact.cpp)
 
- add_executable(testwal test/testwal.cpp)
+add_executable(testwal test/testwal.cpp)
+
+#add_executable(testredis test/testredis.cpp)
 # # 让 test_block 依赖 block 和 GTest
 
 
@@ -134,6 +159,7 @@ target_link_libraries(testlsm PRIVATE lsm sst file blockmeta block blockcache me
 target_link_libraries(testcomp PRIVATE lsm sst file blockmeta block blockcache memtable skiplist GTest::GTest GTest::Main)
 target_link_libraries(testwal PRIVATE lsm sst file blockmeta block blockcache memtable skiplist  wal GTest::GTest GTest::Main GTest::gmock)
 
+#target_link_libraries(testredis PRIVATE lsm sst file  redis blockmeta block blockcache memtable skiplist  wal GTest::GTest GTest::Main GTest::gmock)
 
 
 

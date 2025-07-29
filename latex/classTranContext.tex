@@ -1,0 +1,217 @@
+\hypertarget{classTranContext}{}\doxysection{Tran\+Context Class Reference}
+\label{classTranContext}\index{TranContext@{TranContext}}
+
+
+{\ttfamily \#include $<$transaction.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTranContext_a592838e0d9a81c941a9521c78c684de3}{Tran\+Context}} (uint64\+\_\+t tranc\+\_\+id, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLSMEngine}{L\+S\+M\+Engine}} $>$ engine, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTranManager}{Tran\+Manager}} $>$ tran\+Manager, const enum \mbox{\hyperlink{transaction_8h_af3fd7ab4111446c2fe0882d0d45eb119}{Isolation\+Level}} \&isolation\+\_\+level)
+\item 
+void \mbox{\hyperlink{classTranContext_a055cc401c2fe7447a12a5141924d5eab}{put}} (const std\+::string \&key, const std\+::string \&value)
+\item 
+void \mbox{\hyperlink{classTranContext_a2b6dfe43864f130192b89238d13b8e33}{remove}} (const std\+::string \&key)
+\item 
+std\+::optional$<$ std\+::string $>$ \mbox{\hyperlink{classTranContext_a48976e7b8bd80a04e58631588b4cf184}{get}} (const std\+::string \&key)
+\item 
+bool \mbox{\hyperlink{classTranContext_a28049964f8c9427972e80c5c5ccba9d9}{commit}} (bool test\+\_\+fail=false)
+\item 
+bool \mbox{\hyperlink{classTranContext_a5deca71973e49a4d7fecb82040f4e259}{abort}} ()
+\item 
+enum \mbox{\hyperlink{transaction_8h_af3fd7ab4111446c2fe0882d0d45eb119}{Isolation\+Level}} \mbox{\hyperlink{classTranContext_ade3a8ea867db0c91d32658578ec3d761}{get\+\_\+isolation\+\_\+level}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLSMEngine}{L\+S\+M\+Engine}} $>$ \mbox{\hyperlink{classTranContext_ab7f6693552d1512ae8e9855ee7800116}{engine\+\_\+}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTranManager}{Tran\+Manager}} $>$ \mbox{\hyperlink{classTranContext_a35c4703d9f6bc2453b898e61f71d5dff}{tran\+Manager\+\_\+}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{classTranContext_af4c1d732a740270be48234b007c9de4f}{tranc\+\_\+id\+\_\+}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classRecord}{Record}} $>$ \mbox{\hyperlink{classTranContext_adb603645d26a288ae98a72ed81f62f57}{operations}}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{classTranContext_a1777c3fad67dabb868372de1e8b07ea3}{temp\+\_\+map\+\_\+}}
+\item 
+bool \mbox{\hyperlink{classTranContext_ab37b6501ed3dfd3e3fad802142749a7b}{is\+Commited}} = false
+\item 
+bool \mbox{\hyperlink{classTranContext_ab70fa3953e9a42083e259700c9fefe58}{is\+Aborted}} = false
+\item 
+enum \mbox{\hyperlink{transaction_8h_af3fd7ab4111446c2fe0882d0d45eb119}{Isolation\+Level}} \mbox{\hyperlink{classTranContext_a46877195cb3398e68ae94dee4953c4ed}{isolation\+\_\+level\+\_\+}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classTranContext_ae58f01b4e22577e33eac188a65a8a57d}{Tran\+Manager}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTranContext_a592838e0d9a81c941a9521c78c684de3}\label{classTranContext_a592838e0d9a81c941a9521c78c684de3}} 
+\index{TranContext@{TranContext}!TranContext@{TranContext}}
+\index{TranContext@{TranContext}!TranContext@{TranContext}}
+\doxysubsubsection{\texorpdfstring{TranContext()}{TranContext()}}
+{\footnotesize\ttfamily Tran\+Context\+::\+Tran\+Context (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{tranc\+\_\+id,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLSMEngine}{L\+S\+M\+Engine}} $>$}]{engine,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTranManager}{Tran\+Manager}} $>$}]{tran\+Manager,  }\item[{const enum \mbox{\hyperlink{transaction_8h_af3fd7ab4111446c2fe0882d0d45eb119}{Isolation\+Level}} \&}]{isolation\+\_\+level }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTranContext_a592838e0d9a81c941a9521c78c684de3_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTranContext_a5deca71973e49a4d7fecb82040f4e259}\label{classTranContext_a5deca71973e49a4d7fecb82040f4e259}} 
+\index{TranContext@{TranContext}!abort@{abort}}
+\index{abort@{abort}!TranContext@{TranContext}}
+\doxysubsubsection{\texorpdfstring{abort()}{abort()}}
+{\footnotesize\ttfamily bool Tran\+Context\+::abort (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTranContext_a5deca71973e49a4d7fecb82040f4e259_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTranContext_a28049964f8c9427972e80c5c5ccba9d9}\label{classTranContext_a28049964f8c9427972e80c5c5ccba9d9}} 
+\index{TranContext@{TranContext}!commit@{commit}}
+\index{commit@{commit}!TranContext@{TranContext}}
+\doxysubsubsection{\texorpdfstring{commit()}{commit()}}
+{\footnotesize\ttfamily bool Tran\+Context\+::commit (\begin{DoxyParamCaption}\item[{bool}]{test\+\_\+fail = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTranContext_a28049964f8c9427972e80c5c5ccba9d9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTranContext_a48976e7b8bd80a04e58631588b4cf184}\label{classTranContext_a48976e7b8bd80a04e58631588b4cf184}} 
+\index{TranContext@{TranContext}!get@{get}}
+\index{get@{get}!TranContext@{TranContext}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily std\+::optional$<$ std\+::string $>$ Tran\+Context\+::get (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTranContext_a48976e7b8bd80a04e58631588b4cf184_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTranContext_ade3a8ea867db0c91d32658578ec3d761}\label{classTranContext_ade3a8ea867db0c91d32658578ec3d761}} 
+\index{TranContext@{TranContext}!get\_isolation\_level@{get\_isolation\_level}}
+\index{get\_isolation\_level@{get\_isolation\_level}!TranContext@{TranContext}}
+\doxysubsubsection{\texorpdfstring{get\_isolation\_level()}{get\_isolation\_level()}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{transaction_8h_af3fd7ab4111446c2fe0882d0d45eb119}{Isolation\+Level}} Tran\+Context\+::get\+\_\+isolation\+\_\+level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTranContext_ade3a8ea867db0c91d32658578ec3d761_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTranContext_a055cc401c2fe7447a12a5141924d5eab}\label{classTranContext_a055cc401c2fe7447a12a5141924d5eab}} 
+\index{TranContext@{TranContext}!put@{put}}
+\index{put@{put}!TranContext@{TranContext}}
+\doxysubsubsection{\texorpdfstring{put()}{put()}}
+{\footnotesize\ttfamily void Tran\+Context\+::put (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key,  }\item[{const std\+::string \&}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTranContext_a055cc401c2fe7447a12a5141924d5eab_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTranContext_a2b6dfe43864f130192b89238d13b8e33}\label{classTranContext_a2b6dfe43864f130192b89238d13b8e33}} 
+\index{TranContext@{TranContext}!remove@{remove}}
+\index{remove@{remove}!TranContext@{TranContext}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily void Tran\+Context\+::remove (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTranContext_a2b6dfe43864f130192b89238d13b8e33_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classTranContext_ae58f01b4e22577e33eac188a65a8a57d}\label{classTranContext_ae58f01b4e22577e33eac188a65a8a57d}} 
+\index{TranContext@{TranContext}!TranManager@{TranManager}}
+\index{TranManager@{TranManager}!TranContext@{TranContext}}
+\doxysubsubsection{\texorpdfstring{TranManager}{TranManager}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{classTranManager}{Tran\+Manager}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classTranContext_ab7f6693552d1512ae8e9855ee7800116}\label{classTranContext_ab7f6693552d1512ae8e9855ee7800116}} 
+\index{TranContext@{TranContext}!engine\_@{engine\_}}
+\index{engine\_@{engine\_}!TranContext@{TranContext}}
+\doxysubsubsection{\texorpdfstring{engine\_}{engine\_}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classLSMEngine}{L\+S\+M\+Engine}}$>$ Tran\+Context\+::engine\+\_\+}
+
+\mbox{\Hypertarget{classTranContext_ab70fa3953e9a42083e259700c9fefe58}\label{classTranContext_ab70fa3953e9a42083e259700c9fefe58}} 
+\index{TranContext@{TranContext}!isAborted@{isAborted}}
+\index{isAborted@{isAborted}!TranContext@{TranContext}}
+\doxysubsubsection{\texorpdfstring{isAborted}{isAborted}}
+{\footnotesize\ttfamily bool Tran\+Context\+::is\+Aborted = false}
+
+\mbox{\Hypertarget{classTranContext_ab37b6501ed3dfd3e3fad802142749a7b}\label{classTranContext_ab37b6501ed3dfd3e3fad802142749a7b}} 
+\index{TranContext@{TranContext}!isCommited@{isCommited}}
+\index{isCommited@{isCommited}!TranContext@{TranContext}}
+\doxysubsubsection{\texorpdfstring{isCommited}{isCommited}}
+{\footnotesize\ttfamily bool Tran\+Context\+::is\+Commited = false}
+
+\mbox{\Hypertarget{classTranContext_a46877195cb3398e68ae94dee4953c4ed}\label{classTranContext_a46877195cb3398e68ae94dee4953c4ed}} 
+\index{TranContext@{TranContext}!isolation\_level\_@{isolation\_level\_}}
+\index{isolation\_level\_@{isolation\_level\_}!TranContext@{TranContext}}
+\doxysubsubsection{\texorpdfstring{isolation\_level\_}{isolation\_level\_}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{transaction_8h_af3fd7ab4111446c2fe0882d0d45eb119}{Isolation\+Level}} Tran\+Context\+::isolation\+\_\+level\+\_\+}
+
+\mbox{\Hypertarget{classTranContext_adb603645d26a288ae98a72ed81f62f57}\label{classTranContext_adb603645d26a288ae98a72ed81f62f57}} 
+\index{TranContext@{TranContext}!operations@{operations}}
+\index{operations@{operations}!TranContext@{TranContext}}
+\doxysubsubsection{\texorpdfstring{operations}{operations}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classRecord}{Record}}$>$ Tran\+Context\+::operations}
+
+\mbox{\Hypertarget{classTranContext_a1777c3fad67dabb868372de1e8b07ea3}\label{classTranContext_a1777c3fad67dabb868372de1e8b07ea3}} 
+\index{TranContext@{TranContext}!temp\_map\_@{temp\_map\_}}
+\index{temp\_map\_@{temp\_map\_}!TranContext@{TranContext}}
+\doxysubsubsection{\texorpdfstring{temp\_map\_}{temp\_map\_}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, std\+::string$>$ Tran\+Context\+::temp\+\_\+map\+\_\+}
+
+\mbox{\Hypertarget{classTranContext_af4c1d732a740270be48234b007c9de4f}\label{classTranContext_af4c1d732a740270be48234b007c9de4f}} 
+\index{TranContext@{TranContext}!tranc\_id\_@{tranc\_id\_}}
+\index{tranc\_id\_@{tranc\_id\_}!TranContext@{TranContext}}
+\doxysubsubsection{\texorpdfstring{tranc\_id\_}{tranc\_id\_}}
+{\footnotesize\ttfamily uint64\+\_\+t Tran\+Context\+::tranc\+\_\+id\+\_\+}
+
+\mbox{\Hypertarget{classTranContext_a35c4703d9f6bc2453b898e61f71d5dff}\label{classTranContext_a35c4703d9f6bc2453b898e61f71d5dff}} 
+\index{TranContext@{TranContext}!tranManager\_@{tranManager\_}}
+\index{tranManager\_@{tranManager\_}!TranContext@{TranContext}}
+\doxysubsubsection{\texorpdfstring{tranManager\_}{tranManager\_}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classTranManager}{Tran\+Manager}}$>$ Tran\+Context\+::tran\+Manager\+\_\+}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+L\+S\+M/\mbox{\hyperlink{transaction_8h}{transaction.\+h}}\item 
+src/\+L\+S\+M/\mbox{\hyperlink{transaction_8cpp}{transaction.\+cpp}}\end{DoxyCompactItemize}

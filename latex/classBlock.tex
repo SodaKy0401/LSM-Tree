@@ -1,0 +1,276 @@
+\hypertarget{classBlock}{}\doxysection{Block Class Reference}
+\label{classBlock}\index{Block@{Block}}
+
+
+{\ttfamily \#include $<$block.\+h$>$}
+
+
+
+Inheritance diagram for Block\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{classBlock__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Block\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{classBlock__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBlock_a76fbfd04573d87f7a697364d9db79abf}{Block}} ()=default
+\item 
+\mbox{\hyperlink{classBlock_adf73ca23c2c3b71d25feecea9c0ffaa3}{Block}} (size\+\_\+t capacity)
+\item 
+std\+::vector$<$ uint8\+\_\+t $>$ \mbox{\hyperlink{classBlock_a25c0ddbe0af4b969d8900c0841997232}{encode}} ()
+\item 
+std\+::string \mbox{\hyperlink{classBlock_a7013426026ded15d8cac204fc6bdc616}{get\+\_\+first\+\_\+key}} ()
+\item 
+size\+\_\+t \mbox{\hyperlink{classBlock_a485ed3ecd2be861ce53787d8f5d9c769}{get\+\_\+offset\+\_\+at}} (size\+\_\+t idx) const
+\item 
+bool \mbox{\hyperlink{classBlock_af420fa9043e423b66389a2816dabd701}{add\+\_\+entry}} (const std\+::string \&key, const std\+::string \&value, uint64\+\_\+t tranc\+\_\+id, bool force\+\_\+write)
+\item 
+std\+::optional$<$ std\+::string $>$ \mbox{\hyperlink{classBlock_a8252177dc0f295416cddcd517fcc3aab}{get\+\_\+value\+\_\+binary}} (const std\+::string \&key, uint64\+\_\+t tranc\+\_\+id)
+\item 
+size\+\_\+t \mbox{\hyperlink{classBlock_a7c89a2c3150d3088ae32fa8e88f2216d}{size}} () const
+\item 
+size\+\_\+t \mbox{\hyperlink{classBlock_a9fa11de572d43eda75d6da982485a6c6}{cur\+\_\+size}} () const
+\item 
+bool \mbox{\hyperlink{classBlock_ab4a4053254422ee167451f7b59b4c86a}{is\+\_\+empty}} () const
+\item 
+std\+::optional$<$ size\+\_\+t $>$ \mbox{\hyperlink{classBlock_a11a2912d6881ac210463bd97e6613a4a}{get\+\_\+idx\+\_\+binary}} (const std\+::string \&key, uint64\+\_\+t tranc\+\_\+id)
+\item 
+std\+::optional$<$ std\+::pair$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBlockIterator}{Block\+Iterator}} $>$, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBlockIterator}{Block\+Iterator}} $>$ $>$ $>$ \mbox{\hyperlink{classBlock_acca0ba821113915755ab208c197ad72c}{get\+\_\+monotony\+\_\+predicate\+\_\+iters}} (uint64\+\_\+t tranc\+\_\+id, std\+::function$<$ int(const std\+::string \&)$>$ func)
+\item 
+\mbox{\hyperlink{classBlockIterator}{Block\+Iterator}} \mbox{\hyperlink{classBlock_aae6c44862d9b5030261b4947e6dd7a4e}{begin}} (uint64\+\_\+t tranc\+\_\+id=0)
+\item 
+std\+::optional$<$ std\+::pair$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBlockIterator}{Block\+Iterator}} $>$, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBlockIterator}{Block\+Iterator}} $>$ $>$ $>$ \mbox{\hyperlink{classBlock_aeaa09b3856f530396b315f6e4611479e}{iters\+\_\+preffix}} (uint64\+\_\+t tranc\+\_\+id, const std\+::string \&preffix)
+\item 
+\mbox{\hyperlink{classBlockIterator}{Block\+Iterator}} \mbox{\hyperlink{classBlock_afd3325588634402a385b782358c866e3}{end}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBlock}{Block}} $>$ \mbox{\hyperlink{classBlock_a72f95e88bb8d0b08d2f3320d195ee751}{decode}} (const std\+::vector$<$ uint8\+\_\+t $>$ \&encoded, bool with\+\_\+hash=false)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBlock_a76fbfd04573d87f7a697364d9db79abf}\label{classBlock_a76fbfd04573d87f7a697364d9db79abf}} 
+\index{Block@{Block}!Block@{Block}}
+\index{Block@{Block}!Block@{Block}}
+\doxysubsubsection{\texorpdfstring{Block()}{Block()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Block\+::\+Block (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classBlock_adf73ca23c2c3b71d25feecea9c0ffaa3}\label{classBlock_adf73ca23c2c3b71d25feecea9c0ffaa3}} 
+\index{Block@{Block}!Block@{Block}}
+\index{Block@{Block}!Block@{Block}}
+\doxysubsubsection{\texorpdfstring{Block()}{Block()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Block\+::\+Block (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{capacity }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBlock_af420fa9043e423b66389a2816dabd701}\label{classBlock_af420fa9043e423b66389a2816dabd701}} 
+\index{Block@{Block}!add\_entry@{add\_entry}}
+\index{add\_entry@{add\_entry}!Block@{Block}}
+\doxysubsubsection{\texorpdfstring{add\_entry()}{add\_entry()}}
+{\footnotesize\ttfamily bool Block\+::add\+\_\+entry (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key,  }\item[{const std\+::string \&}]{value,  }\item[{uint64\+\_\+t}]{tranc\+\_\+id,  }\item[{bool}]{force\+\_\+write }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=303pt]{classBlock_af420fa9043e423b66389a2816dabd701_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classBlock_af420fa9043e423b66389a2816dabd701_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classBlock_aae6c44862d9b5030261b4947e6dd7a4e}\label{classBlock_aae6c44862d9b5030261b4947e6dd7a4e}} 
+\index{Block@{Block}!begin@{begin}}
+\index{begin@{begin}!Block@{Block}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBlockIterator}{Block\+Iterator}} Block\+::begin (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{tranc\+\_\+id = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classBlock_a9fa11de572d43eda75d6da982485a6c6}\label{classBlock_a9fa11de572d43eda75d6da982485a6c6}} 
+\index{Block@{Block}!cur\_size@{cur\_size}}
+\index{cur\_size@{cur\_size}!Block@{Block}}
+\doxysubsubsection{\texorpdfstring{cur\_size()}{cur\_size()}}
+{\footnotesize\ttfamily size\+\_\+t Block\+::cur\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classBlock_a9fa11de572d43eda75d6da982485a6c6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classBlock_a72f95e88bb8d0b08d2f3320d195ee751}\label{classBlock_a72f95e88bb8d0b08d2f3320d195ee751}} 
+\index{Block@{Block}!decode@{decode}}
+\index{decode@{decode}!Block@{Block}}
+\doxysubsubsection{\texorpdfstring{decode()}{decode()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBlock}{Block}} $>$ Block\+::decode (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ uint8\+\_\+t $>$ \&}]{encoded,  }\item[{bool}]{with\+\_\+hash = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{classBlock_a72f95e88bb8d0b08d2f3320d195ee751_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classBlock_a25c0ddbe0af4b969d8900c0841997232}\label{classBlock_a25c0ddbe0af4b969d8900c0841997232}} 
+\index{Block@{Block}!encode@{encode}}
+\index{encode@{encode}!Block@{Block}}
+\doxysubsubsection{\texorpdfstring{encode()}{encode()}}
+{\footnotesize\ttfamily std\+::vector$<$ uint8\+\_\+t $>$ Block\+::encode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=253pt]{classBlock_a25c0ddbe0af4b969d8900c0841997232_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classBlock_afd3325588634402a385b782358c866e3}\label{classBlock_afd3325588634402a385b782358c866e3}} 
+\index{Block@{Block}!end@{end}}
+\index{end@{end}!Block@{Block}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBlockIterator}{Block\+Iterator}} Block\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classBlock_a7013426026ded15d8cac204fc6bdc616}\label{classBlock_a7013426026ded15d8cac204fc6bdc616}} 
+\index{Block@{Block}!get\_first\_key@{get\_first\_key}}
+\index{get\_first\_key@{get\_first\_key}!Block@{Block}}
+\doxysubsubsection{\texorpdfstring{get\_first\_key()}{get\_first\_key()}}
+{\footnotesize\ttfamily std\+::string Block\+::get\+\_\+first\+\_\+key (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=281pt]{classBlock_a7013426026ded15d8cac204fc6bdc616_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classBlock_a11a2912d6881ac210463bd97e6613a4a}\label{classBlock_a11a2912d6881ac210463bd97e6613a4a}} 
+\index{Block@{Block}!get\_idx\_binary@{get\_idx\_binary}}
+\index{get\_idx\_binary@{get\_idx\_binary}!Block@{Block}}
+\doxysubsubsection{\texorpdfstring{get\_idx\_binary()}{get\_idx\_binary()}}
+{\footnotesize\ttfamily std\+::optional$<$ size\+\_\+t $>$ Block\+::get\+\_\+idx\+\_\+binary (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key,  }\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classBlock_a11a2912d6881ac210463bd97e6613a4a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classBlock_acca0ba821113915755ab208c197ad72c}\label{classBlock_acca0ba821113915755ab208c197ad72c}} 
+\index{Block@{Block}!get\_monotony\_predicate\_iters@{get\_monotony\_predicate\_iters}}
+\index{get\_monotony\_predicate\_iters@{get\_monotony\_predicate\_iters}!Block@{Block}}
+\doxysubsubsection{\texorpdfstring{get\_monotony\_predicate\_iters()}{get\_monotony\_predicate\_iters()}}
+{\footnotesize\ttfamily std\+::optional$<$ std\+::pair$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBlockIterator}{Block\+Iterator}} $>$, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBlockIterator}{Block\+Iterator}} $>$ $>$ $>$ Block\+::get\+\_\+monotony\+\_\+predicate\+\_\+iters (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{tranc\+\_\+id,  }\item[{std\+::function$<$ int(const std\+::string \&)$>$}]{func }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{classBlock_acca0ba821113915755ab208c197ad72c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classBlock_a485ed3ecd2be861ce53787d8f5d9c769}\label{classBlock_a485ed3ecd2be861ce53787d8f5d9c769}} 
+\index{Block@{Block}!get\_offset\_at@{get\_offset\_at}}
+\index{get\_offset\_at@{get\_offset\_at}!Block@{Block}}
+\doxysubsubsection{\texorpdfstring{get\_offset\_at()}{get\_offset\_at()}}
+{\footnotesize\ttfamily size\+\_\+t Block\+::get\+\_\+offset\+\_\+at (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{idx }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classBlock_a8252177dc0f295416cddcd517fcc3aab}\label{classBlock_a8252177dc0f295416cddcd517fcc3aab}} 
+\index{Block@{Block}!get\_value\_binary@{get\_value\_binary}}
+\index{get\_value\_binary@{get\_value\_binary}!Block@{Block}}
+\doxysubsubsection{\texorpdfstring{get\_value\_binary()}{get\_value\_binary()}}
+{\footnotesize\ttfamily std\+::optional$<$ std\+::string $>$ Block\+::get\+\_\+value\+\_\+binary (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key,  }\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classBlock_a8252177dc0f295416cddcd517fcc3aab_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{classBlock_a8252177dc0f295416cddcd517fcc3aab_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classBlock_ab4a4053254422ee167451f7b59b4c86a}\label{classBlock_ab4a4053254422ee167451f7b59b4c86a}} 
+\index{Block@{Block}!is\_empty@{is\_empty}}
+\index{is\_empty@{is\_empty}!Block@{Block}}
+\doxysubsubsection{\texorpdfstring{is\_empty()}{is\_empty()}}
+{\footnotesize\ttfamily bool Block\+::is\+\_\+empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classBlock_ab4a4053254422ee167451f7b59b4c86a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classBlock_aeaa09b3856f530396b315f6e4611479e}\label{classBlock_aeaa09b3856f530396b315f6e4611479e}} 
+\index{Block@{Block}!iters\_preffix@{iters\_preffix}}
+\index{iters\_preffix@{iters\_preffix}!Block@{Block}}
+\doxysubsubsection{\texorpdfstring{iters\_preffix()}{iters\_preffix()}}
+{\footnotesize\ttfamily std\+::optional$<$ std\+::pair$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBlockIterator}{Block\+Iterator}} $>$, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classBlockIterator}{Block\+Iterator}} $>$ $>$ $>$ Block\+::iters\+\_\+preffix (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{tranc\+\_\+id,  }\item[{const std\+::string \&}]{preffix }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{classBlock_aeaa09b3856f530396b315f6e4611479e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classBlock_a7c89a2c3150d3088ae32fa8e88f2216d}\label{classBlock_a7c89a2c3150d3088ae32fa8e88f2216d}} 
+\index{Block@{Block}!size@{size}}
+\index{size@{size}!Block@{Block}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily size\+\_\+t Block\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{classBlock_a7c89a2c3150d3088ae32fa8e88f2216d_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Block/\mbox{\hyperlink{block_8h}{block.\+h}}\item 
+src/\+Block/\mbox{\hyperlink{block_8cpp}{block.\+cpp}}\end{DoxyCompactItemize}

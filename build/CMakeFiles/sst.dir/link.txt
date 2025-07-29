@@ -1,0 +1,2 @@
+/usr/bin/ar qc libsst.a  CMakeFiles/sst.dir/src/SST/sst.cpp.o CMakeFiles/sst.dir/src/SST/sst_iterator.cpp.o CMakeFiles/sst.dir/src/Utils/file.cpp.o CMakeFiles/sst.dir/src/Block/block.cpp.o CMakeFiles/sst.dir/src/Block/blockmeta.cpp.o CMakeFiles/sst.dir/src/Iterator/block_iterator.cpp.o CMakeFiles/sst.dir/src/Utils/bloom_filter.cpp.o CMakeFiles/sst.dir/src/Block/block_cache.cpp.o CMakeFiles/sst.dir/src/Utils/std_file.cpp.o CMakeFiles/sst.dir/src/SkipList/skiplist.cpp.o CMakeFiles/sst.dir/src/Iterator/iterator.cpp.o
+/usr/bin/ranlib libsst.a

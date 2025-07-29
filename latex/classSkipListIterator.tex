@@ -1,0 +1,223 @@
+\hypertarget{classSkipListIterator}{}\doxysection{Skip\+List\+Iterator Class Reference}
+\label{classSkipListIterator}\index{SkipListIterator@{SkipListIterator}}
+
+
+{\ttfamily \#include $<$skiplist.\+h$>$}
+
+
+
+Inheritance diagram for Skip\+List\+Iterator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=171pt]{classSkipListIterator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Skip\+List\+Iterator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=171pt]{classSkipListIterator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} = std\+::pair$<$ std\+::string, std\+::string $>$
+\item 
+using \mbox{\hyperlink{classBaseIterator_a873de620a7886f465bbb69933c5416fb}{pointer}} = \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} $\ast$
+\item 
+using \mbox{\hyperlink{classBaseIterator_ae3e2769edb02a9b819b19cd2dd957f6f}{reference}} = \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} \&
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSkipListIterator_a59f3835ba2d74dc4376ee0fa0ffc6565}{Skip\+List\+Iterator}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structSkipListNode}{Skip\+List\+Node}} $>$ node)
+\item 
+\mbox{\hyperlink{classSkipListIterator_ad1443c1e3fce65b057b251cc01aa540f}{Skip\+List\+Iterator}} ()
+\item 
+virtual \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \& \mbox{\hyperlink{classSkipListIterator_a587b0f1b971db13735cddc3778d8d6a8}{operator++}} () override
+\item 
+virtual bool \mbox{\hyperlink{classSkipListIterator_a6a7035691dd50fb923e93e726fae6022}{operator==}} (const \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \&other) const override
+\item 
+virtual bool \mbox{\hyperlink{classSkipListIterator_a605f459fbf9a491407acaa248d4e9d94}{operator!=}} (const \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \&other) const override
+\item 
+virtual \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} \mbox{\hyperlink{classSkipListIterator_af1c82b09201cf5a3f97502f546e735fa}{operator$\ast$}} () const override
+\item 
+virtual \mbox{\hyperlink{iterator_8h_a4f6da121dba1526ce091ea9753d0647a}{Iterator\+Type}} \mbox{\hyperlink{classSkipListIterator_abfcf6a95b8b9152f1856586120499f66}{get\+\_\+type}} () const override
+\item 
+virtual bool \mbox{\hyperlink{classSkipListIterator_afe7c7e9b93fd2fefd2292438c0982c74}{is\+\_\+end}} () const override
+\item 
+virtual bool \mbox{\hyperlink{classSkipListIterator_a55ae68499115a635b3111d89110209fb}{is\+\_\+valid}} () const override
+\item 
+std\+::string \mbox{\hyperlink{classSkipListIterator_af3ec54dfb4b05ff0e7898424684953cd}{get\+\_\+key}} () const
+\item 
+std\+::string \mbox{\hyperlink{classSkipListIterator_a59abe7860cf2ba90f873ac46b8c9abd8}{get\+\_\+value}} () const
+\item 
+uint64\+\_\+t \mbox{\hyperlink{classSkipListIterator_a41b4ca645a0af66c0cdb68b519c9d002}{get\+\_\+tranc\+\_\+id}} () const override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classBaseIterator_a873de620a7886f465bbb69933c5416fb}\label{classBaseIterator_a873de620a7886f465bbb69933c5416fb}} 
+\index{SkipListIterator@{SkipListIterator}!pointer@{pointer}}
+\index{pointer@{pointer}!SkipListIterator@{SkipListIterator}}
+\doxysubsubsection{\texorpdfstring{pointer}{pointer}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classBaseIterator_a873de620a7886f465bbb69933c5416fb}{Base\+Iterator\+::pointer}} =  \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} $\ast$\hspace{0.3cm}{\ttfamily [inherited]}}
+
+\mbox{\Hypertarget{classBaseIterator_ae3e2769edb02a9b819b19cd2dd957f6f}\label{classBaseIterator_ae3e2769edb02a9b819b19cd2dd957f6f}} 
+\index{SkipListIterator@{SkipListIterator}!reference@{reference}}
+\index{reference@{reference}!SkipListIterator@{SkipListIterator}}
+\doxysubsubsection{\texorpdfstring{reference}{reference}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classBaseIterator_ae3e2769edb02a9b819b19cd2dd957f6f}{Base\+Iterator\+::reference}} =  \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{value\+\_\+type}} \&\hspace{0.3cm}{\ttfamily [inherited]}}
+
+\mbox{\Hypertarget{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}\label{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}} 
+\index{SkipListIterator@{SkipListIterator}!value\_type@{value\_type}}
+\index{value\_type@{value\_type}!SkipListIterator@{SkipListIterator}}
+\doxysubsubsection{\texorpdfstring{value\_type}{value\_type}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{Base\+Iterator\+::value\+\_\+type}} =  std\+::pair$<$std\+::string, std\+::string$>$\hspace{0.3cm}{\ttfamily [inherited]}}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSkipListIterator_a59f3835ba2d74dc4376ee0fa0ffc6565}\label{classSkipListIterator_a59f3835ba2d74dc4376ee0fa0ffc6565}} 
+\index{SkipListIterator@{SkipListIterator}!SkipListIterator@{SkipListIterator}}
+\index{SkipListIterator@{SkipListIterator}!SkipListIterator@{SkipListIterator}}
+\doxysubsubsection{\texorpdfstring{SkipListIterator()}{SkipListIterator()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Skip\+List\+Iterator\+::\+Skip\+List\+Iterator (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structSkipListNode}{Skip\+List\+Node}} $>$}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classSkipListIterator_ad1443c1e3fce65b057b251cc01aa540f}\label{classSkipListIterator_ad1443c1e3fce65b057b251cc01aa540f}} 
+\index{SkipListIterator@{SkipListIterator}!SkipListIterator@{SkipListIterator}}
+\index{SkipListIterator@{SkipListIterator}!SkipListIterator@{SkipListIterator}}
+\doxysubsubsection{\texorpdfstring{SkipListIterator()}{SkipListIterator()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Skip\+List\+Iterator\+::\+Skip\+List\+Iterator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSkipListIterator_af3ec54dfb4b05ff0e7898424684953cd}\label{classSkipListIterator_af3ec54dfb4b05ff0e7898424684953cd}} 
+\index{SkipListIterator@{SkipListIterator}!get\_key@{get\_key}}
+\index{get\_key@{get\_key}!SkipListIterator@{SkipListIterator}}
+\doxysubsubsection{\texorpdfstring{get\_key()}{get\_key()}}
+{\footnotesize\ttfamily std\+::string Skip\+List\+Iterator\+::get\+\_\+key (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classSkipListIterator_a41b4ca645a0af66c0cdb68b519c9d002}\label{classSkipListIterator_a41b4ca645a0af66c0cdb68b519c9d002}} 
+\index{SkipListIterator@{SkipListIterator}!get\_tranc\_id@{get\_tranc\_id}}
+\index{get\_tranc\_id@{get\_tranc\_id}!SkipListIterator@{SkipListIterator}}
+\doxysubsubsection{\texorpdfstring{get\_tranc\_id()}{get\_tranc\_id()}}
+{\footnotesize\ttfamily uint64\+\_\+t Skip\+List\+Iterator\+::get\+\_\+tranc\+\_\+id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_afbac00d0570707027bb34d7f02ad5a5e}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classSkipListIterator_abfcf6a95b8b9152f1856586120499f66}\label{classSkipListIterator_abfcf6a95b8b9152f1856586120499f66}} 
+\index{SkipListIterator@{SkipListIterator}!get\_type@{get\_type}}
+\index{get\_type@{get\_type}!SkipListIterator@{SkipListIterator}}
+\doxysubsubsection{\texorpdfstring{get\_type()}{get\_type()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{iterator_8h_a4f6da121dba1526ce091ea9753d0647a}{Iterator\+Type}} Skip\+List\+Iterator\+::get\+\_\+type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a087b836b0654e9929640e6807deb219c}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classSkipListIterator_a59abe7860cf2ba90f873ac46b8c9abd8}\label{classSkipListIterator_a59abe7860cf2ba90f873ac46b8c9abd8}} 
+\index{SkipListIterator@{SkipListIterator}!get\_value@{get\_value}}
+\index{get\_value@{get\_value}!SkipListIterator@{SkipListIterator}}
+\doxysubsubsection{\texorpdfstring{get\_value()}{get\_value()}}
+{\footnotesize\ttfamily std\+::string Skip\+List\+Iterator\+::get\+\_\+value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSkipListIterator_a59abe7860cf2ba90f873ac46b8c9abd8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSkipListIterator_afe7c7e9b93fd2fefd2292438c0982c74}\label{classSkipListIterator_afe7c7e9b93fd2fefd2292438c0982c74}} 
+\index{SkipListIterator@{SkipListIterator}!is\_end@{is\_end}}
+\index{is\_end@{is\_end}!SkipListIterator@{SkipListIterator}}
+\doxysubsubsection{\texorpdfstring{is\_end()}{is\_end()}}
+{\footnotesize\ttfamily bool Skip\+List\+Iterator\+::is\+\_\+end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_aaa8a10f554780422293e00ee1b68a123}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classSkipListIterator_a55ae68499115a635b3111d89110209fb}\label{classSkipListIterator_a55ae68499115a635b3111d89110209fb}} 
+\index{SkipListIterator@{SkipListIterator}!is\_valid@{is\_valid}}
+\index{is\_valid@{is\_valid}!SkipListIterator@{SkipListIterator}}
+\doxysubsubsection{\texorpdfstring{is\_valid()}{is\_valid()}}
+{\footnotesize\ttfamily bool Skip\+List\+Iterator\+::is\+\_\+valid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a283f72f0b0fc52a33edaab270f3558da}{Base\+Iterator}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{classSkipListIterator_a55ae68499115a635b3111d89110209fb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSkipListIterator_a605f459fbf9a491407acaa248d4e9d94}\label{classSkipListIterator_a605f459fbf9a491407acaa248d4e9d94}} 
+\index{SkipListIterator@{SkipListIterator}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!SkipListIterator@{SkipListIterator}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool Skip\+List\+Iterator\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a60263f58b02942344090e29e72215d26}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classSkipListIterator_af1c82b09201cf5a3f97502f546e735fa}\label{classSkipListIterator_af1c82b09201cf5a3f97502f546e735fa}} 
+\index{SkipListIterator@{SkipListIterator}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!SkipListIterator@{SkipListIterator}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBaseIterator_a6bd7283a4577c1b4339be5bcf217ec93}{Skip\+List\+Iterator\+::value\+\_\+type}} Skip\+List\+Iterator\+::operator$\ast$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a79f8f0831999342671817a9969107aba}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classSkipListIterator_a587b0f1b971db13735cddc3778d8d6a8}\label{classSkipListIterator_a587b0f1b971db13735cddc3778d8d6a8}} 
+\index{SkipListIterator@{SkipListIterator}!operator++@{operator++}}
+\index{operator++@{operator++}!SkipListIterator@{SkipListIterator}}
+\doxysubsubsection{\texorpdfstring{operator++()}{operator++()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \& Skip\+List\+Iterator\+::operator++ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_aa699a2de97bf243e89826987dbf1b404}{Base\+Iterator}}.
+
+\mbox{\Hypertarget{classSkipListIterator_a6a7035691dd50fb923e93e726fae6022}\label{classSkipListIterator_a6a7035691dd50fb923e93e726fae6022}} 
+\index{SkipListIterator@{SkipListIterator}!operator==@{operator==}}
+\index{operator==@{operator==}!SkipListIterator@{SkipListIterator}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Skip\+List\+Iterator\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBaseIterator}{Base\+Iterator}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseIterator_a760ab242074729f5c953a968b967ffe2}{Base\+Iterator}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSkipListIterator_a6a7035691dd50fb923e93e726fae6022_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Skip\+List/\mbox{\hyperlink{skiplist_8h}{skiplist.\+h}}\item 
+src/\+Skip\+List/\mbox{\hyperlink{skiplist_8cpp}{skiplist.\+cpp}}\end{DoxyCompactItemize}

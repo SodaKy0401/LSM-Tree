@@ -1,5 +1,5 @@
 #include "transaction.h"
-
+#include "../Utils/set_op.hpp"
 #include "engine.h"
 #include "../WAL/record.h"
 #include "../WAL/record.h"
@@ -24,10 +24,12 @@ TranContext::TranContext(uint64_t tranc_id, std::shared_ptr<LSMEngine> engine,
                          const enum IsolationLevel &isolation_level)
     : tranc_id_(tranc_id), engine_(std::move(engine)),
       tranManager_(std::move(tranManager)), isolation_level_(isolation_level) {
-  operations.emplace_back(Record::createRecord(tranc_id_));
+  operations.emplace_back(Record::createRecord(tranc_id_));// 创建事务记录
+  // 初始化事务时, 先将事务 id 写入 WAL
+  
 }
 
-void TranContext::put(const std::string &key, const std::string &value) {
+void TranContext::put(const std::string &key, const std::string &value) {//
   auto isolation_level = get_isolation_level();
 
   // 所有隔离级别都需要先写入 operations 中
@@ -115,8 +117,11 @@ bool TranContext::commit(bool test_fail) {
     if (!wal_success) {
       throw std::runtime_error("write to wal failed");
     }
+
+    engine_->memtable.put_("", "", tranc_id_);
     isCommited = true;
-    tranManager_->update_max_finished_tranc_id(tranc_id_);
+    tranManager_->add_ready_to_flush_tranc_id(tranc_id_, TransactionState::COMMITTED);
+    
     return true;
   }
 
@@ -147,6 +152,8 @@ bool TranContext::commit(bool test_fail) {
         // 数据库中存在相同的 key , 且其 tranc_id 大于当前 tranc_id
         // 表示更晚创建的事务修改了相同的key, 并先提交, 发生了冲突
         // 需要终止事务
+
+        tranManager_->add_ready_to_flush_tranc_id(tranc_id_, TransactionState::ABORTED);
         isAborted = true;
         return false;
       } else {
@@ -165,6 +172,7 @@ bool TranContext::commit(bool test_fail) {
             // 数据库中存在相同的 key , 且其 tranc_id 大于当前 tranc_id
             // 表示更晚创建的事务修改了相同的key, 并先提交, 发生了冲突
             // 需要终止事务
+            tranManager_->add_ready_to_flush_tranc_id(tranc_id_, TransactionState::ABORTED);
             isAborted = true;
             return false;
           }
@@ -191,10 +199,11 @@ bool TranContext::commit(bool test_fail) {
     for (auto &[k, v] : temp_map_) {
       memtable.put_(k, v, tranc_id_);
     }
+    memtable.put_("", "", tranc_id_);
   }
-
+ 
   isCommited = true;
-  tranManager_->update_max_finished_tranc_id(tranc_id_);
+  tranManager_->add_ready_to_flush_tranc_id(tranc_id_, TransactionState::COMMITTED);
   return true;
 }
 
@@ -212,6 +221,7 @@ bool TranContext::abort() {
       }
     }
     isAborted = true;
+    tranManager_->add_ready_to_flush_tranc_id(tranc_id_, TransactionState::ABORTED);
 
     return true;
   }
@@ -228,6 +238,7 @@ bool TranContext::abort() {
   // }
 
   isAborted = true;
+  tranManager_->add_ready_to_flush_tranc_id(tranc_id_, TransactionState::ABORTED);
 
   return true;
 }
@@ -245,6 +256,7 @@ TranManager::TranManager(std::string data_dir) : data_dir_(data_dir) {
 
   if (!std::filesystem::exists(file_path)) {
     tranc_id_file_ = FileObj::open(file_path, true);
+    flushedTrancIds_.insert(0);
   } else {
     tranc_id_file_ = FileObj::open(file_path, false);
     read_tranc_id_file();
@@ -259,7 +271,10 @@ void TranManager::init_new_wal() {
       std::filesystem::remove(entry.path());
     }
   }
-  wal = std::make_shared<WAL>(data_dir_, 128, max_finished_tranc_id_, 1, 4096);
+  //wal = std::make_shared<WAL>(data_dir_, 128, max_finished_tranc_id_, 1, 4096);
+  wal = std::make_shared<WAL>(data_dir_, 128, get_max_flushed_tranc_id(), 1, 4096);
+  flushedTrancIds_.clear();
+  flushedTrancIds_.insert(nextTransactionId_.load() - 1);
 }
 
 void TranManager::set_engine(std::shared_ptr<LSMEngine> engine) {
@@ -274,66 +289,157 @@ void TranManager::write_tranc_id_file() {
   // std::atomic<uint64_t> max_flushed_tranc_id_;
   // std::atomic<uint64_t> max_finished_tranc_id_;
 
-  std::vector<uint8_t> buf(3 * sizeof(uint64_t), 0);
+
+  int buffer_size = sizeof(uint64_t) * (flushedTrancIds_.size() + 2);
+  std::vector<uint8_t> buf(buffer_size, 0);
   uint64_t nextTransactionId = nextTransactionId_.load();
-  uint64_t max_flushed_tranc_id = max_flushed_tranc_id_.load();
-  uint64_t max_finished_tranc_id = max_finished_tranc_id_.load();
+  uint64_t tranc_size = flushedTrancIds_.size();
+
 
   memcpy(buf.data(), &nextTransactionId, sizeof(uint64_t));
-  memcpy(buf.data() + sizeof(uint64_t), &max_flushed_tranc_id,
+  memcpy(buf.data() + sizeof(uint64_t), &tranc_size, sizeof(uint64_t));
+  int offset = sizeof(uint64_t) * 2;
+  for (auto& tranc_id : flushedTrancIds_) {
+    memcpy(buf.data() + offset, &tranc_id,
          sizeof(uint64_t));
-  memcpy(buf.data() + 2 * sizeof(uint64_t), &max_finished_tranc_id,
-         sizeof(uint64_t));
+    offset += sizeof(uint64_t);
+  }
 
   tranc_id_file_.write(0, buf);
   tranc_id_file_.sync();
 }
 
+
+
+
+  // std::vector<uint8_t> buf(3 * sizeof(uint64_t), 0);
+  // uint64_t nextTransactionId = nextTransactionId_.load();
+  // uint64_t max_flushed_tranc_id = max_flushed_tranc_id_.load();
+  // uint64_t max_finished_tranc_id = max_finished_tranc_id_.load();
+
+  // memcpy(buf.data(), &nextTransactionId, sizeof(uint64_t));
+  // memcpy(buf.data() + sizeof(uint64_t), &max_flushed_tranc_id,
+  //        sizeof(uint64_t));
+  // memcpy(buf.data() + 2 * sizeof(uint64_t), &max_finished_tranc_id,
+  //        sizeof(uint64_t));
+
+  // tranc_id_file_.write(0, buf);
+  // tranc_id_file_.sync();
+
+
 void TranManager::read_tranc_id_file() {
+
   nextTransactionId_ = tranc_id_file_.read_uint64(0);
-  max_flushed_tranc_id_ = tranc_id_file_.read_uint64(sizeof(uint64_t));
-  max_finished_tranc_id_ = tranc_id_file_.read_uint64(sizeof(uint64_t) * 2);
+  uint64_t size = tranc_id_file_.read_uint64(sizeof(uint64_t));
+  int offset = sizeof(uint64_t) * 2;
+  for (int i = 0; i < size; i++) {
+    uint64_t flushed_id = tranc_id_file_.read_uint64(offset);
+    flushedTrancIds_.insert(flushed_id);
+    offset += sizeof(uint64_t);
+  }
+
+
+
+
+
+  // nextTransactionId_ = tranc_id_file_.read_uint64(0);
+  // max_flushed_tranc_id_ = tranc_id_file_.read_uint64(sizeof(uint64_t));
+  // max_finished_tranc_id_ = tranc_id_file_.read_uint64(sizeof(uint64_t) * 2);
 }
 
-void TranManager::update_max_finished_tranc_id(uint64_t tranc_id) {
-  // max_finished_tranc_id_ 对于崩溃恢复没有作用,
-  // 因为可能其标记的事务的更改还没有刷盘 因此只需要在内存中更改即可,
-  // 没有必要刷盘
-  uint64_t expected = max_finished_tranc_id_.load(std::memory_order_relaxed);
-  while (tranc_id > expected) {
-    if (max_finished_tranc_id_.compare_exchange_weak(
-            expected, tranc_id, std::memory_order_acq_rel,
-            std::memory_order_relaxed)) {
+// void TranManager::update_max_finished_tranc_id(uint64_t tranc_id) {
+//   // max_finished_tranc_id_ 对于崩溃恢复没有作用,
+//   // 因为可能其标记的事务的更改还没有刷盘 因此只需要在内存中更改即可,
+//   // 没有必要刷盘
+//   uint64_t expected = max_finished_tranc_id_.load(std::memory_order_relaxed);
+//   while (tranc_id > expected) {
+//     if (max_finished_tranc_id_.compare_exchange_weak(
+//             expected, tranc_id, std::memory_order_acq_rel,
+//             std::memory_order_relaxed)) {
+//       break;
+//     }
+//   }
+// }
+
+// void TranManager::update_max_flushed_tranc_id(uint64_t tranc_id) {
+//   // ! max_finished_tranc_id_ 对于崩溃恢复有决定性的作用
+//   // ! 需要立即刷盘
+//   uint64_t expected = max_flushed_tranc_id_.load(std::memory_order_relaxed);
+//   while (tranc_id > expected) {
+//     if (max_flushed_tranc_id_.compare_exchange_weak(
+//             expected, tranc_id, std::memory_order_acq_rel,
+//             std::memory_order_relaxed)) {
+//       break;
+//     }
+//   }
+//   write_tranc_id_file();
+// }
+
+
+
+void TranManager::add_ready_to_flush_tranc_id(uint64_t tranc_id, TransactionState state) {
+  std::unique_lock lock(mutex_);
+  readyToFlushTrancIds_[tranc_id] = state;
+
+
+
+
+
+
+
+
+
+}
+
+void TranManager::add_flushed_tranc_id(uint64_t tranc_id) {
+  std::unique_lock lock(mutex_);
+  std::vector<uint64_t> needRemove;
+  for (auto& [readyId, state] : readyToFlushTrancIds_) {
+    if(readyId < tranc_id && state == TransactionState::ABORTED) {
+      flushedTrancIds_.insert(readyId);
+      needRemove.push_back(readyId);
+    } else if(readyId == tranc_id) {
+      flushedTrancIds_.insert(readyId);
+      needRemove.push_back(readyId);
       break;
     }
   }
-}
-
-void TranManager::update_max_flushed_tranc_id(uint64_t tranc_id) {
-  // ! max_finished_tranc_id_ 对于崩溃恢复有决定性的作用
-  // ! 需要立即刷盘
-  uint64_t expected = max_flushed_tranc_id_.load(std::memory_order_relaxed);
-  while (tranc_id > expected) {
-    if (max_flushed_tranc_id_.compare_exchange_weak(
-            expected, tranc_id, std::memory_order_acq_rel,
-            std::memory_order_relaxed)) {
-      break;
-    }
+  for (auto id : needRemove) {
+    readyToFlushTrancIds_.erase(id);
   }
-  write_tranc_id_file();
+  
+  flushedTrancIds_ = compressSet<uint64_t>(flushedTrancIds_);
 }
 
 uint64_t TranManager::getNextTransactionId() {
-  return nextTransactionId_.fetch_add(1, std::memory_order_relaxed);
+  return nextTransactionId_.fetch_add(1);
+}
+
+std::set<uint64_t>& TranManager::get_flushed_tranc_ids() {
+  return flushedTrancIds_;
 }
 
 uint64_t TranManager::get_max_flushed_tranc_id() {
-  return max_flushed_tranc_id_.load();
+  // 需保证 size 至少为1
+  return *flushedTrancIds_.rbegin();
 }
 
-uint64_t TranManager::get_max_finished_tranc_id_() {
-  return max_finished_tranc_id_.load();
+uint64_t TranManager::get_checkpoint_tranc_id() {
+  // 需保证 size 至少为1
+  return *flushedTrancIds_.begin();
 }
+
+// uint64_t TranManager::getNextTransactionId() {
+//   return nextTransactionId_.fetch_add(1, std::memory_order_relaxed);
+// }
+
+// uint64_t TranManager::get_max_flushed_tranc_id() {
+//   return max_flushed_tranc_id_.load();
+// }
+
+// uint64_t TranManager::get_max_finished_tranc_id_() {
+//   return max_finished_tranc_id_.load();
+// }
 
 std::shared_ptr<TranContext>
 TranManager::new_tranc(const IsolationLevel &isolation_level) {
@@ -354,7 +460,7 @@ std::string TranManager::get_tranc_id_file_path() {
 
 std::map<uint64_t, std::vector<Record>> TranManager::check_recover() {
   std::map<uint64_t, std::vector<Record>> wal_records =
-      WAL::recover(data_dir_, max_flushed_tranc_id_);
+       WAL::recover(data_dir_, *flushedTrancIds_.begin());
   return wal_records;
 }
 

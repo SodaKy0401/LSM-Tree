@@ -4,6 +4,7 @@
 #include "../SST/sst.h"
 #include "../SST/concat_iterator.h"
 #include "../Iterator/iterator.h"
+
 Level_Iterator::Level_Iterator(std::shared_ptr<LSMEngine> engine,
                                uint64_t max_tranc_id)
     : engine_(engine), max_tranc_id_(max_tranc_id), rlock_(engine_->ssts_mtx) {

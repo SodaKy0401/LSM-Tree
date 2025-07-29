@@ -20,7 +20,7 @@ TEST(SkipListTest, BasicOperations) {
   // 测试插入和查找
   skipList.put("key1", "value1", 0);
   EXPECT_EQ(skipList.get("key1", 0).get_value(), "value1");
-
+  
   // 测试更新
   skipList.put("key1", "new_value", 0);
   EXPECT_EQ(skipList.get("key1", 0).get_value(), "new_value");
@@ -82,7 +82,7 @@ TEST(SkipListTest, LargeScaleRemove) {
     std::string value = "value" + std::to_string(i);
     skipList.put(key, value, 0);
 
-    // skipList.print_skiplist();
+     //skipList.print_skiplist();
   }
 
   // std::cout << "********************** remove **********************"
@@ -92,7 +92,7 @@ TEST(SkipListTest, LargeScaleRemove) {
     std::string key = "key" + std::to_string(i);
     skipList.remove(key);
 
-    // skipList.print_skiplist();
+     //skipList.print_skiplist();
   }
 
   // 验证所有数据已被删除
@@ -235,7 +235,7 @@ TEST(SkipListTest, ItersPredicate_Base) {
   skipList.put("medium", "value7", 0);
   skipList.put("midway", "value8", 0);
   skipList.put("midpoint", "value9", 0);
-
+  
   // 测试前缀匹配
   auto prefix_result =
       skipList.iters_monotony_predicate([](const std::string &key) {

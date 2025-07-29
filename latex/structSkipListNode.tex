@@ -1,0 +1,114 @@
+\hypertarget{structSkipListNode}{}\doxysection{Skip\+List\+Node Struct Reference}
+\label{structSkipListNode}\index{SkipListNode@{SkipListNode}}
+
+
+{\ttfamily \#include $<$skiplist.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structSkipListNode_ad7982db74341574472ea4f335d3a074f}{Skip\+List\+Node}} (const std\+::string \&k, const std\+::string \&v, int level, uint64\+\_\+t tranc\+\_\+id)
+\item 
+void \mbox{\hyperlink{structSkipListNode_a028daa0a4abcc5032ce26477609e34f0}{set\+\_\+backward}} (int level, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structSkipListNode}{Skip\+List\+Node}} $>$ node)
+\item 
+bool \mbox{\hyperlink{structSkipListNode_a44a628d88ffdac5ecf1af64ec00e2a1d}{operator==}} (const \mbox{\hyperlink{structSkipListNode}{Skip\+List\+Node}} \&other) const
+\item 
+bool \mbox{\hyperlink{structSkipListNode_a4bd87f1ab9ebc5ebaa4976890bf0a02b}{operator!=}} (const \mbox{\hyperlink{structSkipListNode}{Skip\+List\+Node}} \&other) const
+\item 
+bool \mbox{\hyperlink{structSkipListNode_a616e137c798a8d49a136785fabf1bdc1}{operator$<$}} (const \mbox{\hyperlink{structSkipListNode}{Skip\+List\+Node}} \&other) const
+\item 
+bool \mbox{\hyperlink{structSkipListNode_a695408bea19d87799e6f0330357b14dd}{operator$>$}} (const \mbox{\hyperlink{structSkipListNode}{Skip\+List\+Node}} \&other) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{structSkipListNode_a42fae3faab50beade1cb4d871e09f7df}{key\+\_\+}}
+\item 
+std\+::string \mbox{\hyperlink{structSkipListNode_a02579a125e0e89d5dbbfabd556105829}{value\+\_\+}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{structSkipListNode_a8324f381be4b2f9becb1ef199dfe94be}{tranc\+\_\+id\+\_\+}}
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structSkipListNode}{Skip\+List\+Node}} $>$ $>$ \mbox{\hyperlink{structSkipListNode_a182efeba38052513965d941ff4803b66}{forward\+\_\+}}
+\item 
+std\+::vector$<$ std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{structSkipListNode}{Skip\+List\+Node}} $>$ $>$ \mbox{\hyperlink{structSkipListNode_a3f5a9947803a9cdef16d8365fa5b699d}{backward\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{structSkipListNode_ad7982db74341574472ea4f335d3a074f}\label{structSkipListNode_ad7982db74341574472ea4f335d3a074f}} 
+\index{SkipListNode@{SkipListNode}!SkipListNode@{SkipListNode}}
+\index{SkipListNode@{SkipListNode}!SkipListNode@{SkipListNode}}
+\doxysubsubsection{\texorpdfstring{SkipListNode()}{SkipListNode()}}
+{\footnotesize\ttfamily Skip\+List\+Node\+::\+Skip\+List\+Node (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{k,  }\item[{const std\+::string \&}]{v,  }\item[{int}]{level,  }\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{structSkipListNode_a4bd87f1ab9ebc5ebaa4976890bf0a02b}\label{structSkipListNode_a4bd87f1ab9ebc5ebaa4976890bf0a02b}} 
+\index{SkipListNode@{SkipListNode}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!SkipListNode@{SkipListNode}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool Skip\+List\+Node\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structSkipListNode}{Skip\+List\+Node}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{structSkipListNode_a616e137c798a8d49a136785fabf1bdc1}\label{structSkipListNode_a616e137c798a8d49a136785fabf1bdc1}} 
+\index{SkipListNode@{SkipListNode}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!SkipListNode@{SkipListNode}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Skip\+List\+Node\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structSkipListNode}{Skip\+List\+Node}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{structSkipListNode_a44a628d88ffdac5ecf1af64ec00e2a1d}\label{structSkipListNode_a44a628d88ffdac5ecf1af64ec00e2a1d}} 
+\index{SkipListNode@{SkipListNode}!operator==@{operator==}}
+\index{operator==@{operator==}!SkipListNode@{SkipListNode}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Skip\+List\+Node\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structSkipListNode}{Skip\+List\+Node}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{structSkipListNode_a695408bea19d87799e6f0330357b14dd}\label{structSkipListNode_a695408bea19d87799e6f0330357b14dd}} 
+\index{SkipListNode@{SkipListNode}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!SkipListNode@{SkipListNode}}
+\doxysubsubsection{\texorpdfstring{operator$>$()}{operator>()}}
+{\footnotesize\ttfamily bool Skip\+List\+Node\+::operator$>$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structSkipListNode}{Skip\+List\+Node}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{structSkipListNode_a028daa0a4abcc5032ce26477609e34f0}\label{structSkipListNode_a028daa0a4abcc5032ce26477609e34f0}} 
+\index{SkipListNode@{SkipListNode}!set\_backward@{set\_backward}}
+\index{set\_backward@{set\_backward}!SkipListNode@{SkipListNode}}
+\doxysubsubsection{\texorpdfstring{set\_backward()}{set\_backward()}}
+{\footnotesize\ttfamily void Skip\+List\+Node\+::set\+\_\+backward (\begin{DoxyParamCaption}\item[{int}]{level,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{structSkipListNode}{Skip\+List\+Node}} $>$}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structSkipListNode_a3f5a9947803a9cdef16d8365fa5b699d}\label{structSkipListNode_a3f5a9947803a9cdef16d8365fa5b699d}} 
+\index{SkipListNode@{SkipListNode}!backward\_@{backward\_}}
+\index{backward\_@{backward\_}!SkipListNode@{SkipListNode}}
+\doxysubsubsection{\texorpdfstring{backward\_}{backward\_}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::weak\+\_\+ptr$<$\mbox{\hyperlink{structSkipListNode}{Skip\+List\+Node}}$>$ $>$ Skip\+List\+Node\+::backward\+\_\+}
+
+\mbox{\Hypertarget{structSkipListNode_a182efeba38052513965d941ff4803b66}\label{structSkipListNode_a182efeba38052513965d941ff4803b66}} 
+\index{SkipListNode@{SkipListNode}!forward\_@{forward\_}}
+\index{forward\_@{forward\_}!SkipListNode@{SkipListNode}}
+\doxysubsubsection{\texorpdfstring{forward\_}{forward\_}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{structSkipListNode}{Skip\+List\+Node}}$>$ $>$ Skip\+List\+Node\+::forward\+\_\+}
+
+\mbox{\Hypertarget{structSkipListNode_a42fae3faab50beade1cb4d871e09f7df}\label{structSkipListNode_a42fae3faab50beade1cb4d871e09f7df}} 
+\index{SkipListNode@{SkipListNode}!key\_@{key\_}}
+\index{key\_@{key\_}!SkipListNode@{SkipListNode}}
+\doxysubsubsection{\texorpdfstring{key\_}{key\_}}
+{\footnotesize\ttfamily std\+::string Skip\+List\+Node\+::key\+\_\+}
+
+\mbox{\Hypertarget{structSkipListNode_a8324f381be4b2f9becb1ef199dfe94be}\label{structSkipListNode_a8324f381be4b2f9becb1ef199dfe94be}} 
+\index{SkipListNode@{SkipListNode}!tranc\_id\_@{tranc\_id\_}}
+\index{tranc\_id\_@{tranc\_id\_}!SkipListNode@{SkipListNode}}
+\doxysubsubsection{\texorpdfstring{tranc\_id\_}{tranc\_id\_}}
+{\footnotesize\ttfamily uint64\+\_\+t Skip\+List\+Node\+::tranc\+\_\+id\+\_\+}
+
+\mbox{\Hypertarget{structSkipListNode_a02579a125e0e89d5dbbfabd556105829}\label{structSkipListNode_a02579a125e0e89d5dbbfabd556105829}} 
+\index{SkipListNode@{SkipListNode}!value\_@{value\_}}
+\index{value\_@{value\_}!SkipListNode@{SkipListNode}}
+\doxysubsubsection{\texorpdfstring{value\_}{value\_}}
+{\footnotesize\ttfamily std\+::string Skip\+List\+Node\+::value\+\_\+}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Skip\+List/\mbox{\hyperlink{skiplist_8h}{skiplist.\+h}}\end{DoxyCompactItemize}

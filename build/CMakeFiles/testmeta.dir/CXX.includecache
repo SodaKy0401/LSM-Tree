@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ls/LSM/LSM-Tree/src/Block/blockmeta.h
+cstddef
+-
+cstdint
+-
+string
+-
+vector
+-
+
+/home/ls/LSM/LSM-Tree/test/testmeta.cpp
+../src/Block/blockmeta.h
+/home/ls/LSM/LSM-Tree/src/Block/blockmeta.h
+gtest/gtest.h
+-
+vector
+-
+

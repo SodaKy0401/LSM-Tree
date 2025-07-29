@@ -1,0 +1,173 @@
+\hypertarget{classRecord}{}\doxysection{Record Class Reference}
+\label{classRecord}\index{Record@{Record}}
+
+
+{\ttfamily \#include $<$record.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ uint8\+\_\+t $>$ \mbox{\hyperlink{classRecord_a66dc0d07b87a8311689bd38d33fb2199}{encode}} () const
+\item 
+uint64\+\_\+t \mbox{\hyperlink{classRecord_a94ea7da23b319abebfc7ae72e84380aa}{get\+Tranc\+Id}} () const
+\item 
+\mbox{\hyperlink{record_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} \mbox{\hyperlink{classRecord_a4be3e54c9e19918200d92688be81a7c6}{get\+Operation\+Type}} () const
+\item 
+std\+::string \mbox{\hyperlink{classRecord_ae090be85f03f8baec22e046c61f4ed17}{get\+Key}} () const
+\item 
+std\+::string \mbox{\hyperlink{classRecord_aff2b25903877fce0bd28eb399f00897f}{get\+Value}} () const
+\item 
+void \mbox{\hyperlink{classRecord_a005c584b14f10f74f3356d288ebfc669}{print}} () const
+\item 
+bool \mbox{\hyperlink{classRecord_a9cc19167ed89b3b4cbe07beae54e12cb}{operator==}} (const \mbox{\hyperlink{classRecord}{Record}} \&other) const
+\item 
+bool \mbox{\hyperlink{classRecord_aaa93ba8407ecaf8de21c393a9e08c4df}{operator!=}} (const \mbox{\hyperlink{classRecord}{Record}} \&other) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classRecord}{Record}} \mbox{\hyperlink{classRecord_ae975e08b62be5966a28785b61f387bcb}{create\+Record}} (uint64\+\_\+t tranc\+\_\+id)
+\item 
+static \mbox{\hyperlink{classRecord}{Record}} \mbox{\hyperlink{classRecord_a409d3ad6ad58d0ad42dd87a7f41045cd}{commit\+Record}} (uint64\+\_\+t tranc\+\_\+id)
+\item 
+static \mbox{\hyperlink{classRecord}{Record}} \mbox{\hyperlink{classRecord_aa8cedea5b15c99b18aa50bad18c24ad9}{rollback\+Record}} (uint64\+\_\+t tranc\+\_\+id)
+\item 
+static \mbox{\hyperlink{classRecord}{Record}} \mbox{\hyperlink{classRecord_a2baae25665367bbb6868b5dee10a97e6}{put\+Record}} (uint64\+\_\+t tranc\+\_\+id, const std\+::string \&key, const std\+::string \&value)
+\item 
+static \mbox{\hyperlink{classRecord}{Record}} \mbox{\hyperlink{classRecord_af2e51872fa9210fe80b1273a9f6d5ad8}{delete\+Record}} (uint64\+\_\+t tranc\+\_\+id, const std\+::string \&key)
+\item 
+static std\+::vector$<$ \mbox{\hyperlink{classRecord}{Record}} $>$ \mbox{\hyperlink{classRecord_adaf36ab6cce391d5a2cc0ef12d5a026b}{decode}} (const std\+::vector$<$ uint8\+\_\+t $>$ \&data)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRecord_a409d3ad6ad58d0ad42dd87a7f41045cd}\label{classRecord_a409d3ad6ad58d0ad42dd87a7f41045cd}} 
+\index{Record@{Record}!commitRecord@{commitRecord}}
+\index{commitRecord@{commitRecord}!Record@{Record}}
+\doxysubsubsection{\texorpdfstring{commitRecord()}{commitRecord()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRecord}{Record}} Record\+::commit\+Record (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classRecord_a409d3ad6ad58d0ad42dd87a7f41045cd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classRecord_ae975e08b62be5966a28785b61f387bcb}\label{classRecord_ae975e08b62be5966a28785b61f387bcb}} 
+\index{Record@{Record}!createRecord@{createRecord}}
+\index{createRecord@{createRecord}!Record@{Record}}
+\doxysubsubsection{\texorpdfstring{createRecord()}{createRecord()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRecord}{Record}} Record\+::create\+Record (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classRecord_ae975e08b62be5966a28785b61f387bcb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classRecord_adaf36ab6cce391d5a2cc0ef12d5a026b}\label{classRecord_adaf36ab6cce391d5a2cc0ef12d5a026b}} 
+\index{Record@{Record}!decode@{decode}}
+\index{decode@{decode}!Record@{Record}}
+\doxysubsubsection{\texorpdfstring{decode()}{decode()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classRecord}{Record}} $>$ Record\+::decode (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ uint8\+\_\+t $>$ \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classRecord_adaf36ab6cce391d5a2cc0ef12d5a026b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classRecord_af2e51872fa9210fe80b1273a9f6d5ad8}\label{classRecord_af2e51872fa9210fe80b1273a9f6d5ad8}} 
+\index{Record@{Record}!deleteRecord@{deleteRecord}}
+\index{deleteRecord@{deleteRecord}!Record@{Record}}
+\doxysubsubsection{\texorpdfstring{deleteRecord()}{deleteRecord()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRecord}{Record}} Record\+::delete\+Record (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{tranc\+\_\+id,  }\item[{const std\+::string \&}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classRecord_af2e51872fa9210fe80b1273a9f6d5ad8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classRecord_a66dc0d07b87a8311689bd38d33fb2199}\label{classRecord_a66dc0d07b87a8311689bd38d33fb2199}} 
+\index{Record@{Record}!encode@{encode}}
+\index{encode@{encode}!Record@{Record}}
+\doxysubsubsection{\texorpdfstring{encode()}{encode()}}
+{\footnotesize\ttfamily std\+::vector$<$ uint8\+\_\+t $>$ Record\+::encode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classRecord_ae090be85f03f8baec22e046c61f4ed17}\label{classRecord_ae090be85f03f8baec22e046c61f4ed17}} 
+\index{Record@{Record}!getKey@{getKey}}
+\index{getKey@{getKey}!Record@{Record}}
+\doxysubsubsection{\texorpdfstring{getKey()}{getKey()}}
+{\footnotesize\ttfamily std\+::string Record\+::get\+Key (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classRecord_a4be3e54c9e19918200d92688be81a7c6}\label{classRecord_a4be3e54c9e19918200d92688be81a7c6}} 
+\index{Record@{Record}!getOperationType@{getOperationType}}
+\index{getOperationType@{getOperationType}!Record@{Record}}
+\doxysubsubsection{\texorpdfstring{getOperationType()}{getOperationType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{record_8h_a9a2c9c31d675b34f6ec35cc1ca89e047}{Operation\+Type}} Record\+::get\+Operation\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classRecord_a94ea7da23b319abebfc7ae72e84380aa}\label{classRecord_a94ea7da23b319abebfc7ae72e84380aa}} 
+\index{Record@{Record}!getTrancId@{getTrancId}}
+\index{getTrancId@{getTrancId}!Record@{Record}}
+\doxysubsubsection{\texorpdfstring{getTrancId()}{getTrancId()}}
+{\footnotesize\ttfamily uint64\+\_\+t Record\+::get\+Tranc\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classRecord_aff2b25903877fce0bd28eb399f00897f}\label{classRecord_aff2b25903877fce0bd28eb399f00897f}} 
+\index{Record@{Record}!getValue@{getValue}}
+\index{getValue@{getValue}!Record@{Record}}
+\doxysubsubsection{\texorpdfstring{getValue()}{getValue()}}
+{\footnotesize\ttfamily std\+::string Record\+::get\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classRecord_aaa93ba8407ecaf8de21c393a9e08c4df}\label{classRecord_aaa93ba8407ecaf8de21c393a9e08c4df}} 
+\index{Record@{Record}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!Record@{Record}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool Record\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRecord}{Record}} \&}]{other }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classRecord_a9cc19167ed89b3b4cbe07beae54e12cb}\label{classRecord_a9cc19167ed89b3b4cbe07beae54e12cb}} 
+\index{Record@{Record}!operator==@{operator==}}
+\index{operator==@{operator==}!Record@{Record}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Record\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRecord}{Record}} \&}]{other }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classRecord_a005c584b14f10f74f3356d288ebfc669}\label{classRecord_a005c584b14f10f74f3356d288ebfc669}} 
+\index{Record@{Record}!print@{print}}
+\index{print@{print}!Record@{Record}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Record\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classRecord_a2baae25665367bbb6868b5dee10a97e6}\label{classRecord_a2baae25665367bbb6868b5dee10a97e6}} 
+\index{Record@{Record}!putRecord@{putRecord}}
+\index{putRecord@{putRecord}!Record@{Record}}
+\doxysubsubsection{\texorpdfstring{putRecord()}{putRecord()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRecord}{Record}} Record\+::put\+Record (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{tranc\+\_\+id,  }\item[{const std\+::string \&}]{key,  }\item[{const std\+::string \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{classRecord_a2baae25665367bbb6868b5dee10a97e6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classRecord_aa8cedea5b15c99b18aa50bad18c24ad9}\label{classRecord_aa8cedea5b15c99b18aa50bad18c24ad9}} 
+\index{Record@{Record}!rollbackRecord@{rollbackRecord}}
+\index{rollbackRecord@{rollbackRecord}!Record@{Record}}
+\doxysubsubsection{\texorpdfstring{rollbackRecord()}{rollbackRecord()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRecord}{Record}} Record\+::rollback\+Record (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{tranc\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+W\+A\+L/\mbox{\hyperlink{record_8h}{record.\+h}}\item 
+src/\+W\+A\+L/\mbox{\hyperlink{record_8cpp}{record.\+cpp}}\end{DoxyCompactItemize}
